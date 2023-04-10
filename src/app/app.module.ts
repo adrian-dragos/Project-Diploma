@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutComponent } from './layout/layout.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes = [
@@ -14,7 +13,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-	declarations: [AppComponent, LayoutComponent],
+	declarations: [AppComponent],
 	imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(appRoutes)],
 	providers: [],
 	bootstrap: [AppComponent]
