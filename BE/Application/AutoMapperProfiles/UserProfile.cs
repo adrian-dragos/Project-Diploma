@@ -6,7 +6,7 @@ namespace Application.AutoMapperProfiles
 {
     public class UserProfile : Profile
     {
-        public UserProfile() 
+        public UserProfile()
         {
             CreateMap<User, UserDto>();
         }

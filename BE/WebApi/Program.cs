@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure services for layers
+// Configure services for solution layers
 builder.Services.AddPersistance(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddWebApi();

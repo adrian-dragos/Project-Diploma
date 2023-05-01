@@ -16,7 +16,7 @@ namespace Domain.Entities.Common
         public DateTimeOffset? LastModifiedAt { get; set; }
 
         [MaxLength(100)]
-        public string? LastModifiedBy { get; set;}
+        public string? LastModifiedBy { get; set; }
 
     }
 }

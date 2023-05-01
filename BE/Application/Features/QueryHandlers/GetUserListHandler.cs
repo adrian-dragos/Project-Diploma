@@ -1,17 +1,19 @@
 ﻿using Application.DTOs.User;
+using Application.Features.Queries;
 using Application.Interfaces;
 using AutoMapper;
+using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.Features.User.Queries.GetUserList
+namespace Application.Features.QueryHandlers
 {
     public class GetUserListHandler : IRequestHandler<GetUserList, IEnumerable<UserDto>>
     {
-        private readonly IRepository<Domain.Entities.User> _userRepository;
+        private readonly IRepository<User> _userRepository;
         private readonly IMapper _mapper;
 
-        public GetUserListHandler(IRepository<Domain.Entities.User> userRepository, IMapper mapper)
+        public GetUserListHandler(IRepository<User> userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _mapper = mapper;

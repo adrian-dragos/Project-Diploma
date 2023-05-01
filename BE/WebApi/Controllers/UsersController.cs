@@ -1,10 +1,8 @@
-﻿using Application.DTOs.User;
-using Application.Features.User.Queries.GetUserList;
+﻿using Application.Features.Queries;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.ViewModels.User;
-using static Bogus.Person.CardAddress;
 
 namespace WebApi.Controllers
 {
