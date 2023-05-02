@@ -8,18 +8,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.QueryHandlers
 {
-    public class GetUserListHandler : IRequestHandler<GetUserList, IEnumerable<UserDto>>
+    public class GetUserListQueryHandler : IRequestHandler<GetUserListQuery, IEnumerable<UserDto>>
     {
         private readonly IRepository<User> _userRepository;
         private readonly IMapper _mapper;
 
-        public GetUserListHandler(IRepository<User> userRepository, IMapper mapper)
+        public GetUserListQueryHandler(IRepository<User> userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<UserDto>> Handle(GetUserList request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<UserDto>> Handle(GetUserListQuery request, CancellationToken cancellationToken)
         {
             var users = await _userRepository
                 .Read()
