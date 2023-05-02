@@ -22,7 +22,7 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<List<UserViewModel>>> GetCars()
         {
-            var query = new GetUserList();
+            var query = new GetUserListQuery();
 
             var users = await _mediator.Send(query);
 
@@ -30,6 +30,9 @@ namespace WebApi.Controllers
 
             return Ok(result);
         }
+
+
+
 
     }
 }
