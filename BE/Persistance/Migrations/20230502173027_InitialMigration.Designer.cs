@@ -12,7 +12,7 @@ using Persistance;
 namespace Persistance.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230501090733_InitialMigration")]
+    [Migration("20230502173027_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -63,6 +63,10 @@ namespace Persistance.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
@@ -78,88 +82,48 @@ namespace Persistance.Migrations
                             CreatedBy = "System Seeding",
                             Email = "Kathy_Cassin17@gmail.com",
                             FirstName = "Kathy",
-                            LastName = "Cassin"
+                            LastName = "Cassin",
+                            Password = "4B9dLkIPOn"
                         },
                         new
                         {
                             Id = 2,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Tiffany.Ankunding46@gmail.com",
-                            FirstName = "Tiffany",
-                            LastName = "Ankunding"
+                            Email = "John.Bergnaum37@hotmail.com",
+                            FirstName = "John",
+                            LastName = "Bergnaum",
+                            Password = "nou6wpS215"
                         },
                         new
                         {
                             Id = 3,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Manuel.Gleason@yahoo.com",
-                            FirstName = "Manuel",
-                            LastName = "Gleason"
+                            Email = "Ora55@gmail.com",
+                            FirstName = "Ora",
+                            LastName = "Sauer",
+                            Password = "zyLtW4OclA"
                         },
                         new
                         {
                             Id = 4,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Eduardo.Jacobs33@hotmail.com",
-                            FirstName = "Eduardo",
-                            LastName = "Jacobs"
+                            Email = "Antoinette93@yahoo.com",
+                            FirstName = "Antoinette",
+                            LastName = "Dooley",
+                            Password = "YY_pAWA1y1"
                         },
                         new
                         {
                             Id = 5,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Adrian.Runolfsdottir18@yahoo.com",
-                            FirstName = "Adrian",
-                            LastName = "Runolfsdottir"
-                        },
-                        new
-                        {
-                            Id = 6,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Email = "Angie.Stoltenberg@yahoo.com",
-                            FirstName = "Angie",
-                            LastName = "Stoltenberg"
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Email = "Miriam0@yahoo.com",
-                            FirstName = "Miriam",
-                            LastName = "Cremin"
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Email = "Lela19@gmail.com",
-                            FirstName = "Lela",
-                            LastName = "Bartell"
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Email = "Carroll_Willms@gmail.com",
-                            FirstName = "Carroll",
-                            LastName = "Willms"
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Email = "Dennis.Corwin@yahoo.com",
-                            FirstName = "Dennis",
-                            LastName = "Corwin"
+                            Email = "Robin.Nitzsche@yahoo.com",
+                            FirstName = "Robin",
+                            LastName = "Nitzsche",
+                            Password = "uwVCC6wnnE"
                         });
                 });
 #pragma warning restore 612, 618
