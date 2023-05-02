@@ -20,6 +20,8 @@ namespace Persistance.EntityConfigurations
             builder.Property(e => e.Email).IsRequired();
             builder.Property(e => e.Email).HasMaxLength(255);
 
+            builder.Property(e => e.Password).IsRequired();
+
             builder.HasIndex(e => e.Email).IsUnique();
 
             builder.HasData(GetUsers(10));
@@ -36,6 +38,7 @@ namespace Persistance.EntityConfigurations
                 .RuleFor(x => x.CreatedAt, currentTime)
                 .RuleFor(x => x.CreatedBy, createdBy)
                 .RuleFor(x => x.Email, x => x.Person.Email)
+                .RuleFor(x => x.Password, f => f.Internet.Password())
                 .RuleFor(x => x.FirstName, x => x.Person.FirstName)
                 .RuleFor(x => x.LastName, x => x.Person.LastName);
 

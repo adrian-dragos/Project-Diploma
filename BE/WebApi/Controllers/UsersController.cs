@@ -1,12 +1,16 @@
-﻿using Application.Features.Queries;
+﻿using Application.DTOs.Login;
+using Application.Features.Commands;
+using Application.Features.Queries;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using WebApi.ViewModels;
 using WebApi.ViewModels.User;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/users")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -19,8 +23,9 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpGet]
-        public async Task<ActionResult<List<UserViewModel>>> GetCars()
+        public async Task<ActionResult<List<UserViewModel>>> GetUsers()
         {
             var query = new GetUserListQuery();
 
@@ -32,7 +37,25 @@ namespace WebApi.Controllers
         }
 
 
+        // TODO: register endpoint
+        //[HttpPost]
+        //public async Task<ActionResult> RegisterUser(
+        //    [FromBody] RegisterRequestViewModel request,
+        //    CancellationToken cancellationToken)
+        //{
+        //    throw new NotImplementedException();
+        //}
 
+        [HttpPost("login")]
+        public async Task<ActionResult<string>> LoginUser(
+            [FromBody] LoginRequestViewModel request,
+            CancellationToken cancellationToken)
+        {
+            var command = new LoginCommand { Email = request.Email, Password = request.Password };
 
+            var jwtToken = await _mediator.Send(command, cancellationToken);
+
+            return Ok(jwtToken);
+        }
     }
 }
