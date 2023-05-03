@@ -1,11 +1,10 @@
-﻿using Application.DTOs.Login;
-using Application.Features.Commands;
+﻿using Application.Features.Commands;
 using Application.Features.Queries;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using WebApi.ViewModels;
 using WebApi.ViewModels.User;
 
 namespace WebApi.Controllers
@@ -23,7 +22,6 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<UserViewModel>>> GetUsers()
         {
@@ -31,27 +29,32 @@ namespace WebApi.Controllers
 
             var users = await _mediator.Send(query);
 
-            var result = _mapper.Map<IEnumerable<UserViewModel>>(users);
+            var response = _mapper.Map<IEnumerable<UserViewModel>>(users);
 
-            return Ok(result);
+            return Ok(response);
         }
 
 
-        // TODO: register endpoint
-        //[HttpPost]
-        //public async Task<ActionResult> RegisterUser(
-        //    [FromBody] RegisterRequestViewModel request,
-        //    CancellationToken cancellationToken)
-        //{
-        //    throw new NotImplementedException();
-        //}
+       [HttpPost("register")]
+        public async Task<ActionResult> RegisterUser(
+            [FromBody] RegisterUserRequestViewModel request,
+            CancellationToken cancellationToken)
+        {
+            var command = _mapper.Map<RegisterUserCommand>(request);
+
+            var user = await _mediator.Send(command, cancellationToken);
+
+            var response = _mapper.Map<RegisterUserResponeViewModel>(user);
+
+            return Ok(response);
+        }
 
         [HttpPost("login")]
         public async Task<ActionResult<string>> LoginUser(
-            [FromBody] LoginRequestViewModel request,
+            [FromBody] LoginUserRequestViewModel request,
             CancellationToken cancellationToken)
         {
-            var command = new LoginCommand { Email = request.Email, Password = request.Password };
+            var command = new LoginUserCommand { Email = request.Email, Password = request.Password };
 
             var jwtToken = await _mediator.Send(command, cancellationToken);
 

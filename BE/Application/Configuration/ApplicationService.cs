@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using Application.Features.Services;
+using Application.Features.Services.Interfaces;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Configuration
@@ -17,6 +19,8 @@ namespace Application.Configuration
             });
 
             services.AddValidatorsFromAssembly(assembly);
+
+            services.AddScoped<IPasswordService, PasswordService>();
 
             return services;
         }

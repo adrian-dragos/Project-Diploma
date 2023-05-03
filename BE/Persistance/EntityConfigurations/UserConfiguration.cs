@@ -11,19 +11,28 @@ namespace Persistance.EntityConfigurations
         {
             builder.HasKey(e => e.Id);
 
-            builder.Property(e => e.FirstName).IsRequired();
-            builder.Property(e => e.FirstName).HasMaxLength(50);
+            builder.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .IsRequired(false);
 
-            builder.Property(e => e.LastName).IsRequired();
-            builder.Property(e => e.LastName).HasMaxLength(50);
+            builder.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .IsRequired(false); ;
 
-            builder.Property(e => e.Email).IsRequired();
-            builder.Property(e => e.Email).HasMaxLength(255);
+            builder.Property(e => e.Email)
+                .HasMaxLength(255)
+                .IsRequired();
 
-            builder.Property(e => e.Password).IsRequired();
+            builder.HasIndex(e => e.Email)
+                .IsUnique();
 
-            builder.HasIndex(e => e.Email).IsUnique();
+            builder.Property(e => e.Password)
+                .HasMaxLength(255)
+                .IsRequired();
 
+            if (!builder.Metadata.GetProperties().Any(x => x.Name == "Id"))
+            {
+            }
             builder.HasData(GetUsers(10));
         }
 

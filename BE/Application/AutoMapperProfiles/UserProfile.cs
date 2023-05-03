@@ -9,6 +9,7 @@ namespace Application.AutoMapperProfiles
         public UserProfile()
         {
             CreateMap<User, UserDto>();
+            CreateMap<User, RegisterUserDto>();
         }
     }
 }

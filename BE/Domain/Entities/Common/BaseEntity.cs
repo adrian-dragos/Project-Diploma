@@ -7,11 +7,11 @@ namespace Domain.Entities.Common
         public int Id { get; init; }
 
         [Required]
-        public DateTimeOffset CreatedAt { get; init; }
+        public DateTimeOffset CreatedAt { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string CreatedBy { get; init; }
+        public string CreatedBy { get; set; }
 
         public DateTimeOffset? LastModifiedAt { get; set; }
 

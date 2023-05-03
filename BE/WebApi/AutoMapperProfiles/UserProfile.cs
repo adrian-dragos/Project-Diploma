@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.User;
+using Application.Features.Commands;
 using AutoMapper;
 using WebApi.ViewModels.User;
 
@@ -8,7 +9,9 @@ namespace WebApi.AutoMapperProfiles
     {
         public UserProfile()
         {
-            CreateMap<UserDto, UserViewModel>().ReverseMap();
+            CreateMap<UserDto, UserViewModel>();
+            CreateMap<RegisterUserRequestViewModel, RegisterUserCommand>();
+            CreateMap<UserDto, RegisterUserResponeViewModel>();
         }
     }
 }
