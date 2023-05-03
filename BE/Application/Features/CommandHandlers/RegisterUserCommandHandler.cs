@@ -4,6 +4,7 @@ using Application.Features.Services.Interfaces;
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,11 +29,9 @@ namespace Application.Features.CommandHandlers
                 .Read()
                 .AnyAsync(u => u.Email == request.Email);
 
-            if (emailAlreadyRegistred) 
+            if (emailAlreadyRegistred)
             {
-                // TODO: throw account already exists
-                Console.WriteLine("email already exists");
-                throw new NotImplementedException();
+                throw new BadRequestException("Email already in use!");
             }
 
             var password = _passwordService.EncrytpPassword(request.Password);

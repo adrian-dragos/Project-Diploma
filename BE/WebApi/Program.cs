@@ -1,7 +1,7 @@
 using Application.Configuration;
 using Persistance;
 using Infrastructure.Configuration;
-
+using WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +22,8 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseMiddleware<ExceptionHandler>();
 
 app.UseHttpsRedirection();
 

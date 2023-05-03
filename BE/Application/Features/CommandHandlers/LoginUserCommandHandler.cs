@@ -2,6 +2,7 @@
 using Application.Features.Services.Interfaces;
 using Application.Interfaces;
 using Domain.Entities;
+using Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,8 +15,8 @@ namespace Application.Features.CommandHandlers
         private readonly IPasswordService _passwordService;
 
         public LoginUserCommandHandler(
-            IRepository<User> userReposiotry, 
-            IJwtProvider jwtProvider, 
+            IRepository<User> userReposiotry,
+            IJwtProvider jwtProvider,
             IPasswordService passwordService)
         {
             _userReposiotry = userReposiotry;
@@ -31,9 +32,7 @@ namespace Application.Features.CommandHandlers
 
             if (user is null || !_passwordService.VerifyPasswrord(request.Password, user.Password))
             {
-                // TODO: implent throw bad wrong credentials
-                Console.WriteLine("wrong credentials");
-                throw new NotImplementedException();
+                throw new BadRequestException("Wrong credentials!");
             }
 
             var jwtToken = _jwtProvider.Generate(user);

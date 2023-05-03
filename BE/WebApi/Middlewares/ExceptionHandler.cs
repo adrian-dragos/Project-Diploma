@@ -1,0 +1,36 @@
+﻿using Domain.Exceptions;
+using Newtonsoft.Json;
+using System.Net;
+
+namespace WebApi.Middlewares
+{
+    public class ExceptionHandler : IMiddleware
+    {
+        public async Task InvokeAsync(HttpContext context, RequestDelegate next)
+        {
+            try
+            {
+                await next(context);
+            }
+            catch (BadRequestException ex)
+            {
+                await HandleExceptionAsync(context, ex, HttpStatusCode.BadRequest);
+            }
+        }
+
+        private async Task HandleExceptionAsync(HttpContext context, Exception exception, HttpStatusCode statusCode)
+        {
+            var response = context.Response;
+            response.ContentType = "application/json";
+            response.StatusCode = (int)statusCode;
+
+            var responeBody = JsonConvert.SerializeObject(new
+            {
+                message = exception.Message,
+            });
+
+
+            await response.WriteAsync(responeBody);
+        }
+    }
+}

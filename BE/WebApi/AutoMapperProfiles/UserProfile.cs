@@ -11,7 +11,7 @@ namespace WebApi.AutoMapperProfiles
         {
             CreateMap<UserDto, UserViewModel>();
             CreateMap<RegisterUserRequestViewModel, RegisterUserCommand>();
-            CreateMap<UserDto, RegisterUserResponeViewModel>();
+            CreateMap<RegisterUserDto, RegisterUserResponeViewModel>();
         }
     }
 }
