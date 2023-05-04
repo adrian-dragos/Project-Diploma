@@ -7,7 +7,6 @@ namespace Application.Features.Services
     {
         public string EncrytpPassword(string password)
         {
-            return password;
             var passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(password);
             return passwordHash;
         }

@@ -11,11 +11,11 @@ namespace Domain.Entities.Common
 
         [Required]
         [MaxLength(100)]
-        public string CreatedBy { get; set; } = string.Empty;
+        public string CreatedBy { get; set; }
 
         public DateTimeOffset? LastModifiedAt { get; set; }
 
         [MaxLength(100)]
-        public string LastModifiedBy { get; set; } = string.Empty;
+        public string LastModifiedBy { get; set; }
     }
 }

@@ -19,8 +19,11 @@ namespace Infrastructure.Authorization
         protected override async Task HandleRequirementAsync(
             AuthorizationHandlerContext context, PermissionRequirment requirement)
         {
-            var userId = context.User.Claims.FirstOrDefault(
-                x => x.Type == ClaimTypes.NameIdentifier)?.Value;
+            var userId = context
+                .User
+                .Claims
+                .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?
+                .Value;
 
             if (!int.TryParse(userId, out int parsedUserId))
             {
@@ -35,7 +38,7 @@ namespace Infrastructure.Authorization
             var permission = await permissionService
                 .GetPermissionsAsync(parsedUserId);
 
-            if (permission.Contains(requirement.Peremission))
+            if (permission.Contains(requirement.Permission))
             {
                 context.Succeed(requirement);
             }
