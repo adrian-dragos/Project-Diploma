@@ -28,6 +28,7 @@ namespace Application.Features.CommandHandlers
         {
             var user = await _userReposiotry
                 .Read()
+                .AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Email == request.Email, cancellationToken);
 
             if (user is null || !_passwordService.VerifyPasswrord(request.Password, user.Password))
