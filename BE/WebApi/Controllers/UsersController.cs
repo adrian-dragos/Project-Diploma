@@ -2,6 +2,7 @@
 using Application.Features.Queries;
 using AutoMapper;
 using Infrastructure.Authorization;
+using Infrastructure.Authorization.Permissions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.ViewModels.User;
@@ -21,7 +22,7 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
-        [HasPermission(Permission.SeeAllUsers)]
+        [HasPermission(UserProfile.SeeAllUsers)]
         [HttpGet]
         public async Task<ActionResult<List<UserViewModel>>> GetUsers()
         {

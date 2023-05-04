@@ -42,7 +42,6 @@ namespace Persistance.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("LastModifiedBy")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -62,25 +61,22 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(1624), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
-                            LastModifiedBy = "",
                             Name = "SeeAllUsers"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(1624), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
-                            LastModifiedBy = "",
                             Name = "UpdateInstructorProfile"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(1624), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
-                            LastModifiedBy = "",
                             Name = "UpdateUserProfile"
                         });
                 });
@@ -108,7 +104,6 @@ namespace Persistance.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("LastModifiedBy")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -123,37 +118,33 @@ namespace Persistance.Migrations
                         {
                             RoleId = 1,
                             PolicyId = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6112), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
-                            Id = 1,
-                            LastModifiedBy = ""
+                            Id = 1
                         },
                         new
                         {
                             RoleId = 1,
                             PolicyId = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6112), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
-                            Id = 2,
-                            LastModifiedBy = ""
+                            Id = 2
                         },
                         new
                         {
                             RoleId = 2,
                             PolicyId = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6112), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
-                            Id = 2,
-                            LastModifiedBy = ""
+                            Id = 2
                         },
                         new
                         {
                             RoleId = 3,
                             PolicyId = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6112), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
-                            Id = 3,
-                            LastModifiedBy = ""
+                            Id = 3
                         });
                 });
 
@@ -177,7 +168,6 @@ namespace Persistance.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("LastModifiedBy")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -197,25 +187,22 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6878), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
-                            LastModifiedBy = "",
                             Name = "Administrator"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6878), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
-                            LastModifiedBy = "",
                             Name = "Student"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6878), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
-                            LastModifiedBy = "",
                             Name = "Instructor"
                         });
                 });
@@ -249,7 +236,6 @@ namespace Persistance.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("LastModifiedBy")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -282,7 +268,6 @@ namespace Persistance.Migrations
                             CreatedBy = "System Seeding",
                             Email = "Kathy_Cassin17@gmail.com",
                             FirstName = "Kathy",
-                            LastModifiedBy = "",
                             LastName = "Cassin",
                             Password = "test",
                             RoleId = 3
@@ -294,7 +279,6 @@ namespace Persistance.Migrations
                             CreatedBy = "System Seeding",
                             Email = "Tiffany.Ankunding46@gmail.com",
                             FirstName = "Tiffany",
-                            LastModifiedBy = "",
                             LastName = "Ankunding",
                             Password = "test",
                             RoleId = 1
@@ -306,7 +290,6 @@ namespace Persistance.Migrations
                             CreatedBy = "System Seeding",
                             Email = "Manuel.Gleason@yahoo.com",
                             FirstName = "Manuel",
-                            LastModifiedBy = "",
                             LastName = "Gleason",
                             Password = "test",
                             RoleId = 1
@@ -318,7 +301,6 @@ namespace Persistance.Migrations
                             CreatedBy = "System Seeding",
                             Email = "Eduardo.Jacobs33@hotmail.com",
                             FirstName = "Eduardo",
-                            LastModifiedBy = "",
                             LastName = "Jacobs",
                             Password = "test",
                             RoleId = 2
@@ -330,7 +312,6 @@ namespace Persistance.Migrations
                             CreatedBy = "System Seeding",
                             Email = "Adrian.Runolfsdottir18@yahoo.com",
                             FirstName = "Adrian",
-                            LastModifiedBy = "",
                             LastName = "Runolfsdottir",
                             Password = "test",
                             RoleId = 1
@@ -342,7 +323,6 @@ namespace Persistance.Migrations
                             CreatedBy = "System Seeding",
                             Email = "Angie.Stoltenberg@yahoo.com",
                             FirstName = "Angie",
-                            LastModifiedBy = "",
                             LastName = "Stoltenberg",
                             Password = "test",
                             RoleId = 1
@@ -354,7 +334,6 @@ namespace Persistance.Migrations
                             CreatedBy = "System Seeding",
                             Email = "Miriam0@yahoo.com",
                             FirstName = "Miriam",
-                            LastModifiedBy = "",
                             LastName = "Cremin",
                             Password = "test",
                             RoleId = 3
@@ -366,7 +345,6 @@ namespace Persistance.Migrations
                             CreatedBy = "System Seeding",
                             Email = "Lela19@gmail.com",
                             FirstName = "Lela",
-                            LastModifiedBy = "",
                             LastName = "Bartell",
                             Password = "test",
                             RoleId = 2
@@ -378,7 +356,6 @@ namespace Persistance.Migrations
                             CreatedBy = "System Seeding",
                             Email = "Carroll_Willms@gmail.com",
                             FirstName = "Carroll",
-                            LastModifiedBy = "",
                             LastName = "Willms",
                             Password = "test",
                             RoleId = 1
@@ -390,7 +367,6 @@ namespace Persistance.Migrations
                             CreatedBy = "System Seeding",
                             Email = "Dennis.Corwin@yahoo.com",
                             FirstName = "Dennis",
-                            LastModifiedBy = "",
                             LastName = "Corwin",
                             Password = "test",
                             RoleId = 3

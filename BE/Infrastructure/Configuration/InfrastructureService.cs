@@ -20,6 +20,7 @@ namespace Infrastructure.Configuration
             services.ConfigureOptions<JwtBearerOptionSetup>();
 
             services.AddAuthorization();
+            services.AddMemoryCache();
             services.AddScoped<IPermissionService, PermissionService>();
             services.AddSingleton<IAuthorizationHandler, PermissionAuthorizationHandler>();
             services.AddSingleton<IAuthorizationPolicyProvider, PermissionAuthorizationPolicyProvider>();

@@ -23,7 +23,7 @@ namespace Persistance.Migrations
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     LastModifiedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -40,7 +40,7 @@ namespace Persistance.Migrations
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     LastModifiedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,7 +57,7 @@ namespace Persistance.Migrations
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     LastModifiedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -90,7 +90,7 @@ namespace Persistance.Migrations
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     LastModifiedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -108,9 +108,9 @@ namespace Persistance.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "LastModifiedAt", "LastModifiedBy", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(1624), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, "", "SeeAllUsers" },
-                    { 2, new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(1624), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, "", "UpdateInstructorProfile" },
-                    { 3, new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(1624), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, "", "UpdateUserProfile" }
+                    { 1, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "SeeAllUsers" },
+                    { 2, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "UpdateInstructorProfile" },
+                    { 3, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "UpdateUserProfile" }
                 });
 
             migrationBuilder.InsertData(
@@ -118,9 +118,9 @@ namespace Persistance.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "LastModifiedAt", "LastModifiedBy", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6878), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, "", "Administrator" },
-                    { 2, new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6878), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, "", "Student" },
-                    { 3, new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6878), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, "", "Instructor" }
+                    { 1, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Administrator" },
+                    { 2, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Student" },
+                    { 3, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Instructor" }
                 });
 
             migrationBuilder.InsertData(
@@ -128,10 +128,10 @@ namespace Persistance.Migrations
                 columns: new[] { "PolicyId", "RoleId", "CreatedAt", "CreatedBy", "Id", "LastModifiedAt", "LastModifiedBy" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6112), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 1, null, "" },
-                    { 2, 1, new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6112), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, "" },
-                    { 2, 2, new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6112), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, "" },
-                    { 3, 3, new DateTimeOffset(new DateTime(2023, 5, 4, 23, 8, 16, 300, DateTimeKind.Unspecified).AddTicks(6112), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 3, null, "" }
+                    { 1, 1, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 1, null, null },
+                    { 2, 1, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, null },
+                    { 2, 2, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, null },
+                    { 3, 3, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 3, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -139,16 +139,16 @@ namespace Persistance.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "Email", "FirstName", "LastModifiedAt", "LastModifiedBy", "LastName", "Password", "RoleId" },
                 values: new object[,]
                 {
-                    { 1, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Kathy_Cassin17@gmail.com", "Kathy", null, "", "Cassin", "test", 3 },
-                    { 2, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Tiffany.Ankunding46@gmail.com", "Tiffany", null, "", "Ankunding", "test", 1 },
-                    { 3, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Manuel.Gleason@yahoo.com", "Manuel", null, "", "Gleason", "test", 1 },
-                    { 4, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Eduardo.Jacobs33@hotmail.com", "Eduardo", null, "", "Jacobs", "test", 2 },
-                    { 5, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Adrian.Runolfsdottir18@yahoo.com", "Adrian", null, "", "Runolfsdottir", "test", 1 },
-                    { 6, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Angie.Stoltenberg@yahoo.com", "Angie", null, "", "Stoltenberg", "test", 1 },
-                    { 7, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Miriam0@yahoo.com", "Miriam", null, "", "Cremin", "test", 3 },
-                    { 8, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Lela19@gmail.com", "Lela", null, "", "Bartell", "test", 2 },
-                    { 9, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Carroll_Willms@gmail.com", "Carroll", null, "", "Willms", "test", 1 },
-                    { 10, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Dennis.Corwin@yahoo.com", "Dennis", null, "", "Corwin", "test", 3 }
+                    { 1, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Kathy_Cassin17@gmail.com", "Kathy", null, null, "Cassin", "test", 3 },
+                    { 2, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Tiffany.Ankunding46@gmail.com", "Tiffany", null, null, "Ankunding", "test", 1 },
+                    { 3, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Manuel.Gleason@yahoo.com", "Manuel", null, null, "Gleason", "test", 1 },
+                    { 4, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Eduardo.Jacobs33@hotmail.com", "Eduardo", null, null, "Jacobs", "test", 2 },
+                    { 5, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Adrian.Runolfsdottir18@yahoo.com", "Adrian", null, null, "Runolfsdottir", "test", 1 },
+                    { 6, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Angie.Stoltenberg@yahoo.com", "Angie", null, null, "Stoltenberg", "test", 1 },
+                    { 7, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Miriam0@yahoo.com", "Miriam", null, null, "Cremin", "test", 3 },
+                    { 8, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Lela19@gmail.com", "Lela", null, null, "Bartell", "test", 2 },
+                    { 9, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Carroll_Willms@gmail.com", "Carroll", null, null, "Willms", "test", 1 },
+                    { 10, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Dennis.Corwin@yahoo.com", "Dennis", null, null, "Corwin", "test", 3 }
                 });
 
             migrationBuilder.CreateIndex(

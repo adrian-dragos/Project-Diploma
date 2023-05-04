@@ -1,12 +1,11 @@
 ﻿using Domain.Exceptions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.JsonWebTokens;
 using System.Security.Claims;
 
 namespace Infrastructure.Authorization
 {
-    public class PermissionAuthorizationHandler 
+    public class PermissionAuthorizationHandler
         : AuthorizationHandler<PermissionRequirment>
     {
         private readonly IServiceScopeFactory _serviceScopeFactory;
@@ -30,18 +29,21 @@ namespace Infrastructure.Authorization
                 throw new UnauthorizedExceptinon();
             }
 
+            if (await HasUserPermission(parsedUserId, requirement.Permission))
+            {
+                context.Succeed(requirement);
+            }
+        }
+
+        public async Task<bool> HasUserPermission(int userId, string permission)
+        {
             using var scope = _serviceScopeFactory.CreateScope();
 
             var permissionService = scope.ServiceProvider
                 .GetRequiredService<IPermissionService>();
 
-            var permission = await permissionService
-                .GetPermissionsAsync(parsedUserId);
-
-            if (permission.Contains(requirement.Permission))
-            {
-                context.Succeed(requirement);
-            }
+            return await permissionService
+                .HasPermissionAsync(userId, permission);
         }
     }
 }
