@@ -16,6 +16,10 @@ namespace WebApi.Middlewares
             {
                 await HandleExceptionAsync(context, ex, HttpStatusCode.BadRequest);
             }
+            catch (UnauthorizedAccessException ex) 
+            {
+                await HandleExceptionAsync(context, ex, HttpStatusCode.Forbidden);
+            }
         }
 
         private async Task HandleExceptionAsync(HttpContext context, Exception exception, HttpStatusCode statusCode)

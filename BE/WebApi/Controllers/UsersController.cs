@@ -1,9 +1,8 @@
 ﻿using Application.Features.Commands;
 using Application.Features.Queries;
 using AutoMapper;
+using Infrastructure.Authorization;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.ViewModels.User;
 
@@ -22,6 +21,7 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
+        [HasPermission(Permission.SeeAllUsers)]
         [HttpGet]
         public async Task<ActionResult<List<UserViewModel>>> GetUsers()
         {
@@ -35,10 +35,10 @@ namespace WebApi.Controllers
         }
 
 
-       [HttpPost("register")]
+        [HttpPost("register")]
         public async Task<ActionResult> RegisterUser(
-            [FromBody] RegisterUserRequestViewModel request,
-            CancellationToken cancellationToken)
+             [FromBody] RegisterUserRequestViewModel request,
+             CancellationToken cancellationToken)
         {
             var command = _mapper.Map<RegisterUserCommand>(request);
 

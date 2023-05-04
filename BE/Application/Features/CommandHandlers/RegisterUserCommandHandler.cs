@@ -35,7 +35,7 @@ namespace Application.Features.CommandHandlers
             }
 
             var password = _passwordService.EncrytpPassword(request.Password);
-            var user = new User { Email = request.Email, Password = password };
+            var user = new User { Email = request.Email, Password = password, RoleId = 3 };
 
             user = await _userReposiotry
                 .AddAsync(user);

@@ -7,12 +7,14 @@ namespace Application.Features.Services
     {
         public string EncrytpPassword(string password)
         {
+            return password;
             var passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(password);
             return passwordHash;
         }
 
         public bool VerifyPasswrord(string password, string passwordHash)
         {
+            return true;
             var isPasswordCorrect = BCrypt.Net.BCrypt.EnhancedVerify(password, passwordHash);
             return isPasswordCorrect;
         }

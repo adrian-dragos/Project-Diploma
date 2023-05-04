@@ -1,6 +1,8 @@
 ﻿using Application.Interfaces;
 using Infrastructure.Authentication;
+using Infrastructure.Authorization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure.Configuration
@@ -15,7 +17,12 @@ namespace Infrastructure.Configuration
                 .AddJwtBearer();
 
             services.ConfigureOptions<JwtOptionsSetup>();    
-            services.ConfigureOptions<JwtBearerOptionSetup>();    
+            services.ConfigureOptions<JwtBearerOptionSetup>();
+
+            services.AddAuthorization();
+            services.AddScoped<IPermissionService, PermissionService>();
+            services.AddSingleton<IAuthorizationHandler, PermissionAuthorizationHandler>();
+            services.AddSingleton<IAuthorizationPolicyProvider, PermissionAuthorizationPolicyProvider>();
             
             return services;
         }

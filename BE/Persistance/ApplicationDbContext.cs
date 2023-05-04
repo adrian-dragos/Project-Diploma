@@ -19,6 +19,5 @@ namespace Persistance
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
             Randomizer.Seed = new Random(42);
         }
-
     }
 }

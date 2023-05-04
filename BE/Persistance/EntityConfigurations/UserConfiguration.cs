@@ -1,4 +1,6 @@
-﻿using Bogus;
+﻿using Application.Features.Services;
+using Application.Features.Services.Interfaces;
+using Bogus;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -7,32 +9,32 @@ namespace Persistance.EntityConfigurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<User>
     {
+
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasKey(e => e.Id);
-
-            builder.Property(e => e.FirstName)
+            builder.Property(u => u.FirstName)
                 .HasMaxLength(50)
                 .IsRequired(false);
 
-            builder.Property(e => e.LastName)
+            builder.Property(u => u.LastName)
                 .HasMaxLength(50)
                 .IsRequired(false); ;
 
-            builder.Property(e => e.Email)
+            builder.Property(u => u.Email)
                 .HasMaxLength(255)
                 .IsRequired();
 
-            builder.HasIndex(e => e.Email)
+            builder.HasIndex(u => u.Email)
                 .IsUnique();
 
-            builder.Property(e => e.Password)
+            builder.Property(u => u.Password)
                 .HasMaxLength(255)
                 .IsRequired();
 
-            if (!builder.Metadata.GetProperties().Any(x => x.Name == "Id"))
-            {
-            }
+            builder.HasOne(u => u.Role)
+               .WithMany(u => u.Users)
+               .HasForeignKey(bc => bc.RoleId); ;
+
             builder.HasData(GetUsers(10));
         }
 
@@ -41,15 +43,18 @@ namespace Persistance.EntityConfigurations
             var id = 1;
             var currentTime = new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923);
             var createdBy = "System Seeding";
+            var random = new Random(42);
+            var password = "test";
 
             var userFaker = new Faker<User>()
-                .RuleFor(x => x.Id, _ => id++)
-                .RuleFor(x => x.CreatedAt, currentTime)
-                .RuleFor(x => x.CreatedBy, createdBy)
-                .RuleFor(x => x.Email, x => x.Person.Email)
-                .RuleFor(x => x.Password, f => f.Internet.Password())
-                .RuleFor(x => x.FirstName, x => x.Person.FirstName)
-                .RuleFor(x => x.LastName, x => x.Person.LastName);
+                .RuleFor(u => u.Id, _ => id++)
+                .RuleFor(u => u.CreatedAt, _ => currentTime)
+                .RuleFor(u => u.CreatedBy, _ => createdBy)
+                .RuleFor(u=> u.Email, f => f.Person.Email)
+                .RuleFor(u => u.Password, _ => password)
+                .RuleFor(u => u.FirstName, f => f.Person.FirstName)
+                .RuleFor(u => u.LastName, f => f.Person.LastName)
+                .RuleFor(u => u.RoleId, _ => random.Next(1, 4));
 
             var users = userFaker.Generate(amount);
 
