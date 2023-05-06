@@ -8,7 +8,8 @@ namespace Persistance
 {
     public static class PersistanceService
     {
-        public static IServiceCollection AddPersistance(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddPersistance(this IServiceCollection services, 
+            IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("DataBaseConnectionString");
 

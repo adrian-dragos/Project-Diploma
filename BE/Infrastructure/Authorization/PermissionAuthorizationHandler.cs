@@ -26,12 +26,16 @@ namespace Infrastructure.Authorization
 
             if (!int.TryParse(userId, out int parsedUserId))
             {
-                throw new UnauthorizedExceptinon();
+                throw new BadRequestException("Invalid Token!");
             }
 
             if (await HasUserPermission(parsedUserId, requirement.Permission))
             {
                 context.Succeed(requirement);
+            } 
+            else
+            {
+                throw new UnauthorizedException();
             }
         }
 
