@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { Client } from '@api/api:';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
 
 const routes: Routes = [
 	{
@@ -24,8 +27,8 @@ const routes: Routes = [
 
 @NgModule({
 	declarations: [AppComponent],
-	imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(routes), BrowserAnimationsModule, MatSnackBarModule],
-	providers: [MatSnackBarModule],
+	imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(routes), BrowserAnimationsModule, MatSnackBarModule, HttpClientModule],
+	providers: [Client, MatSnackBarModule, { provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true }],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

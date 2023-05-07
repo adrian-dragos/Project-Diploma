@@ -10,6 +10,14 @@ public static class WebApiService
 
         services.AddTransient<ExceptionHandler>();
 
+        services.AddCors(o =>
+        {
+            o.AddPolicy("CorsPolicy",
+                builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+        });
+
         return services;
     }
 }

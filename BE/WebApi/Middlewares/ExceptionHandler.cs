@@ -12,6 +12,10 @@ namespace WebApi.Middlewares
             {
                 await next(context);
             }
+            catch (NotFoundException ex)
+            {
+                await HandleExceptionAsync(context, ex, HttpStatusCode.NotFound);
+            }
             catch (BadRequestException ex)
             {
                 await HandleExceptionAsync(context, ex, HttpStatusCode.BadRequest);

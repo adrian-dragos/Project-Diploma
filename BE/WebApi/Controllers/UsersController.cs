@@ -1,8 +1,6 @@
 ﻿using Application.Features.Commands;
 using Application.Features.Queries;
 using AutoMapper;
-using Infrastructure.Authorization;
-using Infrastructure.Authorization.Permissions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.ViewModels.User;
@@ -22,9 +20,8 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
-        [HasPermission(UserProfile.SeeAllUsers)]
         [HttpGet]
-        public async Task<ActionResult<List<UserViewModel>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserViewModel>>> GetUsers()
         {
             var query = new GetUserListQuery();
 
@@ -35,7 +32,20 @@ namespace WebApi.Controllers
             return Ok(response);
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<UserViewModel>> GetUser(int id)
+        {
+            var query = new GetUserQuery { Id = id };
 
+            var user = await _mediator.Send(query);
+
+            var response = _mapper.Map<UserViewModel>(user);
+
+            return Ok(response);
+        }
+
+        [ProducesResponseType(typeof(RegisterUserRequestViewModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost("register")]
         public async Task<ActionResult> RegisterUser(
              [FromBody] RegisterUserRequestViewModel request,

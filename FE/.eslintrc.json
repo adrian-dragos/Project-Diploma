@@ -17,6 +17,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "prefer-const": ["warn"],
         "eqeqeq": ["warn", "always", {"null": "ignore"}],
         "quotes": ["warn", "single"],
         "@typescript-eslint/explicit-function-return-type": ["warn"]
