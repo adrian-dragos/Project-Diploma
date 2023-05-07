@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes: Routes = [
 	{
@@ -22,8 +24,8 @@ const routes: Routes = [
 
 @NgModule({
 	declarations: [AppComponent],
-	imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(routes)],
-	providers: [],
+	imports: [BrowserModule, AppRoutingModule, RouterModule.forRoot(routes), BrowserAnimationsModule, MatSnackBarModule],
+	providers: [MatSnackBarModule],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
