@@ -68,6 +68,12 @@ namespace Application.Features.CommandHandlers
             {
                 throw new BadRequestException("Password should contain at least one capital letter!");
             }
+
+            bool containsSmallCaseLetter = Regex.IsMatch(password, @"[a-z]");
+            if (!containsSmallCaseLetter)
+            {
+                throw new BadRequestException("Password should contain at least one small case letter!");
+            }
         }
     }
 }

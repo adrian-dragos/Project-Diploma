@@ -39,6 +39,9 @@
             <mat-error *ngIf="registerForm.controls['password'].hasError('hasCapitalCase')">  
               Must have at least one capital letter!
             </mat-error>
+            <mat-error *ngIf="registerForm.controls['password'].hasError('hasSmallCase')">  
+              Must have at least one small case letter!
+            </mat-error>
           </mat-form-field>
         </div>
         <div>
