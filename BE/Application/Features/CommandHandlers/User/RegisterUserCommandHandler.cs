@@ -7,6 +7,7 @@ using Domain.Entities;
 using Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Text.RegularExpressions;
 
 namespace Application.Features.CommandHandlers
 {
@@ -25,14 +26,8 @@ namespace Application.Features.CommandHandlers
 
         public async Task<RegisterUserDto> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            var emailAlreadyRegistred = await _userReposiotry
-                .Read()
-                .AnyAsync(u => u.Email == request.Email);
-
-            if (emailAlreadyRegistred)
-            {
-                throw new BadRequestException("Email already in use!");
-            }
+            await ValidateEmail(request.Email);
+            ValidatePassword(request.Password);
 
             var password = _passwordService.EncrytpPassword(request.Password);
             var user = new User { Email = request.Email, Password = password, RoleId = 3 };
@@ -41,6 +36,38 @@ namespace Application.Features.CommandHandlers
                 .AddAsync(user);
 
             return _mapper.Map<RegisterUserDto>(user);
+        }
+
+        private async Task ValidateEmail(string email)
+        {
+            var emailAlreadyRegistred = await _userReposiotry
+                .Read()
+                .AnyAsync(u => u.Email == email);
+
+            if (emailAlreadyRegistred)
+            {
+                throw new BadRequestException("Email already in use!");
+            }
+        }
+
+        private void ValidatePassword(string password)
+        {
+            if (password.Length <  8)
+            {
+                throw new BadRequestException("Password is too short!");
+            }
+
+            bool containsDigits = Regex.IsMatch(password, @"\d");
+            if (!containsDigits)
+            {
+                throw new BadRequestException("Password should contain at least one digit!");
+            }
+
+            bool containsCapitalLetter = Regex.IsMatch(password, @"[A-Z]");
+            if (!containsCapitalLetter)
+            {
+                throw new BadRequestException("Password should contain at least one capital letter!");
+            }
         }
     }
 }
