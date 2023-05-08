@@ -1,7 +1,7 @@
 ﻿using Application.DTOs.User;
 using MediatR;
 
-namespace Application.Features.Commands
+namespace Application.Features.Commands.User
 {
     public class RegisterUserCommand : IRequest<RegisterUserDto>
     {

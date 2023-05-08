@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.User;
-using Application.Features.Commands;
+using Application.Features.Commands.User;
 using AutoMapper;
 using WebApi.ViewModels.User;
 

@@ -3,7 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiException, Client, LoginUserRequestViewModel } from '@api/api:';
 import { SnackBarService } from '@app/services/snack-bar.service';
+import { UserValidator } from '@app/validators/user.validator';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { tap } from 'rxjs';
 
 @Component({
 	selector: 'app-login',
@@ -12,8 +14,12 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 @UntilDestroy()
 export class LoginComponent {
-	loginFailed = false;
+	badCredentials = false;
+	passwordIcon = 'visibility';
+	hidePassword = true;
+
 	snackBarService = inject(SnackBarService);
+	userValidator = inject(UserValidator);
 
 	constructor(private client: Client, private router: Router) {}
 
@@ -38,16 +44,29 @@ export class LoginComponent {
 
 		this.client
 			.login(user)
-			.pipe(untilDestroyed(this))
+			.pipe(
+				tap((x) => console.log(x)),
+				untilDestroyed(this)
+			)
 			.subscribe(
 				(response) => {
 					this.snackBarService.openSuccess('Login successful!');
 					this.router.navigate(['/home']);
+					this.badCredentials = false;
 				},
 				(error: ApiException) => {
-					this.loginFailed = true;
-					console.log(this.loginFailed);
+					this.badCredentials = true;
 				}
 			);
+	}
+
+	togglePasswordIcon(): void {
+		this.hidePassword = !this.hidePassword;
+
+		if (this.hidePassword) {
+			this.passwordIcon = 'visibility';
+		} else {
+			this.passwordIcon = 'visibility_off';
+		}
 	}
 }

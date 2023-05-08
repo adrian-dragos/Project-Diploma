@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.User;
-using Application.Features.Queries;
+using Application.Features.Queries.User;
 using Application.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiException, Client, RegisterUserRequestViewModel } from '@app/api/api';
 import { SnackBarService } from '@app/services/snack-bar.service';
+import { UserValidator } from '@app/validators/user.validator';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @Component({
@@ -14,12 +15,17 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 export class RegisterComponent {
 	//TODO: Add password validation for matching passwords, for password length and for password strength
 	snackBarService = inject(SnackBarService);
-	router = inject(Router);
+	userValidator = inject(UserValidator);
 
-	constructor(private readonly client: Client) {}
+	hideRegisterPasswordIcon = true;
+	hideConfirmPasswordIcon = true;
+	registerPasswordIcon = 'visibility';
+	confirmPasswordIcon = 'visibility';
 
-	emailControl = new FormControl('', [Validators.required, Validators.email]);
-	passwordControl = new FormControl('', [Validators.required]);
+	constructor(private readonly client: Client, private readonly router: Router) {}
+
+	emailControl = new FormControl('', [Validators.required, Validators.email], this.userValidator.checkUniqueEmail());
+	passwordControl = new FormControl('', [Validators.required, Validators.minLength(8)]);
 	confirmPasswordControl = new FormControl('', [Validators.required]);
 
 	registerForm = new FormGroup({
@@ -29,8 +35,6 @@ export class RegisterComponent {
 	});
 
 	onSubmit(): void {
-		console.log(this.registerForm.value);
-
 		if (this.registerForm.valid) {
 			const email = this.emailControl.value;
 			const password = this.passwordControl.value;
@@ -44,15 +48,35 @@ export class RegisterComponent {
 					(response) => {
 						console.log(response);
 						this.snackBarService.openSuccess('Registration successful!');
-						this.router.navigate(['/login']);
+						this.router.navigate(['register/success']);
 					},
 					(error: ApiException) => {
-						console.log(error);
 						this.snackBarService.openWarning(error.message);
 					}
 				);
 		} else {
-			this.snackBarService.openWarning('Invalid form');
+			console.log(this.registerForm);
+			this.snackBarService.openWarning('Please complete the form and correct any errors before submitting!');
+		}
+	}
+
+	togglePasswordIcon(): void {
+		this.hideRegisterPasswordIcon = !this.hideRegisterPasswordIcon;
+
+		if (this.hideRegisterPasswordIcon) {
+			this.registerPasswordIcon = 'visibility';
+		} else {
+			this.registerPasswordIcon = 'visibility_off';
+		}
+	}
+
+	toggleConfirmPasswordIcon(): void {
+		this.hideConfirmPasswordIcon = !this.hideConfirmPasswordIcon;
+
+		if (this.hideConfirmPasswordIcon) {
+			this.confirmPasswordIcon = 'visibility';
+		} else {
+			this.confirmPasswordIcon = 'visibility_off';
 		}
 	}
 }

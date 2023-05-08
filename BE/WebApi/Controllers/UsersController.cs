@@ -1,8 +1,15 @@
 ﻿using Application.Features.Commands;
+using Application.Features.Commands.User;
 using Application.Features.Queries;
+using Application.Features.Queries.User;
 using AutoMapper;
+using Azure.Core;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System;
+using System.Threading;
 using WebApi.ViewModels.User;
 
 namespace WebApi.Controllers
@@ -60,8 +67,9 @@ namespace WebApi.Controllers
             return Ok(response);
         }
 
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpPost("login")]
-        public async Task<ActionResult<string>> LoginUser(
+        public async Task<ActionResult> LoginUser(
             [FromBody] LoginUserRequestViewModel request,
             CancellationToken cancellationToken)
         {
@@ -69,7 +77,27 @@ namespace WebApi.Controllers
 
             var jwtToken = await _mediator.Send(command, cancellationToken);
 
-            return Ok(jwtToken);
+
+            var responeBody = JsonConvert.SerializeObject(new
+            {
+                token = jwtToken,
+            });
+
+            var response = new OkObjectResult(responeBody);
+
+            return Ok(response);
+        }
+
+        [HttpGet("{email}/unique")]
+        public async Task<ActionResult<bool>> CheckEmailIsUnique(
+            string email,
+            CancellationToken cancellationToken)
+        {
+            var query = new CheckUniqueEmailQuery { Email = email };
+
+            var response = await _mediator.Send(query, cancellationToken);
+
+            return Ok(response);
         }
     }
 }

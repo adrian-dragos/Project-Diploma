@@ -1,0 +1,29 @@
+
+$custom-blue: #2196f3;
+
+.success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f1f1f1;
+}
+
+.success-title {
+  font-size: 32px;
+  color: $custom-blue; 
+  margin-bottom: 16px;
+}
+
+.success-message {
+  font-size: 18px;
+  text-align: center;
+  a {
+    color: $custom-blue; 
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
