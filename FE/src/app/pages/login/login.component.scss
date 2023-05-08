@@ -60,3 +60,7 @@ button[type="submit"] {
   margin-bottom: 10px;
   text-align: center;
 }
+
+:host mat-card-content {
+  margin-bottom: 10px;
+}

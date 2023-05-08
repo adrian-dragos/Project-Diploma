@@ -32,10 +32,14 @@ $border-radius: 10px;
   width: 100%;
 }
 
-form,
-mat-form-field,
-mat-error {
+:host form,
+:host mat-form-field,
+:host mat-error {
   width: 300px;
+}
+
+:host mat-card-content {
+  margin-bottom: 10px;
 }
 
 button[type="submit"] {
@@ -54,4 +58,9 @@ button[type="submit"] {
     margin: 10px;
   }
   border-radius: 0 0 10px 10px;
+}
+
+.form-error {
+  margin-bottom: 10px;
+  text-align: center;
 }

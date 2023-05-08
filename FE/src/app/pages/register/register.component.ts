@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiException, Client, RegisterUserRequestViewModel } from '@app/api/api';
 import { SnackBarService } from '@app/services/snack-bar.service';
+import { CustomValidators } from '@app/validators/pattern.validator';
 import { UserValidator } from '@app/validators/user.validator';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
@@ -13,7 +14,6 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 @UntilDestroy()
 export class RegisterComponent {
-	//TODO: Add password validation for matching passwords, for password length and for password strength
 	snackBarService = inject(SnackBarService);
 	userValidator = inject(UserValidator);
 
@@ -25,14 +25,23 @@ export class RegisterComponent {
 	constructor(private readonly client: Client, private readonly router: Router) {}
 
 	emailControl = new FormControl('', [Validators.required, Validators.email], this.userValidator.checkUniqueEmail());
-	passwordControl = new FormControl('', [Validators.required, Validators.minLength(8)]);
+	passwordControl = new FormControl('', [
+		Validators.required,
+		Validators.minLength(8),
+		CustomValidators.patternValidator(/\d/, { hasNumber: true }),
+		CustomValidators.patternValidator(/[A-Z]/, { hasCapitalCase: true }),
+		CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true })
+	]);
 	confirmPasswordControl = new FormControl('', [Validators.required]);
 
-	registerForm = new FormGroup({
-		email: this.emailControl,
-		password: this.passwordControl,
-		confirmPassword: this.confirmPasswordControl
-	});
+	registerForm = new FormGroup(
+		{
+			email: this.emailControl,
+			password: this.passwordControl,
+			confirmPassword: this.confirmPasswordControl
+		},
+		this.arePasswordEqualValidator
+	);
 
 	onSubmit(): void {
 		if (this.registerForm.valid) {
@@ -77,6 +86,23 @@ export class RegisterComponent {
 			this.confirmPasswordIcon = 'visibility';
 		} else {
 			this.confirmPasswordIcon = 'visibility_off';
+		}
+	}
+
+	arePasswordEqualValidator(formGroup: FormGroup): any {
+		const password = formGroup.get('password').value;
+		const confirmPassword = formGroup.get('confirmPassword').value;
+
+		const isPasswordValid = formGroup.get('password').valid;
+		if (!isPasswordValid) {
+			return;
+		}
+
+		if (password === '' || confirmPassword === '') {
+			return;
+		}
+		if (password !== confirmPassword) {
+			formGroup.get('confirmPassword').setErrors({ noPasswordMatch: true });
 		}
 	}
 }
