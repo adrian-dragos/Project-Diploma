@@ -3,12 +3,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiException, Client, LoginUserRequestViewModel } from '@api/api:';
 import { SnackBarService } from '@app/services/snack-bar.service';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 @Component({
 	selector: 'app-login',
 	templateUrl: './login.component.html',
 	styleUrls: ['./login.component.scss']
 })
+@UntilDestroy()
 export class LoginComponent {
 	loginFailed = false;
 	snackBarService = inject(SnackBarService);
@@ -34,15 +36,18 @@ export class LoginComponent {
 		const password = this.passwordControl.value;
 		const user: LoginUserRequestViewModel = new LoginUserRequestViewModel({ email, password });
 
-		this.client.login(user).subscribe(
-			(response) => {
-				this.snackBarService.openSuccess('Login successful!');
-				this.router.navigate(['/home']);
-			},
-			(error: ApiException) => {
-				this.loginFailed = true;
-				console.log(this.loginFailed);
-			}
-		);
+		this.client
+			.login(user)
+			.pipe(untilDestroyed(this))
+			.subscribe(
+				(response) => {
+					this.snackBarService.openSuccess('Login successful!');
+					this.router.navigate(['/home']);
+				},
+				(error: ApiException) => {
+					this.loginFailed = true;
+					console.log(this.loginFailed);
+				}
+			);
 	}
 }
