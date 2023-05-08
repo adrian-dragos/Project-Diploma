@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,7 +14,7 @@ export class RegisterComponent {
 	snackBarService = inject(SnackBarService);
 	router = inject(Router);
 
-	constructor(private client: Client, private http: HttpClient) {}
+	constructor(private readonly client: Client) {}
 
 	emailControl = new FormControl('', [Validators.required, Validators.email]);
 	passwordControl = new FormControl('', [Validators.required]);

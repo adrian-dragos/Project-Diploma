@@ -20,8 +20,13 @@ const routes: Routes = [
 		loadChildren: () => import('./pages/register/register.module').then((m) => m.RegisterModule)
 	},
 	{
-		path: '',
+		path: 'home',
 		loadChildren: () => import('./layout/layout.module').then((m) => m.LayoutModule)
+	},
+	{
+		path: '',
+		redirectTo: 'login',
+		pathMatch: 'full'
 	}
 ];
 
