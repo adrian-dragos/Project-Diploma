@@ -40,7 +40,7 @@ export class LoginComponent {
 	login(): void {
 		const email = this.emailControl.value;
 		const password = this.passwordControl.value;
-		const user: LoginUserRequestViewModel = new LoginUserRequestViewModel({ email, password });
+		const user: LoginUserRequestViewModel = { email, password };
 
 		this.client
 			.login(user)

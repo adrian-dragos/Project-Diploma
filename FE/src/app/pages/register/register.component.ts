@@ -48,7 +48,7 @@ export class RegisterComponent {
 			const email = this.emailControl.value;
 			const password = this.passwordControl.value;
 
-			const user: RegisterUserRequestViewModel = new RegisterUserRequestViewModel({ email, password });
+			const user: RegisterUserRequestViewModel = { email, password };
 
 			this.client
 				.register(user)
