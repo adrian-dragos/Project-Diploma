@@ -10,12 +10,12 @@ namespace Application.Features.CommandHandlers
 {
     public sealed class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, string>
     {
-        private readonly IRepository<User> _userReposiotry;
+        private readonly IRepository<Identity> _userReposiotry;
         private readonly IJwtProvider _jwtProvider;
         private readonly IPasswordService _passwordService;
 
         public LoginUserCommandHandler(
-            IRepository<User> userReposiotry,
+            IRepository<Identity> userReposiotry,
             IJwtProvider jwtProvider,
             IPasswordService passwordService)
         {

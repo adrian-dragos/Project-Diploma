@@ -9,9 +9,9 @@ namespace Application.Features.QueryHandlers
     public class CheckUniqueEmailQueryHandler
         : IRequestHandler<CheckUniqueEmailQuery, bool>
     {
-        private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Identity> _userRepository;
 
-        public CheckUniqueEmailQueryHandler(IRepository<User> userRepository)
+        public CheckUniqueEmailQueryHandler(IRepository<Identity> userRepository)
         {
             _userRepository = userRepository;
         }

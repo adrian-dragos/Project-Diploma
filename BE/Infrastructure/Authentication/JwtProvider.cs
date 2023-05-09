@@ -16,7 +16,7 @@ namespace Infrastructure.Authentication
         {
             _options = options.Value;
         }
-        public string Generate(User user)
+        public string Generate(Identity user)
         {
             var claims = new Claim[] 
             {

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Persistance.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial_Migration : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -103,14 +103,91 @@ namespace Persistance.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Instructors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdentityId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    LastModifiedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Instructors", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Instructors_Users_IdentityId",
+                        column: x => x.IdentityId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Students",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IdentityId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    LastModifiedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Students", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Students_Users_IdentityId",
+                        column: x => x.IdentityId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Lessons",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    InstructorId = table.Column<int>(type: "int", nullable: false),
+                    StudentId = table.Column<int>(type: "int", nullable: true),
+                    StartTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    LessonStatus = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    LastModifiedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Lessons", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Lessons_Instructors_InstructorId",
+                        column: x => x.InstructorId,
+                        principalTable: "Instructors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Lessons_Students_StudentId",
+                        column: x => x.StudentId,
+                        principalTable: "Students",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
                 table: "Policy",
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "LastModifiedAt", "LastModifiedBy", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "SeeAllUsers" },
-                    { 2, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "UpdateInstructorProfile" },
-                    { 3, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "UpdateUserProfile" }
+                    { 1, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(383), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "SeeAllUsers" },
+                    { 2, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(383), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "UpdateInstructorProfile" },
+                    { 3, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(383), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "UpdateUserProfile" }
                 });
 
             migrationBuilder.InsertData(
@@ -118,9 +195,9 @@ namespace Persistance.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "LastModifiedAt", "LastModifiedBy", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Administrator" },
-                    { 2, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Student" },
-                    { 3, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Instructor" }
+                    { 1, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4073), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Administrator" },
+                    { 2, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4073), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Student" },
+                    { 3, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4073), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Instructor" }
                 });
 
             migrationBuilder.InsertData(
@@ -128,10 +205,10 @@ namespace Persistance.Migrations
                 columns: new[] { "PolicyId", "RoleId", "CreatedAt", "CreatedBy", "Id", "LastModifiedAt", "LastModifiedBy" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 1, null, null },
-                    { 2, 1, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, null },
-                    { 2, 2, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, null },
-                    { 3, 3, new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 3, null, null }
+                    { 1, 1, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 1, null, null },
+                    { 2, 1, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, null },
+                    { 2, 2, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, null },
+                    { 3, 3, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 3, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -151,6 +228,44 @@ namespace Persistance.Migrations
                     { 10, new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 3, 0, 0, 0)), "System Seeding", "Dennis.Corwin@yahoo.com", "Dennis", null, null, "Corwin", "test", 3 }
                 });
 
+            migrationBuilder.InsertData(
+                table: "Instructors",
+                columns: new[] { "Id", "CreatedAt", "CreatedBy", "IdentityId", "LastModifiedAt", "LastModifiedBy" },
+                values: new object[,]
+                {
+                    { 1, new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 197, DateTimeKind.Unspecified).AddTicks(7957), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 4, null, null },
+                    { 2, new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 197, DateTimeKind.Unspecified).AddTicks(7957), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 8, null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Students",
+                columns: new[] { "Id", "CreatedAt", "CreatedBy", "IdentityId", "LastModifiedAt", "LastModifiedBy" },
+                values: new object[,]
+                {
+                    { 1, new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4299), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 1, null, null },
+                    { 2, new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4299), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 7, null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Lessons",
+                columns: new[] { "Id", "CreatedAt", "CreatedBy", "InstructorId", "LastModifiedAt", "LastModifiedBy", "LessonStatus", "StartTime", "StudentId" },
+                values: new object[] { 1, new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 197, DateTimeKind.Unspecified).AddTicks(9740), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 1, null, null, 0, new DateTimeOffset(new DateTime(2023, 7, 25, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)), 1 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Instructors_IdentityId",
+                table: "Instructors",
+                column: "IdentityId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Lessons_InstructorId",
+                table: "Lessons",
+                column: "InstructorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Lessons_StudentId",
+                table: "Lessons",
+                column: "StudentId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_Policy_Name",
                 table: "Policy",
@@ -169,6 +284,11 @@ namespace Persistance.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Students_IdentityId",
+                table: "Students",
+                column: "IdentityId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",
                 table: "Users",
                 column: "Email",
@@ -184,13 +304,22 @@ namespace Persistance.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Lessons");
+
+            migrationBuilder.DropTable(
                 name: "PolicyRole");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Instructors");
+
+            migrationBuilder.DropTable(
+                name: "Students");
 
             migrationBuilder.DropTable(
                 name: "Policy");
+
+            migrationBuilder.DropTable(
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "Role");

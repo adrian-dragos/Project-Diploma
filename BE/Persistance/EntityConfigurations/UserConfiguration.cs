@@ -1,5 +1,4 @@
 ﻿using Application.Features.Services;
-using Application.Features.Services.Interfaces;
 using Bogus;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -7,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistance.EntityConfigurations
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class UserConfiguration : IEntityTypeConfiguration<Identity>
     {
 
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<Identity> builder)
         {
             builder.Property(u => u.FirstName)
                 .HasMaxLength(50)
@@ -38,7 +37,7 @@ namespace Persistance.EntityConfigurations
             builder.HasData(GetUsers(10));
         }
 
-        private IReadOnlyCollection<User> GetUsers(int amount)
+        private IReadOnlyCollection<Identity> GetUsers(int amount)
         {
             var id = 1;
             var currentTime = new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923);
@@ -46,7 +45,7 @@ namespace Persistance.EntityConfigurations
             var random = new Random(42);
             var password = "test";
 
-            var userFaker = new Faker<User>()
+            var userFaker = new Faker<Identity>()
                 .RuleFor(u => u.Id, _ => id++)
                 .RuleFor(u => u.CreatedAt, _ => currentTime)
                 .RuleFor(u => u.CreatedBy, _ => createdBy)

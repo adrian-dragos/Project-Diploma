@@ -61,21 +61,21 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(383), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "SeeAllUsers"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(383), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateInstructorProfile"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 186, DateTimeKind.Unspecified).AddTicks(9010), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(383), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateUserProfile"
                         });
@@ -118,7 +118,7 @@ namespace Persistance.Migrations
                         {
                             RoleId = 1,
                             PolicyId = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 1
                         },
@@ -126,7 +126,7 @@ namespace Persistance.Migrations
                         {
                             RoleId = 1,
                             PolicyId = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 2
                         },
@@ -134,7 +134,7 @@ namespace Persistance.Migrations
                         {
                             RoleId = 2,
                             PolicyId = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 2
                         },
@@ -142,7 +142,7 @@ namespace Persistance.Migrations
                         {
                             RoleId = 3,
                             PolicyId = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(5254), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 3
                         });
@@ -187,27 +187,27 @@ namespace Persistance.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4073), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "Administrator"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4073), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "Student"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 5, 0, 8, 57, 187, DateTimeKind.Unspecified).AddTicks(6721), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4073), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "Instructor"
                         });
                 });
 
-            modelBuilder.Entity("Domain.Entities.User", b =>
+            modelBuilder.Entity("Domain.Entities.Identity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -373,6 +373,160 @@ namespace Persistance.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Domain.Entities.Instructor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("IdentityId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("LastModifiedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdentityId");
+
+                    b.ToTable("Instructors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 197, DateTimeKind.Unspecified).AddTicks(7957), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            IdentityId = 4
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 197, DateTimeKind.Unspecified).AddTicks(7957), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            IdentityId = 8
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Lesson", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("InstructorId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("LastModifiedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("LessonStatus")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("StartTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int?>("StudentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstructorId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("Lessons");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 197, DateTimeKind.Unspecified).AddTicks(9740), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            InstructorId = 1,
+                            LessonStatus = 0,
+                            StartTime = new DateTimeOffset(new DateTime(2023, 7, 25, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
+                            StudentId = 1
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.Student", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("IdentityId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("LastModifiedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdentityId");
+
+                    b.ToTable("Students");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4299), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            IdentityId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4299), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            IdentityId = 7
+                        });
+                });
+
             modelBuilder.Entity("Domain.Entities.Authorization.PolicyRole", b =>
                 {
                     b.HasOne("Domain.Entities.Authorization.Policy", "Policy")
@@ -392,7 +546,7 @@ namespace Persistance.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("Domain.Entities.User", b =>
+            modelBuilder.Entity("Domain.Entities.Identity", b =>
                 {
                     b.HasOne("Domain.Entities.Authorization.Role", "Role")
                         .WithMany("Users")
@@ -401,6 +555,45 @@ namespace Persistance.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Instructor", b =>
+                {
+                    b.HasOne("Domain.Entities.Identity", "Identity")
+                        .WithMany()
+                        .HasForeignKey("IdentityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Identity");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Lesson", b =>
+                {
+                    b.HasOne("Domain.Entities.Instructor", "Instructor")
+                        .WithMany("Lessons")
+                        .HasForeignKey("InstructorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Entities.Student", "Student")
+                        .WithMany("Lessons")
+                        .HasForeignKey("StudentId");
+
+                    b.Navigation("Instructor");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Student", b =>
+                {
+                    b.HasOne("Domain.Entities.Identity", "Identity")
+                        .WithMany("Students")
+                        .HasForeignKey("IdentityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Identity");
                 });
 
             modelBuilder.Entity("Domain.Entities.Authorization.Policy", b =>
@@ -413,6 +606,21 @@ namespace Persistance.Migrations
                     b.Navigation("PolicyRoles");
 
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Identity", b =>
+                {
+                    b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Instructor", b =>
+                {
+                    b.Navigation("Lessons");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Student", b =>
+                {
+                    b.Navigation("Lessons");
                 });
 #pragma warning restore 612, 618
         }

@@ -13,11 +13,11 @@ namespace Application.Features.CommandHandlers
 {
     public sealed class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, RegisterUserDto>
     {
-        private readonly IRepository<User> _userReposiotry;
+        private readonly IRepository<Identity> _userReposiotry;
         private readonly IPasswordService _passwordService;
         private readonly IMapper _mapper;
 
-        public RegisterUserCommandHandler(IRepository<User> userReposiotry, IPasswordService passwordService, IMapper mapper)
+        public RegisterUserCommandHandler(IRepository<Identity> userReposiotry, IPasswordService passwordService, IMapper mapper)
         {
             _userReposiotry = userReposiotry;
             _passwordService = passwordService;
@@ -30,7 +30,7 @@ namespace Application.Features.CommandHandlers
             ValidatePassword(request.Password);
 
             var password = _passwordService.EncrytpPassword(request.Password);
-            var user = new User { Email = request.Email, Password = password, RoleId = 3 };
+            var user = new Identity { Email = request.Email, Password = password, RoleId = 3 };
 
             user = await _userReposiotry
                 .AddAsync(user);

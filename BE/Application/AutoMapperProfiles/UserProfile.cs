@@ -8,8 +8,8 @@ namespace Application.AutoMapperProfiles
     {
         public UserProfile()
         {
-            CreateMap<User, UserDto>();
-            CreateMap<User, RegisterUserDto>();
+            CreateMap<Identity, UserDto>();
+            CreateMap<Identity, RegisterUserDto>();
         }
     }
 }

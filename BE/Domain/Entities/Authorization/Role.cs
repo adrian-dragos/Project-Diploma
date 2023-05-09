@@ -6,6 +6,6 @@ namespace Domain.Entities.Authorization
     {
         public string Name { get; set; }
         public IEnumerable<PolicyRole> PolicyRoles { get; set; }
-        public IEnumerable<User> Users { get; set; }
+        public IEnumerable<Identity> Users { get; set; }
     }
 }

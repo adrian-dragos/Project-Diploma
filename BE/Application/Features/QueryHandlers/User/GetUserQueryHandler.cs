@@ -12,10 +12,10 @@ namespace Application.Features.QueryHandlers
 {
     public class GetUserQueryHandler : IRequestHandler<GetUserQuery, UserDto>
     {
-        private readonly IRepository<User> _userRepository;
+        private readonly IRepository<Identity> _userRepository;
         private readonly IMapper _mapper;
 
-        public GetUserQueryHandler(IRepository<User> userRepository, IMapper mapper)
+        public GetUserQueryHandler(IRepository<Identity> userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
             _mapper = mapper;
