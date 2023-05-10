@@ -1,15 +1,9 @@
-﻿using Application.Features.Commands;
-using Application.Features.Commands.User;
-using Application.Features.Queries;
+﻿using Application.Features.Commands.User;
 using Application.Features.Queries.User;
 using AutoMapper;
-using Azure.Core;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System;
-using System.Threading;
 using WebApi.ViewModels.User;
 
 namespace WebApi.Controllers

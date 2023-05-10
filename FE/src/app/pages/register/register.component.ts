@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiException, Client, RegisterUserRequestViewModel } from '@app/api/api';
+import { ApiException, RegisterUserRequestViewModel, UsersClient } from '@app/api/api';
 import { SnackBarService } from '@app/services/snack-bar.service';
 import { CustomValidators } from '@app/validators/pattern.validator';
 import { UserValidator } from '@app/validators/user.validator';
@@ -22,7 +22,7 @@ export class RegisterComponent {
 	registerPasswordIcon = 'visibility';
 	confirmPasswordIcon = 'visibility';
 
-	constructor(private readonly client: Client, private readonly router: Router) {}
+	constructor(private readonly client: UsersClient, private readonly router: Router) {}
 
 	emailControl = new FormControl('', [Validators.required, Validators.email], this.userValidator.checkUniqueEmail());
 	passwordControl = new FormControl('', [
@@ -51,7 +51,7 @@ export class RegisterComponent {
 			const user: RegisterUserRequestViewModel = { email, password };
 
 			this.client
-				.register(user)
+				.registerUser(user)
 				.pipe(untilDestroyed(this))
 				.subscribe(
 					(response) => {

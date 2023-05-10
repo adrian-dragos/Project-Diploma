@@ -4,8 +4,13 @@ public static class WebApiService
 {
     public static IServiceCollection AddWebApi(this IServiceCollection services)
     {
-        var assembly = typeof(WebApiService).Assembly;
 
+        services.AddControllers();
+        services.AddEndpointsApiExplorer();
+        services.AddSwaggerDocument(option =>
+            option.Title = "DrivingSchoolAPI");
+
+        var assembly = typeof(WebApiService).Assembly;
         services.AddAutoMapper(assembly);
 
         services.AddTransient<ExceptionHandler>();

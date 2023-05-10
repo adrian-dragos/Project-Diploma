@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiException, Client, LoginUserRequestViewModel } from '@api/api:';
+import { ApiException, LoginUserRequestViewModel, UsersClient } from '@api/api:';
 import { SnackBarService } from '@app/services/snack-bar.service';
 import { UserValidator } from '@app/validators/user.validator';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -21,7 +21,7 @@ export class LoginComponent {
 	snackBarService = inject(SnackBarService);
 	userValidator = inject(UserValidator);
 
-	constructor(private client: Client, private router: Router) {}
+	constructor(private client: UsersClient, private router: Router) {}
 
 	emailControl = new FormControl('', [Validators.required, Validators.email]);
 	passwordControl = new FormControl('', [Validators.required]);
@@ -43,7 +43,7 @@ export class LoginComponent {
 		const user: LoginUserRequestViewModel = { email, password };
 
 		this.client
-			.login(user)
+			.loginUser(user)
 			.pipe(
 				tap((x) => console.log(x)),
 				untilDestroyed(this)
