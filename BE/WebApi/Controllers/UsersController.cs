@@ -3,7 +3,6 @@ using Application.Features.Queries.User;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using WebApi.ViewModels.User;
 
 namespace WebApi.Controllers
@@ -71,13 +70,7 @@ namespace WebApi.Controllers
 
             var jwtToken = await _mediator.Send(command, cancellationToken);
 
-
-            var responeBody = JsonConvert.SerializeObject(new
-            {
-                token = jwtToken,
-            });
-
-            var response = new OkObjectResult(responeBody);
+            var response = new JsonResult(jwtToken);
 
             return Ok(response);
         }
