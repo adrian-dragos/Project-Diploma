@@ -6,6 +6,13 @@ namespace WebApi.Middlewares
 {
     public class ExceptionHandler : IMiddleware
     {
+        private readonly ILogger<ExceptionHandler> _logger;
+
+        public ExceptionHandler(ILogger<ExceptionHandler> logger)
+        {
+            _logger = logger;
+        }
+
         public async Task InvokeAsync(HttpContext context, RequestDelegate next)
         {
             try
@@ -26,6 +33,7 @@ namespace WebApi.Middlewares
             } 
             catch (Exception ex)
             {
+                _logger.LogError($"Message: {ex.Message},\n StackTrace\n{ex.StackTrace}");
                 await HandleExceptionAsync(context, ex, HttpStatusCode.InternalServerError);
             }
         }
