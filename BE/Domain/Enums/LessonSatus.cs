@@ -6,6 +6,6 @@
         BookedNotPaid,
         BookedPaid,
         Completed,
-        Cancled
+        Canceled
     }
 }

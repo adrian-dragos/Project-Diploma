@@ -1,0 +1,27 @@
+<mat-toolbar>
+  <mat-toolbar-row class="toolbar-row">
+    <button mat-icon-button (click)="toggleSidebar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="./assets/logoName.svg" alt="Company logo name" class="logo-name">
+    <div>
+      <ul>
+        <li>
+          <button mat-button [matMenuTriggerFor]="menu" class="profile-button">
+            <img src="./assets/user.jpg" alt="" class="user-image"/>
+              Adrian Dragos
+            <mat-icon class="user-image-icon">
+              keyboard_arrow_down
+            </mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

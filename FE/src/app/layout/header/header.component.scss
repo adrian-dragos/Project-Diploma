@@ -1,0 +1,53 @@
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #F8F8F8;
+}
+
+mat-toolbar-row {
+  justify-content: space-between;
+}
+
+ul {
+  li {
+    list-style: none;
+  }
+}
+
+button {
+  outline: none;
+  border: 0;
+  background: transparent;
+}
+
+.profile-button {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.user-image {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  &-icon {
+    height: 18px;
+    font-size: 16px;
+  }
+}
+
+::ng-deep {
+  .mat-menu-content {
+    width: 160px;
+  }
+}
+
+.logo-name {
+  width: 150px;
+}
