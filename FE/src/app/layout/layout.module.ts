@@ -11,7 +11,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AuthorizationGuard } from '@app/guards/authorization.guard';
+import { LogoutDialogComponent } from './header/logout-dialog/logout-dialog.component';
+import { MatButton, MatButtonModule } from '@angular/material/button';
 
 const routes: Routes = [
 	{
@@ -37,9 +40,11 @@ const routes: Routes = [
 		MatListModule,
 		MatSidenavModule,
 		MatMenuModule,
-		MatDividerModule
+		MatDividerModule,
+		MatDialogModule,
+		MatButtonModule
 	],
-	declarations: [LayoutComponent, HeaderComponent, SidebarComponent],
+	declarations: [LayoutComponent, HeaderComponent, SidebarComponent, LogoutDialogComponent],
 	exports: [],
 	providers: []
 })

@@ -62,7 +62,7 @@ namespace WebApi.Controllers
 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [HttpPost("login")]
-        public async Task<ActionResult> LoginUser(
+        public async Task<ActionResult<UserTokenViewModel>> LoginUser(
             [FromBody] LoginUserRequestViewModel request,
             CancellationToken cancellationToken)
         {
@@ -70,7 +70,10 @@ namespace WebApi.Controllers
 
             var jwtToken = await _mediator.Send(command, cancellationToken);
 
-            var response = new JsonResult(jwtToken);
+            var response = new UserTokenViewModel
+            {
+                JwtToken = jwtToken,
+            };
 
             return Ok(response);
         }
