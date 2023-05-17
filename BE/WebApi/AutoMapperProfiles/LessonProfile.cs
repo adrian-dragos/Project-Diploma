@@ -1,4 +1,5 @@
 ﻿using Application.DTOs;
+using Application.DTOs.Lesson;
 using AutoMapper;
 using WebApi.ViewModels.Lesson;
 
@@ -9,6 +10,7 @@ namespace WebApi.AutoMapperProfiles
         public LessonProfile()
         {
             CreateMap<GetStudentLessonsListDto, GetStudentLessonsListViewModel>();
+            CreateMap<GetInstructorLessonsListDto, GetInstructorLessonsListViewModel>();
         }
     }
 }

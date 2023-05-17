@@ -1,4 +1,5 @@
 ﻿using Application.DTOs;
+using Application.DTOs.Lesson;
 using Application.Features.Queries.Lesson;
 using Application.Interfaces;
 using AutoMapper;
@@ -9,7 +10,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Application.Features.QueryHandlers
 {
     public sealed class LessonQueryHandler :
-        IRequestHandler<GetStudentLessonsListQuery, IEnumerable<GetStudentLessonsListDto>>
+        IRequestHandler<GetStudentLessonsListQuery, IEnumerable<GetStudentLessonsListDto>>,
+        IRequestHandler<GetInstructorLessonsListQuery, IEnumerable<GetInstructorLessonsListDto>>
     {
         private readonly IRepository<Lesson> _lessonRepository;
         private readonly IMapper _mapper;
@@ -22,7 +24,6 @@ namespace Application.Features.QueryHandlers
 
         public async Task<IEnumerable<GetStudentLessonsListDto>> Handle(GetStudentLessonsListQuery request, CancellationToken cancellationToken)
         {
-
             return await _lessonRepository
                 .Read()
                 .AsNoTracking()
@@ -35,6 +36,22 @@ namespace Application.Features.QueryHandlers
                     Location = "No Location For Now"
                 })
                 .ToListAsync(cancellationToken);
+        }
+
+        public async Task<IEnumerable<GetInstructorLessonsListDto>> Handle(GetInstructorLessonsListQuery request, CancellationToken cancellationToken)
+        {
+            return await _lessonRepository
+               .Read()
+               .AsNoTracking()
+               .Where(l => l.InstructorId == request.InstructorId)
+               .Select(l => new GetInstructorLessonsListDto
+               {
+                   Id = l.Id,
+                   LessonDate = l.StartTime,
+                   StudentName = $"{l.Student.Identity.FirstName} {l.Student.Identity.FirstName}",
+                   Location = "No Location For Now"
+               })
+               .ToListAsync(cancellationToken);
         }
     }
 }

@@ -32,5 +32,17 @@ namespace WebApi.Controllers
             return Ok(response);
         }
 
+        [HttpGet("instructor/{id}")]
+        public async Task<ActionResult<IEnumerable<GetInstructorLessonsListViewModel>>> GetInstructorLessons(int id)
+        {
+            var query = new GetInstructorLessonsListQuery { InstructorId = id };
+
+            var lessons = await _mediator.Send(query);
+
+            var response = _mapper.Map<IEnumerable<GetInstructorLessonsListViewModel>>(lessons);
+
+            return Ok(response);
+        }
+
     }
 }
