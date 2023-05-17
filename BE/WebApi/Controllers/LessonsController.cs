@@ -20,10 +20,10 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("{studentId}")]
-        public async Task<ActionResult<IEnumerable<GetStudentLessonsListViewModel>>> GetStudentLessons(int studentId)
+        [HttpGet("student/{id}")]
+        public async Task<ActionResult<IEnumerable<GetStudentLessonsListViewModel>>> GetStudentLessons(int id)
         {
-            var query = new GetStudentLessonsListQuery { StudentId = studentId};
+            var query = new GetStudentLessonsListQuery { StudentId = id };
 
             var lessons = await _mediator.Send(query);
 
