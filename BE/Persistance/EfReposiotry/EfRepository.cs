@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces;
 using Domain.Entities.Common;
+using Domain.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistance.EfReposiotry
@@ -25,6 +26,20 @@ namespace Persistance.EfReposiotry
         public IQueryable<T> Read()
         {
             return _dbContext.Set<T>();
+        }
+
+        public async Task<T> TryGetByIdAsync(int id, CancellationToken cancellationToken)
+        {
+            var entity = await _dbContext
+                .Set<T>()
+                .FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
+
+            if (entity is null)
+            {
+                throw EntityNotFoundException.OfType<T>(id);
+            }
+
+            return entity;
         }
 
         private void Audit()

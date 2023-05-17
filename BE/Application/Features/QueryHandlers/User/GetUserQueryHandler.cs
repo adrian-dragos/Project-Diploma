@@ -31,7 +31,7 @@ namespace Application.Features.QueryHandlers
 
             if (user is null)
             {
-                throw new NotFoundException("User not found");
+                throw new EntityNotFoundException(typeof(Identity), request.Id);
             }
 
             return user;

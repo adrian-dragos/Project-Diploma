@@ -19,7 +19,7 @@ namespace WebApi.Middlewares
             {
                 await next(context);
             }
-            catch (NotFoundException ex)
+            catch (EntityNotFoundException ex)
             {
                 await HandleExceptionAsync(context, ex, HttpStatusCode.NotFound);
             }

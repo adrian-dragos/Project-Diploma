@@ -36,24 +36,24 @@ namespace Persistance.EntityConfigurations
                     StudentId = 1,
                     InstructorId = 1
                 },
-                //new Lesson
-                //{
-                //    Id = 2,
-                //    CreatedAt = now,
-                //    CreatedBy = createdBy,
-                //    StartTime = new DateTimeOffset(2023, 07, 25, 10, 0, 0, new TimeSpan(3, 0, 0)),
-                //    StudentId = 1,
-                //    InstructorId = 2
-                //},
-                //new Lesson
-                //{
-                //    Id = 3,
-                //    CreatedAt = now,
-                //    CreatedBy = createdBy,
-                //    StartTime = new DateTimeOffset(2023, 07, 25, 10, 0, 0, new TimeSpan(3, 0, 0)),
-                //    StudentId = 2,
-                //    InstructorId = 1
-                //},
+                new Lesson
+                {
+                    Id = 2,
+                    CreatedAt = now,
+                    CreatedBy = createdBy,
+                    StartTime = new DateTimeOffset(2023, 07, 25, 10, 0, 0, new TimeSpan(3, 0, 0)),
+                    StudentId = 1,
+                    InstructorId = 2
+                },
+                new Lesson
+                {
+                    Id = 3,
+                    CreatedAt = now,
+                    CreatedBy = createdBy,
+                    StartTime = new DateTimeOffset(2023, 07, 25, 10, 0, 0, new TimeSpan(3, 0, 0)),
+                    StudentId = 2,
+                    InstructorId = 1
+                },
             };
 
             return lessons;

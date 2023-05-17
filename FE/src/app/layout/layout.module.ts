@@ -14,7 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthorizationGuard } from '@app/guards/authorization.guard';
 import { LogoutDialogComponent } from './header/logout-dialog/logout-dialog.component';
-import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 
 const routes: Routes = [
 	{

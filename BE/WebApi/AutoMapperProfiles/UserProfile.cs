@@ -5,7 +5,7 @@ using WebApi.ViewModels.User;
 
 namespace WebApi.AutoMapperProfiles
 {
-    public class UserProfile : Profile
+    public sealed class UserProfile : Profile
     {
         public UserProfile()
         {
