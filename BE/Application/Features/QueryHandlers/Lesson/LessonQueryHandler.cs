@@ -2,7 +2,6 @@
 using Application.Features.Queries.Lesson;
 using Application.Interfaces;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -24,14 +23,18 @@ namespace Application.Features.QueryHandlers
         public async Task<IEnumerable<GetStudentLessonsListDto>> Handle(GetStudentLessonsListQuery request, CancellationToken cancellationToken)
         {
 
-            var lessons = await _lessonRepository
+            return await _lessonRepository
                 .Read()
                 .AsNoTracking()
-                .Where(x => x.StudentId == request.StudentId)
-                .ProjectTo<GetStudentLessonsListDto>(_mapper.ConfigurationProvider)
+                .Where(l => l.StudentId == request.StudentId)
+                .Select(l => new GetStudentLessonsListDto
+                {
+                    Id = l.Id,
+                    LessonDate = l.StartTime,
+                    InstructorName = $"{l.Instructor.Identity.FirstName} {l.Instructor.Identity.FirstName}",
+                    Location = "No Location For Now"
+                })
                 .ToListAsync(cancellationToken);
-
-            return lessons;
         }
     }
 }
