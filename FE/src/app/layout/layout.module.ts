@@ -24,7 +24,8 @@ const routes: Routes = [
 		children: [
 			{ path: '', redirectTo: 'home', pathMatch: 'full' },
 			{ path: 'home', loadChildren: () => import('src/app/pages/home/home.module').then((m) => m.HomeModule) },
-			{ path: 'lessons', loadChildren: () => import('src/app/pages/lessons/lessons.module').then((m) => m.LessonsModule) }
+			{ path: 'lessons', loadChildren: () => import('src/app/pages/lessons/lessons.module').then((m) => m.LessonsModule) },
+			{ path: 'account', loadChildren: () => import('src/app/pages/account/account.module').then((m) => m.AccountModule) }
 		]
 	}
 ];
