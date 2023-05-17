@@ -9,14 +9,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{7B23278A-7198-4169-B040-39309F2910C5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistance", "Persistance\Persistance.csproj", "{64F4E881-5EB8-4145-BBB1-78517EDB6884}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistance\Persistence.csproj", "{64F4E881-5EB8-4145-BBB1-78517EDB6884}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{BC85EC25-B8CB-46BC-8769-996BB9697ABD}"
 	ProjectSection(ProjectDependencies) = postProject
 		{C167E170-51CA-4627-8767-AFD3FE1202CA} = {C167E170-51CA-4627-8767-AFD3FE1202CA}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C167E170-51CA-4627-8767-AFD3FE1202CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C167E170-51CA-4627-8767-AFD3FE1202CA}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B9BE433B-4DC0-411C-8B5A-ACF4AE542122} = {B9BE433B-4DC0-411C-8B5A-ACF4AE542122}
 	EndProjectSection

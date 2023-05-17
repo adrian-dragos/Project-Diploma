@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-
 namespace Persistance.Migrations
 {
     public partial class AddLessons : Migration
