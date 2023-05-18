@@ -2,7 +2,7 @@
 
 namespace Domain.Entities
 {
-    public class Student : BaseEntity
+    public sealed class Student : BaseEntity
     {
         public int IdentityId { get; set; }
         public Identity Identity { get; set; }

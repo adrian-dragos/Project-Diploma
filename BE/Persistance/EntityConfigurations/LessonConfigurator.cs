@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Persistance.EntityConfigurations
+namespace Persistence.EntityConfigurations
 {
     internal class LessonConfigurator : IEntityTypeConfiguration<Lesson>
     {
@@ -16,7 +16,12 @@ namespace Persistance.EntityConfigurations
                 .WithMany(s => s.Lessons)
                 .HasForeignKey(l => l.StudentId);
 
-             builder.HasData(GetLessons());
+
+            builder.HasOne(l => l.Review)
+                .WithOne(r => r.Lesson)
+                .HasForeignKey<Review>(r => r.LessonId);
+
+            builder.HasData(GetLessons());
         }
 
 

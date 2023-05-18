@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Persistance.EntityConfigurations
+namespace Persistence.EntityConfigurations
 {
     internal class InstructorConfigurator : IEntityTypeConfiguration<Instructor>
     {

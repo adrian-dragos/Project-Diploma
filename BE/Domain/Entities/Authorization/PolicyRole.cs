@@ -2,7 +2,7 @@
 
 namespace Domain.Entities.Authorization
 {
-    public class PolicyRole : BaseEntity
+    public sealed class PolicyRole : BaseEntity
     {
         public int RoleId { get; set; }
         public Role Role { get; set; }

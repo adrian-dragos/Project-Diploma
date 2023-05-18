@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Persistance.EfReposiotry;
+using Persistence.EfReposiotry;
 
-namespace Persistance
+namespace Persistence
 {
     public static class PersistanceService
     {
-        public static IServiceCollection AddPersistance(this IServiceCollection services, 
+        public static IServiceCollection AddPersistence(this IServiceCollection services,
             IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("DataBaseConnectionString");

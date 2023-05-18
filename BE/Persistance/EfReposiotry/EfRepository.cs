@@ -3,7 +3,7 @@ using Domain.Entities.Common;
 using Domain.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
-namespace Persistance.EfReposiotry
+namespace Persistence.EfReposiotry
 {
     public class EfRepository<T> : IRepository<T> where T : BaseEntity
     {

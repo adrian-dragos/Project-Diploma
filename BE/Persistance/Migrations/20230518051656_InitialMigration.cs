@@ -3,14 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
-namespace Persistance.Migrations
+namespace Persistence.Migrations
 {
-    /// <inheritdoc />
     public partial class InitialMigration : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -28,6 +24,24 @@ namespace Persistance.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Policy", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Review",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LessonId = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    LastModifiedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Review", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -159,6 +173,7 @@ namespace Persistance.Migrations
                     StudentId = table.Column<int>(type: "int", nullable: true),
                     StartTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     LessonStatus = table.Column<int>(type: "int", nullable: false),
+                    ReviewId = table.Column<int>(type: "int", nullable: true),
                     CreatedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     LastModifiedAt = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -174,6 +189,11 @@ namespace Persistance.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
+                        name: "FK_Lessons_Review_ReviewId",
+                        column: x => x.ReviewId,
+                        principalTable: "Review",
+                        principalColumn: "Id");
+                    table.ForeignKey(
                         name: "FK_Lessons_Students_StudentId",
                         column: x => x.StudentId,
                         principalTable: "Students",
@@ -185,9 +205,9 @@ namespace Persistance.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "LastModifiedAt", "LastModifiedBy", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(383), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "SeeAllUsers" },
-                    { 2, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(383), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "UpdateInstructorProfile" },
-                    { 3, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(383), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "UpdateUserProfile" }
+                    { 1, new DateTimeOffset(new DateTime(2023, 5, 18, 8, 16, 55, 734, DateTimeKind.Unspecified).AddTicks(1052), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "SeeAllUsers" },
+                    { 2, new DateTimeOffset(new DateTime(2023, 5, 18, 8, 16, 55, 734, DateTimeKind.Unspecified).AddTicks(1052), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "UpdateInstructorProfile" },
+                    { 3, new DateTimeOffset(new DateTime(2023, 5, 18, 8, 16, 55, 734, DateTimeKind.Unspecified).AddTicks(1052), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "UpdateUserProfile" }
                 });
 
             migrationBuilder.InsertData(
@@ -195,9 +215,9 @@ namespace Persistance.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "LastModifiedAt", "LastModifiedBy", "Name" },
                 values: new object[,]
                 {
-                    { 1, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4073), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Administrator" },
-                    { 2, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4073), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Student" },
-                    { 3, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4073), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Instructor" }
+                    { 1, new DateTimeOffset(new DateTime(2023, 5, 18, 8, 16, 55, 735, DateTimeKind.Unspecified).AddTicks(3078), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Administrator" },
+                    { 2, new DateTimeOffset(new DateTime(2023, 5, 18, 8, 16, 55, 735, DateTimeKind.Unspecified).AddTicks(3078), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Student" },
+                    { 3, new DateTimeOffset(new DateTime(2023, 5, 18, 8, 16, 55, 735, DateTimeKind.Unspecified).AddTicks(3078), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", null, null, "Instructor" }
                 });
 
             migrationBuilder.InsertData(
@@ -205,10 +225,10 @@ namespace Persistance.Migrations
                 columns: new[] { "PolicyId", "RoleId", "CreatedAt", "CreatedBy", "Id", "LastModifiedAt", "LastModifiedBy" },
                 values: new object[,]
                 {
-                    { 1, 1, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 1, null, null },
-                    { 2, 1, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, null },
-                    { 2, 2, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, null },
-                    { 3, 3, new DateTimeOffset(new DateTime(2023, 5, 9, 19, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(3455), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 3, null, null }
+                    { 1, 1, new DateTimeOffset(new DateTime(2023, 5, 18, 8, 16, 55, 734, DateTimeKind.Unspecified).AddTicks(4872), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 1, null, null },
+                    { 2, 1, new DateTimeOffset(new DateTime(2023, 5, 18, 8, 16, 55, 734, DateTimeKind.Unspecified).AddTicks(4872), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, null },
+                    { 2, 2, new DateTimeOffset(new DateTime(2023, 5, 18, 8, 16, 55, 734, DateTimeKind.Unspecified).AddTicks(4872), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 2, null, null },
+                    { 3, 3, new DateTimeOffset(new DateTime(2023, 5, 18, 8, 16, 55, 734, DateTimeKind.Unspecified).AddTicks(4872), new TimeSpan(0, 3, 0, 0, 0)), "System Migration", 3, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -233,8 +253,8 @@ namespace Persistance.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "IdentityId", "LastModifiedAt", "LastModifiedBy" },
                 values: new object[,]
                 {
-                    { 1, new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 197, DateTimeKind.Unspecified).AddTicks(7957), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 4, null, null },
-                    { 2, new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 197, DateTimeKind.Unspecified).AddTicks(7957), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 8, null, null }
+                    { 1, new DateTimeOffset(new DateTime(2023, 5, 18, 5, 16, 55, 733, DateTimeKind.Unspecified).AddTicks(309), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 4, null, null },
+                    { 2, new DateTimeOffset(new DateTime(2023, 5, 18, 5, 16, 55, 733, DateTimeKind.Unspecified).AddTicks(309), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 8, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -242,14 +262,24 @@ namespace Persistance.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "IdentityId", "LastModifiedAt", "LastModifiedBy" },
                 values: new object[,]
                 {
-                    { 1, new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4299), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 1, null, null },
-                    { 2, new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 198, DateTimeKind.Unspecified).AddTicks(4299), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 7, null, null }
+                    { 1, new DateTimeOffset(new DateTime(2023, 5, 18, 5, 16, 55, 735, DateTimeKind.Unspecified).AddTicks(3244), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 1, null, null },
+                    { 2, new DateTimeOffset(new DateTime(2023, 5, 18, 5, 16, 55, 735, DateTimeKind.Unspecified).AddTicks(3244), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 7, null, null }
                 });
 
             migrationBuilder.InsertData(
                 table: "Lessons",
-                columns: new[] { "Id", "CreatedAt", "CreatedBy", "InstructorId", "LastModifiedAt", "LastModifiedBy", "LessonStatus", "StartTime", "StudentId" },
-                values: new object[] { 1, new DateTimeOffset(new DateTime(2023, 5, 9, 16, 13, 16, 197, DateTimeKind.Unspecified).AddTicks(9740), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 1, null, null, 0, new DateTimeOffset(new DateTime(2023, 7, 25, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)), 1 });
+                columns: new[] { "Id", "CreatedAt", "CreatedBy", "InstructorId", "LastModifiedAt", "LastModifiedBy", "LessonStatus", "ReviewId", "StartTime", "StudentId" },
+                values: new object[] { 1, new DateTimeOffset(new DateTime(2023, 5, 18, 5, 16, 55, 734, DateTimeKind.Unspecified).AddTicks(135), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 1, null, null, 0, null, new DateTimeOffset(new DateTime(2023, 7, 25, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)), 1 });
+
+            migrationBuilder.InsertData(
+                table: "Lessons",
+                columns: new[] { "Id", "CreatedAt", "CreatedBy", "InstructorId", "LastModifiedAt", "LastModifiedBy", "LessonStatus", "ReviewId", "StartTime", "StudentId" },
+                values: new object[] { 2, new DateTimeOffset(new DateTime(2023, 5, 18, 5, 16, 55, 734, DateTimeKind.Unspecified).AddTicks(135), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 2, null, null, 0, null, new DateTimeOffset(new DateTime(2023, 7, 25, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)), 1 });
+
+            migrationBuilder.InsertData(
+                table: "Lessons",
+                columns: new[] { "Id", "CreatedAt", "CreatedBy", "InstructorId", "LastModifiedAt", "LastModifiedBy", "LessonStatus", "ReviewId", "StartTime", "StudentId" },
+                values: new object[] { 3, new DateTimeOffset(new DateTime(2023, 5, 18, 5, 16, 55, 734, DateTimeKind.Unspecified).AddTicks(135), new TimeSpan(0, 0, 0, 0, 0)), "System Seeding", 1, null, null, 0, null, new DateTimeOffset(new DateTime(2023, 7, 25, 10, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)), 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Instructors_IdentityId",
@@ -260,6 +290,13 @@ namespace Persistance.Migrations
                 name: "IX_Lessons_InstructorId",
                 table: "Lessons",
                 column: "InstructorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Lessons_ReviewId",
+                table: "Lessons",
+                column: "ReviewId",
+                unique: true,
+                filter: "[ReviewId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Lessons_StudentId",
@@ -300,7 +337,6 @@ namespace Persistance.Migrations
                 column: "RoleId");
         }
 
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
@@ -311,6 +347,9 @@ namespace Persistance.Migrations
 
             migrationBuilder.DropTable(
                 name: "Instructors");
+
+            migrationBuilder.DropTable(
+                name: "Review");
 
             migrationBuilder.DropTable(
                 name: "Students");

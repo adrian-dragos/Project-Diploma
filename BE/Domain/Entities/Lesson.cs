@@ -3,7 +3,7 @@ using Domain.Enums;
 
 namespace Domain.Entities
 {
-    public class Lesson : BaseEntity
+    public sealed class Lesson : BaseEntity
     {
         public int InstructorId { get; set; }
         public Instructor Instructor { get; set; }
@@ -11,5 +11,7 @@ namespace Domain.Entities
         public Student? Student { get; set; }
         public DateTimeOffset StartTime { get; set; }
         public LessonSatus LessonStatus { get; set; }
+        public int? ReviewId { get; set; }   
+        public Review Review { get; set; }
     }
 }

@@ -1,10 +1,9 @@
-﻿using Application.Features.Services;
-using Bogus;
+﻿using Bogus;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Persistance.EntityConfigurations
+namespace Persistence.EntityConfigurations
 {
     public class UserConfiguration : IEntityTypeConfiguration<Identity>
     {
@@ -49,7 +48,7 @@ namespace Persistance.EntityConfigurations
                 .RuleFor(u => u.Id, _ => id++)
                 .RuleFor(u => u.CreatedAt, _ => currentTime)
                 .RuleFor(u => u.CreatedBy, _ => createdBy)
-                .RuleFor(u=> u.Email, f => f.Person.Email)
+                .RuleFor(u => u.Email, f => f.Person.Email)
                 .RuleFor(u => u.Password, _ => password)
                 .RuleFor(u => u.FirstName, f => f.Person.FirstName)
                 .RuleFor(u => u.LastName, f => f.Person.LastName)

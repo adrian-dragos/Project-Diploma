@@ -1,9 +1,8 @@
-﻿using Domain;
-using Domain.Entities.Authorization;
+﻿using Domain.Entities.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Persistance.EntityConfigurations
+namespace Persistence.EntityConfigurations
 {
     internal class PolicyConfigurator : IEntityTypeConfiguration<Policy>
     {

@@ -1,12 +1,12 @@
 using Application.Configuration;
 using Infrastructure.Configuration;
-using Persistance;
+using Persistence;
 using WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure services for solution layers
-builder.Services.AddPersistance(builder.Configuration);
+builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure();
 builder.Services.AddWebApi();

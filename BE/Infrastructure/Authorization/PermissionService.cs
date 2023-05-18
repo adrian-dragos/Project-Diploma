@@ -1,9 +1,8 @@
 ﻿using Domain.Entities;
 using Domain.Entities.Authorization;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using Persistance;
+using Persistence;
 
 namespace Infrastructure.Authorization
 {
