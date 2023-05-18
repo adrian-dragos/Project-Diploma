@@ -46,7 +46,7 @@ namespace Persistence.EntityConfigurations
                 },
                 new PolicyRole()
                 {
-                    Id = 2,
+                    Id = 3,
                     RoleId = 2,
                     PolicyId = 2,
                     CreatedAt = now,
@@ -54,7 +54,7 @@ namespace Persistence.EntityConfigurations
                 },
                 new PolicyRole()
                 {
-                    Id = 3,
+                    Id = 4,
                     RoleId = 3,
                     PolicyId = 3,
                     CreatedAt = now,

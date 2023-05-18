@@ -1,4 +1,5 @@
 ﻿using Domain.Entities.Common;
+using Domain.Enums;
 
 namespace Domain.Entities
 {
@@ -7,5 +8,8 @@ namespace Domain.Entities
         public int IdentityId { get; set; }
         public Identity Identity { get; set; }
         public  ICollection<Lesson>? Lessons { get; set; }
+        public CarGear GearType { get; set; }
+        public IEnumerable<InstructorCar> InstructorCars { get; set; }
+
     }
 }

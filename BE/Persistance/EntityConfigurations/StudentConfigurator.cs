@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -24,13 +25,15 @@ namespace Persistence.EntityConfigurations
                     CreatedAt = now,
                     CreatedBy = createdBy,
                     IdentityId = 1,
+                    GearType = CarGear.Manual
                 },
                 new Student
                 {
                     Id = 2,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    IdentityId = 7
+                    IdentityId = 7,
+                    GearType = CarGear.Manual
                 }
             };
             return students;
