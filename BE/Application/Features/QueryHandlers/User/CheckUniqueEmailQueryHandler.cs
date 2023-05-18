@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.QueryHandlers
 {
-    public class CheckUniqueEmailQueryHandler
+    internal sealed class CheckUniqueEmailQueryHandler
         : IRequestHandler<CheckUniqueEmailQuery, bool>
     {
         private readonly IRepository<Identity> _userRepository;

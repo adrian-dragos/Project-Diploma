@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.QueryHandlers
 {
-    public class GetUserListQueryHandler : IRequestHandler<GetUserListQuery, IEnumerable<UserDto>>
+    internal sealed class GetUserListQueryHandler : IRequestHandler<GetUserListQuery, IEnumerable<UserDto>>
     {
         private readonly IRepository<Identity> _userRepository;
         private readonly IMapper _mapper;

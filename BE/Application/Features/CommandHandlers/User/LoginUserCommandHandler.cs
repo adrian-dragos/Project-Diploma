@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.CommandHandlers
 {
-    public sealed class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, string>
+    internal sealed class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, string>
     {
         private readonly IRepository<Identity> _userReposiotry;
         private readonly IJwtProvider _jwtProvider;

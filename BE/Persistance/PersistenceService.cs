@@ -6,7 +6,7 @@ using Persistence.EfReposiotry;
 
 namespace Persistence
 {
-    public static class PersistanceService
+    public static class PersistenceService
     {
         public static IServiceCollection AddPersistence(this IServiceCollection services,
             IConfiguration configuration)

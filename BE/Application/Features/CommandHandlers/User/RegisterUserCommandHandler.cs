@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 
 namespace Application.Features.CommandHandlers
 {
-    public sealed class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, RegisterUserDto>
+    internal sealed class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, RegisterUserDto>
     {
         private readonly IRepository<Identity> _userReposiotry;
         private readonly IPasswordService _passwordService;
