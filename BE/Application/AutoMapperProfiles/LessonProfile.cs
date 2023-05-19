@@ -4,7 +4,7 @@ using Domain.Entities;
 
 namespace Application.AutoMapperProfiles
 {
-    public sealed class LessonProfile : Profile
+    internal sealed class LessonProfile : Profile
     {
         public LessonProfile() 
         { 

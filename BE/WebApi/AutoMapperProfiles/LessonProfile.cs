@@ -5,7 +5,7 @@ using WebApi.ViewModels.Lesson;
 
 namespace WebApi.AutoMapperProfiles
 {
-    public sealed class LessonProfile : Profile
+    internal sealed class LessonProfile : Profile
     {
         public LessonProfile()
         {

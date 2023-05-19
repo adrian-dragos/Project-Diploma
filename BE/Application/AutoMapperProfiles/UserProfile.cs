@@ -4,7 +4,7 @@ using Domain.Entities;
 
 namespace Application.AutoMapperProfiles
 {
-    public sealed class UserProfile : Profile
+    internal sealed class UserProfile : Profile
     {
         public UserProfile()
         {

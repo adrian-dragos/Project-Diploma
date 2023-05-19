@@ -3,9 +3,9 @@ using Domain.Entities.Common;
 using Domain.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
-namespace Persistence.EfReposiotry
+namespace Persistence
 {
-    public class EfRepository<T> : IRepository<T> where T : BaseEntity
+    internal class EfRepository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly ApplicationDbContext _dbContext;
 
@@ -66,6 +66,8 @@ namespace Persistence.EfReposiotry
                     entity.LastModifiedBy = "";
                 }
             }
+
+
         }
     }
 }

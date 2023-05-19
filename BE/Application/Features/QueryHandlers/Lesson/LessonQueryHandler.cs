@@ -2,7 +2,6 @@
 using Application.DTOs.Lesson;
 using Application.Features.Queries.Lesson;
 using Application.Interfaces;
-using AutoMapper;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +13,10 @@ namespace Application.Features.QueryHandlers
         IRequestHandler<GetInstructorLessonsListQuery, IEnumerable<GetInstructorLessonsListDto>>
     {
         private readonly IRepository<Lesson> _lessonRepository;
-        private readonly IMapper _mapper;
 
-        public LessonQueryHandler(IRepository<Lesson> lessonRepository, IMapper mapper)
+        public LessonQueryHandler(IRepository<Lesson> lessonRepository)
         {
             _lessonRepository = lessonRepository;
-            _mapper = mapper;
         }
 
         public async Task<IEnumerable<GetStudentLessonsListDto>> Handle(GetStudentLessonsListQuery request, CancellationToken cancellationToken)
@@ -32,7 +29,7 @@ namespace Application.Features.QueryHandlers
                 {
                     Id = l.Id,
                     LessonDate = l.StartTime,
-                    InstructorName = $"{l.Instructor.Identity.FirstName} {l.Instructor.Identity.FirstName}",
+                    InstructorName = $"{l.Instructor.Identity.FirstName} {l.Instructor.Identity.LastName}",
                     Location = "No Location For Now"
                 })
                 .ToListAsync(cancellationToken);
@@ -48,7 +45,7 @@ namespace Application.Features.QueryHandlers
                {
                    Id = l.Id,
                    LessonDate = l.StartTime,
-                   StudentName = $"{l.Student.Identity.FirstName} {l.Student.Identity.FirstName}",
+                   StudentName = $"{l.Student.Identity.FirstName} {l.Student.Identity.LastName}",
                    Location = "No Location For Now"
                })
                .ToListAsync(cancellationToken);
