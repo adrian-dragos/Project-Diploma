@@ -2,7 +2,7 @@
 
 namespace Domain.Entities.Common
 {
-    internal class BaseEntity
+    public class BaseEntity
     {
         public int Id { get; init; }
 
