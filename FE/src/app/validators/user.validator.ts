@@ -13,7 +13,7 @@ export class UserValidator {
 		return (control: AbstractControl) => {
 			return this.client.checkEmailIsUnique(control.value).pipe(
 				delay(200),
-				map((response) => (response ? { emailExists: true } : null))
+				map((response) => (response ? null : { emailExists: true }))
 			);
 		};
 	}

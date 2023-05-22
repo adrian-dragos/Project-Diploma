@@ -18,7 +18,7 @@ namespace Application.Features.QueryHandlers
 
         public async Task<bool> Handle(CheckUniqueEmailQuery request, CancellationToken cancellationToken)
         {
-            return await _userRepository
+            return !await _userRepository
                 .Read()
                 .AnyAsync(u => u.Email == request.Email);
         }
