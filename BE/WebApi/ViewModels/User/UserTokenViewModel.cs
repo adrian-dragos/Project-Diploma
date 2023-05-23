@@ -1,6 +1,6 @@
 ﻿namespace WebApi.ViewModels.User
 {
-    public class UserTokenViewModel
+    public sealed class UserTokenViewModel
     {
         public string JwtToken { get; set; }
     }

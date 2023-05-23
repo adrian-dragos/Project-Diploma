@@ -25,5 +25,16 @@ namespace Persistence
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
             Randomizer.Seed = new Random(420);
         }
+
+        protected override void ConfigureConventions(ModelConfigurationBuilder builder)
+        {
+            builder.Properties<DateOnly>()
+                .HaveConversion<DateOnlyConverter>()
+                .HaveColumnType("date");
+
+            builder.Properties<DateOnly?>()
+                .HaveConversion<NullableDateOnlyConverter>()
+                .HaveColumnType("date");
+        }
     }
 }

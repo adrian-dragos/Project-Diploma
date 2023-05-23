@@ -2,7 +2,41 @@
   <div class="account-wrapper">
     <div class="account-header">
       <h3 class="account-header-title">Account</h3>
+      <button mat-button routerLink="/account/edit">
+        <mat-icon>edit</mat-icon>
+        Edit
+      </button>
     </div>
-    <router-outlet></router-outlet>
+    <div class="profile-details">
+      <div class="profile-picture">
+        <span class="profile-picture-initials"> AD </span>
+      </div>
+      <div class="profile-info">
+        <div>
+          <p> Fist Name </p>
+          <p> Adrian </p>
+        </div>
+        <div>
+          <p> Last Name </p>
+          <p> Dragos </p>
+        </div>
+        <div>
+          <p> Age </p>
+          <p> 22 </p>
+        </div>
+        <div>
+          <p> Email </p>
+          <p> adrian@gmail.com </p>
+        </div>
+        <div>
+          <p> Phone Number </p>
+          <p> 0749250142 </p>
+        </div>
+        <div>
+          <p> Gear </p>
+          <p> Mechanical </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

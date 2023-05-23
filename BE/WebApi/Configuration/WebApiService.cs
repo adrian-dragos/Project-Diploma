@@ -5,7 +5,9 @@ public static class WebApiService
     public static IServiceCollection AddWebApi(this IServiceCollection services)
     {
 
-        services.AddControllers();
+        services.AddControllers()
+            .AddNewtonsoftJson();
+
         services.AddEndpointsApiExplorer();
         services.AddSwaggerDocument(option =>
             option.Title = "DrivingSchoolAPI");

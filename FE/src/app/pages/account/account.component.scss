@@ -25,3 +25,42 @@
       font-family: "SegoeRegular", serif;
   }
 }
+
+.profile-details {
+  display: flex;
+  gap: 40px;
+}
+
+.profile-picture {
+  display: flex;
+  flex: 0 0 150px;
+  align-items: center;
+  justify-content: center;
+
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #e0e0e0;
+
+  &-initials {
+    font-size: 50px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+  }
+}
+
+.profile-info  {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-areas:
+  "item1 item3 item5"
+  "item2 item4 item6";
+
+  &>div>p:first-child {
+    font-family: "Times New Roman", Times, serif;
+    font-weight: bold;
+  }
+}
