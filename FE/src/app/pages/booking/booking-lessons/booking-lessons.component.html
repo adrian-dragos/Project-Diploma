@@ -1,0 +1,33 @@
+<div class="booking-lessons">
+  <div class="booking-lessons-header">
+    <button mat-button class="today-button">Today</button>
+    <div>23 - 28 May</div>
+    <div>
+      <button mat-icon-button>
+        <mat-icon class="arrow-icon">keyboard_arrow_left</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon class="arrow-icon">keyboard_arrow_right</mat-icon>
+      </button>
+    </div>
+  </div>
+  
+  <mat-accordion multi displayMode="flat">
+    <mat-expansion-panel *ngFor="let item of items" class="booking-lessons-mat-expansion-panel">
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{item | date:'EEEE, dd LLLL yyyy'}} </mat-panel-title>
+        <mat-panel-description>
+          Instructor
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="panel-lesson">
+        <div> 9:00 - 10:30 </div>
+        <div> Charlie David/ Renault Zoe/ Automatic</div>
+      </div>
+      <div class="panel-lesson">
+        <div> 10:30 - 12:00 </div>
+        <div> Charlie David/ Renault Zoe/ Automatic</div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

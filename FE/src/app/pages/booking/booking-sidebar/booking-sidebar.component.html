@@ -1,0 +1,49 @@
+<div class="side-bar">
+  <div class="calendar">
+    <mat-card>
+      <mat-calendar [(selected)]="today"></mat-calendar>
+    </mat-card>
+  </div>
+  <div class="gear-container">
+    <h2 class="sidebar-section-title">Gear Type</h2>
+    <div class="gear-button-container">
+      <button mat-button class="gear-button">Automatic</button>
+      <button mat-button class="gear-button">Manual</button>
+    </div>
+  </div>
+  <div class="car-model-container">
+    <h2 class="sidebar-section-title">Gear Type</h2>
+    <mat-form-field class="booking-lesson-car-field">
+      <mat-label>Car</mat-label>
+      <mat-select disableRipple="true" multiple>
+        <mat-option>
+          Dacia Sandero
+        </mat-option>
+        <mat-option>
+          Dacia Logan
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="instructors-container">
+    <h2 class="sidebar-section-title">Instructors</h2>
+  </div>
+  <!-- <mat-accordion>
+    <mat-expansion-panel *ngFor="let item of instructors" class="custom-mat-expansion-panel ">
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{item | date:'EEEE, dd LLLL yyyy'}} </mat-panel-title>
+        <mat-panel-description>
+          Instructor
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="panel-lesson">
+        <div> 9:00 - 10:30 </div>
+        <div> Charlie David/ Renault Zoe/ Automatic</div>
+      </div>
+      <div class="panel-lesson">
+        <div> 10:30 - 12:00 </div>
+        <div> Charlie David/ Renault Zoe/ Automatic</div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion> -->
+</div>

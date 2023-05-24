@@ -1,0 +1,29 @@
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gear-button-container {
+  display: flex;
+  gap: 15px;
+}
+
+.gear-button {
+  border: 1px solid #EDEDED;
+  width: 100px;
+}
+
+.sidebar-section-title {
+  margin: 0 0 10px;
+}
+
+.mat-mdc-form-field {
+  width: 100%;
+  background-color: #fff !important;
+} 
+
+.mdc-text-field,
+.mdc-text-field--filled:not  {
+  background-color: #fff;
+}

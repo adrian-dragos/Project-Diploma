@@ -1,0 +1,44 @@
+.panel-lesson {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  height: 35px;
+  align-items: center;
+  cursor: pointer;
+  padding-left: 24px;
+}
+
+.mat-expansion-panel-header {
+  &.mat-expanded {
+    background-color:  #f5f5f5 !important;
+  }
+  &.mat-expanded:hover {
+    background-color:  #f5f5f5 !important;
+  }
+
+  &.mat-expanded:focus {
+    background-color:  #f5f5f5 !important;
+  }
+}
+
+.mat-expansion-panel-header-title {
+  flex-grow: 0;
+  flex-basis: 200px;
+  margin: 0px;
+}
+
+.booking-lessons-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.today-button {
+  background-color: #4dbd74 ;
+  color: #fff !important;
+}
+
+.booking-lessons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
