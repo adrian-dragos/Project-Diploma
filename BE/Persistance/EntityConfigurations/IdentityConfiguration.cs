@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistence.EntityConfigurations
 {
-    public class UserConfiguration : IEntityTypeConfiguration<Identity>
+    internal sealed class IdentityConfiguration : IEntityTypeConfiguration<Identity>
     {
 
         public void Configure(EntityTypeBuilder<Identity> builder)
@@ -41,7 +41,7 @@ namespace Persistence.EntityConfigurations
                .WithMany(u => u.Users)
                .HasForeignKey(bc => bc.RoleId);
 
-            builder.HasData(GetUsers(10));
+            builder.HasData(GetUsers(50));
         }
 
         private IReadOnlyCollection<Identity> GetUsers(int amount)

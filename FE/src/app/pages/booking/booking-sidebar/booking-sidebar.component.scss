@@ -27,3 +27,49 @@
 .mdc-text-field--filled:not  {
   background-color: #fff;
 }
+
+.mat-accordion .mat-expansion-panel{
+  margin-bottom: 10px;
+  border: 1px solid #EDEDED;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.instructor-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+  & .instructor-photo {
+    align-self: center;
+    height: 100px;
+    width: 100px;
+  }
+}
+
+.phone-number {
+  color: #20a8d8;
+  font-weight: bold;
+  font-style: italic;
+  font-family: "Arial", sans-serif;
+}
+
+.registration-number-info,
+.location-info {
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+}
+
+.chip-container {
+  display: flex;
+  width: 250px;
+}
+
+.car-name-chip {
+  color: #fff !important;
+  background-color: #20a8d8 !important;
+}
+
+.person-icon {
+  margin: 0 10px 2px;
+}

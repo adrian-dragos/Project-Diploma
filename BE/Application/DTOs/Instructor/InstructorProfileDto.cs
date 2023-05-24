@@ -1,4 +1,6 @@
-﻿namespace Application.DTOs.Instructor
+﻿using Application.DTOs.Car;
+
+namespace Application.DTOs.Instructor
 {
     public sealed class InstructorProfileDto
     {
@@ -6,8 +8,7 @@
         public int? PhotoId { get; set; }
         public string PhoneNumber { get; set; }
         public string FullName { get; set; }
-        public string CarName { get; set; }
-        public string RegistrationNumber { get; set; }
-        public string Spot { get; set; }
+        public IEnumerable<InstructorCarDto> Cars { get; set; }
+        public string Location { get; set; }
     }
 }

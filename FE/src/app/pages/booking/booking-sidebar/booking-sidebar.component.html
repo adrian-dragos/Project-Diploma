@@ -28,22 +28,48 @@
   <div class="instructors-container">
     <h2 class="sidebar-section-title">Instructors</h2>
   </div>
-  <!-- <mat-accordion>
-    <mat-expansion-panel *ngFor="let item of instructors" class="custom-mat-expansion-panel ">
+  <mat-accordion>
+    <mat-expansion-panel hideToggle *ngFor="let instructor of instructors">
       <mat-expansion-panel-header>
-        <mat-panel-title> {{item | date:'EEEE, dd LLLL yyyy'}} </mat-panel-title>
-        <mat-panel-description>
-          Instructor
-        </mat-panel-description>
+        <mat-panel-title> 
+          <mat-icon class="person-icon">
+            person_outline
+          </mat-icon> 
+          {{ instructor.fullName }} 
+        </mat-panel-title>
       </mat-expansion-panel-header>
-      <div class="panel-lesson">
-        <div> 9:00 - 10:30 </div>
-        <div> Charlie David/ Renault Zoe/ Automatic</div>
-      </div>
-      <div class="panel-lesson">
-        <div> 10:30 - 12:00 </div>
-        <div> Charlie David/ Renault Zoe/ Automatic</div>
+      <div class="instructor-profile">
+        <img src="../../../../assets/img_avatar.png" class="instructor-photo" alt="Avatar">
+        <div>
+          <p> Phone  
+            <span class="phone-number"> 
+              {{ instructor.phoneNumber }}
+            </span>
+          </p>
+          <!-- <p *ngFor="let car of instructor.cars">
+            Registration Number 
+            <span class="registration-number-info">
+              {{ car.registrationNumber }} 
+            </span> 
+          </p> -->
+          <p> Location
+            <span class="location-info"> 
+              {{ instructor.location }} 
+            </span>
+          </p>
+        </div>
+        <div class="chip-container">
+          <mat-chip-set>
+            <mat-chip *ngFor="let car of instructor.cars" class="car-name-chip"> {{ car.name }} </mat-chip>
+            <div *ngIf="gearType == manualGear">
+              <mat-chip>Manual</mat-chip>
+            </div>
+            <ng-template #automatic>
+              <mat-chip>Automatic</mat-chip>
+            </ng-template>  
+          </mat-chip-set>
+        </div>
       </div>
     </mat-expansion-panel>
-  </mat-accordion> -->
+  </mat-accordion>
 </div>

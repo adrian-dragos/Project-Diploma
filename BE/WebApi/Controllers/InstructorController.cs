@@ -1,5 +1,6 @@
 ﻿using Application.Features.Queries.Instructor;
 using AutoMapper;
+using Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.ViewModels.Instructor;
@@ -19,10 +20,13 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<InstructorProfileViewModel>>> GetInstructors()
+        [HttpPost()]
+        public async Task<ActionResult<IEnumerable<InstructorProfileViewModel>>> GetInstructors([FromBody]CarGear carGear)
         {
-            var query = new GetInstructorListQuery();
+            var query = new GetInstructorListQuery
+            {
+                GearType = carGear
+            };
 
             var instructors = await _mediator.Send(query);
 

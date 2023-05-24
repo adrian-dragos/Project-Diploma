@@ -12,9 +12,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { InstructorClient } from '@api/api:';
 
 @NgModule({
-	declarations: [BookingComponent, BookingSidebarComponent, BookingLessonsComponent],
 	imports: [
 		CommonModule,
 		RouterModule.forChild([{ path: '', component: BookingComponent }]),
@@ -25,7 +26,10 @@ import { MatButtonModule } from '@angular/material/button';
 		MatDatepickerModule,
 		MatCardModule,
 		MatNativeDateModule,
-		MatButtonModule
-	]
+		MatButtonModule,
+		MatChipsModule
+	],
+	providers: [InstructorClient],
+	declarations: [BookingComponent, BookingSidebarComponent, BookingLessonsComponent]
 })
 export class BookingModule {}

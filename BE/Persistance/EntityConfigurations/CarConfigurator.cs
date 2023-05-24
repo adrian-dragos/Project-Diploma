@@ -30,6 +30,10 @@ namespace Persistence.EntityConfigurations
              .HasMaxLength(50)
              .IsRequired();
 
+           builder.Property(u => u.Vin)
+             .HasMaxLength(50)
+             .IsRequired();
+
             builder.Property(u => u.CarGear)
              .HasMaxLength(50)
              .IsRequired();

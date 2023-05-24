@@ -51,6 +51,30 @@ namespace Persistence.EntityConfigurations
                     CreatedBy = createdBy,
                     InstructorId = 2,
                     CarId = 1
+                },
+                new InstructorCar()
+                {
+                    Id = 4,
+                    CreatedAt = now,
+                    CreatedBy = createdBy,
+                    InstructorId = 3,
+                    CarId = 3
+                },
+                new InstructorCar()
+                {
+                    Id = 5,
+                    CreatedAt = now,
+                    CreatedBy = createdBy,
+                    InstructorId = 4,
+                    CarId = 4
+                },
+                new InstructorCar()
+                {
+                    Id = 6,
+                    CreatedAt = now,
+                    CreatedBy = createdBy,
+                    InstructorId = 5,
+                    CarId = 5
                 }
             };
             return instructorCarList;

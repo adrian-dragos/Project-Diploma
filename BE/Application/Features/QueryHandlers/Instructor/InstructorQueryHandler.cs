@@ -1,4 +1,5 @@
-﻿using Application.DTOs.Instructor;
+﻿using Application.DTOs.Car;
+using Application.DTOs.Instructor;
 using Application.Features.Queries.Instructor;
 using Application.Interfaces;
 using Domain.Entities;
@@ -22,17 +23,22 @@ namespace Application.Features.QueryHandlers
             return await _instructorRepository
                 .Read()
                 .AsNoTracking()
+                .Where(i => i.GearType == request.GearType)
                 .Select(i => new InstructorProfileDto
                 {
                     Id = i.Id,
                     PhotoId = 0,
                     PhoneNumber = i.Identity.PhoneNumber,
                     FullName = i.Identity.FirstName + " " + i.Identity.LastName,
-                    CarName = "Dacia Sandero",
-                    RegistrationNumber = "TM 140 EMT",
-                    Spot = "Unknown"
+                    Cars = i.InstructorCars
+                        .Select(ic => new InstructorCarDto {
+                            Name = ic.Car.Manufacturer + " " + ic.Car.Model,
+                            RegistrationNumber = ic.Car.RegistrationNumber
+                        })
+                        .ToList(),
+                    Location = i.Location
                 })
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
         }
     }
 }
