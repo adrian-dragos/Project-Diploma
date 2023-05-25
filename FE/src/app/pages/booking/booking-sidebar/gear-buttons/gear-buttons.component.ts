@@ -19,8 +19,9 @@ export class GearButtonsComponent {
 
 	ngOnInit(): void {
 		//TODO: get user gear type from database
-		this.carGearOutput.emit(this.manualGear);
-		this.gearTypeControl = this.formBuilder.control(this.manualGear);
+		const selectedGear = this.manualGear;
+		this.carGearOutput.emit(selectedGear);
+		this.gearTypeControl = this.formBuilder.control(selectedGear);
 		this.gearTypeForm = this.formBuilder.group({
 			gearOption: this.gearTypeControl
 		});

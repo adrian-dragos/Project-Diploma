@@ -6,7 +6,6 @@ import { SnackBarService } from '@app/services/snack-bar.service';
 import { UserService } from '@app/services/user.service';
 import { UserValidator } from '@app/validators/user.validator';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { tap } from 'rxjs';
 
 @Component({
 	selector: 'app-login',
@@ -47,10 +46,7 @@ export class LoginComponent {
 
 		this.userService
 			.login(email, password)
-			.pipe(
-				tap((x) => console.log(x)),
-				untilDestroyed(this)
-			)
+			.pipe(untilDestroyed(this))
 			.subscribe(
 				(response) => {
 					this.snackBarService.openSuccess('Login successful!');

@@ -55,7 +55,6 @@ export class RegisterComponent {
 				.pipe(untilDestroyed(this))
 				.subscribe(
 					(response) => {
-						console.log(response);
 						this.snackBarService.openSuccess('Registration successful!');
 						this.router.navigate(['register/success']);
 					},
@@ -64,7 +63,6 @@ export class RegisterComponent {
 					}
 				);
 		} else {
-			console.log(this.registerForm);
 			this.snackBarService.openWarning('Please complete the form and correct any errors before submitting!');
 		}
 	}

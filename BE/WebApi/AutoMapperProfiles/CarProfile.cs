@@ -9,6 +9,7 @@ namespace WebApi.AutoMapperProfiles
         public CarProfile() 
         {
             CreateMap<InstructorCarDto, InstructorCarViewModel>();
+            CreateMap<CarModelDto, CarModelViewModel>();
         }
     }
 }

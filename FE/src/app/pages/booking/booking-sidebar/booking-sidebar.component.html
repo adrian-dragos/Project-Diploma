@@ -4,20 +4,13 @@
       <mat-calendar [(selected)]="today"></mat-calendar>
     </mat-card>
   </div>
-  <app-gear-buttons (carGearOutput)="handleGearTypeChange($event)"></app-gear-buttons>
-  <div class="car-model-container">
+  <div>
     <h2 class="sidebar-section-title">Gear Type</h2>
-    <mat-form-field class="booking-lesson-car-field">
-      <mat-label>Car</mat-label>
-      <mat-select disableRipple="true" multiple>
-        <mat-option>
-          Dacia Sandero
-        </mat-option>
-        <mat-option>
-          Dacia Logan
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <app-gear-buttons (carGearOutput)="handleGearTypeChange($event)"></app-gear-buttons>
+  </div>
+  <div>
+    <h2 class="sidebar-section-title">Car Model</h2>
+    <app-car-filter [carGear]="gearType" (carFilterOutput)="handleCarFilterChange($event)"></app-car-filter>
   </div>
   <div class="instructors-container">
     <h2 class="sidebar-section-title">Instructors</h2>

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { CarGear, InstructorClient, InstructorProfileViewModel } from '@api/api:';
+import { CarGear, CarModelViewModel, InstructorClient, InstructorProfileViewModel } from '@api/api:';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Observable, Subscription, take } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
 	selector: 'app-booking-sidebar',
@@ -11,6 +11,7 @@ import { Observable, Subscription, take } from 'rxjs';
 @UntilDestroy()
 export class BookingSidebarComponent {
 	// fields
+	gearType: CarGear;
 	instructors: InstructorProfileViewModel[] = [];
 	instructorSubscription: Subscription;
 	today = new Date();
@@ -19,6 +20,7 @@ export class BookingSidebarComponent {
 	instructorClient = inject(InstructorClient);
 
 	handleGearTypeChange(gearType: number): void {
+		this.gearType = gearType;
 		if (this.instructorSubscription) {
 			this.instructorSubscription.unsubscribe();
 		}
@@ -33,5 +35,9 @@ export class BookingSidebarComponent {
 
 	getGearTypeText(gearType: number): string {
 		return CarGear[gearType];
+	}
+
+	handleCarFilterChange(carModels: CarModelViewModel[]): void {
+		console.log(carModels);
 	}
 }

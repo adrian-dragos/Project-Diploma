@@ -17,7 +17,6 @@ export class HeaderComponent {
 	constructor(private readonly router: Router, private readonly dialog: MatDialog) {}
 
 	openLogoutDialog(): void {
-		console.log('openLogoutDialog');
 		const dialogRef = this.dialog.open(LogoutDialogComponent, {
 			width: '300px',
 			autoFocus: false
