@@ -14,6 +14,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { InstructorClient } from '@api/api:';
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
+import { GearButtonsComponent } from './booking-sidebar/gear-buttons/gear-buttons.component';
 
 @NgModule({
 	imports: [
@@ -27,9 +30,11 @@ import { InstructorClient } from '@api/api:';
 		MatCardModule,
 		MatNativeDateModule,
 		MatButtonModule,
-		MatChipsModule
+		MatChipsModule,
+		MatRadioModule,
+		ReactiveFormsModule
 	],
 	providers: [InstructorClient],
-	declarations: [BookingComponent, BookingSidebarComponent, BookingLessonsComponent]
+	declarations: [BookingComponent, BookingSidebarComponent, BookingLessonsComponent, GearButtonsComponent]
 })
 export class BookingModule {}

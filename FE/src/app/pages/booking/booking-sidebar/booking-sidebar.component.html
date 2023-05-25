@@ -4,13 +4,7 @@
       <mat-calendar [(selected)]="today"></mat-calendar>
     </mat-card>
   </div>
-  <div class="gear-container">
-    <h2 class="sidebar-section-title">Gear Type</h2>
-    <div class="gear-button-container">
-      <button mat-button class="gear-button">Automatic</button>
-      <button mat-button class="gear-button">Manual</button>
-    </div>
-  </div>
+  <app-gear-buttons (carGearOutput)="handleGearTypeChange($event)"></app-gear-buttons>
   <div class="car-model-container">
     <h2 class="sidebar-section-title">Gear Type</h2>
     <mat-form-field class="booking-lesson-car-field">
@@ -46,12 +40,6 @@
               {{ instructor.phoneNumber }}
             </span>
           </p>
-          <!-- <p *ngFor="let car of instructor.cars">
-            Registration Number 
-            <span class="registration-number-info">
-              {{ car.registrationNumber }} 
-            </span> 
-          </p> -->
           <p> Location
             <span class="location-info"> 
               {{ instructor.location }} 
@@ -60,13 +48,14 @@
         </div>
         <div class="chip-container">
           <mat-chip-set>
-            <mat-chip *ngFor="let car of instructor.cars" class="car-name-chip"> {{ car.name }} </mat-chip>
-            <div *ngIf="gearType == manualGear">
-              <mat-chip>Manual</mat-chip>
+            <mat-chip *ngFor="let car of instructor.cars" class="car-name-chip"> 
+              {{ car.name }} 
+            </mat-chip>
+            <div>
+              <mat-chip> 
+                {{ getGearTypeText(instructor.gearType) }} 
+              </mat-chip>
             </div>
-            <ng-template #automatic>
-              <mat-chip>Automatic</mat-chip>
-            </ng-template>  
           </mat-chip-set>
         </div>
       </div>

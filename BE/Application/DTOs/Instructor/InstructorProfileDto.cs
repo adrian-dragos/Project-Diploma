@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Car;
+using Domain.Enums;
 
 namespace Application.DTOs.Instructor
 {
@@ -10,5 +11,6 @@ namespace Application.DTOs.Instructor
         public string FullName { get; set; }
         public IEnumerable<InstructorCarDto> Cars { get; set; }
         public string Location { get; set; }
+        public CarGear GearType { get; set; }
     }
 }

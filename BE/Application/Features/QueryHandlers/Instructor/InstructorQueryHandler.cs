@@ -32,11 +32,11 @@ namespace Application.Features.QueryHandlers
                     FullName = i.Identity.FirstName + " " + i.Identity.LastName,
                     Cars = i.InstructorCars
                         .Select(ic => new InstructorCarDto {
-                            Name = ic.Car.Manufacturer + " " + ic.Car.Model,
-                            RegistrationNumber = ic.Car.RegistrationNumber
+                            Name = ic.Car.Manufacturer + " " + ic.Car.Model
                         })
                         .ToList(),
-                    Location = i.Location
+                    Location = i.Location,
+                    GearType = i.GearType
                 })
                 .ToListAsync(cancellationToken);
         }

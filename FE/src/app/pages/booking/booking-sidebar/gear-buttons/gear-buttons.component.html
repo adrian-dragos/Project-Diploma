@@ -1,0 +1,19 @@
+<div class="gear-container">
+  <h2 class="sidebar-section-title">Gear Type</h2>
+  <form [formGroup]="gearTypeForm" class="gear-button-container">
+    <button mat-button 
+      type="button" 
+      class="gear-button"
+      [ngClass]="{'gear-button-selected': gearTypeControl.value === manualGear}"
+      (click)="gearTypeControl.setValue(manualGear)">
+      Manual
+    </button>
+    <button mat-button 
+      type="button" 
+      class="gear-button"
+      [ngClass]="{'gear-button-selected': gearTypeControl.value === automaticGear}"
+      (click)="gearTypeControl.setValue(automaticGear)">
+      Automatic
+    </button>
+  </form>
+</div>

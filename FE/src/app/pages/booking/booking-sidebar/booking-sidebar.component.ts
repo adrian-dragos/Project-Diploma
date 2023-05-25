@@ -8,22 +8,24 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 	styleUrls: ['./booking-sidebar.component.scss']
 })
 @UntilDestroy()
-export class BookingSidebarComponent implements OnInit {
+export class BookingSidebarComponent {
 	// fields
 	instructors: InstructorProfileViewModel[] = [];
-	manualGear = CarGear.Manual;
 	today = new Date();
-	gearType: CarGear = CarGear.Manual;
 
 	// services
 	instructorClient = inject(InstructorClient);
 
-	ngOnInit(): void {
+	handleGearTypeChange(gearType: number): void {
 		this.instructorClient
-			.getInstructors(1)
+			.getInstructors(gearType)
 			.pipe(untilDestroyed(this))
 			.subscribe((instructors) => {
 				this.instructors = instructors;
 			});
+	}
+
+	getGearTypeText(gearType: number): string {
+		return CarGear[gearType];
 	}
 }

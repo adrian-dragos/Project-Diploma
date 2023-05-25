@@ -1,0 +1,14 @@
+.gear-button-container {
+  display: flex;
+  gap: 15px;
+}
+
+.gear-button {
+  border: 1px solid #EDEDED;
+  width: 100px;
+}
+
+.gear-button-selected {
+  background-color: #20a8d8;
+  color: #fff !important;
+}
