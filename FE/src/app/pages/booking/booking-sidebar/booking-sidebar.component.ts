@@ -1,6 +1,7 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CarGear, InstructorClient, InstructorProfileViewModel } from '@api/api:';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Observable, Subscription, take } from 'rxjs';
 
 @Component({
 	selector: 'app-booking-sidebar',
@@ -11,13 +12,18 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 export class BookingSidebarComponent {
 	// fields
 	instructors: InstructorProfileViewModel[] = [];
+	instructorSubscription: Subscription;
 	today = new Date();
 
 	// services
 	instructorClient = inject(InstructorClient);
 
 	handleGearTypeChange(gearType: number): void {
-		this.instructorClient
+		if (this.instructorSubscription) {
+			this.instructorSubscription.unsubscribe();
+		}
+
+		this.instructorSubscription = this.instructorClient
 			.getInstructors(gearType)
 			.pipe(untilDestroyed(this))
 			.subscribe((instructors) => {
