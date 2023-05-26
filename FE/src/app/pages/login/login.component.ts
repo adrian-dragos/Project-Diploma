@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiException, LoginUserRequestViewModel, UsersClient } from '@api/api:';
+import { ApiException } from '@api/api:';
 import { SnackBarService } from '@app/services/snack-bar.service';
 import { UserService } from '@app/services/user.service';
 import { UserValidator } from '@app/validators/user.validator';

@@ -8,7 +8,7 @@ namespace Application.AutoMapperProfiles
     {
         public CarProfile() 
         {
-            CreateMap<Car, CarModelDto>();
+            CreateMap<Car, CarModelDto>().ReverseMap();
         }
     }
 }

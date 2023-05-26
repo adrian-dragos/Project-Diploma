@@ -18,12 +18,13 @@ namespace Persistence
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Review> Reviews { get; set; }
         public DbSet<Car> Cars { get; set; }
+        public DbSet<CarModel> CarModels { get; set; }
         public DbSet<InstructorCar> InstructorCars { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
             Randomizer.Seed = new Random(420);
+            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
 
         protected override void ConfigureConventions(ModelConfigurationBuilder builder)

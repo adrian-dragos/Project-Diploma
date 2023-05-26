@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CarGear, CarModelViewModel, InstructorClient, InstructorProfileViewModel } from '@api/api:';
+import { CarGear, CarModelViewModel, GetInstructorsFilterViewModel, InstructorClient, InstructorProfileViewModel } from '@api/api:';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Subscription } from 'rxjs';
 
@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 export class BookingSidebarComponent {
 	// fields
 	gearType: CarGear;
+	carModels: CarModelViewModel[] = [];
 	instructors: InstructorProfileViewModel[] = [];
 	instructorSubscription: Subscription;
 	today = new Date();
@@ -21,12 +22,18 @@ export class BookingSidebarComponent {
 
 	handleGearTypeChange(gearType: number): void {
 		this.gearType = gearType;
+		this.carModels = [];
+
 		if (this.instructorSubscription) {
 			this.instructorSubscription.unsubscribe();
 		}
+		const filter: GetInstructorsFilterViewModel = {
+			carGear: this.gearType,
+			cars: this.carModels
+		};
 
 		this.instructorSubscription = this.instructorClient
-			.getInstructors(gearType)
+			.getInstructors(filter)
 			.pipe(untilDestroyed(this))
 			.subscribe((instructors) => {
 				this.instructors = instructors;
@@ -39,5 +46,17 @@ export class BookingSidebarComponent {
 
 	handleCarFilterChange(carModels: CarModelViewModel[]): void {
 		console.log(carModels);
+		this.carModels = carModels;
+		const filter: GetInstructorsFilterViewModel = {
+			carGear: this.gearType,
+			cars: this.carModels
+		};
+
+		this.instructorSubscription = this.instructorClient
+			.getInstructors(filter)
+			.pipe(untilDestroyed(this))
+			.subscribe((instructors) => {
+				this.instructors = instructors;
+			});
 	}
 }

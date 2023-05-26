@@ -37,8 +37,8 @@ namespace Persistence.EntityConfigurations
                     Id = 2,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    IdentityId = 8,
-                    GearType = CarGear.Automatic,
+                    IdentityId = 4,
+                    GearType = CarGear.Manual,
                     Location = "Strada Crișul 7"
                 },
                 new Instructor
@@ -46,8 +46,8 @@ namespace Persistence.EntityConfigurations
                     Id = 3,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    IdentityId = 19,
-                    GearType = CarGear.Automatic,
+                    IdentityId = 7,
+                    GearType = CarGear.Manual,
                     Location = "Strada Crișul 7"
                 },
                 new Instructor
@@ -55,7 +55,7 @@ namespace Persistence.EntityConfigurations
                     Id = 4,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    IdentityId = 23,
+                    IdentityId = 8,
                     GearType = CarGear.Manual,
                     Location = "Strada Crișul 7"
                 },
@@ -64,8 +64,53 @@ namespace Persistence.EntityConfigurations
                     Id = 5,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    IdentityId = 24,
+                    IdentityId = 10,
                     GearType = CarGear.Manual,
+                    Location = "Strada Crișul 7"
+                },
+                new Instructor
+                {
+                    Id = 6,
+                    CreatedAt = now,
+                    CreatedBy = createdBy,
+                    IdentityId = 13,
+                    GearType = CarGear.Automatic,
+                    Location = "Strada Crișul 7"
+                },
+                new Instructor
+                {
+                    Id = 7,
+                    CreatedAt = now,
+                    CreatedBy = createdBy,
+                    IdentityId = 24,
+                    GearType = CarGear.Automatic,
+                    Location = "Strada Crișul 7"
+                },
+                new Instructor
+                {
+                    Id = 8,
+                    CreatedAt = now,
+                    CreatedBy = createdBy,
+                    IdentityId = 25,
+                    GearType = CarGear.Automatic,
+                    Location = "Strada Crișul 7"
+                },
+                new Instructor
+                {
+                    Id = 9,
+                    CreatedAt = now,
+                    CreatedBy = createdBy,
+                    IdentityId = 26,
+                    GearType = CarGear.Automatic,
+                    Location = "Strada Crișul 7"
+                },
+                new Instructor
+                {
+                    Id = 10,
+                    CreatedAt = now,
+                    CreatedBy = createdBy,
+                    IdentityId = 28,
+                    GearType = CarGear.Automatic,
                     Location = "Strada Crișul 7"
                 }
             };

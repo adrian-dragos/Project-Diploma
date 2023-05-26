@@ -62,7 +62,7 @@ namespace Persistence.EntityConfigurations
                 .RuleFor(u => u.LastName, f => f.Person.LastName)
                 .RuleFor(u => u.PhoneNumber, f => f.Phone.PhoneNumber("+40 74# ### ###"))
                 .RuleFor(u => u.Birthday, f => DateOnly.FromDateTime(f.Date.Between(DateTime.Now.AddYears(-50), DateTime.Now.AddYears(-25))))
-                .RuleFor(u => u.RoleId, _ => random.Next(1, 4));
+                .RuleFor(u => u.RoleId, _ => random.Next(2, 4));
 
             var users = userFaker.Generate(amount);
 

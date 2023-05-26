@@ -15,7 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { CarClient, InstructorClient } from '@api/api:';
 import { MatRadioModule } from '@angular/material/radio';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GearButtonsComponent } from './booking-sidebar/gear-buttons/gear-buttons.component';
 import { CarFilterComponent } from './booking-sidebar/car-filter/car-filter.component';
 
@@ -33,7 +33,8 @@ import { CarFilterComponent } from './booking-sidebar/car-filter/car-filter.comp
 		MatButtonModule,
 		MatChipsModule,
 		MatRadioModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		FormsModule
 	],
 	providers: [InstructorClient, CarClient],
 	declarations: [BookingComponent, BookingSidebarComponent, BookingLessonsComponent, GearButtonsComponent, CarFilterComponent]

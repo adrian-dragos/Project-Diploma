@@ -3,6 +3,7 @@
   <mat-select 
     multiple
     disableRipple="true" 
+    [(ngModel)]="selectedValues"
     (selectionChange)="onSelectionChange($event)">
     <mat-option *ngFor="let car of cars" value='{{car.manufacturer}} {{car.model}}'>
       {{car.manufacturer}} {{car.model}}

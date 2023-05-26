@@ -14,6 +14,7 @@ export class CarFilterComponent implements OnInit {
 	@Output() carFilterOutput = new EventEmitter<CarModelViewModel[]>();
 
 	cars: CarModelViewModel[] = [];
+	selectedValues: string[] = [];
 
 	carClient = inject(CarClient);
 
@@ -26,6 +27,7 @@ export class CarFilterComponent implements OnInit {
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes['carGear']) {
+			this.selectedValues = [];
 			this.carClient
 				.getCarModels(this.carGear)
 				.pipe(untilDestroyed(this))
@@ -34,6 +36,11 @@ export class CarFilterComponent implements OnInit {
 	}
 
 	onSelectionChange(event: MatSelectChange): void {
-		this.carFilterOutput.emit(event.value);
+		const splitArray = event.value.flatMap((str) => str.split(' '));
+		let selectedCar: CarModelViewModel[] = [];
+		for (let i = 0; i < splitArray.length; i += 2) {
+			selectedCar.push({ manufacturer: splitArray[i], model: splitArray[i + 1] });
+		}
+		this.carFilterOutput.emit(selectedCar);
 	}
 }

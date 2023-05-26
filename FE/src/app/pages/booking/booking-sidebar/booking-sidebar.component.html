@@ -41,8 +41,8 @@
         </div>
         <div class="chip-container">
           <mat-chip-set>
-            <mat-chip *ngFor="let car of instructor.cars" class="car-name-chip"> 
-              {{ car.name }} 
+            <mat-chip *ngFor="let car of instructor.carModels" class="car-name-chip"> 
+              {{ car.manufacturer }} {{ car.model }} 
             </mat-chip>
             <div>
               <mat-chip> 

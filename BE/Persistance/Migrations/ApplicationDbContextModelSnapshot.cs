@@ -61,21 +61,21 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 70, DateTimeKind.Unspecified).AddTicks(8358), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 180, DateTimeKind.Unspecified).AddTicks(37), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "SeeAllUsers"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 70, DateTimeKind.Unspecified).AddTicks(8358), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 180, DateTimeKind.Unspecified).AddTicks(37), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateInstructorProfile"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 70, DateTimeKind.Unspecified).AddTicks(8358), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 180, DateTimeKind.Unspecified).AddTicks(37), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateUserProfile"
                         });
@@ -118,7 +118,7 @@ namespace Persistence.Migrations
                         {
                             RoleId = 1,
                             PolicyId = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 71, DateTimeKind.Unspecified).AddTicks(5548), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 180, DateTimeKind.Unspecified).AddTicks(5318), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 1
                         },
@@ -126,7 +126,7 @@ namespace Persistence.Migrations
                         {
                             RoleId = 1,
                             PolicyId = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 71, DateTimeKind.Unspecified).AddTicks(5548), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 180, DateTimeKind.Unspecified).AddTicks(5318), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 2
                         },
@@ -134,7 +134,7 @@ namespace Persistence.Migrations
                         {
                             RoleId = 2,
                             PolicyId = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 71, DateTimeKind.Unspecified).AddTicks(5548), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 180, DateTimeKind.Unspecified).AddTicks(5318), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 3
                         },
@@ -142,7 +142,7 @@ namespace Persistence.Migrations
                         {
                             RoleId = 3,
                             PolicyId = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 71, DateTimeKind.Unspecified).AddTicks(5548), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 180, DateTimeKind.Unspecified).AddTicks(5318), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 4
                         });
@@ -187,27 +187,162 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 73, DateTimeKind.Unspecified).AddTicks(7216), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 181, DateTimeKind.Unspecified).AddTicks(9399), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "Administrator"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 73, DateTimeKind.Unspecified).AddTicks(7216), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 181, DateTimeKind.Unspecified).AddTicks(9399), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "Student"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 73, DateTimeKind.Unspecified).AddTicks(7216), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 181, DateTimeKind.Unspecified).AddTicks(9399), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "Instructor"
                         });
                 });
 
             modelBuilder.Entity("Domain.Entities.Car", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CarModelId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTimeOffset?>("LastModifiedAt")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("RegistrationNumber")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Vin")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarModelId");
+
+                    b.ToTable("Cars");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CarModelId = 3,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            RegistrationNumber = "TM 993 KKB",
+                            Vin = "51C7TL35X5SD42589"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CarModelId = 1,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            RegistrationNumber = "TM 152 ZYP",
+                            Vin = "XMWZRVN1XKI817577"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CarModelId = 1,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            RegistrationNumber = "TM 080 HGC",
+                            Vin = "9FXEFSCN81EQ28486"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CarModelId = 3,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            RegistrationNumber = "TM 381 PAF",
+                            Vin = "LC6K6LLWM6VO10486"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CarModelId = 1,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            RegistrationNumber = "TM 083 GCW",
+                            Vin = "G6E7FZQT48F430415"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CarModelId = 2,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            RegistrationNumber = "TM 007 XED",
+                            Vin = "RTTWPHDC6CKV32139"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CarModelId = 3,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            RegistrationNumber = "TM 072 KRH",
+                            Vin = "QKFRHOE1MMD158061"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CarModelId = 3,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            RegistrationNumber = "TM 113 IJB",
+                            Vin = "PP1NKHQCZ3E998050"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CarModelId = 1,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            RegistrationNumber = "TM 164 LRX",
+                            Vin = "C7AFRP1AVVNT69301"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CarModelId = 4,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            RegistrationNumber = "TM 833 BKH",
+                            Vin = "UARCFYGD5VKN48345"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Entities.CarModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -249,23 +384,13 @@ namespace Persistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("RegistrationNumber")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Vin")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
                     b.Property<DateTime>("Year")
                         .HasMaxLength(50)
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cars");
+                    b.ToTable("CarModels");
 
                     b.HasData(
                         new
@@ -275,128 +400,42 @@ namespace Persistence.Migrations
                             Color = "purple",
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Manufacturer = "Bugatti",
-                            Model = "Mustang",
-                            RegistrationNumber = "TM 430 YQX",
-                            Vin = "7TL35X5PDDZY39623",
-                            Year = new DateTime(2019, 6, 4, 14, 0, 14, 313, DateTimeKind.Local).AddTicks(2398)
+                            Manufacturer = "Dacia",
+                            Model = "Sandero",
+                            Year = new DateTime(2019, 3, 26, 19, 57, 9, 292, DateTimeKind.Local).AddTicks(7509)
                         },
                         new
                         {
                             Id = 2,
-                            CarGear = 2,
-                            Color = "green",
+                            CarGear = 1,
+                            Color = "red",
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Manufacturer = "Smart",
-                            Model = "Civic",
-                            RegistrationNumber = "TM 944 UJR",
-                            Vin = "XKB836IAYXP949127",
-                            Year = new DateTime(2018, 7, 2, 8, 54, 52, 88, DateTimeKind.Local).AddTicks(1079)
+                            Manufacturer = "Skoda",
+                            Model = "Fabia",
+                            Year = new DateTime(2019, 12, 16, 4, 10, 6, 939, DateTimeKind.Local).AddTicks(9898)
                         },
                         new
                         {
                             Id = 3,
-                            CarGear = 1,
-                            Color = "green",
+                            CarGear = 2,
+                            Color = "blue",
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Manufacturer = "Cadillac",
-                            Model = "A8",
-                            RegistrationNumber = "TM 961 VRA",
-                            Vin = "0U1A92LC6KEL64578",
-                            Year = new DateTime(2019, 1, 4, 19, 19, 31, 492, DateTimeKind.Local).AddTicks(5672)
+                            Manufacturer = "Renault",
+                            Model = "Zoe",
+                            Year = new DateTime(2020, 12, 18, 21, 50, 18, 189, DateTimeKind.Local).AddTicks(2838)
                         },
                         new
                         {
                             Id = 4,
-                            CarGear = 1,
-                            Color = "purple",
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Manufacturer = "Bugatti",
-                            Model = "Prius",
-                            RegistrationNumber = "TM 208 JGC",
-                            Vin = "7G6E7FZQT4F822237",
-                            Year = new DateTime(2018, 5, 28, 4, 53, 14, 634, DateTimeKind.Local).AddTicks(8635)
-                        },
-                        new
-                        {
-                            Id = 5,
-                            CarGear = 1,
-                            Color = "blue",
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Manufacturer = "Porsche",
-                            Model = "911",
-                            RegistrationNumber = "TM 117 OKU",
-                            Vin = "PHDC6CEV81BS91672",
-                            Year = new DateTime(2021, 1, 29, 12, 51, 25, 200, DateTimeKind.Local).AddTicks(435)
-                        },
-                        new
-                        {
-                            Id = 6,
                             CarGear = 2,
-                            Color = "red",
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Manufacturer = "Hyundai",
-                            Model = "Taurus",
-                            RegistrationNumber = "TM 654 SIZ",
-                            Vin = "M41J0Q8EN9SP14212",
-                            Year = new DateTime(2020, 3, 30, 23, 33, 15, 857, DateTimeKind.Local).AddTicks(2056)
-                        },
-                        new
-                        {
-                            Id = 7,
-                            CarGear = 2,
-                            Color = "yellow",
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Manufacturer = "Dodge",
-                            Model = "XC90",
-                            RegistrationNumber = "TM 885 VRD",
-                            Vin = "4DBC1C7AFRS137035",
-                            Year = new DateTime(2018, 12, 6, 10, 43, 34, 976, DateTimeKind.Local).AddTicks(1587)
-                        },
-                        new
-                        {
-                            Id = 8,
-                            CarGear = 1,
                             Color = "green",
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Manufacturer = "Hyundai",
-                            Model = "Element",
-                            RegistrationNumber = "TM 833 BKH",
-                            Vin = "UARCFYGD5VKN48345",
-                            Year = new DateTime(2021, 2, 27, 20, 43, 46, 102, DateTimeKind.Local).AddTicks(7617)
-                        },
-                        new
-                        {
-                            Id = 9,
-                            CarGear = 2,
-                            Color = "blue",
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Manufacturer = "Kia",
-                            Model = "Cruze",
-                            RegistrationNumber = "TM 884 IIX",
-                            Vin = "HG9H4CPPOEMR62088",
-                            Year = new DateTime(2020, 12, 17, 1, 24, 3, 71, DateTimeKind.Local).AddTicks(7474)
-                        },
-                        new
-                        {
-                            Id = 10,
-                            CarGear = 2,
-                            Color = "red",
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Manufacturer = "Chevrolet",
-                            Model = "Explorer",
-                            RegistrationNumber = "TM 927 ESZ",
-                            Vin = "ATK25E0B3WWY71897",
-                            Year = new DateTime(2021, 3, 12, 10, 32, 43, 257, DateTimeKind.Local).AddTicks(7612)
+                            Manufacturer = "Skoda",
+                            Model = "Fabia",
+                            Year = new DateTime(2019, 10, 25, 23, 11, 52, 157, DateTimeKind.Local).AddTicks(9957)
                         });
                 });
 
@@ -465,163 +504,163 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            Birthday = new DateTime(1974, 5, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1976, 5, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Celia_Davis@hotmail.com",
-                            FirstName = "Celia",
-                            LastName = "Davis",
+                            Email = "Lawrence_Heidenreich@yahoo.com",
+                            FirstName = "Lawrence",
+                            LastName = "Heidenreich",
                             Password = "test",
-                            PhoneNumber = "+40 746 964 446",
+                            PhoneNumber = "+40 746 609 730",
                             RoleId = 3
                         },
                         new
                         {
                             Id = 2,
-                            Birthday = new DateTime(1985, 3, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1978, 8, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Devin83@gmail.com",
-                            FirstName = "Devin",
-                            LastName = "Little",
+                            Email = "Dominic39@yahoo.com",
+                            FirstName = "Dominic",
+                            LastName = "Feeney",
                             Password = "test",
-                            PhoneNumber = "+40 743 381 834",
-                            RoleId = 1
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Birthday = new DateTime(1996, 9, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Email = "Clifton_Okuneva@gmail.com",
-                            FirstName = "Clifton",
-                            LastName = "Okuneva",
-                            Password = "test",
-                            PhoneNumber = "+40 747 565 216",
-                            RoleId = 1
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Birthday = new DateTime(1982, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "System Seeding",
-                            Email = "Pauline_Daugherty@yahoo.com",
-                            FirstName = "Pauline",
-                            LastName = "Daugherty",
-                            Password = "test",
-                            PhoneNumber = "+40 742 478 065",
+                            PhoneNumber = "+40 749 288 525",
                             RoleId = 2
                         },
                         new
                         {
-                            Id = 5,
-                            Birthday = new DateTime(1995, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Id = 3,
+                            Birthday = new DateTime(1989, 9, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Janie32@gmail.com",
-                            FirstName = "Janie",
-                            LastName = "Satterfield",
+                            Email = "Hattie_Kling89@hotmail.com",
+                            FirstName = "Hattie",
+                            LastName = "Kling",
                             Password = "test",
-                            PhoneNumber = "+40 747 590 444",
-                            RoleId = 1
+                            PhoneNumber = "+40 746 525 816",
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Birthday = new DateTime(1993, 9, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            Email = "Tasha_Jakubowski11@gmail.com",
+                            FirstName = "Tasha",
+                            LastName = "Jakubowski",
+                            Password = "test",
+                            PhoneNumber = "+40 747 184 426",
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Birthday = new DateTime(1974, 1, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            Email = "Caroline88@hotmail.com",
+                            FirstName = "Caroline",
+                            LastName = "Muller",
+                            Password = "test",
+                            PhoneNumber = "+40 746 599 748",
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 6,
-                            Birthday = new DateTime(1985, 5, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1997, 9, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Colin.Cronin@hotmail.com",
-                            FirstName = "Colin",
-                            LastName = "Cronin",
+                            Email = "Ricardo97@yahoo.com",
+                            FirstName = "Ricardo",
+                            LastName = "Gleason",
                             Password = "test",
-                            PhoneNumber = "+40 743 983 542",
-                            RoleId = 1
+                            PhoneNumber = "+40 745 241 418",
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 7,
-                            Birthday = new DateTime(1974, 4, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1978, 7, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Freddie.Stiedemann87@gmail.com",
-                            FirstName = "Freddie",
-                            LastName = "Stiedemann",
+                            Email = "Levi21@yahoo.com",
+                            FirstName = "Levi",
+                            LastName = "Beahan",
                             Password = "test",
-                            PhoneNumber = "+40 747 730 492",
+                            PhoneNumber = "+40 741 302 517",
                             RoleId = 3
                         },
                         new
                         {
                             Id = 8,
-                            Birthday = new DateTime(1994, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1995, 7, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Nick.Wilderman60@hotmail.com",
-                            FirstName = "Nick",
-                            LastName = "Wilderman",
+                            Email = "Tabitha.Russel3@yahoo.com",
+                            FirstName = "Tabitha",
+                            LastName = "Russel",
                             Password = "test",
-                            PhoneNumber = "+40 748 485 882",
-                            RoleId = 2
+                            PhoneNumber = "+40 745 808 485",
+                            RoleId = 3
                         },
                         new
                         {
                             Id = 9,
-                            Birthday = new DateTime(1989, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1981, 8, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Tanya.Luettgen@hotmail.com",
-                            FirstName = "Tanya",
-                            LastName = "Luettgen",
+                            Email = "Florence_Spinka@gmail.com",
+                            FirstName = "Florence",
+                            LastName = "Spinka",
                             Password = "test",
-                            PhoneNumber = "+40 747 220 837",
-                            RoleId = 1
+                            PhoneNumber = "+40 742 972 208",
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 10,
-                            Birthday = new DateTime(1992, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1986, 10, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Donnie_Borer30@hotmail.com",
-                            FirstName = "Donnie",
-                            LastName = "Borer",
+                            Email = "Molly71@gmail.com",
+                            FirstName = "Molly",
+                            LastName = "Deckow",
                             Password = "test",
-                            PhoneNumber = "+40 742 590 793",
+                            PhoneNumber = "+40 743 678 572",
                             RoleId = 3
                         },
                         new
                         {
                             Id = 11,
-                            Birthday = new DateTime(1996, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1980, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Vickie14@yahoo.com",
-                            FirstName = "Vickie",
-                            LastName = "Borer",
+                            Email = "Marie.Rolfson@hotmail.com",
+                            FirstName = "Marie",
+                            LastName = "Rolfson",
                             Password = "test",
-                            PhoneNumber = "+40 749 852 232",
-                            RoleId = 1
+                            PhoneNumber = "+40 748 985 223",
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 12,
-                            Birthday = new DateTime(1998, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1998, 3, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            Email = "Hannah.Welch43@gmail.com",
-                            FirstName = "Hannah",
-                            LastName = "Welch",
+                            Email = "Kate.Reynolds43@gmail.com",
+                            FirstName = "Kate",
+                            LastName = "Reynolds",
                             Password = "test",
                             PhoneNumber = "+40 748 975 984",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 13,
-                            Birthday = new DateTime(1973, 12, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1973, 12, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Willie_Kertzmann47@yahoo.com",
@@ -629,12 +668,12 @@ namespace Persistence.Migrations
                             LastName = "Kertzmann",
                             Password = "test",
                             PhoneNumber = "+40 744 836 590",
-                            RoleId = 2
+                            RoleId = 3
                         },
                         new
                         {
                             Id = 14,
-                            Birthday = new DateTime(1989, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1990, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ronnie_Boyle27@gmail.com",
@@ -642,12 +681,12 @@ namespace Persistence.Migrations
                             LastName = "Boyle",
                             Password = "test",
                             PhoneNumber = "+40 740 773 284",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 15,
-                            Birthday = new DateTime(1992, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1992, 9, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Russell_Corkery@yahoo.com",
@@ -660,7 +699,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 16,
-                            Birthday = new DateTime(1980, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1980, 4, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Allen31@gmail.com",
@@ -668,12 +707,12 @@ namespace Persistence.Migrations
                             LastName = "Barton",
                             Password = "test",
                             PhoneNumber = "+40 741 666 019",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 17,
-                            Birthday = new DateTime(1996, 9, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1996, 9, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Gregg26@yahoo.com",
@@ -681,12 +720,12 @@ namespace Persistence.Migrations
                             LastName = "Harber",
                             Password = "test",
                             PhoneNumber = "+40 749 413 264",
-                            RoleId = 2
+                            RoleId = 3
                         },
                         new
                         {
                             Id = 18,
-                            Birthday = new DateTime(1995, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1995, 11, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Barbara.Predovic67@gmail.com",
@@ -694,12 +733,12 @@ namespace Persistence.Migrations
                             LastName = "Predovic",
                             Password = "test",
                             PhoneNumber = "+40 742 591 086",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 19,
-                            Birthday = new DateTime(1985, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1985, 11, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Casey42@hotmail.com",
@@ -712,7 +751,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 20,
-                            Birthday = new DateTime(1994, 12, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1994, 12, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Carrie47@yahoo.com",
@@ -720,12 +759,12 @@ namespace Persistence.Migrations
                             LastName = "Johnson",
                             Password = "test",
                             PhoneNumber = "+40 747 645 343",
-                            RoleId = 2
+                            RoleId = 3
                         },
                         new
                         {
                             Id = 21,
-                            Birthday = new DateTime(1983, 8, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1983, 8, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Elvira51@gmail.com",
@@ -738,7 +777,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 22,
-                            Birthday = new DateTime(1979, 12, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1979, 12, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Justin98@yahoo.com",
@@ -746,12 +785,12 @@ namespace Persistence.Migrations
                             LastName = "Crist",
                             Password = "test",
                             PhoneNumber = "+40 748 305 797",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 23,
-                            Birthday = new DateTime(1996, 4, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1996, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Shannon24@gmail.com",
@@ -759,12 +798,12 @@ namespace Persistence.Migrations
                             LastName = "Spencer",
                             Password = "test",
                             PhoneNumber = "+40 740 885 568",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 24,
-                            Birthday = new DateTime(1988, 12, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1988, 12, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Paul32@hotmail.com",
@@ -777,7 +816,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 25,
-                            Birthday = new DateTime(1973, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1973, 9, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Sylvia.Von58@yahoo.com",
@@ -790,7 +829,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 26,
-                            Birthday = new DateTime(1977, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1977, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ollie.Grady@hotmail.com",
@@ -798,12 +837,12 @@ namespace Persistence.Migrations
                             LastName = "Grady",
                             Password = "test",
                             PhoneNumber = "+40 741 660 734",
-                            RoleId = 2
+                            RoleId = 3
                         },
                         new
                         {
                             Id = 27,
-                            Birthday = new DateTime(1988, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1988, 1, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Courtney.Weissnat@yahoo.com",
@@ -811,12 +850,12 @@ namespace Persistence.Migrations
                             LastName = "Weissnat",
                             Password = "test",
                             PhoneNumber = "+40 743 488 529",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 28,
-                            Birthday = new DateTime(1987, 7, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1987, 8, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Billy.Schmeler29@gmail.com",
@@ -829,7 +868,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 29,
-                            Birthday = new DateTime(1983, 5, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1983, 5, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ellis.Rath@gmail.com",
@@ -837,12 +876,12 @@ namespace Persistence.Migrations
                             LastName = "Rath",
                             Password = "test",
                             PhoneNumber = "+40 745 539 503",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 30,
-                            Birthday = new DateTime(1995, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1995, 6, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Eunice_Hartmann84@hotmail.com",
@@ -855,7 +894,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 31,
-                            Birthday = new DateTime(1973, 5, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1973, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Leon8@gmail.com",
@@ -868,7 +907,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 32,
-                            Birthday = new DateTime(1977, 9, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1977, 9, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Rex_Crist92@hotmail.com",
@@ -876,12 +915,12 @@ namespace Persistence.Migrations
                             LastName = "Crist",
                             Password = "test",
                             PhoneNumber = "+40 743 797 312",
-                            RoleId = 2
+                            RoleId = 3
                         },
                         new
                         {
                             Id = 33,
-                            Birthday = new DateTime(1975, 12, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1975, 12, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Larry_Feil@yahoo.com",
@@ -889,12 +928,12 @@ namespace Persistence.Migrations
                             LastName = "Feil",
                             Password = "test",
                             PhoneNumber = "+40 746 837 518",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 34,
-                            Birthday = new DateTime(1975, 3, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1975, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Roberto64@hotmail.com",
@@ -902,12 +941,12 @@ namespace Persistence.Migrations
                             LastName = "Johnson",
                             Password = "test",
                             PhoneNumber = "+40 744 554 287",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 35,
-                            Birthday = new DateTime(1989, 6, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1989, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ollie_Rau@gmail.com",
@@ -915,12 +954,12 @@ namespace Persistence.Migrations
                             LastName = "Rau",
                             Password = "test",
                             PhoneNumber = "+40 749 185 137",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 36,
-                            Birthday = new DateTime(1975, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1975, 10, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Joshua_Gislason79@yahoo.com",
@@ -928,12 +967,12 @@ namespace Persistence.Migrations
                             LastName = "Gislason",
                             Password = "test",
                             PhoneNumber = "+40 747 875 516",
-                            RoleId = 2
+                            RoleId = 3
                         },
                         new
                         {
                             Id = 37,
-                            Birthday = new DateTime(1997, 10, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1997, 10, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Jacquelyn93@gmail.com",
@@ -946,7 +985,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 38,
-                            Birthday = new DateTime(1986, 4, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1986, 4, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Courtney46@hotmail.com",
@@ -954,12 +993,12 @@ namespace Persistence.Migrations
                             LastName = "Konopelski",
                             Password = "test",
                             PhoneNumber = "+40 745 367 305",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 39,
-                            Birthday = new DateTime(1988, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1988, 6, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Don_VonRueden49@hotmail.com",
@@ -967,12 +1006,12 @@ namespace Persistence.Migrations
                             LastName = "VonRueden",
                             Password = "test",
                             PhoneNumber = "+40 748 036 666",
-                            RoleId = 2
+                            RoleId = 3
                         },
                         new
                         {
                             Id = 40,
-                            Birthday = new DateTime(1975, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1975, 3, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Isabel_Barrows@hotmail.com",
@@ -985,7 +1024,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 41,
-                            Birthday = new DateTime(1998, 3, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1998, 3, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Duane_Murphy76@yahoo.com",
@@ -998,7 +1037,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 42,
-                            Birthday = new DateTime(1991, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1991, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Homer.Purdy@gmail.com",
@@ -1011,7 +1050,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 43,
-                            Birthday = new DateTime(1977, 1, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1977, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Carolyn14@yahoo.com",
@@ -1019,12 +1058,12 @@ namespace Persistence.Migrations
                             LastName = "Deckow",
                             Password = "test",
                             PhoneNumber = "+40 747 021 182",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 44,
-                            Birthday = new DateTime(1989, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1989, 11, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Vivian.Maggio22@hotmail.com",
@@ -1032,12 +1071,12 @@ namespace Persistence.Migrations
                             LastName = "Maggio",
                             Password = "test",
                             PhoneNumber = "+40 742 063 443",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 45,
-                            Birthday = new DateTime(1991, 10, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1991, 11, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ramon73@gmail.com",
@@ -1045,12 +1084,12 @@ namespace Persistence.Migrations
                             LastName = "O'Conner",
                             Password = "test",
                             PhoneNumber = "+40 749 795 409",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 46,
-                            Birthday = new DateTime(1979, 12, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1979, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Roger_Brekke44@hotmail.com",
@@ -1063,7 +1102,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 47,
-                            Birthday = new DateTime(1995, 1, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1995, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ralph66@gmail.com",
@@ -1071,12 +1110,12 @@ namespace Persistence.Migrations
                             LastName = "Ankunding",
                             Password = "test",
                             PhoneNumber = "+40 749 396 483",
-                            RoleId = 2
+                            RoleId = 3
                         },
                         new
                         {
                             Id = 48,
-                            Birthday = new DateTime(1993, 7, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1993, 7, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Garrett14@gmail.com",
@@ -1084,12 +1123,12 @@ namespace Persistence.Migrations
                             LastName = "Connelly",
                             Password = "test",
                             PhoneNumber = "+40 740 621 804",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 49,
-                            Birthday = new DateTime(1991, 3, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1991, 3, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ginger.Armstrong@gmail.com",
@@ -1097,12 +1136,12 @@ namespace Persistence.Migrations
                             LastName = "Armstrong",
                             Password = "test",
                             PhoneNumber = "+40 743 272 815",
-                            RoleId = 1
+                            RoleId = 2
                         },
                         new
                         {
                             Id = 50,
-                            Birthday = new DateTime(1979, 12, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1979, 12, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Kelly_Pouros@yahoo.com",
@@ -1158,7 +1197,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 13, 17, 33, 68, DateTimeKind.Unspecified).AddTicks(8686), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(7458), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             GearType = 1,
                             IdentityId = 1,
@@ -1167,37 +1206,82 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 13, 17, 33, 68, DateTimeKind.Unspecified).AddTicks(8686), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(7458), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            GearType = 2,
-                            IdentityId = 8,
+                            GearType = 1,
+                            IdentityId = 4,
                             Location = "Strada Crișul 7"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 13, 17, 33, 68, DateTimeKind.Unspecified).AddTicks(8686), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(7458), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
-                            GearType = 2,
-                            IdentityId = 19,
+                            GearType = 1,
+                            IdentityId = 7,
                             Location = "Strada Crișul 7"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 13, 17, 33, 68, DateTimeKind.Unspecified).AddTicks(8686), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(7458), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             GearType = 1,
-                            IdentityId = 23,
+                            IdentityId = 8,
                             Location = "Strada Crișul 7"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 13, 17, 33, 68, DateTimeKind.Unspecified).AddTicks(8686), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(7458), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             GearType = 1,
+                            IdentityId = 10,
+                            Location = "Strada Crișul 7"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(7458), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            GearType = 2,
+                            IdentityId = 13,
+                            Location = "Strada Crișul 7"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(7458), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            GearType = 2,
                             IdentityId = 24,
+                            Location = "Strada Crișul 7"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(7458), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            GearType = 2,
+                            IdentityId = 25,
+                            Location = "Strada Crișul 7"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(7458), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            GearType = 2,
+                            IdentityId = 26,
+                            Location = "Strada Crișul 7"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(7458), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedBy = "System Seeding",
+                            GearType = 2,
+                            IdentityId = 28,
                             Location = "Strada Crișul 7"
                         });
                 });
@@ -1238,50 +1322,90 @@ namespace Persistence.Migrations
                         new
                         {
                             InstructorId = 1,
-                            CarId = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 68, DateTimeKind.Unspecified).AddTicks(7787), new TimeSpan(0, 3, 0, 0, 0)),
+                            CarId = 2,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(6937), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 1
                         },
                         new
                         {
                             InstructorId = 1,
-                            CarId = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 68, DateTimeKind.Unspecified).AddTicks(7787), new TimeSpan(0, 3, 0, 0, 0)),
+                            CarId = 6,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(6937), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 2
                         },
                         new
                         {
                             InstructorId = 2,
-                            CarId = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 68, DateTimeKind.Unspecified).AddTicks(7787), new TimeSpan(0, 3, 0, 0, 0)),
+                            CarId = 3,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(6937), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 3
                         },
                         new
                         {
                             InstructorId = 3,
-                            CarId = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 68, DateTimeKind.Unspecified).AddTicks(7787), new TimeSpan(0, 3, 0, 0, 0)),
+                            CarId = 5,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(6937), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 4
                         },
                         new
                         {
                             InstructorId = 4,
-                            CarId = 4,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 68, DateTimeKind.Unspecified).AddTicks(7787), new TimeSpan(0, 3, 0, 0, 0)),
+                            CarId = 6,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(6937), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 5
                         },
                         new
                         {
                             InstructorId = 5,
-                            CarId = 5,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 16, 17, 33, 68, DateTimeKind.Unspecified).AddTicks(7787), new TimeSpan(0, 3, 0, 0, 0)),
+                            CarId = 9,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(6937), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Id = 6
+                        },
+                        new
+                        {
+                            InstructorId = 6,
+                            CarId = 1,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(6937), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedBy = "System Migration",
+                            Id = 7
+                        },
+                        new
+                        {
+                            InstructorId = 7,
+                            CarId = 4,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(6937), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedBy = "System Migration",
+                            Id = 8
+                        },
+                        new
+                        {
+                            InstructorId = 8,
+                            CarId = 7,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(6937), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedBy = "System Migration",
+                            Id = 9
+                        },
+                        new
+                        {
+                            InstructorId = 9,
+                            CarId = 8,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(6937), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedBy = "System Migration",
+                            Id = 10
+                        },
+                        new
+                        {
+                            InstructorId = 10,
+                            CarId = 10,
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 12, 43, 48, 178, DateTimeKind.Unspecified).AddTicks(6937), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedBy = "System Migration",
+                            Id = 10
                         });
                 });
 
@@ -1339,7 +1463,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 13, 17, 33, 70, DateTimeKind.Unspecified).AddTicks(6562), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 179, DateTimeKind.Unspecified).AddTicks(8598), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             InstructorId = 1,
                             LessonStatus = 0,
@@ -1349,7 +1473,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 13, 17, 33, 70, DateTimeKind.Unspecified).AddTicks(6562), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 179, DateTimeKind.Unspecified).AddTicks(8598), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             InstructorId = 2,
                             LessonStatus = 0,
@@ -1359,7 +1483,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 13, 17, 33, 70, DateTimeKind.Unspecified).AddTicks(6562), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 179, DateTimeKind.Unspecified).AddTicks(8598), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             InstructorId = 1,
                             LessonStatus = 0,
@@ -1443,7 +1567,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 13, 17, 33, 73, DateTimeKind.Unspecified).AddTicks(7667), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 181, DateTimeKind.Unspecified).AddTicks(9696), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             GearType = 1,
                             IdentityId = 1
@@ -1451,7 +1575,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 24, 13, 17, 33, 73, DateTimeKind.Unspecified).AddTicks(7667), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 26, 9, 43, 48, 181, DateTimeKind.Unspecified).AddTicks(9696), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             GearType = 1,
                             IdentityId = 7
@@ -1475,6 +1599,17 @@ namespace Persistence.Migrations
                     b.Navigation("Policy");
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Car", b =>
+                {
+                    b.HasOne("Domain.Entities.CarModel", "CarModel")
+                        .WithMany("Cars")
+                        .HasForeignKey("CarModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CarModel");
                 });
 
             modelBuilder.Entity("Domain.Entities.Identity", b =>
@@ -1567,6 +1702,11 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.Car", b =>
                 {
                     b.Navigation("InstructorCars");
+                });
+
+            modelBuilder.Entity("Domain.Entities.CarModel", b =>
+                {
+                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("Domain.Entities.Identity", b =>

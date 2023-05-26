@@ -1,8 +1,6 @@
 ﻿using Application.DTOs.Car;
 using Application.Features.Queries.Cars;
 using Application.Interfaces;
-using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Domain.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -13,12 +11,10 @@ namespace Application.Features.QueryHandlers
         IRequestHandler<GetCarModelListQuery, IEnumerable<CarModelDto>>
     {
         private readonly IRepository<Car> _carRepository;
-        private readonly IMapper _mapper;
 
-        public CarQueryHandler(IRepository<Car> carRepository, IMapper mapper)
+        public CarQueryHandler(IRepository<Car> carRepository)
         {
             _carRepository = carRepository;
-            _mapper = mapper;
         }
 
         public async Task<IEnumerable<CarModelDto>> Handle(GetCarModelListQuery request, CancellationToken cancellationToken)
@@ -26,8 +22,12 @@ namespace Application.Features.QueryHandlers
             return await _carRepository
                 .Read()
                 .AsNoTracking()
-                .Where(c => c.CarGear == request.CarGear)
-                .ProjectTo<CarModelDto>(_mapper.ConfigurationProvider)
+                .Where(c => c.CarModel.CarGear == request.CarGear)
+                .Select(c => new CarModelDto
+                {
+                    Manufacturer = c.CarModel.Manufacturer,
+                    Model = c.CarModel.Model,
+                })
                 .Distinct()
                 .OrderBy(c => c.Manufacturer)
                 .ToListAsync(cancellationToken);
