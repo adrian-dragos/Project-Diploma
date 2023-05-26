@@ -59,3 +59,21 @@
 .person-icon {
   margin: 0 10px 2px;
 }
+
+::ng-deep .mat-calendar-body-selected {
+  background-color: #20a8d8;
+}
+
+::ng-deep .mat-calendar-body-active  {
+  background-color: red;
+}
+
+@media (hover: hover) {
+  ::ng-deep .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover>.mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+    background-color: rgba(32, 168, 216, .3);
+  }
+}
+
+::ng-deep .cdk-program-focused .mat-calendar-body-active .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+  background-color: rgba(32, 168, 216, .3) ;
+}
