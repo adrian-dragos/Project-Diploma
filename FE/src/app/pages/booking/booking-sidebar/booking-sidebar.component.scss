@@ -8,7 +8,6 @@
   margin: 0 0 10px;
 }
 
-
 .mdc-text-field,
 .mdc-text-field--filled:not  {
   background-color: #fff;
@@ -62,10 +61,6 @@
 
 ::ng-deep .mat-calendar-body-selected {
   background-color: #20a8d8;
-}
-
-::ng-deep .mat-calendar-body-active  {
-  background-color: red;
 }
 
 @media (hover: hover) {

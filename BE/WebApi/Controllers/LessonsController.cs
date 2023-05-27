@@ -44,5 +44,17 @@ namespace WebApi.Controllers
             return Ok(response);
         }
 
+        [HttpPost("available")]
+        public async Task<ActionResult<IEnumerable<GetAvailableLessonsViewModel>>> GetAvailableLessons([FromBody] LessonFilterViewModel filter)
+        {
+            var query = _mapper.Map<GetAvailableLessonsListQuery>(filter);
+
+            var lessons = await _mediator.Send(query);
+
+            var response = _mapper.Map<IEnumerable<GetAvailableLessonsViewModel>>(lessons);
+
+            return Ok(response);
+        }
+
     }
 }

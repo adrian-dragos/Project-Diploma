@@ -1,33 +1,40 @@
 <div class="booking-lessons">
   <div class="booking-lessons-header">
-    <button mat-button class="today-button">Today</button>
-    <div>23 - 28 May</div>
+    <button 
+      mat-button 
+      class="today-button" 
+      (click)="onTodayButtonClick()">
+      Today
+    </button>
+    <div> {{ selectedDate | date:'d MMMM'}} - {{ dueDate | date:'d MMMM'}}</div>
     <div>
-      <button mat-icon-button>
+      <button mat-icon-button  (click)="onBackwardButtonClick()">
         <mat-icon class="arrow-icon">keyboard_arrow_left</mat-icon>
       </button>
-      <button mat-icon-button>
+      <button mat-icon-button  (click)="onForwardButtonClick()">
         <mat-icon class="arrow-icon">keyboard_arrow_right</mat-icon>
       </button>
     </div>
   </div>
   
   <mat-accordion multi displayMode="flat">
-    <mat-expansion-panel *ngFor="let item of items" class="booking-lessons-mat-expansion-panel">
+    <mat-expansion-panel *ngFor="let lesson of lessons" class="booking-lessons-mat-expansion-panel" [expanded]="lesson.lessonsDetails.length > 0">
       <mat-expansion-panel-header>
-        <mat-panel-title> {{item | date:'EEEE, dd LLLL yyyy'}} </mat-panel-title>
+        <mat-panel-title> {{ lesson.date | date:'EEEE, d LLLL yyyy'}} </mat-panel-title>
         <mat-panel-description>
           Instructor
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <div class="panel-lesson">
-        <div> 9:00 - 10:30 </div>
-        <div> Charlie David/ Renault Zoe/ Automatic</div>
-      </div>
-      <div class="panel-lesson">
-        <div> 10:30 - 12:00 </div>
-        <div> Charlie David/ Renault Zoe/ Automatic</div>
-      </div>
+      <ng-container *ngIf="lesson.lessonsDetails.length > 0; else noLessons">
+        <div *ngFor="let lessonsDetails of lesson.lessonsDetails" class="panel-lesson">
+          <div> {{lessonsDetails.startTime | date:'h:mm' }} - {{lessonsDetails.endTime | date:'h:mm'}} </div>
+          <div> {{lessonsDetails.instructorName }} / {{lessonsDetails.carManufacturer }} {{lessonsDetails.carModel }}/  {{ getGearTypeText(lessonsDetails.carGear) }} </div>
+        </div>
+      </ng-container>
+      <ng-template #noLessons>
+        <div class="no-lessons-message"> There are no available lessons </div>
+      </ng-template>
+     
     </mat-expansion-panel>
   </mat-accordion>
 </div>

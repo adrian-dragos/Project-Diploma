@@ -11,7 +11,9 @@ namespace Domain.Entities
         public Student? Student { get; set; }
         public DateTimeOffset StartTime { get; set; }
         public LessonSatus LessonStatus { get; set; }
-        public int? ReviewId { get; set; }   
+        public int? ReviewId { get; set; }
         public Review Review { get; set; }
+        public int CarId { get; set; }
+        public Car Car { get; set; }
     }
 }

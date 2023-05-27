@@ -21,99 +21,32 @@ namespace Persistence.EntityConfigurations
             var now = DateTime.UtcNow;
             var createdBy = "System Seeding";
 
-            var instructors = new List<Instructor>()
+            var instructors = new List<Instructor>();
+            int[] instructorRoleIds = { 1, 4, 7, 8, 10, 13, 17, 19, 20, 24, 25, 26, 28, 30, 31, 32, 36, 37, 39, 40, 41, 46, 47, 50 };
+            string[] locations = { "Strada Crișul 7", "Ion Creanga 2" };
+            var random = new Random(42);
+            var carGear = CarGear.Manual;
+            var switchGearSeedingIndex = instructorRoleIds.Length / 2;
+
+            for (int i = 0; i < instructorRoleIds.Length; i++)
             {
-                new Instructor
+                int randomIndex = random.Next(0, locations.Length);
+                instructors.Add(new Instructor
                 {
-                    Id = 1,
+                    Id = i + 1,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    IdentityId = 1,
-                    GearType = CarGear.Manual,
-                    Location = "Strada Crișul 7"
-                },
-                new Instructor
+                    IdentityId = instructorRoleIds[i],
+                    GearType = carGear,
+                    Location = locations[randomIndex]
+                });
+
+                var switchToAutomaticGearSeeding = i == switchGearSeedingIndex;
+                if (switchToAutomaticGearSeeding)
                 {
-                    Id = 2,
-                    CreatedAt = now,
-                    CreatedBy = createdBy,
-                    IdentityId = 4,
-                    GearType = CarGear.Manual,
-                    Location = "Strada Crișul 7"
-                },
-                new Instructor
-                {
-                    Id = 3,
-                    CreatedAt = now,
-                    CreatedBy = createdBy,
-                    IdentityId = 7,
-                    GearType = CarGear.Manual,
-                    Location = "Strada Crișul 7"
-                },
-                new Instructor
-                {
-                    Id = 4,
-                    CreatedAt = now,
-                    CreatedBy = createdBy,
-                    IdentityId = 8,
-                    GearType = CarGear.Manual,
-                    Location = "Strada Crișul 7"
-                },
-                new Instructor
-                {
-                    Id = 5,
-                    CreatedAt = now,
-                    CreatedBy = createdBy,
-                    IdentityId = 10,
-                    GearType = CarGear.Manual,
-                    Location = "Strada Crișul 7"
-                },
-                new Instructor
-                {
-                    Id = 6,
-                    CreatedAt = now,
-                    CreatedBy = createdBy,
-                    IdentityId = 13,
-                    GearType = CarGear.Automatic,
-                    Location = "Strada Crișul 7"
-                },
-                new Instructor
-                {
-                    Id = 7,
-                    CreatedAt = now,
-                    CreatedBy = createdBy,
-                    IdentityId = 24,
-                    GearType = CarGear.Automatic,
-                    Location = "Strada Crișul 7"
-                },
-                new Instructor
-                {
-                    Id = 8,
-                    CreatedAt = now,
-                    CreatedBy = createdBy,
-                    IdentityId = 25,
-                    GearType = CarGear.Automatic,
-                    Location = "Strada Crișul 7"
-                },
-                new Instructor
-                {
-                    Id = 9,
-                    CreatedAt = now,
-                    CreatedBy = createdBy,
-                    IdentityId = 26,
-                    GearType = CarGear.Automatic,
-                    Location = "Strada Crișul 7"
-                },
-                new Instructor
-                {
-                    Id = 10,
-                    CreatedAt = now,
-                    CreatedBy = createdBy,
-                    IdentityId = 28,
-                    GearType = CarGear.Automatic,
-                    Location = "Strada Crișul 7"
+                    carGear = CarGear.Automatic;
                 }
-            };
+            }
             return instructors;
         }
     }

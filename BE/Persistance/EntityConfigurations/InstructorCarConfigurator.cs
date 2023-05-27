@@ -81,7 +81,7 @@ namespace Persistence.EntityConfigurations
                     Id = 7,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    InstructorId = 6,
+                    InstructorId = 20,
                     CarId = 1
                 },
                 new InstructorCar()
@@ -89,7 +89,7 @@ namespace Persistence.EntityConfigurations
                     Id = 8,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    InstructorId = 7,
+                    InstructorId = 21,
                     CarId = 4
                 },
                 new InstructorCar()
@@ -97,7 +97,7 @@ namespace Persistence.EntityConfigurations
                     Id = 9,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    InstructorId = 8,
+                    InstructorId = 22,
                     CarId = 7
                 },
                 new InstructorCar()
@@ -105,7 +105,7 @@ namespace Persistence.EntityConfigurations
                     Id = 10,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    InstructorId = 9,
+                    InstructorId = 23,
                     CarId = 8
                 },
                 new InstructorCar()
@@ -113,7 +113,7 @@ namespace Persistence.EntityConfigurations
                     Id = 10,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    InstructorId = 10,
+                    InstructorId = 24,
                     CarId = 10
                 },
             };

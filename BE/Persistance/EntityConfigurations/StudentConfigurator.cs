@@ -17,25 +17,29 @@ namespace Persistence.EntityConfigurations
             var now = DateTime.UtcNow;
             var createdBy = "System Seeding";
 
-            var students = new List<Student>()
+            var students = new List<Student>();
+            int[] studentRoleIds = { 2, 3, 5, 6, 9, 11, 12, 14, 15, 16, 18, 21, 22, 23, 27, 29, 33, 34, 35, 38, 42, 43, 44, 45, 48, 49 };
+            var carGear = CarGear.Manual;
+            var switchGearSeedingIndex = studentRoleIds.Length / 2;
+
+            for (int i = 0; i < studentRoleIds.Length; i++)
             {
-                new Student
+                students.Add(new Student
                 {
-                    Id = 1,
+                    Id = i + 1,
                     CreatedAt = now,
                     CreatedBy = createdBy,
-                    IdentityId = 1,
-                    GearType = CarGear.Manual
-                },
-                new Student
+                    IdentityId = studentRoleIds[i],
+                    GearType = carGear
+                });
+
+                var switchToAutomaticGearSeeding = i == switchGearSeedingIndex;
+                if (switchToAutomaticGearSeeding)
                 {
-                    Id = 2,
-                    CreatedAt = now,
-                    CreatedBy = createdBy,
-                    IdentityId = 7,
-                    GearType = CarGear.Manual
+                    carGear = CarGear.Automatic;
                 }
-            };
+            }
+
             return students;
         }
     }

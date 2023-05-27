@@ -1,7 +1,7 @@
 <div class="side-bar">
   <div class="calendar">
     <mat-card>
-      <mat-calendar [(selected)]="today"></mat-calendar>
+      <mat-calendar [(selected)]="selectedDate" (selectedChange)="onDateSelection($event)"></mat-calendar>
     </mat-card>
   </div>
   <div>

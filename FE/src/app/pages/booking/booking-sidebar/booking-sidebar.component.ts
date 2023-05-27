@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CarGear, CarModelViewModel, GetInstructorsFilterViewModel, InstructorClient, InstructorProfileViewModel } from '@api/api:';
+import { BookingService } from '@app/services/booking.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Subscription } from 'rxjs';
 
@@ -9,16 +10,27 @@ import { Subscription } from 'rxjs';
 	styleUrls: ['./booking-sidebar.component.scss']
 })
 @UntilDestroy()
-export class BookingSidebarComponent {
+export class BookingSidebarComponent implements OnInit {
 	// fields
 	gearType: CarGear;
 	carModels: CarModelViewModel[] = [];
 	instructors: InstructorProfileViewModel[] = [];
 	instructorSubscription: Subscription;
-	today = new Date();
+	selectedDate: Date;
 
 	// services
 	instructorClient = inject(InstructorClient);
+	bookingService = inject(BookingService);
+
+	ngOnInit(): void {
+		this.bookingService.data$.pipe(untilDestroyed(this)).subscribe((date) => {
+			this.selectedDate = date;
+		});
+	}
+
+	onDateSelection(date: Date): void {
+		this.bookingService.setData(date);
+	}
 
 	handleGearTypeChange(gearType: number): void {
 		this.gearType = gearType;
