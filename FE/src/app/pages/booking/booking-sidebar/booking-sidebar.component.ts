@@ -23,13 +23,16 @@ export class BookingSidebarComponent implements OnInit {
 	bookingService = inject(BookingService);
 
 	ngOnInit(): void {
-		this.bookingService.data$.pipe(untilDestroyed(this)).subscribe((date) => {
-			this.selectedDate = date;
-		});
+		this.bookingService
+			.getSelectedDate()
+			.pipe(untilDestroyed(this))
+			.subscribe((date) => {
+				this.selectedDate = date;
+			});
 	}
 
 	onDateSelection(date: Date): void {
-		this.bookingService.setData(date);
+		this.bookingService.setDate(date);
 	}
 
 	handleGearTypeChange(gearType: number): void {
@@ -50,25 +53,38 @@ export class BookingSidebarComponent implements OnInit {
 			.subscribe((instructors) => {
 				this.instructors = instructors;
 			});
+		this.bookingService.setGearFilter(this.gearType);
+	}
+
+	handleCarModelsFilterChange(carModels: CarModelViewModel[]): void {
+		this.carModels = carModels;
+
+		if (this.instructorSubscription) {
+			this.instructorSubscription.unsubscribe();
+		}
+
+		this.instructorSubscription = this.instructorClient
+			.getInstructors({
+				carGear: this.gearType,
+				cars: this.carModels
+			})
+			.pipe(
+				untilDestroyed({
+					carGear: this.gearType,
+					cars: this.carModels
+				})
+			)
+			.subscribe((instructors) => {
+				this.instructors = instructors;
+			});
+		this.bookingService.setCarModelsFilter(carModels);
+	}
+
+	onInstructorClick(instructorId: number): void {
+		this.bookingService.setInstructorFilter(instructorId);
 	}
 
 	getGearTypeText(gearType: number): string {
 		return CarGear[gearType];
-	}
-
-	handleCarFilterChange(carModels: CarModelViewModel[]): void {
-		console.log(carModels);
-		this.carModels = carModels;
-		const filter: GetInstructorsFilterViewModel = {
-			carGear: this.gearType,
-			cars: this.carModels
-		};
-
-		this.instructorSubscription = this.instructorClient
-			.getInstructors(filter)
-			.pipe(untilDestroyed(this))
-			.subscribe((instructors) => {
-				this.instructors = instructors;
-			});
 	}
 }

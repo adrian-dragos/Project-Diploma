@@ -59,16 +59,30 @@ namespace Application.Features.QueryHandlers
             var endDate = request.EndDate.AddDays(2);
             endDate = new DateTimeOffset(new DateTime(endDate.Year, endDate.Month, endDate.Day));
 
-            var lessons = _lessonRepository
+            var lessonsQuery = _lessonRepository
                 .Read()
                 .AsNoTracking()
                 .Include(l => l.Instructor.Identity)
                 .Include(l => l.Car.CarModel)
                 .Where(l => l.StartTime >= startDate && l.StartTime <= endDate &&
-                                l.Car.CarModel.Manufacturer == request.CarManufacturer &&
-                                l.Car.CarModel.Model == request.CarModel &&
-                                l.Car.CarModel.CarGear == request.CarGear)
-                .AsEnumerable()
+                                l.Car.CarModel.CarGear == request.CarGear);
+
+            if (request.InstructorId is not null)
+            {
+                lessonsQuery = lessonsQuery.Where(l => l.InstructorId == request.InstructorId);
+            }
+
+            var lessons = await lessonsQuery.ToListAsync(cancellationToken);
+            if (request.CarModels?.Any() ?? false) 
+            {
+                lessons = lessons
+                    .Where(l => request.CarModels.Any(c => c.Manufacturer == l.Car.CarModel.Manufacturer &&
+                             c.Model == l.Car.CarModel.Model
+                        ))
+                    .ToList();
+            }
+            
+            var result = lessons
                 .GroupBy(l => new { l.StartTime.Year, l.StartTime.Month, l.StartTime.Day })
                 .Select(l => new GetAvailableLessonsDto
                 {
@@ -88,9 +102,15 @@ namespace Application.Features.QueryHandlers
                 })
                 .ToList();
 
+            result = AddMissingDays(result, startDate, endDate);
+            return result.OrderBy(l => l.Date);
+        }
+
+        private List<GetAvailableLessonsDto> AddMissingDays(List<GetAvailableLessonsDto> lessons, DateTimeOffset startDate, DateTimeOffset endDate)
+        {
             foreach (int dayOffset in Enumerable.Range(0, (endDate - startDate).Days))
             {
-                var date = request.StartDate.AddDays(dayOffset);
+                var date = startDate.AddDays(dayOffset);
                 if (!lessons.Any(l => l.Date == date))
                 {
                     lessons.Add(new GetAvailableLessonsDto
@@ -99,7 +119,7 @@ namespace Application.Features.QueryHandlers
                     });
                 }
             }
-            return lessons.OrderBy(l => l.Date);
+            return lessons;
         }
     }
 }

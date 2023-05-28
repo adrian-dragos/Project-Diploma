@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, inject }
 import { MatSelectChange } from '@angular/material/select';
 import { CarClient, CarGear, CarModelViewModel } from '@api/api:';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { Subject } from 'rxjs';
 
 @Component({
 	selector: 'app-car-filter',
@@ -16,23 +17,31 @@ export class CarFilterComponent implements OnInit {
 	cars: CarModelViewModel[] = [];
 	selectedValues: string[] = [];
 
+	fetchCarModelsSubject: Subject<void> = new Subject<void>();
+
 	carClient = inject(CarClient);
 
 	ngOnInit(): void {
-		this.carClient
-			.getCarModels(this.carGear)
-			.pipe(untilDestroyed(this))
-			.subscribe((cars) => (this.cars = cars));
+		this.fetchCarModelsSubject.next();
+		this.initFetchCarModelsSubject();
 	}
 
 	ngOnChanges(changes: SimpleChanges): void {
 		if (changes['carGear']) {
 			this.selectedValues = [];
-			this.carClient
-				.getCarModels(this.carGear)
-				.pipe(untilDestroyed(this))
-				.subscribe((cars) => (this.cars = cars));
+			this.fetchCarModelsSubject.next();
 		}
+	}
+
+	initFetchCarModelsSubject(): void {
+		this.fetchCarModelsSubject.pipe(untilDestroyed(this)).subscribe(() => this.fetchCarModels());
+	}
+
+	fetchCarModels(): void {
+		this.carClient
+			.getCarModels(this.carGear)
+			.pipe(untilDestroyed(this))
+			.subscribe((cars) => (this.cars = cars));
 	}
 
 	onSelectionChange(event: MatSelectChange): void {

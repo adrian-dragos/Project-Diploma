@@ -20,7 +20,7 @@ namespace Application.Features.QueryHandlers
 
         public async Task<IEnumerable<InstructorProfileDto>> Handle(GetInstructorListQuery request, CancellationToken cancellationToken)
         {
-            var instructorsQuery = _instructorRepository
+            var instructors = await _instructorRepository
                 .Read()
                 .AsNoTracking()
                 .Include(i => i.InstructorCars)
@@ -41,20 +41,20 @@ namespace Application.Features.QueryHandlers
                         .ToList(),
                     Location = i.Location,
                     GearType = i.GearType
-                });
+                })
+                .ToListAsync(cancellationToken);
 
             if (request.Filter.Cars?.Any() ?? false)
             {
-                return instructorsQuery
-                    .ToList()
+                instructors = instructors
                     .Where(instructor => instructor.CarModels
                         .Any(carModel => request.Filter.Cars
                             .Any(filteredCar => filteredCar.Manufacturer == carModel.Manufacturer &&
-                                                 filteredCar.Model == carModel.Model)));
+                                                 filteredCar.Model == carModel.Model) ))
+                    .ToList();
             }
 
-            return await instructorsQuery
-                .ToListAsync(cancellationToken);
+            return instructors;
         }
     }
 }

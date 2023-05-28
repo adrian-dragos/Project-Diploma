@@ -8,7 +8,7 @@ namespace WebApi.AutoMapperProfiles
     {
         public CarProfile() 
         {
-            CreateMap<CarModelDto, CarModelViewModel>();
+            CreateMap<CarModelDto, CarModelViewModel>().ReverseMap();
         }
     }
 }

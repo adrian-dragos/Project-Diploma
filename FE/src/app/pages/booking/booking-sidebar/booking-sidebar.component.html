@@ -10,14 +10,14 @@
   </div>
   <div>
     <h2 class="sidebar-section-title">Car Model</h2>
-    <app-car-filter [carGear]="gearType" (carFilterOutput)="handleCarFilterChange($event)"></app-car-filter>
+    <app-car-filter [carGear]="gearType" (carFilterOutput)="handleCarModelsFilterChange($event)"></app-car-filter>
   </div>
   <div class="instructors-container">
     <h2 class="sidebar-section-title">Instructors</h2>
   </div>
   <mat-accordion>
     <mat-expansion-panel hideToggle *ngFor="let instructor of instructors">
-      <mat-expansion-panel-header>
+      <mat-expansion-panel-header (click)="onInstructorClick(instructor.id)">
         <mat-panel-title> 
           <mat-icon class="person-icon">
             person_outline
