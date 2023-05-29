@@ -48,7 +48,7 @@ namespace Persistence.EntityConfigurations
             for (int instructorId = instructorIdStar; instructorId <= instructorIdEnd; instructorId++)
             {
                 var month = 6;
-                for (int date = 23; date < 60; date++)
+                for (int date = 1; date < 60; date++)
                 {
                     for (double j = 8; j < 17; j += 1.50)
                     {
@@ -63,11 +63,22 @@ namespace Persistence.EntityConfigurations
                             Id = _LessonId++,
                             CreatedAt = now,
                             CreatedBy = createdBy,
-                            StartTime = new DateTimeOffset(2023, 06, date % 30 == 0 ? 30 : date % 30, hour, minutes, 0, new TimeSpan(3, 0, 0)),
+                            StartTime = new DateTimeOffset(2023, month, date % 30 == 0 ? 30 : date % 30, hour, minutes, 0, new TimeSpan(3, 0, 0)),
                             InstructorId = instructorId,
                             CarId = carIds[random.Next(1, carIds.Length)],
-                            LessonStatus = LessonSatus.Unbooked
+                            Status = LessonStatus.Unbooked
                         };
+
+                        if (j == 11 && instructorId == 1 && month >= 7)
+                        {
+                            lesson.StudentId = 1;
+                            lesson.Status = LessonStatus.BookedPaid;
+                        }
+                        if (j == 11 && instructorId == 1 && month < 7)
+                        {
+                            lesson.StudentId = 1;
+                            lesson.Status = LessonStatus.Completed;
+                        }
 
                         lessons.Add(lesson);
                     }

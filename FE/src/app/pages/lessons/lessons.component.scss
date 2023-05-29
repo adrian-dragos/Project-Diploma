@@ -4,7 +4,6 @@
   flex-direction: column;
   min-height: 70vh;
   width: 95%;
-  gap: 30px;
   background-color: #FFFFFF;
   border: 1px solid #EDEDED;
   border-radius: 5px;
@@ -19,9 +18,44 @@
   display: flex;
   height: 3em;
   justify-content: space-between;
+  margin-bottom: 30px;
   &-title {
       font-size: 30px;
       font-weight: lighter;
       font-family: "SegoeRegular", serif;
   }
 }
+
+.completed-lesson-row {
+  background-color: #f8f8f8; 
+  color: #888888;
+}
+
+.completed-status {
+  color: #4dbd74;
+}
+
+.upcoming-status {
+  color: #20a8d8;
+}
+
+
+// .mat-table {
+//   border-collapse: collapse;
+//   width: 100%;
+// }
+
+// .mat-header-cell,
+// .mat-cell {
+//   padding: 12px;
+//   text-align: left;
+//   font-weight: bold;
+//   border-bottom: 1px solid #ddd;
+// }
+
+// /* Last Row Styles */
+// .mat-row:last-child {
+//   background-color: #f8f8f8;
+// }
+
+

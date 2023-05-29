@@ -1,8 +1,10 @@
-﻿using Application.Features.Queries.Lesson;
+﻿using Application.DTOs.Paging;
+using Application.Features.Queries.Lesson;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.ViewModels.Lesson;
+using WebApi.ViewModels.Pagination;
 
 namespace WebApi.Controllers
 {
@@ -20,32 +22,43 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("student/{id}")]
-        public async Task<ActionResult<IEnumerable<GetStudentLessonsListViewModel>>> GetStudentLessons(int id)
+        [HttpPost("student/{id}")]
+        public async Task<ActionResult<PagedResultViewModel<GetStudentLessonsListViewModel>>> GetStudentLessons(
+            int id, 
+            [FromBody] PageViewModel pageViewModel)
         {
-            var query = new GetStudentLessonsListQuery { StudentId = id };
+            var query = new GetStudentLessonsListQuery {
+                StudentId = id,
+                PageDto = _mapper.Map<PageDto>(pageViewModel)
+            };
 
             var lessons = await _mediator.Send(query);
 
-            var response = _mapper.Map<IEnumerable<GetStudentLessonsListViewModel>>(lessons);
+            var response = _mapper.Map<PagedResultViewModel<GetStudentLessonsListViewModel>>(lessons);
 
             return Ok(response);
         }
 
         [HttpGet("instructor/{id}")]
-        public async Task<ActionResult<IEnumerable<GetInstructorLessonsListViewModel>>> GetInstructorLessons(int id)
+        public async Task<ActionResult<PagedResultViewModel<GetInstructorLessonsListViewModel>>> GetInstructorLessons(
+            int id,
+            [FromBody] PageViewModel pageViewModel)
         {
-            var query = new GetInstructorLessonsListQuery { InstructorId = id };
+            var query = new GetInstructorLessonsListQuery { 
+                InstructorId = id,
+                PageDto = _mapper.Map<PageDto>(pageViewModel)
+            };
 
             var lessons = await _mediator.Send(query);
 
-            var response = _mapper.Map<IEnumerable<GetInstructorLessonsListViewModel>>(lessons);
+            var response = _mapper.Map<PagedResultViewModel<GetInstructorLessonsListViewModel>>(lessons);
 
             return Ok(response);
         }
 
         [HttpPost("available")]
-        public async Task<ActionResult<IEnumerable<GetAvailableLessonsViewModel>>> GetAvailableLessons([FromBody] LessonFilterViewModel filter)
+        public async Task<ActionResult<IEnumerable<GetAvailableLessonsViewModel>>> GetAvailableLessons(
+            [FromBody] LessonFilterViewModel filter)
         {
             var query = _mapper.Map<GetAvailableLessonsListQuery>(filter);
 

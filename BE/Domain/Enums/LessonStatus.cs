@@ -1,8 +1,9 @@
 ﻿namespace Domain.Enums
 {
-    public enum LessonSatus
+    public enum LessonStatus
     {
-        Unbooked = 0,
+        Undefined = 0,
+        Unbooked,
         BookedNotPaid,
         BookedPaid,
         Completed,

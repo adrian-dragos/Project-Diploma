@@ -10,7 +10,7 @@ namespace Domain.Entities
         public int? StudentId { get; set; }
         public Student? Student { get; set; }
         public DateTimeOffset StartTime { get; set; }
-        public LessonSatus LessonStatus { get; set; }
+        public LessonStatus Status { get; set; }
         public int? ReviewId { get; set; }
         public Review Review { get; set; }
         public int CarId { get; set; }

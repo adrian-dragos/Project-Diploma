@@ -1,16 +1,18 @@
 ﻿using Application.DTOs;
 using Application.DTOs.Lesson;
+using Application.DTOs.Pagination;
 using Application.Features.Queries.Lesson;
 using Application.Interfaces;
 using Domain.Entities;
+using Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.QueryHandlers
 {
     internal sealed class LessonQueryHandler :
-        IRequestHandler<GetStudentLessonsListQuery, IEnumerable<GetStudentLessonsListDto>>,
-        IRequestHandler<GetInstructorLessonsListQuery, IEnumerable<GetInstructorLessonsListDto>>,
+        IRequestHandler<GetStudentLessonsListQuery, PagedResultDto<GetStudentLessonsListDto>>,
+        IRequestHandler<GetInstructorLessonsListQuery, PagedResultDto<GetInstructorLessonsListDto>>,
         IRequestHandler<GetAvailableLessonsListQuery, IEnumerable<GetAvailableLessonsDto>>
     {
         private readonly IRepository<Lesson> _lessonRepository;
@@ -19,37 +21,66 @@ namespace Application.Features.QueryHandlers
         {
             _lessonRepository = lessonRepository;
         }
-
-        public async Task<IEnumerable<GetStudentLessonsListDto>> Handle(GetStudentLessonsListQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResultDto<GetStudentLessonsListDto>> Handle(GetStudentLessonsListQuery request, CancellationToken cancellationToken)
         {
-            return await _lessonRepository
+            var lessonQuery = _lessonRepository
                 .Read()
                 .AsNoTracking()
                 .Where(l => l.StudentId == request.StudentId)
+                .OrderByDescending(l => l.StartTime)
                 .Select(l => new GetStudentLessonsListDto
                 {
                     Id = l.Id,
-                    LessonDate = l.StartTime,
+                    StartTime = l.StartTime,
+                    EndTime = l.StartTime.AddMinutes(90),
                     InstructorName = $"{l.Instructor.Identity.FirstName} {l.Instructor.Identity.LastName}",
-                    Location = "No Location For Now"
-                })
-                .ToListAsync(cancellationToken);
+                    Location = l.Instructor.Location,
+                    Status = l.Status
+                });
+
+            var pagedResult = new PagedResultDto<GetStudentLessonsListDto>
+            {
+                Page = request.PageDto.Page,
+                PageSize = request.PageDto.Page,
+                TotalCount = await lessonQuery.CountAsync(cancellationToken),
+                Items = await lessonQuery
+                    .Skip((request.PageDto.Page - 1) * request.PageDto.PageSize)
+                    .Take(request.PageDto.PageSize)
+                    .ToListAsync(cancellationToken)
+            };
+
+            return pagedResult;
         }
 
-        public async Task<IEnumerable<GetInstructorLessonsListDto>> Handle(GetInstructorLessonsListQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResultDto<GetInstructorLessonsListDto>> Handle(GetInstructorLessonsListQuery request, CancellationToken cancellationToken)
         {
-            return await _lessonRepository
-               .Read()
-               .AsNoTracking()
-               .Where(l => l.InstructorId == request.InstructorId)
-               .Select(l => new GetInstructorLessonsListDto
-               {
-                   Id = l.Id,
-                   LessonDate = l.StartTime,
-                   StudentName = $"{l.Student.Identity.FirstName} {l.Student.Identity.LastName}",
-                   Location = "No Location For Now"
-               })
-               .ToListAsync(cancellationToken);
+            var lessonQuery = _lessonRepository
+                .Read()
+                .AsNoTracking()
+                .Where(l => l.InstructorId == request.InstructorId)
+                .OrderByDescending(l => l.StartTime)
+                .Select(l => new GetInstructorLessonsListDto
+                {
+                    Id = l.Id,
+                    StartTime = l.StartTime,
+                    EndTime = l.StartTime.AddMinutes(90),
+                    StudentName = $"{l.Student.Identity.FirstName} {l.Student.Identity.LastName}",
+                    Location = l.Instructor.Location,
+                    Status = l.LessonStatus
+                });
+
+            var pagedResult = new PagedResultDto<GetInstructorLessonsListDto>
+            {
+                Page = request.PageDto.Page,
+                PageSize = request.PageDto.Page,
+                TotalCount = await lessonQuery.CountAsync(cancellationToken),
+                Items = await lessonQuery
+                    .Skip((request.PageDto.Page - 1) * request.PageDto.PageSize)
+                    .Take(request.PageDto.PageSize)
+                    .ToListAsync(cancellationToken)
+            };
+
+            return pagedResult;
         }
 
         public async Task<IEnumerable<GetAvailableLessonsDto>> Handle(GetAvailableLessonsListQuery request, CancellationToken cancellationToken)
@@ -65,7 +96,8 @@ namespace Application.Features.QueryHandlers
                 .Include(l => l.Instructor.Identity)
                 .Include(l => l.Car.CarModel)
                 .Where(l => l.StartTime >= startDate && l.StartTime <= endDate &&
-                                l.Car.CarModel.CarGear == request.CarGear);
+                                l.Car.CarModel.CarGear == request.CarGear &&
+                                l.Status == LessonStatus.Unbooked);
 
             if (request.InstructorId is not null)
             {

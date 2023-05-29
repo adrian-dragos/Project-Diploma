@@ -68,12 +68,7 @@ export class BookingSidebarComponent implements OnInit {
 				carGear: this.gearType,
 				cars: this.carModels
 			})
-			.pipe(
-				untilDestroyed({
-					carGear: this.gearType,
-					cars: this.carModels
-				})
-			)
+			.pipe(untilDestroyed(this))
 			.subscribe((instructors) => {
 				this.instructors = instructors;
 			});
