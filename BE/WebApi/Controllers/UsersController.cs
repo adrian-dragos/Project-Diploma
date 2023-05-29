@@ -21,11 +21,11 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserViewModel>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<UserViewModel>>> GetUsers(CancellationToken cancellationToken)
         {
             var query = new GetUserListQuery();
 
-            var users = await _mediator.Send(query);
+            var users = await _mediator.Send(query, cancellationToken);
 
             var response = _mapper.Map<IEnumerable<UserViewModel>>(users);
 
@@ -33,11 +33,13 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserViewModel>> GetUser(int id)
+        public async Task<ActionResult<UserViewModel>> GetUser(
+            int id,
+            CancellationToken cancellationToken)
         {
             var query = new GetUserQuery { Id = id };
 
-            var user = await _mediator.Send(query);
+            var user = await _mediator.Send(query, cancellationToken);
 
             var response = _mapper.Map<UserViewModel>(user);
 

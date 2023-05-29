@@ -7,36 +7,41 @@
         Edit
       </button>
     </div>
-    <div class="profile-details">
-      <div class="profile-picture">
-        <span class="profile-picture-initials"> AD </span>
-      </div>
-      <div class="profile-info">
-        <div>
-          <p> Fist Name </p>
-          <p> Adrian </p>
+    <div>
+      <app-loading-spinner *ngIf="isLoading; else profile" class="loader"></app-loading-spinner>
+      <ng-template #profile>
+        <div class="profile-details">
+          <div class="profile-picture">
+            <span class="profile-picture-initials"> AD </span>
+          </div>
+          <div class="profile-info">
+            <div>
+              <p> Fist Name </p>
+              <p> {{ student.firstName }} </p>
+            </div>
+            <div>
+              <p> Last Name </p>
+              <p> {{ student.lastName }} </p>
+            </div>
+            <div>
+              <p> Birthday </p>
+              <p> {{ student.birthday | date: 'dd.MM.yyyy'}} </p>
+            </div>
+            <div>
+              <p> Email </p>
+              <p> {{ student.email }} </p>
+            </div>
+            <div>
+              <p> Phone Number </p>
+              <p> {{ student.phoneNumber }} </p>
+            </div>
+            <div>
+              <p> Gear </p>
+              <p> {{ getGearTypeText(student.gear) }} </p>
+            </div>
+          </div>
         </div>
-        <div>
-          <p> Last Name </p>
-          <p> Dragos </p>
-        </div>
-        <div>
-          <p> Age </p>
-          <p> 22 </p>
-        </div>
-        <div>
-          <p> Email </p>
-          <p> adrian@gmail.com </p>
-        </div>
-        <div>
-          <p> Phone Number </p>
-          <p> 0749250142 </p>
-        </div>
-        <div>
-          <p> Gear </p>
-          <p> Mechanical </p>
-        </div>
-      </div>
+      </ng-template>
     </div>
   </div>
 </div>

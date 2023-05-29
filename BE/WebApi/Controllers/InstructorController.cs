@@ -21,14 +21,16 @@ namespace WebApi.Controllers
         }
 
         [HttpPost()]
-        public async Task<ActionResult<IEnumerable<InstructorProfileViewModel>>> GetInstructors([FromBody]GetInstructorsFilterViewModel filter)
+        public async Task<ActionResult<IEnumerable<InstructorProfileViewModel>>> GetInstructors(
+            [FromBody]GetInstructorsFilterViewModel filter,
+            CancellationToken cancellationToken)
         {
             var query = new GetInstructorListQuery
             {
                 Filter = _mapper.Map<GetInstructorsFilterDto>(filter)
             };
 
-                var instructors = await _mediator.Send(query);
+                var instructors = await _mediator.Send(query, cancellationToken);
 
             var response = _mapper.Map<IEnumerable<InstructorProfileViewModel>>(instructors);
 

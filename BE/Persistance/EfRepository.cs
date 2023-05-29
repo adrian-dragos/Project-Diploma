@@ -42,6 +42,13 @@ namespace Persistence
             return entity;
         }
 
+        public void Update(T entity)
+        {
+            _dbContext.Entry(entity).State= EntityState.Modified;
+            Audit();
+            _dbContext.SaveChanges();
+        }
+
         private void Audit()
         {
             var now = DateTimeOffset.Now;

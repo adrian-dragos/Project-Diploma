@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
 	selector: 'app-logout-dialog',
@@ -7,9 +7,13 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 	styleUrls: ['./logout-dialog.component.scss']
 })
 export class LogoutDialogComponent {
-	constructor(public dialogRef: MatDialogRef<LogoutDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: string) {}
+	constructor(public readonly dialogRef: MatDialogRef<LogoutDialogComponent>) {}
 
-	cancelDialog(): void {
+	onCancel(): void {
 		this.dialogRef.close();
+	}
+
+	onConfirm(): void {
+		this.dialogRef.close(true);
 	}
 }

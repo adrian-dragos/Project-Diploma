@@ -1,5 +1,9 @@
 <h2 mat-dialog-title>Confirm Logout</h2>
 <div mat-dialog-actions align="end">
-    <button mat-button (click)="cancelDialog()">Cancel</button>
-    <button mat-button [mat-dialog-close]="true" class="logout-button">Logout</button>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button (click)="onConfirm()"
+        [mat-dialog-close]="true" 
+        class="logout-button">
+        Logout
+    </button>
 </div>

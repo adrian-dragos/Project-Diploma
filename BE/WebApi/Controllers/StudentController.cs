@@ -1,4 +1,5 @@
-﻿using Application.Features.Queries.Student;
+﻿using Application.Features.Commands.Student;
+using Application.Features.Queries.Student;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -21,15 +22,32 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<StudentProfileViewModel>> GetStudent(int id)
+        public async Task<ActionResult<StudentProfileViewModel>> GetStudentProfile(
+            int id, 
+            CancellationToken cancellation)
         {
             var query = new GetStudentProfileQuery { Id = id };
 
-            var user = await _mediator.Send(query);
+            var user = await _mediator.Send(query, cancellation);
 
             var response = _mapper.Map<StudentProfileViewModel>(user);
 
             return Ok(response);
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> UpdateStudentProfile(
+            int id,
+            [FromBody] UpdateStudentProfileViewModel student,
+            CancellationToken cancellation)
+        { 
+        
+            var query = _mapper.Map<UpdateStudentProfileCommand>(student);
+            query.Id = id;
+
+            await _mediator.Send(query, cancellation);
+
+            return NoContent();
         }
     }
 }

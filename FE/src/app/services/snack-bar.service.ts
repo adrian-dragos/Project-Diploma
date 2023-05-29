@@ -26,4 +26,13 @@ export class SnackBarService {
 			panelClass: ['warning-snackbar']
 		});
 	}
+
+	openError(message: string): MatSnackBarRef<TextOnlySnackBar> {
+		return this.snackBar.open(message, undefined, {
+			verticalPosition: 'top',
+			horizontalPosition: 'center',
+			duration: this.durationInMilliseconds,
+			panelClass: ['error-snackbar']
+		});
+	}
 }

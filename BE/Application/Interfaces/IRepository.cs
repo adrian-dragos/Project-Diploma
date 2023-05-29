@@ -7,5 +7,6 @@ namespace Application.Interfaces
         IQueryable<T> Read();
         Task<T> AddAsync(T entity);
         Task<T> TryGetByIdAsync(int id, CancellationToken cancellationToken);
+        void Update(T student);
     }
 }

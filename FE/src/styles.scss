@@ -13,6 +13,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   text-align: center;
 }
 
+.error-snackbar {
+  --mdc-snackbar-supporting-text-color: #8B0000 !important;
+  text-align: center;
+}
+
 .booking-lessons-mat-expansion-panel .mat-expansion-panel-body {
   padding: 10px 0px !important;
 }

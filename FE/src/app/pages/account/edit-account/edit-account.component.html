@@ -1,1 +1,52 @@
-<p>edit-account works!</p>
+<div class="account-page-wrapper">
+  <div class="account-wrapper">
+    <div class="account-header">
+      <h3 class="account-header-title">Account</h3>
+      <button mat-button routerLink="/account/edit">
+        <mat-icon>edit</mat-icon>
+        Edit
+      </button>
+    </div>
+    <app-loading-spinner *ngIf="isLoading; else profile" class="loader"></app-loading-spinner>
+    <ng-template #profile></ng-template>
+    <div class="profile-details">
+      <div class="profile-picture">
+        <span class="profile-picture-initials"> AD </span>
+      </div>
+      <div>
+        <form [formGroup]="myForm">
+          <div class="edit-fields">
+            <mat-form-field class="form-field">
+              <mat-label>Phone Number</mat-label>
+              <input matInput formControlName="phoneNumber" required>
+            </mat-form-field>
+          
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" required email>
+            </mat-form-field>
+    
+            <mat-form-field>
+              <mat-label>Gear</mat-label>
+              <mat-select formControlName="gear" placeholder="Select an option" required>
+                <mat-option *ngFor="let option of gearEnum | keyvalue" [value]="option.value">
+                  {{ getGearTypeText(option.value) }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-buttons">
+            <button mat-button class="cancel-button" (click)="routeToAccount()">Cancel</button>
+            <button mat-raised-button 
+              class="save-button" 
+              color="primary" 
+              type="submit" 
+              (click)="submitForm()">
+                Save
+              </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,11 +22,13 @@ namespace WebApi.Controllers
 
 
         [HttpPost("models")]
-        public async Task<ActionResult<IEnumerable<CarModelViewModel>>> GetCarModels([FromBody] CarGear carGear)
+        public async Task<ActionResult<IEnumerable<CarModelViewModel>>> GetCarModels(
+            [FromBody] CarGear carGear,
+            CancellationToken cancellationToken)
         {
             var query = new GetCarModelListQuery { CarGear = carGear};
 
-            var carModels = await _mediator.Send(query);
+            var carModels = await _mediator.Send(query, cancellationToken);
 
             var response = _mapper.Map<IEnumerable<CarModelViewModel>>(carModels);
 

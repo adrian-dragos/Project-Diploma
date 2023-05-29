@@ -25,14 +25,15 @@ namespace WebApi.Controllers
         [HttpPost("student/{id}")]
         public async Task<ActionResult<PagedResultViewModel<GetStudentLessonsListViewModel>>> GetStudentLessons(
             int id, 
-            [FromBody] PageViewModel pageViewModel)
+            [FromBody] PageViewModel pageViewModel,
+            CancellationToken cancellationToken)
         {
             var query = new GetStudentLessonsListQuery {
                 StudentId = id,
                 PageDto = _mapper.Map<PageDto>(pageViewModel)
             };
 
-            var lessons = await _mediator.Send(query);
+            var lessons = await _mediator.Send(query, cancellationToken);
 
             var response = _mapper.Map<PagedResultViewModel<GetStudentLessonsListViewModel>>(lessons);
 
@@ -42,14 +43,15 @@ namespace WebApi.Controllers
         [HttpGet("instructor/{id}")]
         public async Task<ActionResult<PagedResultViewModel<GetInstructorLessonsListViewModel>>> GetInstructorLessons(
             int id,
-            [FromBody] PageViewModel pageViewModel)
+            [FromBody] PageViewModel pageViewModel,
+            CancellationToken cancellationToken)
         {
             var query = new GetInstructorLessonsListQuery { 
                 InstructorId = id,
                 PageDto = _mapper.Map<PageDto>(pageViewModel)
             };
 
-            var lessons = await _mediator.Send(query);
+            var lessons = await _mediator.Send(query, cancellationToken);
 
             var response = _mapper.Map<PagedResultViewModel<GetInstructorLessonsListViewModel>>(lessons);
 
@@ -58,11 +60,12 @@ namespace WebApi.Controllers
 
         [HttpPost("available")]
         public async Task<ActionResult<IEnumerable<GetAvailableLessonsViewModel>>> GetAvailableLessons(
-            [FromBody] LessonFilterViewModel filter)
+            [FromBody] LessonFilterViewModel filter,
+            CancellationToken cancellationToken)
         {
             var query = _mapper.Map<GetAvailableLessonsListQuery>(filter);
 
-            var lessons = await _mediator.Send(query);
+            var lessons = await _mediator.Send(query, cancellationToken);
 
             var response = _mapper.Map<IEnumerable<GetAvailableLessonsViewModel>>(lessons);
 
