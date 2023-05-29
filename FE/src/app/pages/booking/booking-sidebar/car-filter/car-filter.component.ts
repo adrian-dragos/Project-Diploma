@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, inject }
 import { MatSelectChange } from '@angular/material/select';
 import { CarClient, CarGear, CarModelViewModel } from '@api/api:';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
 	selector: 'app-car-filter',
@@ -17,7 +17,7 @@ export class CarFilterComponent implements OnInit {
 	cars: CarModelViewModel[] = [];
 	selectedValues: string[] = [];
 
-	fetchCarModelsSubject: Subject<void> = new Subject<void>();
+	fetchCarModelsSubject: BehaviorSubject<void> = new BehaviorSubject<void>(undefined);
 
 	carClient = inject(CarClient);
 
@@ -34,7 +34,9 @@ export class CarFilterComponent implements OnInit {
 	}
 
 	initFetchCarModelsSubject(): void {
-		this.fetchCarModelsSubject.pipe(untilDestroyed(this)).subscribe(() => this.fetchCarModels());
+		this.fetchCarModelsSubject.pipe(untilDestroyed(this)).subscribe(() => {
+			this.fetchCarModels();
+		});
 	}
 
 	fetchCarModels(): void {
