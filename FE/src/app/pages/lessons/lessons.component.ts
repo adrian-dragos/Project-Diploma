@@ -9,7 +9,7 @@ import {
 	PageViewModel,
 	PagedResultViewModelOfGetStudentLessonsListViewModel
 } from '@api/api:';
-import { BehaviorSubject, Subject, merge } from 'rxjs';
+import { BehaviorSubject, merge } from 'rxjs';
 
 @Component({
 	selector: 'app-lessons',

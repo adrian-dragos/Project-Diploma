@@ -61,7 +61,6 @@ export class EditAccountComponent implements OnInit {
 			phoneNumber: this.myForm.value.phoneNumber,
 			carGear: this.myForm.value.gear
 		};
-		console.log(student);
 
 		this.studentClient
 			.updateStudentProfile(1, student)
@@ -85,7 +84,6 @@ export class EditAccountComponent implements OnInit {
 			.pipe(untilDestroyed(this))
 			.subscribe((result) => {
 				if (result === true) {
-					console.log(result);
 					this.router.navigate(['/account']);
 				}
 			});

@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CarGear, GetAvailableLessonsViewModel, LessonFilterViewModel, LessonsClient } from '@api/api:';
+import { CarGear, GetAvailableLessonsViewModel, LessonsClient } from '@api/api:';
 import { BookingConstants } from '@app/constants/booking.constatns';
 import { BookingService } from '@app/services/booking.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -28,8 +28,6 @@ export class BookingLessonsComponent implements OnInit {
 			.getLessonsFilter()
 			.pipe(
 				tap((filter) => {
-					console.log('banana');
-					console.log(filter);
 					this.selectedDate = filter.startDate;
 					this.dueDate = this.getDueDate(filter.startDate);
 				}),
