@@ -14,6 +14,7 @@ import { concatMap, tap } from 'rxjs';
 export class BookingLessonsComponent implements OnInit {
 	selectedDate: Date;
 	dueDate: Date;
+	isLoading = true;
 	lessons: GetAvailableLessonsViewModel[];
 
 	bookingService = inject(BookingService);
@@ -28,6 +29,7 @@ export class BookingLessonsComponent implements OnInit {
 			.getLessonsFilter()
 			.pipe(
 				tap((filter) => {
+					this.isLoading = true;
 					this.selectedDate = filter.startDate;
 					this.dueDate = this.getDueDate(filter.startDate);
 				}),
@@ -36,6 +38,7 @@ export class BookingLessonsComponent implements OnInit {
 			)
 			.subscribe((lessons) => {
 				this.lessons = lessons;
+				this.isLoading = false;
 			});
 	}
 

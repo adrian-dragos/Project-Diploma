@@ -19,6 +19,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GearButtonsComponent } from './booking-sidebar/gear-buttons/gear-buttons.component';
 import { CarFilterComponent } from './booking-sidebar/car-filter/car-filter.component';
 import { BookingService } from '@app/services/booking.service';
+import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loading-spinner.module';
 
 @NgModule({
 	imports: [
@@ -35,7 +36,8 @@ import { BookingService } from '@app/services/booking.service';
 		MatChipsModule,
 		MatRadioModule,
 		ReactiveFormsModule,
-		FormsModule
+		FormsModule,
+		LoadingSpinnerModule
 	],
 	providers: [InstructorClient, CarClient, BookingService, LessonsClient],
 	declarations: [BookingComponent, BookingSidebarComponent, BookingLessonsComponent, GearButtonsComponent, CarFilterComponent]

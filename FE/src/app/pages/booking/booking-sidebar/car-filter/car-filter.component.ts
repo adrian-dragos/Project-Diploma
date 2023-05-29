@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges, inject }
 import { MatSelectChange } from '@angular/material/select';
 import { CarClient, CarGear, CarModelViewModel } from '@api/api:';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
 	selector: 'app-car-filter',

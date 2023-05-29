@@ -16,25 +16,28 @@
       </button>
     </div>
   </div>
-  
-  <mat-accordion multi displayMode="flat">
-    <mat-expansion-panel *ngFor="let lesson of lessons" class="booking-lessons-mat-expansion-panel" [expanded]="lesson.lessonsDetails.length > 0">
-      <mat-expansion-panel-header>
-        <mat-panel-title> {{ lesson.date | date:'EEEE, d LLLL yyyy'}} </mat-panel-title>
-        <mat-panel-description>
-          Instructor
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <ng-container *ngIf="lesson.lessonsDetails.length > 0; else noLessons">
-        <div *ngFor="let lessonsDetails of lesson.lessonsDetails" class="panel-lesson">
-          <div> {{lessonsDetails.startTime | date:'h:mm' }} - {{lessonsDetails.endTime | date:'h:mm'}} </div>
-          <div> {{lessonsDetails.instructorName }} / {{lessonsDetails.carManufacturer }} {{lessonsDetails.carModel }}/  {{ getGearTypeText(lessonsDetails.carGear) }} </div>
-        </div>
-      </ng-container>
-      <ng-template #noLessons>
-        <div class="no-lessons-message"> There are no available lessons </div>
-      </ng-template>
-     
-    </mat-expansion-panel>
-  </mat-accordion>
+  <div>
+    <app-loading-spinner *ngIf="isLoading; else content"></app-loading-spinner>
+    <ng-template #content>
+      <mat-accordion multi displayMode="flat">
+        <mat-expansion-panel *ngFor="let lesson of lessons" class="booking-lessons-mat-expansion-panel" [expanded]="lesson.lessonsDetails.length > 0">
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{ lesson.date | date:'EEEE, d LLLL yyyy'}} </mat-panel-title>
+            <mat-panel-description>
+              Instructor
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <ng-container *ngIf="lesson.lessonsDetails.length > 0; else noLessons">
+            <div *ngFor="let lessonsDetails of lesson.lessonsDetails" class="panel-lesson">
+              <div> {{lessonsDetails.startTime | date:'h:mm' }} - {{lessonsDetails.endTime | date:'h:mm'}} </div>
+              <div> {{lessonsDetails.instructorName }} / {{lessonsDetails.carManufacturer }} {{lessonsDetails.carModel }}/  {{ getGearTypeText(lessonsDetails.carGear) }} </div>
+            </div>
+          </ng-container>
+          <ng-template #noLessons>
+            <div class="no-lessons-message"> There are no available lessons </div>
+          </ng-template>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </ng-template>
+  </div>
 </div>
