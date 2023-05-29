@@ -28,10 +28,13 @@
 
 .profile-details {
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  margin-left: 20px;
+  gap: 80px;
 }
 
 .profile-picture {
+  align-self: center;
   display: flex;
   flex: 0 0 150px;
   align-items: center;
@@ -55,6 +58,7 @@
   display: grid;
   width: 100%;
   grid-template-columns: 1fr 1fr 1fr; 
+  place-items: baseline;
   grid-template-areas:
   "item1 item3 item5"
   "item2 item4 item6";
