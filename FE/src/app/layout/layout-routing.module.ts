@@ -3,12 +3,11 @@ import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout.component';
 
 const appRoutes = [
-    {
-        path: '',
-        component: LayoutComponent,
-        
-    }
-]
+	{
+		path: '',
+		component: LayoutComponent
+	}
+];
 
 @NgModule({
 	imports: [RouterModule.forChild(appRoutes)],

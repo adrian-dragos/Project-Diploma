@@ -66,7 +66,7 @@ namespace Application.Features.QueryHandlers
                     EndTime = l.StartTime.AddMinutes(90),
                     StudentName = $"{l.Student.Identity.FirstName} {l.Student.Identity.LastName}",
                     Location = l.Instructor.Location,
-                    Status = l.LessonStatus
+                    Status = l.Status
                 });
 
             var pagedResult = new PagedResultDto<GetInstructorLessonsListDto>
