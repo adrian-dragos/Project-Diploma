@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,20 +9,21 @@ import {
 	PageViewModel,
 	PagedResultViewModelOfGetStudentLessonsListViewModel
 } from '@api/api:';
-import { BehaviorSubject, merge } from 'rxjs';
+import { BehaviorSubject, merge, tap } from 'rxjs';
 
 @Component({
 	selector: 'app-lessons',
 	templateUrl: './lessons.component.html',
 	styleUrls: ['./lessons.component.scss']
 })
-export class LessonsComponent implements OnInit {
+export class LessonsComponent implements AfterContentInit {
 	@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 	@ViewChild(MatSort, { static: true }) sort: MatSort;
 
 	displayedColumns: string[] = ['date', 'time', 'location', 'instructor', 'status'];
 	dataSource = new MatTableDataSource<GetStudentLessonsListViewModel>();
 	lessonCompleted = LessonStatus.Completed;
+	isLoading = false;
 
 	pageIndex = 1;
 	pageSize = 10;
@@ -37,12 +38,12 @@ export class LessonsComponent implements OnInit {
 
 	constructor(private readonly lessonsClient: LessonsClient) {}
 
-	ngOnInit(): void {
+	ngAfterContentInit(): void {
 		const start = new BehaviorSubject<void>(undefined);
 		start.next();
 
 		merge(this.paginator.page, this.sort.sortChange, start)
-			.pipe()
+			.pipe(tap(() => (this.isLoading = true)))
 			.subscribe(() => {
 				this.pageViewModel = {
 					page: this.paginator.pageIndex + 1,
@@ -60,6 +61,7 @@ export class LessonsComponent implements OnInit {
 			.subscribe((pagedResult: PagedResultViewModelOfGetStudentLessonsListViewModel) => {
 				this.dataSource.data = pagedResult.items;
 				this.totalCount = pagedResult.totalCount;
+				this.isLoading = false;
 			});
 	}
 

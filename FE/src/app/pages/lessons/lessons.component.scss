@@ -38,3 +38,14 @@
 .upcoming-status {
   color: #20a8d8;
 }
+
+.hidden-lesson-content {
+  visibility: hidden;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -7,6 +7,7 @@ import { LessonsClient } from '@api/api:';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loading-spinner.module';
 
 @NgModule({
 	imports: [
@@ -15,7 +16,8 @@ import { MatSortModule } from '@angular/material/sort';
 		MatTableModule,
 		MatSortModule,
 		MatDividerModule,
-		MatPaginatorModule
+		MatPaginatorModule,
+		LoadingSpinnerModule
 	],
 	declarations: [LessonsComponent],
 	providers: [LessonsClient]
