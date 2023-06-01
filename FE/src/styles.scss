@@ -4,17 +4,20 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .success-snackbar {
-  --mdc-snackbar-supporting-text-color: lightgreen !important;
+  --mdc-snackbar-supporting-text-color: #fff !important;
+  --mdc-snackbar-container-color: #4dbd74 !important;
   text-align: center;
 }
 
 .warning-snackbar {
-  --mdc-snackbar-supporting-text-color: darkorange !important;
+  --mdc-snackbar-supporting-text-color: #fff !important;
+  --mdc-snackbar-container-color: darkorange !important;
   text-align: center;
 }
 
 .error-snackbar {
-  --mdc-snackbar-supporting-text-color: #8B0000 !important;
+  --mdc-snackbar-supporting-text-color: #fff !important;    
+  --mdc-snackbar-container-color: #f44336 !important;
   text-align: center;
 }
 

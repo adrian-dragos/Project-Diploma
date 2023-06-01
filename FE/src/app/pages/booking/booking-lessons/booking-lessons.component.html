@@ -27,10 +27,19 @@
               Instructor
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <ng-container *ngIf="lesson.lessonsDetails.length > 0; else noLessons">
-            <div *ngFor="let lessonsDetails of lesson.lessonsDetails" class="panel-lesson">
+          <ng-container *ngIf="lesson.lessonsDetails.length > 0; else noLessons" >
+            <div *ngFor="let lessonsDetails of lesson.lessonsDetails" 
+              class="panel-lesson" 
+              [ngClass]="{'booked-not-paid-lesson': lessonsDetails.status === lessonBookedNotPaidStatus}"
+              (click)="onSelectLesson(lessonsDetails)">
               <div> {{lessonsDetails.startTime | date:'h:mm' }} - {{lessonsDetails.endTime | date:'h:mm'}} </div>
               <div> {{lessonsDetails.instructorName }} / {{lessonsDetails.carManufacturer }} {{lessonsDetails.carModel }}/  {{ getGearTypeText(lessonsDetails.carGear) }} </div>
+              <button *ngIf="lessonsDetails.status == lessonBookedNotPaidStatus" 
+                mat-icon-button 
+                color="warn" 
+                (click)="unbookLesson(lessonsDetails.id, $event)">
+                <mat-icon>delete</mat-icon>
+              </button>
             </div>
           </ng-container>
           <ng-template #noLessons>

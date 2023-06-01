@@ -1,0 +1,27 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title class="dialog-title">{{ data.title }}</h2> 
+  <div class="dialog-content">
+    <p> 
+      {{ data.content.startTime | date:"EEEE, d LLLL" }}: 
+s      {{ data.content.startTime | date:"hh:mm" }} - {{ data.content.endTime | date:"hh:mm" }} </p>
+    <p> Instructor: 
+      <span class="instructor">
+        {{ data.content.instructorName }} 
+      </span>
+    </p>
+    <p> Phone Number: 
+      <span class="phone-number">
+        {{ data.content.instructorPhoneNumber }} 
+      </span>
+    </p>
+    <p> Car Registration Number: 
+      <span class="registration-number">
+        {{data.content.carRegistrationNumber}} 
+      </span>
+    </p>
+    <p> Location: 
+      <span class="location">
+        {{data.content.location}}
+      </span>
+    </p>
+</div>

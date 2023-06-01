@@ -97,7 +97,8 @@ namespace Application.Features.QueryHandlers
                 .Include(l => l.Car.CarModel)
                 .Where(l => l.StartTime >= startDate && l.StartTime <= endDate &&
                                 l.Car.CarModel.CarGear == request.CarGear &&
-                                l.Status == LessonStatus.Unbooked);
+                                l.Status == LessonStatus.Unbooked ||
+                                l.Status == LessonStatus.BookedNotPaid);
 
             if (request.InstructorId is not null)
             {
@@ -113,7 +114,7 @@ namespace Application.Features.QueryHandlers
                         ))
                     .ToList();
             }
-            
+
             var result = lessons
                 .GroupBy(l => new { l.StartTime.Year, l.StartTime.Month, l.StartTime.Day })
                 .Select(l => new GetAvailableLessonsDto
@@ -127,7 +128,11 @@ namespace Application.Features.QueryHandlers
                         InstructorName = l.Instructor.Identity.FirstName + " " + l.Instructor.Identity.LastName,
                         CarManufacturer = l.Car.CarModel.Manufacturer,
                         CarModel = l.Car.CarModel.Model,
-                        CarGear = l.Car.CarModel.CarGear
+                        CarRegistrationNumber = l.Car.RegistrationNumber,
+                        CarGear = l.Car.CarModel.CarGear,
+                        Status = l.Status,
+                        InstructorPhoneNumber = l.Instructor.Identity.PhoneNumber,
+                        Location = l.Instructor.Location
                     })
                     .OrderBy(l => l.StartTime)
 

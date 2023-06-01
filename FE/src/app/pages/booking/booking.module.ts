@@ -20,6 +20,9 @@ import { GearButtonsComponent } from './booking-sidebar/gear-buttons/gear-button
 import { CarFilterComponent } from './booking-sidebar/car-filter/car-filter.component';
 import { BookingService } from '@app/services/booking.service';
 import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loading-spinner.module';
+import { DialogService } from '@app/services/dialog.service';
+import { CancelLessonDialogModule } from '@app/shared/components/cancel-lesson-dialog/cancel-lesson-dialog.module';
+import { LessonDetailsDialogModule } from '@app/shared/components/lesson-details-dialog/lesson-details-dialog.module';
 
 @NgModule({
 	imports: [
@@ -37,9 +40,11 @@ import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loa
 		MatRadioModule,
 		ReactiveFormsModule,
 		FormsModule,
-		LoadingSpinnerModule
+		LoadingSpinnerModule,
+		CancelLessonDialogModule,
+		LessonDetailsDialogModule
 	],
-	providers: [InstructorClient, CarClient, BookingService, LessonsClient],
+	providers: [InstructorClient, CarClient, BookingService, LessonsClient, DialogService],
 	declarations: [BookingComponent, BookingSidebarComponent, BookingLessonsComponent, GearButtonsComponent, CarFilterComponent]
 })
 export class BookingModule {}

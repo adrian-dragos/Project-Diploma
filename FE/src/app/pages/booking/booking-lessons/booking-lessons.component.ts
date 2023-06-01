@@ -1,7 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { CarGear, GetAvailableLessonsViewModel, LessonsClient } from '@api/api:';
+import { CarGear, GetAvailableLessonDetailsViewModel, GetAvailableLessonsViewModel, LessonStatus, LessonsClient } from '@api/api:';
 import { BookingConstants } from '@app/constants/booking.constatns';
 import { BookingService } from '@app/services/booking.service';
+import { DialogService } from '@app/services/dialog.service';
+import { SnackBarService } from '@app/services/snack-bar.service';
+import { CancelLessonDialogComponent } from '@app/shared/components/cancel-lesson-dialog/cancel-lesson-dialog.component';
+import { LessonDetailsDialogComponent } from '@app/shared/components/lesson-details-dialog/lesson-details-dialog.component';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { concatMap, tap } from 'rxjs';
 
@@ -16,9 +20,13 @@ export class BookingLessonsComponent implements OnInit {
 	dueDate: Date;
 	isLoading = true;
 	lessons: GetAvailableLessonsViewModel[];
+	lessonBookedNotPaidStatus = LessonStatus.BookedNotPaid;
 
 	bookingService = inject(BookingService);
 	lessonClient = inject(LessonsClient);
+	snackBarService = inject(SnackBarService);
+
+	constructor(private readonly dialogService: DialogService) {}
 
 	ngOnInit(): void {
 		this.fetchFilteredInstructors();
@@ -36,7 +44,7 @@ export class BookingLessonsComponent implements OnInit {
 				concatMap((filter) => this.lessonClient.getAvailableLessons(filter)),
 				untilDestroyed(this)
 			)
-			.subscribe((lessons) => {
+			.subscribe((lessons: GetAvailableLessonsViewModel[]) => {
 				this.lessons = lessons;
 				this.isLoading = false;
 			});
@@ -67,5 +75,97 @@ export class BookingLessonsComponent implements OnInit {
 
 	getGearTypeText(gearType: number): string {
 		return CarGear[gearType];
+	}
+
+	onSelectLesson(lessonDetails: GetAvailableLessonDetailsViewModel): void {
+		switch (lessonDetails.status) {
+			case LessonStatus.BookedNotPaid:
+				console.log('BookedNotPaid');
+				this.shoWLessonDetails(lessonDetails);
+				break;
+			case LessonStatus.Unbooked:
+				console.log('Unbooked');
+				this.bookLessonRequest(lessonDetails.id);
+				break;
+		}
+	}
+
+	shoWLessonDetails(lesson: GetAvailableLessonDetailsViewModel): void {
+		const dialogRef = this.dialogService.openDialog(LessonDetailsDialogComponent, {
+			title: 'Dragos Adrian',
+			content: lesson
+		});
+
+		dialogRef
+			.afterClosed()
+			.pipe(untilDestroyed(this))
+			.subscribe((result) => {
+				if (result) {
+					this.unbookLessonRequest(lesson.id);
+				}
+			});
+	}
+
+	unbookLesson(lessonId: number, event: Event): void {
+		console.log('unbookLesson');
+		event.stopPropagation();
+		const dialogRef = this.dialogService.openDialog(CancelLessonDialogComponent, {
+			title: 'Unbook lesson',
+			message: 'Are you sure you want to unbook this lesson?'
+		});
+
+		dialogRef
+			.afterClosed()
+			.pipe(untilDestroyed(this))
+			.subscribe((result) => {
+				if (result) {
+					this.unbookLessonRequest(lessonId);
+				}
+			});
+	}
+
+	bookLessonRequest(lessonId: number): void {
+		this.lessonClient
+			.bookLesson({
+				lessonId: lessonId,
+				studentId: 1
+			})
+			.pipe(untilDestroyed(this))
+			.subscribe(
+				() => {
+					this.snackBarService.openSuccess('Lesson booked successfully');
+					this.updateSelectedLessonStatus(lessonId, LessonStatus.BookedNotPaid);
+				},
+				() => this.snackBarService.openError('You already have a booked lesson in this time slot')
+			);
+	}
+
+	unbookLessonRequest(lessonId: number): void {
+		console.log('unbookLessonRequest');
+		this.lessonClient
+			.unbookLesson({
+				lessonId: lessonId,
+				studentId: 1
+			})
+			.pipe(untilDestroyed(this))
+			.subscribe(
+				() => {
+					this.snackBarService.openSuccess('Lesson unbooked successfully');
+					this.updateSelectedLessonStatus(lessonId, LessonStatus.Unbooked);
+				},
+				() => this.snackBarService.openError('Error while unbooking lesson')
+			);
+	}
+
+	updateSelectedLessonStatus(lessonId: number, status: LessonStatus): void {
+		for (const lesson of this.lessons) {
+			for (const ld of lesson.lessonsDetails) {
+				if (ld.id === lessonId) {
+					ld.status = status;
+					this.snackBarService.openSuccess('Lesson booked successfully');
+					return;
+				}
+			}
+		}
 	}
 }

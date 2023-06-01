@@ -1,0 +1,36 @@
+.dialog-container {
+  min-width: 350px;
+  min-height: 250px;
+}
+
+.dialog-content {
+  padding: 0 25px 10px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.button:first-child {
+  color: #777;
+}
+
+.button:last-child {
+  color: #fff;
+  background-color: #4dbd74;
+}
+
+.phone-number {
+  color: #20a8d8;
+  font-weight: bold;
+  font-style: italic;
+  font-family: "Arial", sans-serif;
+}
+
+.instructor,
+.registration-number,
+.location {
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+}

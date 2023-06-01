@@ -1,7 +1,7 @@
 .panel-lesson {
   display: grid;
-  grid-template-columns: 200px 1fr;
-  height: 35px;
+  grid-template-columns: 200px 1fr 70px;
+  height: 48px;
   align-items: center;
   cursor: pointer;
   padding-left: 24px;
@@ -49,3 +49,9 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.booked-not-paid-lesson {
+  background-color: #4dbd74;
+  color: #fff;
+}
+
