@@ -49,7 +49,7 @@ export class LessonsComponent implements AfterContentInit {
 					page: this.paginator.pageIndex + 1,
 					pageSize: this.paginator.pageSize,
 					sort: '',
-					ascending: false
+					ascending: this.sort.direction === 'asc'
 				};
 				this.fetchLessons();
 			});

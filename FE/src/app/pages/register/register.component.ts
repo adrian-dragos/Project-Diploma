@@ -59,11 +59,11 @@ export class RegisterComponent {
 						this.router.navigate(['register/success']);
 					},
 					(error: ApiException) => {
-						this.snackBarService.openWarning(error.message);
+						this.snackBarService.openError(error.message);
 					}
 				);
 		} else {
-			this.snackBarService.openWarning('Please complete the form and correct any errors before submitting!');
+			this.snackBarService.openError('Please complete the form and correct any errors before submitting!');
 		}
 	}
 

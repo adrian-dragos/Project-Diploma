@@ -113,7 +113,7 @@ namespace Persistence.EntityConfigurations
                 .RuleFor(u => u.Password, _ => password)
                 .RuleFor(u => u.FirstName, _ => names[id - 1].Split(' ')[0])
                 .RuleFor(u => u.LastName, _ => names[id - 1].Split(' ')[1])
-                .RuleFor(u => u.PhoneNumber, f => f.Phone.PhoneNumber("0 74# ### ###"))
+                .RuleFor(u => u.PhoneNumber, f => f.Phone.PhoneNumber("074# ### ###"))
                 .RuleFor(u => u.Birthday, f => DateOnly.FromDateTime(f.Date.Between(DateTime.Now.AddYears(-50), DateTime.Now.AddYears(-25))))
                 .RuleFor(u => u.RoleId, _ => random.Next(2, 4))
                 .RuleFor(u => u.Id, _ => id++);

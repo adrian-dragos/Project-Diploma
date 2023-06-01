@@ -22,8 +22,7 @@ const routes: Routes = [
 		canActivate: [AuthorizationGuard],
 		component: LayoutComponent,
 		children: [
-			{ path: '', redirectTo: 'home', pathMatch: 'full' },
-			{ path: 'home', loadChildren: () => import('src/app/pages/home/home.module').then((m) => m.HomeModule) },
+			{ path: '', redirectTo: 'booking', pathMatch: 'full' },
 			{ path: 'lessons', loadChildren: () => import('src/app/pages/lessons/lessons.module').then((m) => m.LessonsModule) },
 			{ path: 'account', loadChildren: () => import('src/app/pages/account/account.module').then((m) => m.AccountModule) },
 			{ path: 'booking', loadChildren: () => import('src/app/pages/booking/booking.module').then((m) => m.BookingModule) }

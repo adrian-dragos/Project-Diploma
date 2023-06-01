@@ -50,7 +50,7 @@ export class LoginComponent {
 			.subscribe(
 				(response) => {
 					this.snackBarService.openSuccess('Login successful!');
-					this.router.navigate(['/home']);
+					this.router.navigate(['/booking']);
 					this.badCredentials = false;
 				},
 				(error: ApiException) => {

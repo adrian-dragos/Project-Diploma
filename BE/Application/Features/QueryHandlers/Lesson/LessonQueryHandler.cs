@@ -27,7 +27,6 @@ namespace Application.Features.QueryHandlers
                 .Read()
                 .AsNoTracking()
                 .Where(l => l.StudentId == request.StudentId)
-                .OrderByDescending(l => l.StartTime)
                 .Select(l => new GetStudentLessonsListDto
                 {
                     Id = l.Id,
@@ -37,6 +36,15 @@ namespace Application.Features.QueryHandlers
                     Location = l.Instructor.Location,
                     Status = l.Status
                 });
+
+            if (request.PageDto.Ascending)
+            {
+                lessonQuery = lessonQuery.OrderBy(l => l.StartTime);
+            }
+            else
+            {
+                lessonQuery = lessonQuery.OrderByDescending(l => l.StartTime);
+            }
 
             var pagedResult = new PagedResultDto<GetStudentLessonsListDto>
             {
@@ -58,7 +66,6 @@ namespace Application.Features.QueryHandlers
                 .Read()
                 .AsNoTracking()
                 .Where(l => l.InstructorId == request.InstructorId)
-                .OrderByDescending(l => l.StartTime)
                 .Select(l => new GetInstructorLessonsListDto
                 {
                     Id = l.Id,
@@ -68,6 +75,15 @@ namespace Application.Features.QueryHandlers
                     Location = l.Instructor.Location,
                     Status = l.Status
                 });
+
+            if (request.PageDto.Ascending)
+            {
+                lessonQuery = lessonQuery.OrderBy(l => l.StartTime);
+            } 
+            else
+            {
+                lessonQuery = lessonQuery.OrderByDescending(l => l.StartTime);
+            }
 
             var pagedResult = new PagedResultDto<GetInstructorLessonsListDto>
             {
