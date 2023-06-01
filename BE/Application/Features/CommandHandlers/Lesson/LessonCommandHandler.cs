@@ -37,17 +37,19 @@ namespace Application.Features.CommandHandlers
             var selectLessonStartTime = lesson.StartTime;
             var selectedLessonEndTime = lesson.StartTime.AddMinutes(90);
 
-
             var lessonAtSameTimeBooked = await _lessonsRepository
                 .Read()
-                .AnyAsync(l => l.Student.Id == request.StudentId && (
+                .AsNoTracking()
+                .FirstOrDefaultAsync(l => l.Student.Id == request.StudentId && (
                                 (l.StartTime > selectLessonStartTime && l.StartTime < selectedLessonEndTime) ||
-                                (l.StartTime.AddMinutes(90) > selectLessonStartTime && l.StartTime.AddMinutes(90) < selectedLessonEndTime) ||
-                                (l.StartTime == selectLessonStartTime && l.StartTime.AddMinutes(90) == selectedLessonEndTime))); 
+                                (l.StartTime.AddMinutes(90) > selectLessonStartTime && l.StartTime.AddMinutes(90) < selectedLessonEndTime) || 
+                                (l.StartTime == selectLessonStartTime && l.StartTime.AddMinutes(90) == selectedLessonEndTime)),
+                                cancellationToken); 
             
-            if (lessonAtSameTimeBooked)
+
+            if (lessonAtSameTimeBooked is not null)
             {
-                throw new BadRequestException("There is already a lesson booked for this time slot!");
+                throw new BadRequestException($"There is already a lesson with id {lessonAtSameTimeBooked.Id} booked for this time slot!");
             }
 
             if (lesson.Status != LessonStatus.Unbooked)

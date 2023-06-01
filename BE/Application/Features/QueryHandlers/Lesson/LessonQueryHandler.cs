@@ -112,9 +112,9 @@ namespace Application.Features.QueryHandlers
                 .Include(l => l.Instructor.Identity)
                 .Include(l => l.Car.CarModel)
                 .Where(l => l.StartTime >= startDate && l.StartTime <= endDate &&
-                                l.Car.CarModel.CarGear == request.CarGear &&
+                                l.Car.CarModel.CarGear == request.CarGear && (
                                 l.Status == LessonStatus.Unbooked ||
-                                l.Status == LessonStatus.BookedNotPaid);
+                                l.Status == LessonStatus.BookedNotPaid));
 
             if (request.InstructorId is not null)
             {

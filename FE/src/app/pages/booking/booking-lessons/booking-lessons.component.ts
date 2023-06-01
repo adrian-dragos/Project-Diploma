@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CarGear, GetAvailableLessonDetailsViewModel, GetAvailableLessonsViewModel, LessonStatus, LessonsClient } from '@api/api:';
-import { BookingConstants } from '@app/constants/booking.constatns';
+import { BookingConstants } from '@app/constants/booking.constants';
 import { BookingService } from '@app/services/booking.service';
 import { DialogService } from '@app/services/dialog.service';
 import { SnackBarService } from '@app/services/snack-bar.service';
@@ -29,10 +29,10 @@ export class BookingLessonsComponent implements OnInit {
 	constructor(private readonly dialogService: DialogService) {}
 
 	ngOnInit(): void {
-		this.fetchFilteredInstructors();
+		this.fetchLessons();
 	}
 
-	fetchFilteredInstructors(): void {
+	fetchLessons(): void {
 		this.bookingService
 			.getLessonsFilter()
 			.pipe(
@@ -45,6 +45,7 @@ export class BookingLessonsComponent implements OnInit {
 				untilDestroyed(this)
 			)
 			.subscribe((lessons: GetAvailableLessonsViewModel[]) => {
+				console.log(this.lessons);
 				this.lessons = lessons;
 				this.isLoading = false;
 			});
@@ -80,12 +81,10 @@ export class BookingLessonsComponent implements OnInit {
 	onSelectLesson(lessonDetails: GetAvailableLessonDetailsViewModel): void {
 		switch (lessonDetails.status) {
 			case LessonStatus.BookedNotPaid:
-				console.log('BookedNotPaid');
 				this.shoWLessonDetails(lessonDetails);
 				break;
 			case LessonStatus.Unbooked:
-				console.log('Unbooked');
-				this.bookLessonRequest(lessonDetails.id);
+				this.bookLessonRequest(lessonDetails.id, new Date(lessonDetails.startTime), new Date(lessonDetails.endTime));
 				break;
 		}
 	}
@@ -107,7 +106,6 @@ export class BookingLessonsComponent implements OnInit {
 	}
 
 	unbookLesson(lessonId: number, event: Event): void {
-		console.log('unbookLesson');
 		event.stopPropagation();
 		const dialogRef = this.dialogService.openDialog(CancelLessonDialogComponent, {
 			title: 'Unbook lesson',
@@ -124,7 +122,7 @@ export class BookingLessonsComponent implements OnInit {
 			});
 	}
 
-	bookLessonRequest(lessonId: number): void {
+	bookLessonRequest(lessonId: number, startTime: Date, endTime: Date): void {
 		this.lessonClient
 			.bookLesson({
 				lessonId: lessonId,
@@ -136,12 +134,19 @@ export class BookingLessonsComponent implements OnInit {
 					this.snackBarService.openSuccess('Lesson booked successfully');
 					this.updateSelectedLessonStatus(lessonId, LessonStatus.BookedNotPaid);
 				},
-				() => this.snackBarService.openError('You already have a booked lesson in this time slot')
+				() => {
+					const startHour = startTime.getHours().toString().padStart(2, '0');
+					const startMinutes = startTime.getMinutes().toString().padStart(2, '0');
+					const endHour = endTime.getHours().toString().padStart(2, '0');
+					const endMinutes = endTime.getMinutes().toString().padStart(2, '0');
+					this.snackBarService.openError(
+						`Please note that you already have a lesson scheduled from ${startHour}.${startMinutes} to ${endHour}.${endMinutes}!`
+					);
+				}
 			);
 	}
 
 	unbookLessonRequest(lessonId: number): void {
-		console.log('unbookLessonRequest');
 		this.lessonClient
 			.unbookLesson({
 				lessonId: lessonId,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CarGear, CarModelViewModel, LessonFilterViewModel } from '@api/api:';
-import { BookingConstants } from '@app/constants/booking.constatns';
+import { BookingConstants } from '@app/constants/booking.constants';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable()

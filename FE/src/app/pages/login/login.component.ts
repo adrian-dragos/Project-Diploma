@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiException } from '@api/api:';
 import { SnackBarService } from '@app/services/snack-bar.service';
 import { UserService } from '@app/services/user.service';
 import { UserValidator } from '@app/validators/user.validator';
@@ -48,12 +47,12 @@ export class LoginComponent {
 			.login(email, password)
 			.pipe(untilDestroyed(this))
 			.subscribe(
-				(response) => {
+				() => {
 					this.snackBarService.openSuccess('Login successful!');
 					this.router.navigate(['/booking']);
 					this.badCredentials = false;
 				},
-				(error: ApiException) => {
+				() => {
 					this.badCredentials = true;
 				}
 			);

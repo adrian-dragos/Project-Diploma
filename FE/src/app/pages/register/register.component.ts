@@ -54,7 +54,7 @@ export class RegisterComponent {
 				.registerUser(user)
 				.pipe(untilDestroyed(this))
 				.subscribe(
-					(response) => {
+					() => {
 						this.snackBarService.openSuccess('Registration successful!');
 						this.router.navigate(['register/success']);
 					},
