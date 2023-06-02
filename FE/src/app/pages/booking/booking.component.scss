@@ -39,7 +39,7 @@
 .payment-message {
   background-color: #4dbd74;
   color: #fff !important;
-  animation: pulse 4s ease-in-out infinite;
+  animation: pulse 2s ease-in-out infinite;
   &  p {
     margin-bottom: 0 !important;
   }
@@ -47,7 +47,6 @@
 
 @keyframes pulse {
   0% { transform: scale(1); }
-  10% { transform: scale(1.1); }
-  20% { transform: scale(1); }
+  50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
