@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { TooltipConstants } from '@app/constants/tooltip.constants';
 import { BookingService } from '@app/services/booking.service';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
@@ -9,5 +10,6 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 })
 @UntilDestroy()
 export class BookingComponent {
+	tooltipShowDelay = TooltipConstants.SHOW_DELAY;
 	bookingService = inject(BookingService);
 }

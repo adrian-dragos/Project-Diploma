@@ -22,6 +22,7 @@ import { BookingService } from '@app/services/booking.service';
 import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loading-spinner.module';
 import { DialogService } from '@app/services/dialog.service';
 import { LessonDetailsDialogModule } from '@app/shared/components/lesson-details-dialog/lesson-details-dialog.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
 	imports: [
@@ -40,7 +41,8 @@ import { LessonDetailsDialogModule } from '@app/shared/components/lesson-details
 		ReactiveFormsModule,
 		FormsModule,
 		LoadingSpinnerModule,
-		LessonDetailsDialogModule
+		LessonDetailsDialogModule,
+		MatTooltipModule
 	],
 	providers: [InstructorClient, CarClient, BookingService, LessonsClient, DialogService],
 	declarations: [BookingComponent, BookingSidebarComponent, BookingLessonsComponent, GearButtonsComponent, CarFilterComponent]

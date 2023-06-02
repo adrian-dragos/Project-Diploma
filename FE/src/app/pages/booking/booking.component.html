@@ -3,7 +3,8 @@
   <div class="booking-wrapper">
     <div class="booking-header">
       <h1 class="booking-header-title"> Available Time Slots</h1>
-        <button mat-button class="payment-message">
+        <button mat-button class="payment-message" [matTooltip]="'Proceed with lesson(s) payment'"
+          [matTooltipShowDelay]="tooltipShowDelay">
           <p>Payment $</p>
         </button> 
     </div>
