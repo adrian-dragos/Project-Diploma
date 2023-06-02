@@ -9,6 +9,7 @@ import {
 	PageViewModel,
 	PagedResultViewModelOfGetStudentLessonsListViewModel
 } from '@api/api:';
+import { TooltipConstants } from '@app/constants/tooltip.constants';
 import { DialogService } from '@app/services/dialog.service';
 import { SnackBarService } from '@app/services/snack-bar.service';
 import { CancelLessonDialogComponent } from '@app/shared/components/cancel-lesson-dialog/cancel-lesson-dialog.component';
@@ -25,8 +26,9 @@ export class LessonsComponent implements AfterContentInit {
 	@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 	@ViewChild(MatSort, { static: true }) sort: MatSort;
 
+	readonly showDelay = TooltipConstants.SHOW_DELAY;
+	readonly displayedColumns: string[] = ['date', 'time', 'location', 'instructor', 'status', 'actions'];
 	start = new BehaviorSubject<void>(undefined);
-	displayedColumns: string[] = ['date', 'time', 'location', 'instructor', 'status', 'actions'];
 	dataSource = new MatTableDataSource<GetStudentLessonsListViewModel>();
 	lessonCompleted = LessonStatus.Completed;
 	isLoading = false;
@@ -79,10 +81,10 @@ export class LessonsComponent implements AfterContentInit {
 
 	deleteLesson(lessonId: number): void {
 		const dialogRef = this.dialogService.openDialog(CancelLessonDialogComponent, {
-			title: 'Cancel lesson',
-			message: 'Are you sure you want to cancel this lesson?',
-			confirmationButtonText: 'Yes',
-			cancelButtonText: 'No'
+			title: 'Delete lesson',
+			message: 'Are you sure you want to delete this lesson?',
+			confirmationButtonText: 'Confirm',
+			cancelButtonText: 'Cancel'
 		});
 
 		dialogRef
@@ -98,7 +100,7 @@ export class LessonsComponent implements AfterContentInit {
 								this.snackBarService.openSuccessSnackBar('Lesson cancelled successfully!');
 								this.start.next();
 							},
-							() => this.snackBarService.openErrorSnackBar('Could not cancel lesson!')
+							() => this.snackBarService.openErrorSnackBar('Could not delete lesson!')
 						);
 				}
 			});

@@ -1,12 +1,17 @@
 <div class="dialog-container">
   <h2 mat-dialog-title class="dialog-title">{{ data.title }}</h2> 
-  <button mat-icon-button mat-dialog-close class="close-button">
-    <mat-icon>close</mat-icon>
-  </button>
+  <div class="action-buttons">
+    <button mat-icon-button (click)="onDeleteClick()"color="warn" [matTooltip]="'Unbook'" [matTooltipShowDelay]="showDelay">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-icon-button mat-dialog-close [matTooltip]="'Close'" [matTooltipShowDelay]="showDelay">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
   <div class="dialog-content">
     <p> 
       {{ data.content.startTime | date:"EEEE, d LLLL" }}: 
-s      {{ data.content.startTime | date:"hh:mm" }} - {{ data.content.endTime | date:"hh:mm" }} </p>
+      {{ data.content.startTime | date:"hh:mm" }} - {{ data.content.endTime | date:"hh:mm" }} </p>
     <p> Instructor: 
       <span class="instructor">
         {{ data.content.instructorName }} 

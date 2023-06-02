@@ -12,6 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { DialogService } from '@app/services/dialog.service';
 import { CancelLessonDialogModule } from '@app/shared/components/cancel-lesson-dialog/cancel-lesson-dialog.module';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
 	imports: [
@@ -24,7 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
 		LoadingSpinnerModule,
 		MatIconModule,
 		CancelLessonDialogModule,
-		MatButtonModule
+		MatButtonModule,
+		MatTooltipModule
 	],
 	declarations: [LessonsComponent],
 	providers: [LessonsClient, DialogService]
