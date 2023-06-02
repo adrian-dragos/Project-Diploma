@@ -4,6 +4,7 @@ import { BookingConstants } from '@app/constants/booking.constants';
 import { BookingService } from '@app/services/booking.service';
 import { DialogService } from '@app/services/dialog.service';
 import { SnackBarService } from '@app/services/snack-bar.service';
+import { CancelLessonDialogComponent } from '@app/shared/components/cancel-lesson-dialog/cancel-lesson-dialog.component';
 import { LessonDetailsDialogComponent } from '@app/shared/components/lesson-details-dialog/lesson-details-dialog.component';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { concatMap, tap } from 'rxjs';
@@ -101,19 +102,33 @@ export class BookingLessonsComponent implements OnInit {
 			.pipe(untilDestroyed(this))
 			.subscribe((result) => {
 				if (result) {
-					this.lessonClient
-						.unbookLesson({
-							lessonId: lesson.id,
-							studentId: 1
-						})
+					const dialogRef = this.dialogService.openDialog(CancelLessonDialogComponent, {
+						title: 'Unbook lesson',
+						message: 'Are you sure you want to unbook this lesson?',
+						confirmationButtonText: 'Confirm',
+						cancelButtonText: 'Cancel'
+					});
+
+					dialogRef
+						.afterClosed()
 						.pipe(untilDestroyed(this))
-						.subscribe(
-							() => {
-								this.snackBarService.openSuccessSnackBar('Lesson unbooked successfully');
-								this.updateSelectedLessonStatus(lesson.id, LessonStatus.Unbooked);
-							},
-							() => this.snackBarService.openErrorSnackBar('Error while unbooking lesson')
-						);
+						.subscribe((result) => {
+							if (result) {
+								this.lessonClient
+									.unbookLesson({
+										lessonId: lesson.id,
+										studentId: 1
+									})
+									.pipe(untilDestroyed(this))
+									.subscribe(
+										() => {
+											this.snackBarService.openSuccessSnackBar('Lesson unbooked successfully');
+											this.updateSelectedLessonStatus(lesson.id, LessonStatus.Unbooked);
+										},
+										() => this.snackBarService.openErrorSnackBar('Error while unbooking lesson')
+									);
+							}
+						});
 				}
 			});
 	}
