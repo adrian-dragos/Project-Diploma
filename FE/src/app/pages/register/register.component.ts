@@ -55,15 +55,15 @@ export class RegisterComponent {
 				.pipe(untilDestroyed(this))
 				.subscribe(
 					() => {
-						this.snackBarService.openSuccess('Registration successful!');
+						this.snackBarService.openSuccessSnackBar('Registration successful!');
 						this.router.navigate(['register/success']);
 					},
 					(error: ApiException) => {
-						this.snackBarService.openError(error.message);
+						this.snackBarService.openErrorSnackBar(error.message);
 					}
 				);
 		} else {
-			this.snackBarService.openError('Please complete the form and correct any errors before submitting!');
+			this.snackBarService.openErrorSnackBar('Please complete the form and correct any errors before submitting!');
 		}
 	}
 

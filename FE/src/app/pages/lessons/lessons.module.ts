@@ -8,6 +8,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loading-spinner.module';
+import { MatIconModule } from '@angular/material/icon';
+import { DialogService } from '@app/services/dialog.service';
+import { CancelLessonDialogModule } from '@app/shared/components/cancel-lesson-dialog/cancel-lesson-dialog.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
 	imports: [
@@ -17,9 +21,12 @@ import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loa
 		MatSortModule,
 		MatDividerModule,
 		MatPaginatorModule,
-		LoadingSpinnerModule
+		LoadingSpinnerModule,
+		MatIconModule,
+		CancelLessonDialogModule,
+		MatButtonModule
 	],
 	declarations: [LessonsComponent],
-	providers: [LessonsClient]
+	providers: [LessonsClient, DialogService]
 })
 export class LessonsModule {}

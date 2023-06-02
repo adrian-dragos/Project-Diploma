@@ -67,10 +67,10 @@ export class EditAccountComponent implements OnInit {
 			.pipe(untilDestroyed(this))
 			.subscribe(
 				() => {
-					this.snackBarService.openSuccess('Profile updated successfully');
+					this.snackBarService.openSuccessSnackBar('Profile updated successfully');
 					this.router.navigate(['/account']);
 				},
-				(error) => this.snackBarService.openWarning('Profile update failed')
+				() => this.snackBarService.openWarningSnackBar('Profile update failed')
 			);
 	}
 

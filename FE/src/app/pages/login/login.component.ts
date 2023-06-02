@@ -48,7 +48,7 @@ export class LoginComponent {
 			.pipe(untilDestroyed(this))
 			.subscribe(
 				() => {
-					this.snackBarService.openSuccess('Login successful!');
+					this.snackBarService.openSuccessSnackBar('Login successful!');
 					this.router.navigate(['/booking']);
 					this.badCredentials = false;
 				},

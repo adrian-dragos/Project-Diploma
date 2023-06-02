@@ -9,7 +9,7 @@ export class SnackBarService {
 
 	constructor(private snackBar: MatSnackBar) {}
 
-	openSuccess(message: string): MatSnackBarRef<TextOnlySnackBar> {
+	openSuccessSnackBar(message: string): MatSnackBarRef<TextOnlySnackBar> {
 		return this.snackBar.open(message, undefined, {
 			verticalPosition: 'top',
 			horizontalPosition: 'center',
@@ -18,7 +18,7 @@ export class SnackBarService {
 		});
 	}
 
-	openWarning(message: string): MatSnackBarRef<TextOnlySnackBar> {
+	openWarningSnackBar(message: string): MatSnackBarRef<TextOnlySnackBar> {
 		return this.snackBar.open(message, undefined, {
 			verticalPosition: 'top',
 			horizontalPosition: 'center',
@@ -27,7 +27,7 @@ export class SnackBarService {
 		});
 	}
 
-	openError(message: string): MatSnackBarRef<TextOnlySnackBar> {
+	openErrorSnackBar(message: string): MatSnackBarRef<TextOnlySnackBar> {
 		return this.snackBar.open(message, undefined, {
 			verticalPosition: 'top',
 			horizontalPosition: 'center',

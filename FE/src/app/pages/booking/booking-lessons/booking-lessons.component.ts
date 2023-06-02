@@ -45,7 +45,6 @@ export class BookingLessonsComponent implements OnInit {
 				untilDestroyed(this)
 			)
 			.subscribe((lessons: GetAvailableLessonsViewModel[]) => {
-				console.log(this.lessons);
 				this.lessons = lessons;
 				this.isLoading = false;
 			});
@@ -109,7 +108,9 @@ export class BookingLessonsComponent implements OnInit {
 		event.stopPropagation();
 		const dialogRef = this.dialogService.openDialog(CancelLessonDialogComponent, {
 			title: 'Unbook lesson',
-			message: 'Are you sure you want to unbook this lesson?'
+			message: 'Are you sure you want to unbook this lesson?',
+			confirmationButtonText: 'Unbook',
+			cancelButtonText: 'Cancel'
 		});
 
 		dialogRef
@@ -131,7 +132,7 @@ export class BookingLessonsComponent implements OnInit {
 			.pipe(untilDestroyed(this))
 			.subscribe(
 				() => {
-					this.snackBarService.openSuccess('Lesson booked successfully');
+					this.snackBarService.openSuccessSnackBar('Lesson booked successfully');
 					this.updateSelectedLessonStatus(lessonId, LessonStatus.BookedNotPaid);
 				},
 				() => {
@@ -139,7 +140,7 @@ export class BookingLessonsComponent implements OnInit {
 					const startMinutes = startTime.getMinutes().toString().padStart(2, '0');
 					const endHour = endTime.getHours().toString().padStart(2, '0');
 					const endMinutes = endTime.getMinutes().toString().padStart(2, '0');
-					this.snackBarService.openError(
+					this.snackBarService.openErrorSnackBar(
 						`Please note that you already have a lesson scheduled from ${startHour}.${startMinutes} to ${endHour}.${endMinutes}!`
 					);
 				}
@@ -155,10 +156,10 @@ export class BookingLessonsComponent implements OnInit {
 			.pipe(untilDestroyed(this))
 			.subscribe(
 				() => {
-					this.snackBarService.openSuccess('Lesson unbooked successfully');
+					this.snackBarService.openSuccessSnackBar('Lesson unbooked successfully');
 					this.updateSelectedLessonStatus(lessonId, LessonStatus.Unbooked);
 				},
-				() => this.snackBarService.openError('Error while unbooking lesson')
+				() => this.snackBarService.openErrorSnackBar('Error while unbooking lesson')
 			);
 	}
 
@@ -167,7 +168,7 @@ export class BookingLessonsComponent implements OnInit {
 			for (const ld of lesson.lessonsDetails) {
 				if (ld.id === lessonId) {
 					ld.status = status;
-					this.snackBarService.openSuccess('Lesson booked successfully');
+					this.snackBarService.openSuccessSnackBar('Lesson booked successfully');
 					return;
 				}
 			}

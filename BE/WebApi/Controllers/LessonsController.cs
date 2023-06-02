@@ -101,5 +101,19 @@ namespace WebApi.Controllers
             return NoContent();
         }
 
+
+        [HttpPatch("cancel/{id}")]
+        [ProducesResponseType(typeof(RegisterUserRequestViewModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> CancelLesson(
+            int id,
+            CancellationToken cancellationToken)
+        {
+            var query = new CancelLessonCommand { LessonId = id };
+            await _mediator.Send(query, cancellationToken);
+            return NoContent();
+        }
+
     }
 }

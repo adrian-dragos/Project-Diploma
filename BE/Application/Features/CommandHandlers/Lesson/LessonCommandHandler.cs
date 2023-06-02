@@ -10,7 +10,8 @@ namespace Application.Features.CommandHandlers
 {
     internal sealed class LessonCommandHandler :
         IRequestHandler<BookLessonCommand, Unit>,
-        IRequestHandler<UnbookLessonCommand, Unit>
+        IRequestHandler<UnbookLessonCommand, Unit>,
+        IRequestHandler<CancelLessonCommand, Unit>
     {
         public readonly IRepository<Lesson> _lessonsRepository;
         public readonly IRepository<Student> _studentRepository;
@@ -81,6 +82,35 @@ namespace Application.Features.CommandHandlers
             if (lesson.Status != LessonStatus.BookedNotPaid)
             {
                 throw new BadRequestException($"Could not perform operation for lesson with {lesson.Status} status!");
+            }
+
+            lesson.Status = LessonStatus.Unbooked;
+            lesson.StudentId = null;
+
+            _lessonsRepository.Update(lesson);
+
+            return Unit.Value;
+        }
+
+        public async Task<Unit> Handle(CancelLessonCommand request, CancellationToken cancellationToken)
+        {
+            var lesson = await _lessonsRepository
+               .Read()
+               .FirstOrDefaultAsync(l => l.Id == request.LessonId, cancellationToken);
+
+            if (lesson is null)
+            {
+                throw new EntityNotFoundException(typeof(Lesson), request.LessonId);
+            }
+
+            if (lesson.Status != LessonStatus.BookedPaid)
+            {
+                throw new BadRequestException($"Could not perform operation for lesson with {lesson.Status} status!");
+            }
+
+            if (lesson.StartTime <= DateTimeOffset.Now)
+            {
+                throw new BadRequestException($"Can not delete past lessons!");
             }
 
             lesson.Status = LessonStatus.Unbooked;
