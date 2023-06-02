@@ -50,12 +50,17 @@ namespace Application.Features.CommandHandlers
 
             if (lessonAtSameTimeBooked is not null)
             {
-                throw new BadRequestException($"There is already a lesson with id {lessonAtSameTimeBooked.Id} booked for this time slot!");
+                throw new BadRequestException("There is already a lesson with booked for this time slot!");
             }
 
             if (lesson.Status != LessonStatus.Unbooked)
             {
                 throw new BadRequestException($"Could not perform operation for lesson with {lesson.Status} status!");
+            }
+
+            if (lesson.StartTime.AddMinutes(90) <= DateTimeOffset.Now) 
+            {
+                throw new BadRequestException("Booking is only available for lessons that are at least 90 minutes in the future or are upcoming.");
             }
 
             lesson.Status = LessonStatus.BookedNotPaid;

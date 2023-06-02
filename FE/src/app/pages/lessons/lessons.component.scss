@@ -54,3 +54,12 @@
   font-size: 21px;
   color: #708090; 
 }
+
+.cancel-mat-icon-disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+::ng-deep .completed-lesson-row.mat-mdc-row:hover {
+   background-color: #f8f8f8 !important; 
+}

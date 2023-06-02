@@ -17,5 +17,7 @@ namespace Application.DTOs.Lesson
         public LessonStatus Status { get; set; }
         public string InstructorPhoneNumber { get; set; }
         public string Location { get; set; }
+        /*** If the lesson is in the past or in less than 90 minutes then false ***/
+        public bool CanBook { get; set; }
     }
 }

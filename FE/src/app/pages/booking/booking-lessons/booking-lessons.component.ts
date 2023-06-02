@@ -77,12 +77,15 @@ export class BookingLessonsComponent implements OnInit {
 	}
 
 	onSelectLesson(lessonDetails: GetAvailableLessonDetailsViewModel): void {
+		if (!lessonDetails.canBook) {
+			return;
+		}
 		switch (lessonDetails.status) {
 			case LessonStatus.BookedNotPaid:
 				this.shoWLessonDetails(lessonDetails);
 				break;
 			case LessonStatus.Unbooked:
-				this.bookLessonRequest(lessonDetails.id, new Date(lessonDetails.startTime), new Date(lessonDetails.endTime));
+				this.bookLessonRequest(lessonDetails.id);
 				break;
 		}
 	}
@@ -115,7 +118,7 @@ export class BookingLessonsComponent implements OnInit {
 			});
 	}
 
-	bookLessonRequest(lessonId: number, startTime: Date, endTime: Date): void {
+	bookLessonRequest(lessonId: number): void {
 		this.lessonClient
 			.bookLesson({
 				lessonId: lessonId,
@@ -127,15 +130,7 @@ export class BookingLessonsComponent implements OnInit {
 					this.snackBarService.openSuccessSnackBar('Lesson booked successfully');
 					this.updateSelectedLessonStatus(lessonId, LessonStatus.BookedNotPaid);
 				},
-				() => {
-					const startHour = startTime.getHours().toString().padStart(2, '0');
-					const startMinutes = startTime.getMinutes().toString().padStart(2, '0');
-					const endHour = endTime.getHours().toString().padStart(2, '0');
-					const endMinutes = endTime.getMinutes().toString().padStart(2, '0');
-					this.snackBarService.openErrorSnackBar(
-						`Please note that you already have a lesson scheduled from ${startHour}.${startMinutes} to ${endHour}.${endMinutes}!`
-					);
-				}
+				(error) => this.snackBarService.openErrorSnackBar(error.message)
 			);
 	}
 

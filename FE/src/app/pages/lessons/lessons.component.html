@@ -34,8 +34,12 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Actions</th>
           <td mat-cell *matCellDef="let lesson">
-            <button *ngIf="lesson.status !== lessonCompleted" mat-icon-button (click)="deleteLesson(lesson.id)"
-              [matTooltip]="'Delete'" [matTooltipShowDelay]="showDelay">
+            <button
+              mat-icon-button (click)="deleteLesson(lesson.id, lesson.status)"
+              [matTooltip]="lesson.status != lessonCompleted ? 'Delete' : 'Deleting a completed lesson is not allowed'"
+              [matTooltipShowDelay]="showDelay" 
+              [matTooltipDisabled]="false"
+              [ngClass]="{'cancel-mat-icon-disabled': lesson.status === lessonCompleted}">
               <mat-icon class="cancel-icon">cancel</mat-icon>
             </button>
           </td>

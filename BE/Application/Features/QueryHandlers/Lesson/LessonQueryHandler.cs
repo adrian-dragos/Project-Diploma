@@ -26,7 +26,10 @@ namespace Application.Features.QueryHandlers
             var lessonQuery = _lessonRepository
                 .Read()
                 .AsNoTracking()
-                .Where(l => l.StudentId == request.StudentId)
+                .Where(l => l.StudentId == request.StudentId && (
+                                l.Status == LessonStatus.BookedPaid || 
+                                l.Status == LessonStatus.Completed || 
+                                l.Status == LessonStatus.Canceled))
                 .Select(l => new GetStudentLessonsListDto
                 {
                     Id = l.Id,
@@ -116,6 +119,7 @@ namespace Application.Features.QueryHandlers
                                 l.Status == LessonStatus.Unbooked ||
                                 l.Status == LessonStatus.BookedNotPaid));
 
+
             if (request.InstructorId is not null)
             {
                 lessonsQuery = lessonsQuery.Where(l => l.InstructorId == request.InstructorId);
@@ -131,6 +135,7 @@ namespace Application.Features.QueryHandlers
                     .ToList();
             }
 
+            var now = DateTimeOffset.Now;
             var result = lessons
                 .GroupBy(l => new { l.StartTime.Year, l.StartTime.Month, l.StartTime.Day })
                 .Select(l => new GetAvailableLessonsDto
@@ -148,7 +153,8 @@ namespace Application.Features.QueryHandlers
                         CarGear = l.Car.CarModel.CarGear,
                         Status = l.Status,
                         InstructorPhoneNumber = l.Instructor.Identity.PhoneNumber,
-                        Location = l.Instructor.Location
+                        Location = l.Instructor.Location,
+                        CanBook = l.StartTime.AddMinutes(-90) > now
                     })
                     .OrderBy(l => l.StartTime)
 

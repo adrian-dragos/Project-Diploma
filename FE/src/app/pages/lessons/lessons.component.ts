@@ -79,7 +79,11 @@ export class LessonsComponent implements AfterContentInit {
 			});
 	}
 
-	deleteLesson(lessonId: number): void {
+	deleteLesson(lessonId: number, status: LessonStatus): void {
+		if (status !== LessonStatus.BookedPaid) {
+			return;
+		}
+
 		const dialogRef = this.dialogService.openDialog(CancelLessonDialogComponent, {
 			title: 'Delete lesson',
 			message: 'Are you sure you want to delete this lesson?',
