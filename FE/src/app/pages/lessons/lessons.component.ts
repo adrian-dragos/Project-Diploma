@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ViewChild } from '@angular/core';
+import { AfterContentInit, Component, ViewChild, inject } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,6 +9,10 @@ import {
 	PageViewModel,
 	PagedResultViewModelOfGetStudentLessonsListViewModel
 } from '@api/api:';
+import { DialogService } from '@app/services/dialog.service';
+import { SnackBarService } from '@app/services/snack-bar.service';
+import { CancelLessonDialogComponent } from '@app/shared/components/cancel-lesson-dialog/cancel-lesson-dialog.component';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, merge, tap } from 'rxjs';
 
 @Component({
@@ -16,11 +20,13 @@ import { BehaviorSubject, merge, tap } from 'rxjs';
 	templateUrl: './lessons.component.html',
 	styleUrls: ['./lessons.component.scss']
 })
+@UntilDestroy()
 export class LessonsComponent implements AfterContentInit {
 	@ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 	@ViewChild(MatSort, { static: true }) sort: MatSort;
 
-	displayedColumns: string[] = ['date', 'time', 'location', 'instructor', 'status'];
+	start = new BehaviorSubject<void>(undefined);
+	displayedColumns: string[] = ['date', 'time', 'location', 'instructor', 'status', 'actions'];
 	dataSource = new MatTableDataSource<GetStudentLessonsListViewModel>();
 	lessonCompleted = LessonStatus.Completed;
 	isLoading = false;
@@ -36,14 +42,19 @@ export class LessonsComponent implements AfterContentInit {
 	};
 	totalCount: number;
 
+	dialogService = inject(DialogService);
+	snackBarService = inject(SnackBarService);
+
 	constructor(private readonly lessonsClient: LessonsClient) {}
 
 	ngAfterContentInit(): void {
-		const start = new BehaviorSubject<void>(undefined);
-		start.next();
+		this.start.next();
 
-		merge(this.paginator.page, this.sort.sortChange, start)
-			.pipe(tap(() => (this.isLoading = true)))
+		merge(this.paginator.page, this.sort.sortChange, this.start)
+			.pipe(
+				tap(() => (this.isLoading = true)),
+				untilDestroyed(this)
+			)
 			.subscribe(() => {
 				this.pageViewModel = {
 					page: this.paginator.pageIndex + 1,
@@ -58,10 +69,38 @@ export class LessonsComponent implements AfterContentInit {
 	fetchLessons(): void {
 		this.lessonsClient
 			.getStudentLessons(1, this.pageViewModel)
+			.pipe(untilDestroyed(this))
 			.subscribe((pagedResult: PagedResultViewModelOfGetStudentLessonsListViewModel) => {
 				this.dataSource.data = pagedResult.items;
 				this.totalCount = pagedResult.totalCount;
 				this.isLoading = false;
+			});
+	}
+
+	deleteLesson(lessonId: number): void {
+		const dialogRef = this.dialogService.openDialog(CancelLessonDialogComponent, {
+			title: 'Cancel lesson',
+			message: 'Are you sure you want to cancel this lesson?',
+			confirmationButtonText: 'Yes',
+			cancelButtonText: 'No'
+		});
+
+		dialogRef
+			.afterClosed()
+			.pipe(untilDestroyed(this))
+			.subscribe((result) => {
+				if (result) {
+					this.lessonsClient
+						.cancelLesson(lessonId)
+						.pipe(untilDestroyed(this))
+						.subscribe(
+							() => {
+								this.snackBarService.openSuccessSnackBar('Lesson cancelled successfully!');
+								this.start.next();
+							},
+							() => this.snackBarService.openErrorSnackBar('Could not cancel lesson!')
+						);
+				}
 			});
 	}
 
