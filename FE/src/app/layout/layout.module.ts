@@ -25,6 +25,7 @@ const routes: Routes = [
 			{ path: '', redirectTo: 'booking', pathMatch: 'full' },
 			{ path: 'lessons', loadChildren: () => import('src/app/pages/lessons/lessons.module').then((m) => m.LessonsModule) },
 			{ path: 'account', loadChildren: () => import('src/app/pages/account/account.module').then((m) => m.AccountModule) },
+			{ path: 'payments', loadChildren: () => import('src/app/pages/payments/payments.module').then((m) => m.PaymentsModule) },
 			{ path: 'booking', loadChildren: () => import('src/app/pages/booking/booking.module').then((m) => m.BookingModule) }
 		]
 	}
