@@ -31,6 +31,10 @@
   align-items: center;
   background-color:#20a8d8;
   color: #fff !important;
+  animation: pulse 2s ease-in-out infinite;
+  &  p {
+    margin-bottom: 0 !important;
+  }
 }
 
 .payment-chip {
@@ -62,8 +66,12 @@
 }
 
 .mat-cell,
-.mat-header-cell,
-.mat-footer-cell {
+.mat-header-cell {
   border-bottom: 1px solid #cccccc;
 }
 
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}

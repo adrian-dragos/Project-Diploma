@@ -15,11 +15,13 @@ namespace Application.Features.CommandHandlers
     {
         public readonly IRepository<Lesson> _lessonsRepository;
         public readonly IRepository<Student> _studentRepository;
+        public readonly IRepository<Payment> _paymentRepository;
 
-        public LessonCommandHandler(IRepository<Lesson> lessonsRepository, IRepository<Student> studentRepository)
+        public LessonCommandHandler(IRepository<Lesson> lessonsRepository, IRepository<Student> studentRepository, IRepository<Payment> paymentRepository)
         {
             _lessonsRepository = lessonsRepository;
             _studentRepository = studentRepository;
+            _paymentRepository = paymentRepository;
         }
 
         public async Task<Unit> Handle(BookLessonCommand request, CancellationToken cancellationToken)
@@ -67,6 +69,12 @@ namespace Application.Features.CommandHandlers
             lesson.StudentId = request.StudentId;
 
             _lessonsRepository.Update(lesson);
+            await _paymentRepository.AddAsync(new Payment
+            {
+               LessonId = lesson.Id,
+               StudentId = request.StudentId,
+               Method = PaymentMethod.Unpaid
+            });
 
             return Unit.Value;
         }
@@ -89,10 +97,16 @@ namespace Application.Features.CommandHandlers
                 throw new BadRequestException($"Could not perform operation for lesson with {lesson.Status} status!");
             }
 
+            var payment = await _paymentRepository.Read()
+                .FirstOrDefaultAsync(p => p.LessonId == lesson.Id, cancellationToken);
+
             lesson.Status = LessonStatus.Unbooked;
             lesson.StudentId = null;
 
             _lessonsRepository.Update(lesson);
+            payment.StudentId = null;
+            payment.Student = null;
+            _paymentRepository.Update(payment);
 
             return Unit.Value;
         }

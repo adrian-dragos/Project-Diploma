@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
@@ -11,9 +12,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230603183707_Update-Seeding-1")]
+    partial class UpdateSeeding1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,21 +63,21 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 22, 27, 21, 968, DateTimeKind.Unspecified).AddTicks(987), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 21, 37, 3, 466, DateTimeKind.Unspecified).AddTicks(7245), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "SeeAllUsers"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 22, 27, 21, 968, DateTimeKind.Unspecified).AddTicks(987), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 21, 37, 3, 466, DateTimeKind.Unspecified).AddTicks(7245), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateInstructorProfile"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 22, 27, 21, 968, DateTimeKind.Unspecified).AddTicks(987), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 21, 37, 3, 466, DateTimeKind.Unspecified).AddTicks(7245), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateUserProfile"
                         });
@@ -402,7 +404,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Dacia",
                             Model = "Sandero",
-                            Year = new DateTime(2019, 4, 4, 5, 40, 43, 76, DateTimeKind.Local).AddTicks(7993)
+                            Year = new DateTime(2019, 4, 4, 4, 50, 24, 574, DateTimeKind.Local).AddTicks(8091)
                         },
                         new
                         {
@@ -413,7 +415,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Skoda",
                             Model = "Fabia",
-                            Year = new DateTime(2019, 12, 24, 13, 53, 40, 724, DateTimeKind.Local).AddTicks(330)
+                            Year = new DateTime(2019, 12, 24, 13, 3, 22, 222, DateTimeKind.Local).AddTicks(563)
                         },
                         new
                         {
@@ -424,7 +426,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Renault",
                             Model = "Zoe",
-                            Year = new DateTime(2020, 12, 27, 7, 33, 51, 973, DateTimeKind.Local).AddTicks(3223)
+                            Year = new DateTime(2020, 12, 27, 6, 43, 33, 471, DateTimeKind.Local).AddTicks(3467)
                         },
                         new
                         {
@@ -435,7 +437,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Skoda",
                             Model = "Fabia",
-                            Year = new DateTime(2019, 11, 3, 8, 55, 25, 942, DateTimeKind.Local).AddTicks(349)
+                            Year = new DateTime(2019, 11, 3, 8, 5, 7, 440, DateTimeKind.Local).AddTicks(595)
                         });
                 });
 
@@ -28943,10 +28945,8 @@ namespace Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("StudentId")
+                        .IsRequired()
                         .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 
@@ -28964,8 +28964,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 3,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -28974,8 +28973,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 9,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -28984,8 +28982,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 15,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -28994,8 +28991,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 21,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29004,8 +29000,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 27,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29014,8 +29009,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 33,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29024,8 +29018,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 39,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29034,8 +29027,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 45,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29044,8 +29036,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 51,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29054,8 +29045,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 57,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29064,8 +29054,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 63,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29074,8 +29063,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 69,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29084,8 +29072,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 75,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29094,8 +29081,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 81,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29104,8 +29090,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 87,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29114,8 +29099,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 93,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29124,8 +29108,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 99,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29134,8 +29117,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 105,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29144,8 +29126,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 111,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29154,8 +29135,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 117,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29164,8 +29144,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 123,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29174,8 +29153,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 129,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29184,8 +29162,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 135,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29194,8 +29171,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 141,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29204,8 +29180,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 147,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29214,8 +29189,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 153,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29224,8 +29198,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Elvira51@gmail.com",
                             LessonId = 159,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29234,8 +29207,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 165,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29244,8 +29216,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 171,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29254,8 +29225,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 177,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29264,8 +29234,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 195,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29274,8 +29243,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 201,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29284,8 +29252,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 207,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29294,8 +29261,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 213,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29304,8 +29270,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 219,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29314,8 +29279,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 225,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29324,8 +29288,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 231,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29334,8 +29297,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 237,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29344,8 +29306,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 243,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29354,8 +29315,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 249,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29364,8 +29324,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 255,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29374,8 +29333,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 267,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29384,8 +29342,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 285,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29394,8 +29351,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 291,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29404,8 +29360,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 297,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29414,8 +29369,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 303,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29424,8 +29378,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 309,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29434,8 +29387,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 315,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29444,8 +29396,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 321,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
@@ -29454,8 +29405,7 @@ namespace Persistence.Migrations
                             CreatedBy = "Dominic39@yahoo.com",
                             LessonId = 327,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         });
                 });
 
@@ -29854,7 +29804,8 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Student", "Student")
                         .WithMany("Payments")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Lesson");
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
@@ -11,9 +12,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230603171404_Update-Payment")]
+    partial class UpdatePayment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,21 +63,21 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 22, 27, 21, 968, DateTimeKind.Unspecified).AddTicks(987), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 20, 14, 0, 717, DateTimeKind.Unspecified).AddTicks(6433), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "SeeAllUsers"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 22, 27, 21, 968, DateTimeKind.Unspecified).AddTicks(987), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 20, 14, 0, 717, DateTimeKind.Unspecified).AddTicks(6433), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateInstructorProfile"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 22, 27, 21, 968, DateTimeKind.Unspecified).AddTicks(987), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 20, 14, 0, 717, DateTimeKind.Unspecified).AddTicks(6433), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateUserProfile"
                         });
@@ -402,7 +404,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Dacia",
                             Model = "Sandero",
-                            Year = new DateTime(2019, 4, 4, 5, 40, 43, 76, DateTimeKind.Local).AddTicks(7993)
+                            Year = new DateTime(2019, 4, 4, 3, 27, 21, 825, DateTimeKind.Local).AddTicks(7546)
                         },
                         new
                         {
@@ -413,7 +415,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Skoda",
                             Model = "Fabia",
-                            Year = new DateTime(2019, 12, 24, 13, 53, 40, 724, DateTimeKind.Local).AddTicks(330)
+                            Year = new DateTime(2019, 12, 24, 11, 40, 19, 472, DateTimeKind.Local).AddTicks(9892)
                         },
                         new
                         {
@@ -424,7 +426,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Renault",
                             Model = "Zoe",
-                            Year = new DateTime(2020, 12, 27, 7, 33, 51, 973, DateTimeKind.Local).AddTicks(3223)
+                            Year = new DateTime(2020, 12, 27, 5, 20, 30, 722, DateTimeKind.Local).AddTicks(2780)
                         },
                         new
                         {
@@ -435,7 +437,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Skoda",
                             Model = "Fabia",
-                            Year = new DateTime(2019, 11, 3, 8, 55, 25, 942, DateTimeKind.Local).AddTicks(349)
+                            Year = new DateTime(2019, 11, 3, 6, 42, 4, 690, DateTimeKind.Local).AddTicks(9891)
                         });
                 });
 
@@ -556,7 +558,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 5,
-                            Birthday = new DateTime(1974, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1974, 1, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Caroline88@hotmail.com",
@@ -920,7 +922,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 33,
-                            Birthday = new DateTime(1976, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1976, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Larry_Feil@yahoo.com",
@@ -28943,10 +28945,8 @@ namespace Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("StudentId")
+                        .IsRequired()
                         .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("Timestamp")
-                        .HasColumnType("datetimeoffset");
 
                     b.HasKey("Id");
 
@@ -28961,501 +28961,451 @@ namespace Persistence.Migrations
                         {
                             Id = 1,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 3,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 2,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 9,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 3,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 15,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 4,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 21,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 5,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 27,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 6,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 33,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 7,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 39,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 8,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 45,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 9,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 51,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 10,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 57,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 11,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 63,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 12,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 69,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 13,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 75,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 14,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 81,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 15,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 87,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 16,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 93,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 17,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 99,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 18,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 105,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 19,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 111,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 20,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 117,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 21,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 123,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 22,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 129,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 23,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 135,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 24,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 141,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 25,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 147,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 26,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 153,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 27,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Elvira51@gmail.com",
+                            CreatedBy = "Joe Doe",
                             LessonId = 159,
                             Method = 2,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 28,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 165,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 29,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 171,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 30,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 177,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 31,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 195,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 32,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 201,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 33,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 207,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 34,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 213,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 35,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 219,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 36,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 225,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 37,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 231,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 38,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 237,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 39,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 243,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 40,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 249,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 41,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 255,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 42,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 267,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 43,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 285,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 44,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 291,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 45,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 297,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 46,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 303,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 47,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 309,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 48,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 315,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 49,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 321,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         },
                         new
                         {
                             Id = 50,
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
-                            CreatedBy = "Dominic39@yahoo.com",
+                            CreatedBy = "Sarah Johnson",
                             LessonId = 327,
                             Method = 3,
-                            StudentId = 1,
-                            Timestamp = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0))
+                            StudentId = 1
                         });
                 });
 
@@ -29854,7 +29804,8 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.Entities.Student", "Student")
                         .WithMany("Payments")
                         .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Lesson");
 

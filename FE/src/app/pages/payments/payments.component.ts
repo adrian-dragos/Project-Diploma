@@ -14,6 +14,9 @@ export class PaymentsComponent implements OnInit {
 	isLoading = true;
 	dataSource: MatTableDataSource<GetStudentPaymentViewModel>;
 	columns: string[] = ['date', 'sum', 'paymentMethod', 'addedBy'];
+	hasToPay = false;
+	sumToPay = 0;
+	unpaid = PaymentMethod.Unpaid;
 
 	paymentClient = inject(PaymentClient);
 
@@ -27,6 +30,14 @@ export class PaymentsComponent implements OnInit {
 			.subscribe((data) => {
 				this.dataSource = new MatTableDataSource(data);
 				this.isLoading = false;
+				this.hasToPay = data.some((payment) => payment.method === PaymentMethod.Unpaid);
+			});
+
+		this.paymentClient
+			.getSumToPay(1)
+			.pipe(untilDestroyed(this))
+			.subscribe((sumToPay) => {
+				this.sumToPay = sumToPay;
 			});
 	}
 

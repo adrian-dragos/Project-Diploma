@@ -37,7 +37,7 @@ namespace Persistence.EntityConfigurations
             var payments = new List<Payment>();
             var date = new DateTime(2023, 6, 1, 11, 50, 43, 880, DateTimeKind.Utc).AddTicks(7923);
             var paymentMethod = PaymentMethod.Cash;
-            var createdBy = "Joe Doe";
+            var createdBy = "Elvira51@gmail.com";
             var hour = random.Next(8, 23);
             var minute = random.Next(1, 60);
 
@@ -56,7 +56,7 @@ namespace Persistence.EntityConfigurations
                     if (day == 29)
                     {
                         paymentMethod = PaymentMethod.Card;
-                        createdBy = "Sarah Johnson";
+                        createdBy = "Dominic39@yahoo.com";
                     }
                 }
                 date = new DateTime(2023, month, day, hour, minute, 43, 880, DateTimeKind.Utc).AddTicks(7923);
@@ -66,6 +66,7 @@ namespace Persistence.EntityConfigurations
                     StudentId = 1,
                     LessonId = paidLessons[i - 1],
                     CreatedAt = date,
+                    Timestamp = date,
                     CreatedBy = createdBy,
                     Method = paymentMethod,
                     Id = i

@@ -2,6 +2,7 @@
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using WebApi.ViewModels.Payment;
 
 namespace WebApi.Controllers
@@ -19,7 +20,7 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("{studentId}")]
+        [HttpGet("{studentId}/list")]
 
         public async Task<ActionResult<IEnumerable<GetStudentPaymentViewModel>>> GetStudentPayments(
             int studentId,
@@ -31,6 +32,26 @@ namespace WebApi.Controllers
             };
             var payments = await _mediator.Send(query, cancellationToken);
             var response = _mapper.Map<List<GetStudentPaymentViewModel>>(payments);
+            return Ok(response);
+        }
+
+
+        [HttpGet("{studentId}/sum")]
+
+        public async Task<ActionResult<decimal>> GetSumToPay(
+            int studentId,
+            CancellationToken cancellationToken)
+        {
+            var query = new GetSumToPayQuery
+            {
+                StudentId = studentId
+            };
+            var sum = await _mediator.Send(query, cancellationToken);
+            var response = JsonConvert.SerializeObject(sum, new JsonSerializerSettings
+            {
+                FloatFormatHandling = FloatFormatHandling.DefaultValue 
+            });
+
             return Ok(response);
         }
     }

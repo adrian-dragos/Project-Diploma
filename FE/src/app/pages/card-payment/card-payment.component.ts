@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UntilDestroy } from '@ngneat/until-destroy';
+import { PaymentClient } from '@api/api:';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CreditCard, CreditCardValidators } from 'angular-cc-library';
 import { defer, map } from 'rxjs';
 
@@ -15,6 +16,9 @@ export class CardPaymentComponent implements OnInit {
 	submitted = false;
 	constructor(private readonly fb: FormBuilder) {}
 	type: string | undefined;
+	sumToPay = 0;
+
+	paymentClient = inject(PaymentClient);
 
 	ngOnInit(): void {
 		this.form = this.fb.group({
@@ -29,6 +33,13 @@ export class CardPaymentComponent implements OnInit {
 			.subscribe((type) => {
 				this.type = type;
 				console.log(type);
+			});
+
+		this.paymentClient
+			.getSumToPay(1)
+			.pipe(untilDestroyed(this))
+			.subscribe((sumToPay) => {
+				this.sumToPay = sumToPay;
 			});
 	}
 
