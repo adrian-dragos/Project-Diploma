@@ -23,7 +23,7 @@ namespace Persistence.EntityConfigurations
 
         private IReadOnlyCollection<PolicyRole> GetPolicyRole()
         {
-            var now = DateTimeOffset.Now;
+            var craeatedAt = new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Utc).AddTicks(7923);
             var createdBy = "System Migration";
 
             var policyRoles = new List<PolicyRole>()
@@ -33,7 +33,7 @@ namespace Persistence.EntityConfigurations
                     Id = 1,
                     RoleId = 1,
                     PolicyId = 1,
-                    CreatedAt = now,
+                    CreatedAt = craeatedAt,
                     CreatedBy = createdBy
                 },
                 new PolicyRole()
@@ -41,7 +41,7 @@ namespace Persistence.EntityConfigurations
                     Id = 2,
                     RoleId = 1,
                     PolicyId = 2,
-                    CreatedAt = now,
+                    CreatedAt = craeatedAt,
                     CreatedBy = createdBy
                 },
                 new PolicyRole()
@@ -49,7 +49,7 @@ namespace Persistence.EntityConfigurations
                     Id = 3,
                     RoleId = 2,
                     PolicyId = 2,
-                    CreatedAt = now,
+                    CreatedAt = craeatedAt,
                     CreatedBy = createdBy
                 },
                 new PolicyRole()
@@ -57,7 +57,7 @@ namespace Persistence.EntityConfigurations
                     Id = 4,
                     RoleId = 3,
                     PolicyId = 3,
-                    CreatedAt = now,
+                    CreatedAt = craeatedAt,
                     CreatedBy = createdBy
                 }
             };

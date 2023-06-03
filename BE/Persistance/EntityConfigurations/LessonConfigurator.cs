@@ -41,7 +41,7 @@ namespace Persistence.EntityConfigurations
 
         private List<Lesson> SeedLessons(List<Lesson> lessons, int instructorIdStar, int instructorIdEnd, int[] carIds)
         {
-            var now = DateTime.UtcNow;
+            var now = new DateTime(2023, 5, 5, 11, 50, 43, 880, DateTimeKind.Utc).AddTicks(7923);
             var createdBy = "System Seeding";
             var random = new Random(42);
 
@@ -66,7 +66,8 @@ namespace Persistence.EntityConfigurations
                             StartTime = new DateTimeOffset(2023, month, date % 30 == 0 ? 30 : date % 30, hour, minutes, 0, new TimeSpan(3, 0, 0)),
                             InstructorId = instructorId,
                             CarId = carIds[random.Next(1, carIds.Length)],
-                            Status = LessonStatus.Unbooked
+                            Status = LessonStatus.Unbooked,
+                            Price = 50
                         };
 
                         if (j == 11 && instructorId == 1 && month >= 7)

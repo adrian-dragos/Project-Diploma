@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
@@ -11,9 +12,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230603153143_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,21 +63,21 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 18, 36, 6, 462, DateTimeKind.Unspecified).AddTicks(2371), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 18, 31, 41, 816, DateTimeKind.Unspecified).AddTicks(7872), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "SeeAllUsers"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 18, 36, 6, 462, DateTimeKind.Unspecified).AddTicks(2371), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 18, 31, 41, 816, DateTimeKind.Unspecified).AddTicks(7872), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateInstructorProfile"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 18, 36, 6, 462, DateTimeKind.Unspecified).AddTicks(2371), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 18, 31, 41, 816, DateTimeKind.Unspecified).AddTicks(7872), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateUserProfile"
                         });
@@ -402,7 +404,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Dacia",
                             Model = "Sandero",
-                            Year = new DateTime(2019, 4, 4, 1, 49, 27, 570, DateTimeKind.Local).AddTicks(6654)
+                            Year = new DateTime(2019, 4, 4, 1, 45, 2, 927, DateTimeKind.Local).AddTicks(4996)
                         },
                         new
                         {
@@ -413,7 +415,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Skoda",
                             Model = "Fabia",
-                            Year = new DateTime(2019, 12, 24, 10, 2, 25, 217, DateTimeKind.Local).AddTicks(9139)
+                            Year = new DateTime(2019, 12, 24, 9, 58, 0, 574, DateTimeKind.Local).AddTicks(7238)
                         },
                         new
                         {
@@ -424,7 +426,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Renault",
                             Model = "Zoe",
-                            Year = new DateTime(2020, 12, 27, 3, 42, 36, 467, DateTimeKind.Local).AddTicks(2037)
+                            Year = new DateTime(2020, 12, 27, 3, 38, 11, 824, DateTimeKind.Local).AddTicks(125)
                         },
                         new
                         {
@@ -435,7 +437,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Skoda",
                             Model = "Fabia",
-                            Year = new DateTime(2019, 11, 3, 5, 4, 10, 435, DateTimeKind.Local).AddTicks(9158)
+                            Year = new DateTime(2019, 11, 3, 4, 59, 45, 792, DateTimeKind.Local).AddTicks(7238)
                         });
                 });
 
@@ -29011,7 +29013,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 1, 18, 9, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "Joe Doe",
                             LessonId = 39,
                             Method = 2,
@@ -29074,7 +29076,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 14,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 8, 9, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "Joe Doe",
                             LessonId = 81,
                             Method = 2,
@@ -29137,7 +29139,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 21,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 15, 10, 16, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "Joe Doe",
                             LessonId = 123,
                             Method = 2,
@@ -29200,7 +29202,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 28,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 29, 10, 45, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 22, 18, 31, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "Sarah Johnson",
                             LessonId = 165,
                             Method = 3,

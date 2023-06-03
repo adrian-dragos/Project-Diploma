@@ -1,0 +1,85 @@
+<div class="container">
+    <img src="./assets/credit-card.png" width="240" height="168">
+    <form [formGroup]="form"
+          novalidate
+          class="form">
+        <div class="form-group input-container">
+            <label for="cc-number" class="control-label">Card number</label>
+            <input  class="input-field" id="cc-number"
+                   (input)="goToNextField('creditCard', expireInput)"
+                   formControlName="creditCard"
+                   type="tel"
+                    maxlength="16"
+                   class="form-control"
+                   autocomplete="cc-number"
+                   placeholder="•••• •••• •••• ••••"
+                   ccNumber>
+            <span class="input-image"></span>
+            <div [ngSwitch]="type">
+                <div *ngSwitchCase="'visa'"><span class="input-image visa"></span></div>
+                <div *ngSwitchCase="'mastercard'"><span class="input-image mastercard"></span></div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="cc-exp" class="control-label">Card expiry</label>
+            <input id="cc-exp"
+                   (input)="goToNextField('expDate', cardHolder)"
+                   #expireInput
+                   formControlName="expDate"
+                   type="tel"
+                   maxlength="5"
+                   class="form-control"
+                   autocomplete="cc-exp"
+                   placeholder="MM / YY"
+                   ccExp>
+        </div>
+
+        <div class="form-group">
+            <label for="cc-card-holder" class="control-label">CardHolder</label>
+            <input id="cc-card-holder"
+                   #cardHolder
+                   (input)="goToNextField('card-holder', cvcInput)"
+                   formControlName="cardHolder"
+                   type="tel"
+                   class="form-control"
+                   autocomplete="off"
+                   placeholder="JOHN DOE"
+                   required
+                   maxlength="50"
+                   card-holder>
+        </div>
+    
+        <div class="form-group">
+            <label for="cc-cvc" class="control-label">Card CVC</label>
+            <input id="cc-cvc"
+                   #cvcInput
+                   formControlName="cvc"
+                   type="tel"
+                   class="form-control"
+                   autocomplete="off"
+                   maxlength="4"
+                   placeholder="•••"
+                   required
+                   ccCVC>
+        </div>
+        <div class="sum">
+            <div>
+                Sum:
+            </div>
+            <div>
+                500 Ron
+            </div>
+        </div>
+        <div class="form-footer">
+            <button type="submit" (click)="onSubmit(form)"> Submit</button>
+        </div>
+    
+        <div class="errors">
+            <div *ngIf="!form.get('creditCard').valid && form.get('creditCard').dirty" class="error">Credit Card is invalid</div>
+            <div *ngIf="!form.get('expDate').valid && form.get('expDate').dirty" class="error">Expiration Date is invalid</div>
+            <div *ngIf="!form.get('cardHolder').valid && form.get('expDate').dirty" class="error">Cardholder is invalid</div>
+            <div *ngIf="!form.get('cvc').valid  && form.get('cvc').dirty" class="error">CVC is invalid</div>
+        </div>
+    </form>
+</div>

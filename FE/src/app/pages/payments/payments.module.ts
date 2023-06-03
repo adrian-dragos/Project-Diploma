@@ -6,6 +6,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loading-spinner.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CreditCardDirectivesModule } from 'angular-cc-library';
+import { PaymentClient } from '@api/api:';
 
 @NgModule({
 	imports: [
@@ -14,8 +17,11 @@ import { MatTableModule } from '@angular/material/table';
 		MatIconModule,
 		LoadingSpinnerModule,
 		MatButtonModule,
-		MatTableModule
+		MatTableModule,
+		ReactiveFormsModule,
+		CreditCardDirectivesModule
 	],
-	declarations: [PaymentsComponent]
+	declarations: [PaymentsComponent],
+	providers: [PaymentClient]
 })
 export class PaymentsModule {}

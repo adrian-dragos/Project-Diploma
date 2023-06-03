@@ -2,7 +2,7 @@
   <div class="payment-wrapper">
     <div class="payment-header">
       <h3 class="payment-header-title">Payments</h3>
-      <button mat-button class="payment-button">
+      <button mat-button [routerLink]="'./../payment'" class="payment-button">
         <div>Pay $</div>
       </button>
     </div>
@@ -11,32 +11,30 @@
       <ng-template #payments>
         <table mat-table [dataSource]="dataSource">
 
-          <!-- Define the table columns -->
           <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef style="width: 20%;">Date</th>
-            <td mat-cell *matCellDef="let row">{{ row.date | date:'d LLLL yyyy, hh:mm' }}</td>
+            <td mat-cell *matCellDef="let payment">{{ payment.date | date:'d LLLL yyyy, hh:mm' }}</td>
           </ng-container>
         
           <ng-container matColumnDef="sum">
             <th mat-header-cell *matHeaderCellDef style="width: 20%;">Sum</th>
-            <td mat-cell *matCellDef="let row">{{ row.sum }}</td>
+            <td mat-cell *matCellDef="let payment">{{ payment.sum }} RON </td>
           </ng-container>
         
           <ng-container matColumnDef="paymentMethod" style="width: 20%;">
             <th mat-header-cell *matHeaderCellDef>Payment Method</th>
-            <td mat-cell *matCellDef="let row">
+            <td mat-cell *matCellDef="let payment">
               <div class="payment-chip">
-                {{ row.paymentMethod }}
+                {{ getMethodText(payment.method) }}
               </div>
             </td>
           </ng-container>
         
           <ng-container matColumnDef="addedBy" style="width: 20%;">
             <th mat-header-cell *matHeaderCellDef>Added By</th>
-            <td mat-cell *matCellDef="let row">{{ row.addedBy }}</td>
+            <td mat-cell *matCellDef="let payment">{{ payment.addedBy }}</td>
           </ng-container>
         
-          <!-- Set the column definitions -->
           <tr mat-header-row *matHeaderRowDef="columns"></tr>
           <tr mat-row *matRowDef="let row; columns: columns;"></tr>
         </table>
@@ -44,3 +42,4 @@
     </div>
   </div>
 </div>
+

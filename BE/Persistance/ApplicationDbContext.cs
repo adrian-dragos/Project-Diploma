@@ -20,6 +20,7 @@ namespace Persistence
         public DbSet<Car> Cars { get; set; }
         public DbSet<CarModel> CarModels { get; set; }
         public DbSet<InstructorCar> InstructorCars { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

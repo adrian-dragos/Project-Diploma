@@ -23,7 +23,7 @@ namespace Persistence.EntityConfigurations
 
         private IReadOnlyCollection<InstructorCar> GetInstructorCars()
         {
-            var now = DateTimeOffset.Now;
+            var createdAt = new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Utc).AddTicks(7923);
             var createdBy = "System Migration";
 
             var instructorCarList = new List<InstructorCar>()
@@ -31,7 +31,7 @@ namespace Persistence.EntityConfigurations
                 new InstructorCar()
                 {
                     Id = 1,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     InstructorId = 1,
                     CarId = 2
@@ -39,7 +39,7 @@ namespace Persistence.EntityConfigurations
                 new InstructorCar()
                 {
                     Id = 2,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     InstructorId = 1,
                     CarId = 6
@@ -47,7 +47,7 @@ namespace Persistence.EntityConfigurations
                 new InstructorCar()
                 {
                     Id = 3,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     InstructorId = 2,
                     CarId = 3
@@ -55,7 +55,7 @@ namespace Persistence.EntityConfigurations
                 new InstructorCar()
                 {
                     Id = 4,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     InstructorId = 3,
                     CarId = 5
@@ -63,7 +63,7 @@ namespace Persistence.EntityConfigurations
                 new InstructorCar()
                 {
                     Id = 5,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     InstructorId = 4,
                     CarId = 6
@@ -71,7 +71,7 @@ namespace Persistence.EntityConfigurations
                 new InstructorCar()
                 {
                     Id = 6,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     InstructorId = 5,
                     CarId = 9
@@ -79,7 +79,7 @@ namespace Persistence.EntityConfigurations
                 new InstructorCar()
                 {
                     Id = 7,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     InstructorId = 20,
                     CarId = 1
@@ -87,7 +87,7 @@ namespace Persistence.EntityConfigurations
                 new InstructorCar()
                 {
                     Id = 8,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     InstructorId = 21,
                     CarId = 4
@@ -95,7 +95,7 @@ namespace Persistence.EntityConfigurations
                 new InstructorCar()
                 {
                     Id = 9,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     InstructorId = 22,
                     CarId = 7
@@ -103,7 +103,7 @@ namespace Persistence.EntityConfigurations
                 new InstructorCar()
                 {
                     Id = 10,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     InstructorId = 23,
                     CarId = 8
@@ -111,7 +111,7 @@ namespace Persistence.EntityConfigurations
                 new InstructorCar()
                 {
                     Id = 10,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     InstructorId = 24,
                     CarId = 10

@@ -14,7 +14,7 @@ namespace Persistence.EntityConfigurations
 
         private IReadOnlyCollection<Student> GetStudents()
         {
-            var now = DateTime.UtcNow;
+            var createdAt = new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Utc).AddTicks(7923);
             var createdBy = "System Seeding";
 
             var students = new List<Student>();
@@ -27,7 +27,7 @@ namespace Persistence.EntityConfigurations
                 students.Add(new Student
                 {
                     Id = i + 1,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy,
                     IdentityId = studentRoleIds[i],
                     GearType = carGear

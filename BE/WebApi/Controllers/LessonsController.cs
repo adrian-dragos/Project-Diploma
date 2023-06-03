@@ -6,7 +6,6 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.ViewModels.Lesson;
 using WebApi.ViewModels.Pagination;
-using WebApi.ViewModels.User;
 
 namespace WebApi.Controllers
 {
@@ -75,7 +74,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPatch("book")]
-        [ProducesResponseType(typeof(RegisterUserRequestViewModel), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> BookLesson(
@@ -89,7 +88,7 @@ namespace WebApi.Controllers
 
 
         [HttpPatch("unbook")]
-        [ProducesResponseType(typeof(RegisterUserRequestViewModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> UnbookLesson(
@@ -103,7 +102,7 @@ namespace WebApi.Controllers
 
 
         [HttpPatch("cancel/{id}")]
-        [ProducesResponseType(typeof(RegisterUserRequestViewModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> CancelLesson(

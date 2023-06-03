@@ -9,6 +9,7 @@ namespace Domain.Entities
         public Identity Identity { get; set; }
         public ICollection<Lesson>? Lessons { get; set; }
         public CarGear GearType { get; set; }
+        public ICollection<Payment> Payments { get; set; }
     }
 
 }

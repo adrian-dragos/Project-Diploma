@@ -15,5 +15,7 @@ namespace Domain.Entities
         public Review Review { get; set; }
         public int CarId { get; set; }
         public Car Car { get; set; }
+        public ICollection<Payment> Payments { get; set; }
+        public decimal Price { get; set; }
     }
 }

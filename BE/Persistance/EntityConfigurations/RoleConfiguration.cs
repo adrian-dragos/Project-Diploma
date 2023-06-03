@@ -21,7 +21,7 @@ namespace Persistence.EntityConfigurations
 
         private IReadOnlyCollection<Role> GetRoles()
         {
-            var now = DateTimeOffset.Now;
+            var createdAt = new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Utc).AddTicks(7923);
             var createdBy = "System Migration";
 
             var defaultRoles = new List<Role>()
@@ -30,21 +30,21 @@ namespace Persistence.EntityConfigurations
                 {
                     Id = 1,
                     Name = DefaultRoles.Administrator,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy
                 },
                 new Role()
                 {
                     Id = 2,
                     Name = DefaultRoles.Student,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy
                 },
                 new Role()
                 {
                     Id = 3,
                     Name = DefaultRoles.Insturctor,
-                    CreatedAt = now,
+                    CreatedAt = createdAt,
                     CreatedBy = createdBy
                 }
             };
