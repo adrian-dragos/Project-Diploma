@@ -39,6 +39,7 @@ namespace Application.Features.QueryHandlers
                     Location = l.Instructor.Location,
                     Status = l.Status
                 });
+            await MarkAsComplete(cancellationToken);
 
             if (request.PageDto.Ascending)
             {
@@ -122,7 +123,6 @@ namespace Application.Features.QueryHandlers
                                 l.Status == LessonStatus.Unbooked ||
                                 l.Status == LessonStatus.BookedNotPaid));
 
-            await MarkAsComplete(cancellationToken);
 
             if (request.InstructorId is not null)
             {
