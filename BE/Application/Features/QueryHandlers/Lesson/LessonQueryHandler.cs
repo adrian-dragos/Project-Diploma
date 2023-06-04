@@ -190,7 +190,7 @@ namespace Application.Features.QueryHandlers
             var now = DateTimeOffset.Now;
             var lessons = await _lessonRepository
                .Read()
-               .Where(l => l.StartTime <= now)
+               .Where(l => l.StartTime <= now && l.StudentId != null)
                .ToListAsync(cancellationToken);
 
             foreach (var lesson in lessons)
