@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { GetStudentPaymentViewModel, PaymentClient, PaymentMethod } from '@api/api:';
+import { TooltipConstants } from '@app/constants/tooltip.constants';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { tap } from 'rxjs';
 
@@ -11,6 +12,7 @@ import { tap } from 'rxjs';
 })
 @UntilDestroy()
 export class PaymentsComponent implements OnInit {
+	tooltipShowDelay = TooltipConstants.SHOW_DELAY;
 	isLoading = true;
 	dataSource: MatTableDataSource<GetStudentPaymentViewModel>;
 	columns: string[] = ['date', 'sum', 'paymentMethod', 'addedBy'];

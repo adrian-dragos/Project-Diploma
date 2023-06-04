@@ -8,5 +8,6 @@ namespace Application.Interfaces
         Task<T> AddAsync(T entity);
         Task<T> TryGetByIdAsync(int id, CancellationToken cancellationToken);
         void Update(T student);
+        IEnumerable<T> UpdateRange(IEnumerable<T> entities);
     }
 }

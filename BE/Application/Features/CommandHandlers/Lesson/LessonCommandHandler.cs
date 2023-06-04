@@ -135,7 +135,14 @@ namespace Application.Features.CommandHandlers
             lesson.Status = LessonStatus.Unbooked;
             lesson.StudentId = null;
 
+            var payment = await _paymentRepository.Read()
+                .FirstOrDefaultAsync(p => p.LessonId == lesson.Id, cancellationToken);
+
+            payment.StudentId = null;
+            payment.Student = null;
             _lessonsRepository.Update(lesson);
+            _paymentRepository.Update(payment);
+
 
             return Unit.Value;
         }

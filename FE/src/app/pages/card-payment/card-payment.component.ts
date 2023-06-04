@@ -1,9 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PaymentClient } from '@api/api:';
+import { Router } from '@angular/router';
+import { PaymentClient, PaymentMethod } from '@api/api:';
+import { SnackBarService } from '@app/services/snack-bar.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CreditCard, CreditCardValidators } from 'angular-cc-library';
-import { defer, map } from 'rxjs';
+import { defer, delay, map, tap } from 'rxjs';
 
 @Component({
 	selector: 'app-card-payment',
@@ -13,12 +15,13 @@ import { defer, map } from 'rxjs';
 @UntilDestroy()
 export class CardPaymentComponent implements OnInit {
 	form: FormGroup;
-	submitted = false;
-	constructor(private readonly fb: FormBuilder) {}
 	type: string | undefined;
 	sumToPay = 0;
-
+	isLoading = true;
 	paymentClient = inject(PaymentClient);
+	snackBarService = inject(SnackBarService);
+
+	constructor(private readonly router: Router, private readonly fb: FormBuilder) {}
 
 	ngOnInit(): void {
 		this.form = this.fb.group({
@@ -40,6 +43,7 @@ export class CardPaymentComponent implements OnInit {
 			.pipe(untilDestroyed(this))
 			.subscribe((sumToPay) => {
 				this.sumToPay = sumToPay;
+				this.isLoading = false;
 			});
 	}
 
@@ -57,9 +61,26 @@ export class CardPaymentComponent implements OnInit {
 		}
 	}
 
-	public onSubmit(demoForm: FormGroup): void {
-		this.submitted = true;
-		console.log(demoForm.value);
-		console.log(demoForm);
+	public onSubmit(): void {
+		if (this.form.invalid) {
+			console.log('invalid form');
+			return;
+		}
+		this.paymentClient
+			.pay({
+				studentId: 1,
+				amount: this.sumToPay,
+				paymentMethod: PaymentMethod.Card
+			})
+			.pipe(
+				tap(() => (this.isLoading = true)),
+				delay(1000),
+				untilDestroyed(this)
+			)
+			.subscribe(() => {
+				this.snackBarService.openSuccessSnackBar('Payment successful');
+				this.isLoading = false;
+				this.router.navigate(['/payments']);
+			});
 	}
 }

@@ -52,6 +52,15 @@ namespace Persistence
             _dbContext.SaveChanges();
         }
 
+        public IEnumerable<T> UpdateRange(IEnumerable<T> entities)
+        {
+            _dbContext.Set<T>().UpdateRange(entities);
+            Audit();
+            _dbContext.SaveChanges();
+
+            return entities;
+        }
+
         private void Audit()
         {
             var now = DateTimeOffset.Now;

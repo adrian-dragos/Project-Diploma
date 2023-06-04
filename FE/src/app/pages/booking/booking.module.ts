@@ -13,7 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
-import { CarClient, InstructorClient, LessonsClient } from '@api/api:';
+import { CarClient, InstructorClient, LessonsClient, PaymentClient } from '@api/api:';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GearButtonsComponent } from './booking-sidebar/gear-buttons/gear-buttons.component';
@@ -44,7 +44,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 		LessonDetailsDialogModule,
 		MatTooltipModule
 	],
-	providers: [InstructorClient, CarClient, BookingService, LessonsClient, DialogService],
+	providers: [InstructorClient, CarClient, BookingService, LessonsClient, DialogService, PaymentClient],
 	declarations: [BookingComponent, BookingSidebarComponent, BookingLessonsComponent, GearButtonsComponent, CarFilterComponent]
 })
 export class BookingModule {}

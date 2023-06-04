@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.Payment;
+using Application.Features.Commands.Payment;
 using AutoMapper;
 using WebApi.ViewModels.Payment;
 
@@ -9,6 +10,7 @@ namespace WebApi.AutoMapperProfiles
         public PaymentProfile()
         {
             CreateMap<GetStudentPaymentDto, GetStudentPaymentViewModel>();
+            CreateMap<PayLessonsViewModel, PayLessonsCommand>();
         }
     }
 }

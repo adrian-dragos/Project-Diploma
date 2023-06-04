@@ -12,7 +12,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'payment',
-		loadChildren: () => import('@app/pages/card-payment/card-payment.module').then((m) => m.CardPaymentModule)
+		loadChildren: () => import('@app/pages/card-payment/card-payment.module').then((m) => m.default)
 	},
 	{ path: '**', loadChildren: () => import('src/app/pages/not-found/not-found.module').then((m) => m.NotFoundModule) }
 ];

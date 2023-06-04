@@ -79,6 +79,9 @@ namespace Application.Features.QueryHandlers
                     Status = l.Status
                 });
 
+
+            await MarkAsComplete(cancellationToken);
+
             if (request.PageDto.Ascending)
             {
                 lessonQuery = lessonQuery.OrderBy(l => l.StartTime);
@@ -119,6 +122,7 @@ namespace Application.Features.QueryHandlers
                                 l.Status == LessonStatus.Unbooked ||
                                 l.Status == LessonStatus.BookedNotPaid));
 
+            await MarkAsComplete(cancellationToken);
 
             if (request.InstructorId is not null)
             {
@@ -179,6 +183,24 @@ namespace Application.Features.QueryHandlers
                 }
             }
             return lessons;
+        }
+
+        private async Task<Unit> MarkAsComplete(CancellationToken cancellationToken)
+        {
+            var now = DateTimeOffset.Now;
+            var lessons = await _lessonRepository
+               .Read()
+               .Where(l => l.StartTime <= now)
+               .ToListAsync(cancellationToken);
+
+            foreach (var lesson in lessons)
+            {
+                lesson.Status = LessonStatus.Completed;
+            }
+
+            _lessonRepository.UpdateRange(lessons);
+
+            return Unit.Value;
         }
     }
 }

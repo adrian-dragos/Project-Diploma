@@ -1,4 +1,5 @@
-﻿using Application.Features.Queries.Payment;
+﻿using Application.Features.Commands.Payment;
+using Application.Features.Queries.Payment;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -54,5 +55,19 @@ namespace WebApi.Controllers
 
             return Ok(response);
         }
+
+
+        [HttpPatch("pay")]
+
+        public async Task<ActionResult> Pay(
+            [FromBody] PayLessonsViewModel payLessonViewModel,
+            CancellationToken cancellationToken)
+        {
+            var query = _mapper.Map<PayLessonsCommand>(payLessonViewModel);
+            await _mediator.Send(query, cancellationToken);
+
+            return NoContent();
+        }
+
     }
 }

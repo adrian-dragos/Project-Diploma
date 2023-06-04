@@ -4,10 +4,17 @@ import { CardPaymentComponent } from './card-payment.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PaymentClient } from '@api/api:';
+import { SnackBarService } from '@app/services/snack-bar.service';
+import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loading-spinner.module';
 
 @NgModule({
-	imports: [CommonModule, RouterModule.forChild([{ path: '', component: CardPaymentComponent }]), ReactiveFormsModule],
+	imports: [
+		CommonModule,
+		RouterModule.forChild([{ path: '', component: CardPaymentComponent }]),
+		ReactiveFormsModule,
+		LoadingSpinnerModule
+	],
 	declarations: [CardPaymentComponent],
-	providers: [PaymentClient]
+	providers: [PaymentClient, SnackBarService]
 })
-export class CardPaymentModule {}
+export default class CardPaymentModule {}

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="isLoading == false; else loadingSpinner">
     <img src="./assets/credit-card.png" width="240" height="168">
     <form [formGroup]="form"
           novalidate
@@ -72,7 +72,7 @@
             </div>
         </div>
         <div class="form-footer">
-            <button type="submit" (click)="onSubmit(form)"> Submit</button>
+            <button type="submit" (click)="onSubmit()"> Submit</button>
         </div>
     
         <div class="errors">
@@ -83,3 +83,6 @@
         </div>
     </form>
 </div>
+<ng-template #loadingSpinner>
+    <app-loading-spinner></app-loading-spinner>
+</ng-template>

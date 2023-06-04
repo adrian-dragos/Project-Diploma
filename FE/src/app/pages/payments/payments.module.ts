@@ -9,6 +9,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreditCardDirectivesModule } from 'angular-cc-library';
 import { PaymentClient } from '@api/api:';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
 	imports: [
@@ -19,7 +20,8 @@ import { PaymentClient } from '@api/api:';
 		MatButtonModule,
 		MatTableModule,
 		ReactiveFormsModule,
-		CreditCardDirectivesModule
+		CreditCardDirectivesModule,
+		MatTooltipModule
 	],
 	declarations: [PaymentsComponent],
 	providers: [PaymentClient]

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { CarGear, GetAvailableLessonDetailsViewModel, GetAvailableLessonsViewModel, LessonStatus, LessonsClient } from '@api/api:';
 import { BookingConstants } from '@app/constants/booking.constants';
 import { BookingService } from '@app/services/booking.service';
@@ -16,6 +16,7 @@ import { concatMap, tap } from 'rxjs';
 })
 @UntilDestroy()
 export class BookingLessonsComponent implements OnInit {
+	@Output() bookingEvent = new EventEmitter<void>();
 	selectedDate: Date;
 	dueDate: Date;
 	isLoading = true;
@@ -124,6 +125,7 @@ export class BookingLessonsComponent implements OnInit {
 										() => {
 											this.snackBarService.openSuccessSnackBar('Lesson unbooked successfully');
 											this.updateSelectedLessonStatus(lesson.id, LessonStatus.Unbooked);
+											this.bookingEvent.emit();
 										},
 										() => this.snackBarService.openErrorSnackBar('Error while unbooking lesson')
 									);
@@ -144,6 +146,7 @@ export class BookingLessonsComponent implements OnInit {
 				() => {
 					this.snackBarService.openSuccessSnackBar('Lesson booked successfully');
 					this.updateSelectedLessonStatus(lessonId, LessonStatus.BookedNotPaid);
+					this.bookingEvent.emit();
 				},
 				(error) => this.snackBarService.openErrorSnackBar(error.message)
 			);
