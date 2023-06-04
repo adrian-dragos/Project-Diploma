@@ -108,10 +108,8 @@ namespace Application.Features.QueryHandlers
 
         public async Task<IEnumerable<GetAvailableLessonsDto>> Handle(GetAvailableLessonsListQuery request, CancellationToken cancellationToken)
         {
-            var startDate = request.StartDate.AddDays(1);
-            startDate = new DateTimeOffset(new DateTime(startDate.Year, startDate.Month, startDate.Day));
-            var endDate = request.EndDate.AddDays(2);
-            endDate = new DateTimeOffset(new DateTime(endDate.Year, endDate.Month, endDate.Day));
+            var startDate = GetDate(request.StartDate);
+            var endDate = GetDate(request.EndDate);
 
             var lessonsQuery = _lessonRepository
                 .Read()
@@ -174,7 +172,7 @@ namespace Application.Features.QueryHandlers
             foreach (int dayOffset in Enumerable.Range(0, (endDate - startDate).Days))
             {
                 var date = startDate.AddDays(dayOffset);
-                if (!lessons.Any(l => l.Date == date))
+                if (!lessons.Any(l => GetDate(l.Date) == date))
                 {
                     lessons.Add(new GetAvailableLessonsDto
                     {
@@ -201,6 +199,11 @@ namespace Application.Features.QueryHandlers
             _lessonRepository.UpdateRange(lessons);
 
             return Unit.Value;
+        }
+
+        private DateTimeOffset GetDate(DateTimeOffset date)
+        {
+            return new DateTimeOffset(date.Date, TimeSpan.Zero);
         }
     }
 }
