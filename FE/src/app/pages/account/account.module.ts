@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
 import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loading-spinner.module';
 import { CancelDialogModule } from '@app/shared/components/cancel-dialog/cancel-dialog.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const routes: Routes = [
 	{
@@ -32,6 +33,7 @@ const routes: Routes = [
 		MatIconModule,
 		DatePipe,
 		MatButtonModule,
+		MatTooltipModule,
 		ReactiveFormsModule,
 		MatFormFieldModule,
 		MatSelectModule,

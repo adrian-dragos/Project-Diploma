@@ -94,7 +94,7 @@ export class BookingLessonsComponent implements OnInit {
 
 	shoWLessonDetails(lesson: GetAvailableLessonDetailsViewModel): void {
 		const dialogRef = this.dialogService.openDialog(LessonDetailsDialogComponent, {
-			title: 'Dragos Adrian',
+			title: localStorage.getItem('userName'),
 			content: lesson
 		});
 

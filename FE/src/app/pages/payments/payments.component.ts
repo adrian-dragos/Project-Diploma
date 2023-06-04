@@ -19,6 +19,8 @@ export class PaymentsComponent implements OnInit {
 	hasToPay = false;
 	sumToPay = 0;
 	unpaid = PaymentMethod.Unpaid;
+	cash = PaymentMethod.Cash;
+	card = PaymentMethod.Card;
 
 	paymentClient = inject(PaymentClient);
 

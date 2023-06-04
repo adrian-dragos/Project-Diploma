@@ -2,10 +2,6 @@
   <div class="account-wrapper">
     <div class="account-header">
       <h3 class="account-header-title">Account</h3>
-      <button mat-button routerLink="/account/edit">
-        <mat-icon>edit</mat-icon>
-        Edit
-      </button>
     </div>
     <app-loading-spinner *ngIf="isLoading; else profile" class="loader"></app-loading-spinner>
     <ng-template #profile></ng-template>

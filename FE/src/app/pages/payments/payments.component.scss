@@ -31,7 +31,6 @@
   align-items: center;
   background-color:#20a8d8;
   color: #fff !important;
-  animation: pulse 2s ease-in-out infinite;
   &  p {
     margin-bottom: 0 !important;
   }
@@ -40,34 +39,23 @@
 .payment-chip {
   display: inline-block;
   text-align: center;
-  background-color:#20a8d8;
   color: #fff;
-  font-weight: 500;
-  padding: 2px 5px;
+  padding: 5px 15px;
+  border: 1px solid;
+  border-radius: 3px;
 }
 
-.mat-mdc-table {
-  background-color: #f5f5f5;
-  color: #333333;
+.unpaid-chip {
+  background-color: red;
+  animation: pulse 2s ease-in-out infinite;
 }
 
-.mdc-data-table__row:nth-child(odd) {
-  background-color: #ffffff !important;
+.card-chip {
+  background-color: #ADD8E6;
 }
 
-.mdc-data-table__header-row{
-  background-color: #f5f5f5;
-  font-weight: bold;
-}
-
-.mat-cell,
-.mat-header-cell {
-  padding: 10px;
-}
-
-.mat-cell,
-.mat-header-cell {
-  border-bottom: 1px solid #cccccc;
+.cash-chip {
+  background-color: #90EE90;
 }
 
 @keyframes pulse {

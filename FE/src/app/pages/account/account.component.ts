@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CarGear, StudentClient, StudentProfileViewModel } from '@api/api:';
+import { TooltipConstants } from '@app/constants/tooltip.constants';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { delay, tap } from 'rxjs';
 
@@ -13,6 +14,7 @@ export class AccountComponent implements OnInit {
 	student: StudentProfileViewModel;
 	studentClient = inject(StudentClient);
 	isLoading = true;
+	showDelayTooltip = TooltipConstants.SHOW_DELAY;
 
 	ngOnInit(): void {
 		this.studentClient

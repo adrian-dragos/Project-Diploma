@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserService } from '@app/services/user.service';
@@ -11,12 +11,18 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 	styleUrls: ['./header.component.scss']
 })
 @UntilDestroy()
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 	@Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
+
+	userName: string;
 
 	userService = inject(UserService);
 
 	constructor(private readonly router: Router, private readonly dialog: MatDialog) {}
+
+	ngOnInit(): void {
+		this.userName = localStorage.getItem('userName');
+	}
 
 	openLogoutDialog(): void {
 		const dialogRef = this.dialog.open(LogoutDialogComponent, {

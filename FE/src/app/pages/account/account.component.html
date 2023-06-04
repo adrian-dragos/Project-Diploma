@@ -2,17 +2,21 @@
   <div class="account-wrapper">
     <div class="account-header">
       <h3 class="account-header-title">Account</h3>
-      <button mat-button routerLink="/account/edit">
+      <button 
+        mat-button 
+        routerLink="/account/edit" 
+        [matTooltip]="'Edit Account'"
+        [matTooltipShowDelay]="showDelayTooltip">
         <mat-icon>edit</mat-icon>
         Edit
-      </button>
+    </button>
     </div>
     <div>
       <app-loading-spinner *ngIf="isLoading; else profile" class="loader"></app-loading-spinner>
       <ng-template #profile>
         <div class="profile-details">
           <div class="profile-picture">
-            <span class="profile-picture-initials"> AD </span>
+            <span class="profile-picture-initials"> {{student.firstName.charAt(0) + student.lastName.charAt(0)}} </span>
           </div>
           <div class="profile-info">
             <div>
