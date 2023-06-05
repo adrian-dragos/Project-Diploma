@@ -25,9 +25,32 @@ namespace Application.Features.QueryHandlers
 
         public async Task<IEnumerable<GetStudentPaymentDto>> Handle(GetStudentPaymentListQuery request, CancellationToken cancellationToken)
         {
-            var payments = await _paymentRepository.Read()
+            var paymentsQuery = _paymentRepository.Read()
                 .AsNoTracking()
-                .Where(p => p.StudentId == request.StudentId)
+                .Where(p => p.StudentId != null && request.StudentIds.Contains((int)p.StudentId));
+
+            if (request.PaymentMethod?.Any() ?? false)
+            {
+                paymentsQuery = paymentsQuery.Where(p => request.PaymentMethod.Contains(p.Method) || p.Method == PaymentMethod.Unpaid);
+            }
+
+            if (request.EndDate != null)
+            {
+                var nonNullableEndDate = request.EndDate.GetValueOrDefault().AddDays(1);
+                paymentsQuery = paymentsQuery.Where(p => p.Timestamp.Year <= nonNullableEndDate.Year &&
+                                                       p.Timestamp.Month <= nonNullableEndDate.Month &&
+                                                       p.Timestamp.Day <= nonNullableEndDate.Day);
+            }
+
+            if (request.EndDate is not null)
+            {
+                var nonNullableEndDate = request.EndDate.GetValueOrDefault().AddDays(1);
+                paymentsQuery = paymentsQuery.Where(p => p.Timestamp.Year <= nonNullableEndDate.Year &&
+                                                       p.Timestamp.Month <= nonNullableEndDate.Month &&
+                                                       p.Timestamp.Day <= nonNullableEndDate.Day);
+            }
+
+            var payments = await paymentsQuery
                 .GroupBy(p => new { p.Timestamp, p.CreatedBy, p.Method })
                 .Select(g => new GetStudentPaymentDto
                 {

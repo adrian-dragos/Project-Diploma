@@ -1,9 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { GetStudentPaymentViewModel, PaymentClient, PaymentMethod } from '@api/api:';
+import { GetStudentPaymentFilterViewModel, GetStudentPaymentViewModel, PaymentClient, PaymentMethod } from '@api/api:';
 import { TooltipConstants } from '@app/constants/tooltip.constants';
+import { PaymentService } from '@app/services/payment.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { tap } from 'rxjs';
+import { concatMap, tap } from 'rxjs';
 
 @Component({
 	selector: 'app-payments',
@@ -23,12 +24,14 @@ export class PaymentsComponent implements OnInit {
 	card = PaymentMethod.Card;
 
 	paymentClient = inject(PaymentClient);
+	paymentService = inject(PaymentService);
 
 	ngOnInit(): void {
-		this.paymentClient
-			.getStudentPayments(1)
+		this.paymentService
+			.getPaymentsFilter()
 			.pipe(
 				tap(() => (this.isLoading = true)),
+				concatMap((filter) => this.paymentClient.getStudentPayments(filter)),
 				untilDestroyed(this)
 			)
 			.subscribe((data) => {

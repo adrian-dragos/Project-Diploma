@@ -21,16 +21,13 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("{studentId}/list")]
+        [HttpPost("list")]
 
         public async Task<ActionResult<IEnumerable<GetStudentPaymentViewModel>>> GetStudentPayments(
-            int studentId,
+            [FromBody] GetStudentPaymentFilterViewModel filter,
             CancellationToken cancellationToken)
         {
-            var query = new GetStudentPaymentListQuery
-            {
-                StudentId = studentId
-            };
+            var query = _mapper.Map<GetStudentPaymentListQuery>(filter);
             var payments = await _mediator.Send(query, cancellationToken);
             var response = _mapper.Map<List<GetStudentPaymentViewModel>>(payments);
             return Ok(response);

@@ -12,8 +12,12 @@
       </button>
     </div>
     <div>
-      <app-loading-spinner *ngIf="isLoading; else payments" class="loader"></app-loading-spinner>
-      <ng-template #payments>
+      <app-loading-spinner *ngIf="isLoading" class="loader"></app-loading-spinner>
+      <div [ngClass]="{'hidden-payment-content': isLoading}">
+        <div class="payment-filter">
+          <app-date-filter></app-date-filter>
+          <app-payment-method-filter></app-payment-method-filter>
+        </div>
         <table mat-table [dataSource]="dataSource">
 
           <ng-container matColumnDef="date">
@@ -53,7 +57,7 @@
           <tr mat-header-row *matHeaderRowDef="columns"></tr>
           <tr mat-row *matRowDef="let row; columns: columns;"></tr>
         </table>
-      </ng-template>
+      </div>
     </div>
   </div>
 </div>

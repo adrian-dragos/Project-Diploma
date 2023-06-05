@@ -23,13 +23,8 @@ export class LessonsService {
 		this.filterSubject = new BehaviorSubject<GetLessonsViewModel>(this.lessonsFilter);
 	}
 
-	setStartDate(startDate: Date | null): void {
+	setRangeDate(startDate: Date | null, endDate: Date | null): void {
 		this.lessonsFilter.startDate = startDate;
-		this.lessonsFilter.endDate = undefined;
-		this.filterSubject.next(this.lessonsFilter);
-	}
-
-	setEndDate(endDate: Date | null): void {
 		this.lessonsFilter.endDate = endDate;
 		this.filterSubject.next(this.lessonsFilter);
 	}

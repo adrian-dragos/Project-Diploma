@@ -31,6 +31,7 @@
   align-items: center;
   background-color:#20a8d8;
   color: #fff !important;
+  animation: pulse 2s ease-in-out infinite;
   &  p {
     margin-bottom: 0 !important;
   }
@@ -58,8 +59,20 @@
   background-color: #90EE90;
 }
 
+.payment-filter {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.hidden-payment-content {
+  visibility: hidden;
+}
+
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }
   100% { transform: scale(1); }
 }
+

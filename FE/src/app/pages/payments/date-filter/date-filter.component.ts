@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { LessonsService } from '@app/services/lessons.service';
+import { PaymentService } from '@app/services/payment.service';
 
 @Component({
 	selector: 'app-date-filter',
@@ -13,12 +13,12 @@ export class DateFilterComponent {
 		end: new FormControl<Date | null>(null)
 	});
 
-	lessonsService = inject(LessonsService);
+	paymentService = inject(PaymentService);
 
 	onEndDateChange(): void {
 		const startDate = new Date(this.range.value.start);
 		const endDate = new Date(this.range.value.end);
-		this.lessonsService.setRangeDate(startDate, endDate);
+		this.paymentService.setRangeDate(startDate, endDate);
 	}
 
 	clearDatepicker(event: Event): void {
@@ -27,6 +27,6 @@ export class DateFilterComponent {
 			return;
 		}
 		this.range.reset();
-		this.lessonsService.setRangeDate(null, null);
+		this.paymentService.setRangeDate(null, null);
 	}
 }

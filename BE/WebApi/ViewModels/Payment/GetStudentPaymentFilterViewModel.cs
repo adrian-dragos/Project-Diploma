@@ -1,10 +1,8 @@
-﻿using Application.DTOs.Payment;
-using Domain.Enums;
-using MediatR;
+﻿using Domain.Enums;
 
-namespace Application.Features.Queries.Payment
+namespace WebApi.ViewModels.Payment
 {
-    public sealed class GetStudentPaymentListQuery : IRequest<IEnumerable<GetStudentPaymentDto>>
+    public class GetStudentPaymentFilterViewModel
     {
         public IEnumerable<int> StudentIds { get; set; }
         public IEnumerable<PaymentMethod> PaymentMethod { get; set; }

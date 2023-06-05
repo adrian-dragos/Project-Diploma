@@ -103,7 +103,6 @@ export class LessonsComponent implements AfterContentInit {
 	}
 
 	fetchLessons(): void {
-		console.log(this.filter);
 		this.lessonsClient
 			.getStudentLessons(this.filter)
 			.pipe(untilDestroyed(this))
