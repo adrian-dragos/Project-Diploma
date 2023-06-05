@@ -61,21 +61,21 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 22, 27, 21, 968, DateTimeKind.Unspecified).AddTicks(987), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 5, 14, 2, 45, 607, DateTimeKind.Unspecified).AddTicks(185), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "SeeAllUsers"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 22, 27, 21, 968, DateTimeKind.Unspecified).AddTicks(987), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 5, 14, 2, 45, 607, DateTimeKind.Unspecified).AddTicks(185), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateInstructorProfile"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 3, 22, 27, 21, 968, DateTimeKind.Unspecified).AddTicks(987), new TimeSpan(0, 3, 0, 0, 0)),
+                            CreatedAt = new DateTimeOffset(new DateTime(2023, 6, 5, 14, 2, 45, 607, DateTimeKind.Unspecified).AddTicks(185), new TimeSpan(0, 3, 0, 0, 0)),
                             CreatedBy = "System Migration",
                             Name = "UpdateUserProfile"
                         });
@@ -402,7 +402,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Dacia",
                             Model = "Sandero",
-                            Year = new DateTime(2019, 4, 4, 5, 40, 43, 76, DateTimeKind.Local).AddTicks(7993)
+                            Year = new DateTime(2019, 4, 5, 21, 16, 6, 720, DateTimeKind.Local).AddTicks(8128)
                         },
                         new
                         {
@@ -413,7 +413,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Skoda",
                             Model = "Fabia",
-                            Year = new DateTime(2019, 12, 24, 13, 53, 40, 724, DateTimeKind.Local).AddTicks(330)
+                            Year = new DateTime(2019, 12, 26, 5, 29, 4, 368, DateTimeKind.Local).AddTicks(240)
                         },
                         new
                         {
@@ -424,7 +424,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Renault",
                             Model = "Zoe",
-                            Year = new DateTime(2020, 12, 27, 7, 33, 51, 973, DateTimeKind.Local).AddTicks(3223)
+                            Year = new DateTime(2020, 12, 28, 23, 9, 15, 617, DateTimeKind.Local).AddTicks(3116)
                         },
                         new
                         {
@@ -435,7 +435,7 @@ namespace Persistence.Migrations
                             CreatedBy = "System Seeding",
                             Manufacturer = "Skoda",
                             Model = "Fabia",
-                            Year = new DateTime(2019, 11, 3, 8, 55, 25, 942, DateTimeKind.Local).AddTicks(349)
+                            Year = new DateTime(2019, 11, 5, 0, 30, 49, 586, DateTimeKind.Local).AddTicks(224)
                         });
                 });
 
@@ -504,7 +504,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            Birthday = new DateTime(1976, 5, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1976, 5, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Lawrence_Heidenreich@yahoo.com",
@@ -517,7 +517,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            Birthday = new DateTime(1978, 8, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1978, 8, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Dominic39@yahoo.com",
@@ -530,7 +530,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            Birthday = new DateTime(1989, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1989, 9, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Hattie_Kling89@hotmail.com",
@@ -543,7 +543,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 4,
-                            Birthday = new DateTime(1993, 9, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1993, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Tasha_Jakubowski11@gmail.com",
@@ -556,7 +556,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 5,
-                            Birthday = new DateTime(1974, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1974, 1, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Caroline88@hotmail.com",
@@ -569,7 +569,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 6,
-                            Birthday = new DateTime(1997, 10, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1997, 10, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ricardo97@yahoo.com",
@@ -582,7 +582,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 7,
-                            Birthday = new DateTime(1978, 7, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1978, 7, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Levi21@yahoo.com",
@@ -595,7 +595,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 8,
-                            Birthday = new DateTime(1995, 7, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1995, 7, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Tabitha.Russel3@yahoo.com",
@@ -608,7 +608,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 9,
-                            Birthday = new DateTime(1981, 8, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1981, 8, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Florence_Spinka@gmail.com",
@@ -621,7 +621,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 10,
-                            Birthday = new DateTime(1986, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1986, 11, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Molly71@gmail.com",
@@ -634,7 +634,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 11,
-                            Birthday = new DateTime(1980, 11, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1980, 11, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Marie.Rolfson@hotmail.com",
@@ -647,7 +647,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 12,
-                            Birthday = new DateTime(1998, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1998, 3, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Kate.Reynolds43@gmail.com",
@@ -660,7 +660,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 13,
-                            Birthday = new DateTime(1974, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1974, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Willie_Kertzmann47@yahoo.com",
@@ -673,7 +673,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 14,
-                            Birthday = new DateTime(1990, 1, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1990, 1, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ronnie_Boyle27@gmail.com",
@@ -686,7 +686,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 15,
-                            Birthday = new DateTime(1992, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1992, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Russell_Corkery@yahoo.com",
@@ -699,7 +699,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 16,
-                            Birthday = new DateTime(1980, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1980, 4, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Allen31@gmail.com",
@@ -712,7 +712,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 17,
-                            Birthday = new DateTime(1996, 9, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1996, 9, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Gregg26@yahoo.com",
@@ -725,7 +725,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 18,
-                            Birthday = new DateTime(1995, 11, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1995, 11, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Barbara.Predovic67@gmail.com",
@@ -738,7 +738,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 19,
-                            Birthday = new DateTime(1985, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1985, 11, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Casey42@hotmail.com",
@@ -751,7 +751,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 20,
-                            Birthday = new DateTime(1995, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1995, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Carrie47@yahoo.com",
@@ -764,7 +764,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 21,
-                            Birthday = new DateTime(1983, 8, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1983, 8, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Elvira51@gmail.com",
@@ -777,7 +777,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 22,
-                            Birthday = new DateTime(1979, 12, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1979, 12, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Justin98@yahoo.com",
@@ -790,7 +790,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 23,
-                            Birthday = new DateTime(1996, 4, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1996, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Shannon24@gmail.com",
@@ -803,7 +803,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 24,
-                            Birthday = new DateTime(1988, 12, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1988, 12, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Paul32@hotmail.com",
@@ -816,7 +816,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 25,
-                            Birthday = new DateTime(1973, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1973, 10, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Sylvia.Von58@yahoo.com",
@@ -829,7 +829,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 26,
-                            Birthday = new DateTime(1977, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1977, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ollie.Grady@hotmail.com",
@@ -842,7 +842,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 27,
-                            Birthday = new DateTime(1988, 1, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1988, 2, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Courtney.Weissnat@yahoo.com",
@@ -855,7 +855,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 28,
-                            Birthday = new DateTime(1987, 8, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1987, 8, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Billy.Schmeler29@gmail.com",
@@ -868,7 +868,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 29,
-                            Birthday = new DateTime(1983, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1983, 6, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ellis.Rath@gmail.com",
@@ -881,7 +881,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 30,
-                            Birthday = new DateTime(1995, 7, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1995, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Eunice_Hartmann84@hotmail.com",
@@ -894,7 +894,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 31,
-                            Birthday = new DateTime(1973, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1973, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Leon8@gmail.com",
@@ -907,7 +907,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 32,
-                            Birthday = new DateTime(1977, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1977, 10, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Rex_Crist92@hotmail.com",
@@ -920,7 +920,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 33,
-                            Birthday = new DateTime(1976, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1976, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Larry_Feil@yahoo.com",
@@ -933,7 +933,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 34,
-                            Birthday = new DateTime(1975, 4, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1975, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Roberto64@hotmail.com",
@@ -946,7 +946,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 35,
-                            Birthday = new DateTime(1989, 7, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1989, 7, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ollie_Rau@gmail.com",
@@ -959,7 +959,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 36,
-                            Birthday = new DateTime(1975, 10, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1975, 10, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Joshua_Gislason79@yahoo.com",
@@ -972,7 +972,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 37,
-                            Birthday = new DateTime(1997, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1997, 11, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Jacquelyn93@gmail.com",
@@ -985,7 +985,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 38,
-                            Birthday = new DateTime(1986, 4, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1986, 4, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Courtney46@hotmail.com",
@@ -998,7 +998,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 39,
-                            Birthday = new DateTime(1988, 7, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1988, 7, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Don_VonRueden49@hotmail.com",
@@ -1011,7 +1011,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 40,
-                            Birthday = new DateTime(1975, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1975, 3, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Isabel_Barrows@hotmail.com",
@@ -1024,7 +1024,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 41,
-                            Birthday = new DateTime(1998, 3, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1998, 3, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Duane_Murphy76@yahoo.com",
@@ -1037,7 +1037,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 42,
-                            Birthday = new DateTime(1991, 6, 19, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1991, 6, 21, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Homer.Purdy@gmail.com",
@@ -1050,7 +1050,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 43,
-                            Birthday = new DateTime(1977, 1, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1977, 1, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Carolyn14@yahoo.com",
@@ -1063,7 +1063,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 44,
-                            Birthday = new DateTime(1989, 11, 16, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1989, 11, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Vivian.Maggio22@hotmail.com",
@@ -1076,7 +1076,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 45,
-                            Birthday = new DateTime(1991, 11, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1991, 11, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ramon73@gmail.com",
@@ -1089,7 +1089,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 46,
-                            Birthday = new DateTime(1980, 1, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1980, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Roger_Brekke44@hotmail.com",
@@ -1102,7 +1102,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 47,
-                            Birthday = new DateTime(1995, 1, 24, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1995, 1, 26, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ralph66@gmail.com",
@@ -1115,7 +1115,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 48,
-                            Birthday = new DateTime(1993, 7, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1993, 7, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Garrett14@gmail.com",
@@ -1128,7 +1128,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 49,
-                            Birthday = new DateTime(1991, 3, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1991, 3, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Ginger.Armstrong@gmail.com",
@@ -1141,7 +1141,7 @@ namespace Persistence.Migrations
                         new
                         {
                             Id = 50,
-                            Birthday = new DateTime(1980, 1, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Birthday = new DateTime(1980, 1, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedAt = new DateTimeOffset(new DateTime(2023, 5, 1, 11, 50, 43, 880, DateTimeKind.Unspecified).AddTicks(7923), new TimeSpan(0, 0, 0, 0, 0)),
                             CreatedBy = "System Seeding",
                             Email = "Kelly_Pouros@yahoo.com",
@@ -1625,7 +1625,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 1, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -1692,7 +1692,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 2, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -1759,7 +1759,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 3, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -1826,7 +1826,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 4, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -1893,7 +1893,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 5, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -1960,7 +1960,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 6, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2027,7 +2027,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 7, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2094,7 +2094,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 8, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2161,7 +2161,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 9, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2228,7 +2228,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 10, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2295,7 +2295,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 11, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2362,7 +2362,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 12, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2429,7 +2429,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 13, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2496,7 +2496,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 14, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2563,7 +2563,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 15, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2630,7 +2630,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 16, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2697,7 +2697,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 17, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2764,7 +2764,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 18, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2831,7 +2831,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 19, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2898,7 +2898,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 20, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -2965,7 +2965,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 21, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -3032,7 +3032,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 22, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -3099,7 +3099,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 23, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -3166,7 +3166,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 24, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -3233,7 +3233,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 25, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -3300,7 +3300,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 26, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -3367,7 +3367,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 27, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -3434,7 +3434,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 28, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -3501,7 +3501,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 29, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new
@@ -3568,7 +3568,7 @@ namespace Persistence.Migrations
                             InstructorId = 1,
                             Price = 50m,
                             StartTime = new DateTimeOffset(new DateTime(2023, 6, 30, 11, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 3, 0, 0, 0)),
-                            Status = 4,
+                            Status = 3,
                             StudentId = 1
                         },
                         new

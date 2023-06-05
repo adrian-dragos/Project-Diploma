@@ -1,0 +1,13 @@
+<mat-form-field class="booking-lesson-car-field">
+  <mat-label>Instructor</mat-label>
+  <mat-select 
+    multiple
+    disableRipple="true" 
+    [(ngModel)]="selectedValues"
+    (selectionChange)="onSelectionChange($event)">
+    <mat-option *ngFor="let instructor of instructors" value='{{instructor.id}}'>{{ instructor.fullName}}</mat-option>
+  </mat-select> 
+  <button matSuffix mat-icon-button (click)="clearSelectedItems($event)">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>

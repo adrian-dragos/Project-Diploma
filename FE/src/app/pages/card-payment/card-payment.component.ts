@@ -35,7 +35,6 @@ export class CardPaymentComponent implements OnInit {
 			.pipe(map((num: string) => CreditCard.cardType(num)))
 			.subscribe((type) => {
 				this.type = type;
-				console.log(type);
 			});
 
 		this.paymentClient
@@ -63,7 +62,6 @@ export class CardPaymentComponent implements OnInit {
 
 	public onSubmit(): void {
 		if (this.form.invalid) {
-			console.log('invalid form');
 			return;
 		}
 		this.paymentClient

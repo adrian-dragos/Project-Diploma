@@ -5,6 +5,12 @@
     </div>
     <app-loading-spinner *ngIf="isLoading" class="loader"></app-loading-spinner>
     <div [ngClass]="{'hidden-lesson-content': isLoading}">
+      <div class="lessons-filter">
+        <app-date-filter></app-date-filter>
+        <app-student-filter *ngIf="userRole != 'student'"></app-student-filter>
+        <app-instructor-filter *ngIf="userRole != 'instructor'"></app-instructor-filter>
+        <app-status-filter></app-status-filter>
+      </div>
       <mat-divider></mat-divider>
       <table matSort mat-table [dataSource]="dataSource" matSortActive="date" matSortDirection="desc">
         <ng-container matColumnDef="date">

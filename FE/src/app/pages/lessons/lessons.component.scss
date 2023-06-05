@@ -63,3 +63,10 @@
 ::ng-deep .completed-lesson-row.mat-mdc-row:hover {
    background-color: #f8f8f8 !important; 
 }
+
+.lessons-filter {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}

@@ -12,6 +12,8 @@ namespace WebApi.AutoMapperProfiles
             CreateMap<StudentProfileDto, StudentProfileViewModel>();
             CreateMap<UpdateStudentProfileViewModel, UpdateStudentProfileCommand>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore());
+
+            CreateMap<StudentShortProfileDto, StudentShortProfileViewModel>();
         }
     }
 }

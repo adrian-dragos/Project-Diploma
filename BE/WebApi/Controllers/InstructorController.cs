@@ -4,6 +4,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.ViewModels.Instructor;
+using WebApi.ViewModels.Student;
 
 namespace WebApi.Controllers
 {
@@ -36,5 +37,35 @@ namespace WebApi.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("short-profile")]
+        public async Task<ActionResult<IEnumerable<InstructorShortProfileViewModel>>> GetInstructorsShortProfile(
+          CancellationToken cancellationToken)
+        {
+            var query = new GetInstructorsShortProfileQuery();
+            var instructors = await _mediator.Send(query, cancellationToken);
+
+            var response = _mapper.Map<IEnumerable<InstructorShortProfileViewModel>>(instructors);
+
+            return Ok(response);
+        }
+
+        [HttpGet("{id}/students")]
+        public async Task<ActionResult<IEnumerable<StudentShortProfileViewModel>>> GetStudentShortProfile(
+           int id,
+           CancellationToken cancellation)
+        {
+            var query = new GetInstructorStudentsQuery
+            {
+                InstructorId = id
+            };
+
+            var user = await _mediator.Send(query, cancellation);
+
+            var response = _mapper.Map<List<StudentShortProfileViewModel>>(user);
+
+            return Ok(response);
+        }
+
     }
 }

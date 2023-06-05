@@ -23,16 +23,12 @@ namespace WebApi.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost("student/{id}")]
+        [HttpPost("")]
         public async Task<ActionResult<PagedResultViewModel<GetStudentLessonsListViewModel>>> GetStudentLessons(
-            int id, 
-            [FromBody] PageViewModel pageViewModel,
+            [FromBody] GetLessonsViewModel getLessonsViewModel,
             CancellationToken cancellationToken)
         {
-            var query = new GetStudentLessonsListQuery {
-                StudentId = id,
-                PageDto = _mapper.Map<PageDto>(pageViewModel)
-            };
+            var query = _mapper.Map<GetLessonsListQuery>(getLessonsViewModel);
 
             var lessons = await _mediator.Send(query, cancellationToken);
 

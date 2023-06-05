@@ -29,7 +29,6 @@ export class BookingComponent implements OnInit {
 	}
 
 	handleBookingEvent(): void {
-		console.log('Booking event handled');
 		this.fetchPaymentSubject.next();
 	}
 }

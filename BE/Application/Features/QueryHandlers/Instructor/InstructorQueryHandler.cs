@@ -1,5 +1,6 @@
 ﻿using Application.DTOs.Car;
 using Application.DTOs.Instructor;
+using Application.DTOs.Student;
 using Application.Features.Queries.Instructor;
 using Application.Interfaces;
 using Domain.Entities;
@@ -9,13 +10,18 @@ using Microsoft.EntityFrameworkCore;
 namespace Application.Features.QueryHandlers
 {
     internal sealed class InstructorQueryHandler :
-        IRequestHandler<GetInstructorListQuery, IEnumerable<InstructorProfileDto>>
+        IRequestHandler<GetInstructorListQuery, IEnumerable<InstructorProfileDto>>,
+        IRequestHandler<GetInstructorsShortProfileQuery, IEnumerable<InstructorShortProfileDto>>,
+        IRequestHandler< GetInstructorStudentsQuery, IEnumerable<StudentShortProfileDto>>
+
     {
         private readonly IRepository<Instructor> _instructorRepository;
-        private readonly IRepository<Car> _carRepository;
-        public InstructorQueryHandler(IRepository<Instructor> instructorRepository)
+        private readonly IRepository<Student> _studentRepository;
+
+        public InstructorQueryHandler(IRepository<Instructor> instructorRepository, IRepository<Student> studentRepository)
         {
             _instructorRepository = instructorRepository;
+            _studentRepository = studentRepository;
         }
 
         public async Task<IEnumerable<InstructorProfileDto>> Handle(GetInstructorListQuery request, CancellationToken cancellationToken)
@@ -55,6 +61,31 @@ namespace Application.Features.QueryHandlers
             }
 
             return instructors;
+        }
+        public async Task<IEnumerable<StudentShortProfileDto>> Handle(GetInstructorStudentsQuery request, CancellationToken cancellationToken)
+        {
+            return await _studentRepository.Read()
+                .AsNoTracking()
+                .Where(i => i.Lessons.Any(l => l.InstructorId == request.InstructorId))
+                .Select(s => new StudentShortProfileDto
+                {
+                    Id = s.Id,
+                    FullName = s.Identity.FirstName + " " + s.Identity.LastName
+                })
+                .ToListAsync(cancellationToken);
+        }
+
+        public async Task<IEnumerable<InstructorShortProfileDto>> Handle(GetInstructorsShortProfileQuery request, CancellationToken cancellationToken)
+        {
+            return await _instructorRepository
+                .Read()
+                .AsNoTracking()
+                .Select(i => new InstructorShortProfileDto
+                {
+                    Id = i.Id,
+                    FullName = i.Identity.FirstName + " " + i.Identity.LastName
+                })
+                .ToListAsync(cancellationToken);
         }
     }
 }

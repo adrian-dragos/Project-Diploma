@@ -103,14 +103,14 @@ export class BookingLessonsComponent implements OnInit {
 			.pipe(untilDestroyed(this))
 			.subscribe((result) => {
 				if (result) {
-					const dialogRef = this.dialogService.openDialog(CancelLessonDialogComponent, {
+					const deletingDialogRef = this.dialogService.openDialog(CancelLessonDialogComponent, {
 						title: 'Unbook lesson',
 						message: 'Are you sure you want to unbook this lesson?',
 						confirmationButtonText: 'Confirm',
 						cancelButtonText: 'Cancel'
 					});
 
-					dialogRef
+					deletingDialogRef
 						.afterClosed()
 						.pipe(untilDestroyed(this))
 						.subscribe((result) => {
@@ -157,7 +157,6 @@ export class BookingLessonsComponent implements OnInit {
 			for (const ld of lesson.lessonsDetails) {
 				if (ld.id === lessonId) {
 					ld.status = status;
-					this.snackBarService.openSuccessSnackBar('Lesson booked successfully');
 					return;
 				}
 			}

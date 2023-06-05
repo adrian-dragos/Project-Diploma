@@ -10,6 +10,7 @@ namespace WebApi.AutoMapperProfiles
         {
             CreateMap<InstructorProfileDto, InstructorProfileViewModel>();
             CreateMap<GetInstructorsFilterViewModel, GetInstructorsFilterDto>();
+            CreateMap<InstructorShortProfileDto, InstructorShortProfileViewModel>();
         }
     }
 }

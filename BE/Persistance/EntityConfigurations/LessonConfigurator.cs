@@ -70,15 +70,10 @@ namespace Persistence.EntityConfigurations
                             Price = 50
                         };
 
-                        if (j == 11 && instructorId == 1 && month >= 7)
+                        if (j == 11 && instructorId == 1)
                         {
                             lesson.StudentId = 1;
                             lesson.Status = LessonStatus.BookedPaid;
-                        }
-                        if (j == 11 && instructorId == 1 && month < 7)
-                        {
-                            lesson.StudentId = 1;
-                            lesson.Status = LessonStatus.Completed;
                         }
 
                         lessons.Add(lesson);

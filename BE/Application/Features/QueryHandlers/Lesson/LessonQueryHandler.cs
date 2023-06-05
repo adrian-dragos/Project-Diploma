@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Application.Features.QueryHandlers
 {
     internal sealed class LessonQueryHandler :
-        IRequestHandler<GetStudentLessonsListQuery, PagedResultDto<GetStudentLessonsListDto>>,
+        IRequestHandler<GetLessonsListQuery, PagedResultDto<GetLessonsListDto>>,
         IRequestHandler<GetInstructorLessonsListQuery, PagedResultDto<GetInstructorLessonsListDto>>,
         IRequestHandler<GetAvailableLessonsListQuery, IEnumerable<GetAvailableLessonsDto>>
     {
@@ -21,46 +21,79 @@ namespace Application.Features.QueryHandlers
         {
             _lessonRepository = lessonRepository;
         }
-        public async Task<PagedResultDto<GetStudentLessonsListDto>> Handle(GetStudentLessonsListQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResultDto<GetLessonsListDto>> Handle(GetLessonsListQuery request, CancellationToken cancellationToken)
         {
             var lessonQuery = _lessonRepository
                 .Read()
-                .AsNoTracking()
-                .Where(l => l.StudentId == request.StudentId && (
-                                l.Status == LessonStatus.BookedPaid || 
-                                l.Status == LessonStatus.Completed || 
-                                l.Status == LessonStatus.Canceled))
-                .Select(l => new GetStudentLessonsListDto
-                {
-                    Id = l.Id,
-                    StartTime = l.StartTime,
-                    EndTime = l.StartTime.AddMinutes(90),
-                    InstructorName = $"{l.Instructor.Identity.FirstName} {l.Instructor.Identity.LastName}",
-                    Location = l.Instructor.Location,
-                    Status = l.Status
-                });
-            await MarkAsComplete(cancellationToken);
+                .AsNoTracking();
 
-            if (request.PageDto.Ascending)
+            if (request.StudentIds?.Any() ?? false)
             {
-                lessonQuery = lessonQuery.OrderBy(l => l.StartTime);
+                lessonQuery = lessonQuery.Where(l => l.StudentId != null && request.StudentIds.Contains((int)l.StudentId));
             }
+
+            if (request.InstructorIds?.Any() ?? false)
+            {
+                lessonQuery = lessonQuery.Where(l => request.InstructorIds.Contains(l.InstructorId));
+            }
+
+            if (request.StartDate != null) {
+                var nonNullableStartDate = request.StartDate.GetValueOrDefault().AddDays(1);
+                lessonQuery = lessonQuery.Where(l => l.StartTime.Year >= nonNullableStartDate.Year &&
+                                                        l.StartTime.Month >= nonNullableStartDate.Month &&
+                                                        l.StartTime.Day >= nonNullableStartDate.Day);
+            }
+
+            if (request.EndDate != null)
+            {
+                var nonNullableEndDate = request.EndDate.GetValueOrDefault().AddDays(1);
+                lessonQuery = lessonQuery.Where(l => l.StartTime.Year <= nonNullableEndDate.Year &&
+                                                       l.StartTime.Month <= nonNullableEndDate.Month &&
+                                                       l.StartTime.Day <= nonNullableEndDate.Day);
+            }
+
+            if (request.LessonStatuses?.Any() ?? false)
+            {
+                lessonQuery = lessonQuery.Where(l => request.LessonStatuses.Contains(l.Status));
+            } 
             else
             {
-                lessonQuery = lessonQuery.OrderByDescending(l => l.StartTime);
+                lessonQuery = lessonQuery.Where(l => l.Status == LessonStatus.BookedPaid ||
+                                                     l.Status == LessonStatus.Completed ||
+                                                     l.Status == LessonStatus.Canceled);
             }
 
-            var pagedResult = new PagedResultDto<GetStudentLessonsListDto>
+            var lessonFilteredQuery = lessonQuery.Select(l => new GetLessonsListDto
             {
-                Page = request.PageDto.Page,
-                PageSize = request.PageDto.Page,
+                Id = l.Id,
+                StartTime = l.StartTime,
+                EndTime = l.StartTime.AddMinutes(90),
+                InstructorName = $"{l.Instructor.Identity.FirstName} {l.Instructor.Identity.LastName}",
+                Location = l.Instructor.Location,
+                Status = l.Status
+            });
+
+            if (request.Page.Ascending)
+            {
+                lessonFilteredQuery = lessonFilteredQuery.OrderBy(l => l.StartTime);
+            } else
+            {
+                lessonFilteredQuery = lessonFilteredQuery.OrderByDescending(l => l.StartTime);
+            }
+
+
+            var pagedResult = new PagedResultDto<GetLessonsListDto>
+            {
+                Page = request.Page.Page,
+                PageSize = request.Page.Page,
                 TotalCount = await lessonQuery.CountAsync(cancellationToken),
-                Items = await lessonQuery
-                    .Skip((request.PageDto.Page - 1) * request.PageDto.PageSize)
-                    .Take(request.PageDto.PageSize)
+                Items = await lessonFilteredQuery
+                    .Skip((request.Page.Page - 1) * request.Page.PageSize)
+                    .Take(request.Page.PageSize)
                     .ToListAsync(cancellationToken)
             };
 
+            await MarkAsComplete(cancellationToken);
             return pagedResult;
         }
 
