@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using WebApi.ViewModels.Payment;
+using WebApi.ViewModels.Student;
 
 namespace WebApi.Controllers
 {
@@ -50,6 +51,19 @@ namespace WebApi.Controllers
                 FloatFormatHandling = FloatFormatHandling.DefaultValue 
             });
 
+            return Ok(response);
+        }
+
+
+        [HttpGet("student/list/short")]
+
+        public async Task<ActionResult<IEnumerable<StudentShortProfileViewModel>>> GetStudentListPayment (
+            CancellationToken cancellationToken)
+        {
+            var query = new GetStudentListPaymentQuery();
+
+            var studentList = await _mediator.Send(query, cancellationToken);
+            var response = _mapper.Map<IEnumerable<StudentShortProfileViewModel>>(studentList);
             return Ok(response);
         }
 

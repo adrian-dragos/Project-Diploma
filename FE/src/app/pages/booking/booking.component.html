@@ -2,16 +2,21 @@
 <div class="booking-page-wrapper">
   <div class="booking-wrapper">
     <div class="booking-header">
-      <h1 class="booking-header-title"> Available Time Slots</h1>
-        <button mat-button
-          *ngIf="hasToPay" 
-          class="payment-message" 
-          [matTooltip]="'Proceed to payments'"
-          [matTooltipShowDelay]="tooltipShowDelay"
-          routerLink="../payments">
-          <p>Go to payments</p>
-          <mat-icon iconPositionEnd>keyboard_arrow_right</mat-icon>
-        </button> 
+      <div class="title-container">
+        <h1 class="booking-header-title"> Available Time Slots</h1>
+        <mat-icon matTooltip="Find Available Lessons: Browse and book the lessons you're interested in. Ensure that the lesson times do not overlap. Proceed to the payment page to finalize your booking and make the payment. Please note that if the payment is not completed within 5 minutes, the booking will expire.">
+          info_outline
+        </mat-icon>
+      </div>
+      <button mat-button
+        *ngIf="hasToPay" 
+        class="payment-message" 
+        [matTooltip]="'Proceed to payments'"
+        [matTooltipShowDelay]="tooltipShowDelay"
+        routerLink="../payments">
+        <p>Go to payments</p>
+        <mat-icon iconPositionEnd>keyboard_arrow_right</mat-icon>
+      </button> 
     </div>
     <div class="book-booking-container">
       <app-booking-sidebar class="sidebar-section"></app-booking-sidebar>

@@ -31,9 +31,9 @@ export class StudentFilterComponent {
 	}
 
 	fetchStudentsForInstructor(): void {
-		const currentStudentId = parseInt(localStorage.getItem('instructorId'));
+		const currentInstructorId = parseInt(localStorage.getItem('userId'));
 		this.instructorsClient
-			.getStudentShortProfile(currentStudentId)
+			.getStudentShortProfile(currentInstructorId)
 			.pipe(untilDestroyed(this))
 			.subscribe((students) => {
 				this.students = students;
@@ -59,7 +59,7 @@ export class StudentFilterComponent {
 		if (this.selectedValues.length === 0) {
 			return;
 		}
-		this.lessonsService.setStatusFilter([]);
+		this.lessonsService.setStudentFilter([]);
 		this.selectedValues = [];
 	}
 }

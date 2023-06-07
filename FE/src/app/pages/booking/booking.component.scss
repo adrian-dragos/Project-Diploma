@@ -45,6 +45,15 @@
   }
 }
 
+.title-container {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  > mat-icon {
+    color: #CCCCCC;
+  }
+}
+
 @keyframes pulse {
   0% { transform: scale(1); }
   50% { transform: scale(1.1); }

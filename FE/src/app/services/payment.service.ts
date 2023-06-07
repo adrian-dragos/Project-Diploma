@@ -14,7 +14,7 @@ export class PaymentService {
 		};
 		const userRole = localStorage.getItem('userRole');
 		if (userRole === 'student') {
-			this.paymentsFilter.studentIds = [Number(localStorage.getItem('studentId'))];
+			this.paymentsFilter.studentIds = [Number(localStorage.getItem('userId'))];
 		}
 		this.filterSubject = new BehaviorSubject<GetStudentPaymentFilterViewModel>(this.paymentsFilter);
 	}
@@ -27,6 +27,11 @@ export class PaymentService {
 
 	setPaymentMethod(method: PaymentMethod[] | null): void {
 		this.paymentsFilter.paymentMethod = method;
+		this.filterSubject.next(this.paymentsFilter);
+	}
+
+	setStudentFilter(studentIds: number[] | null): void {
+		this.paymentsFilter.studentIds = studentIds;
 		this.filterSubject.next(this.paymentsFilter);
 	}
 

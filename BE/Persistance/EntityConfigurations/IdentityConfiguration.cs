@@ -120,6 +120,19 @@ namespace Persistence.EntityConfigurations
 
             var users = userFaker.Generate(amount);
 
+            users.Add(new Identity
+            {
+                Id = 1000,
+                CreatedAt = currentTime,
+                CreatedBy = createdBy,
+                FirstName = "Soifa",
+                LastName = "Lopez",
+                PhoneNumber = "0 721 123 456",
+                RoleId = 1,
+                Password= password,
+                Email = "sofia.lopez@example.com",
+            });
+
             return users;
         }
     }

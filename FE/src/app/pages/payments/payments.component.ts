@@ -22,9 +22,14 @@ export class PaymentsComponent implements OnInit {
 	unpaid = PaymentMethod.Unpaid;
 	cash = PaymentMethod.Cash;
 	card = PaymentMethod.Card;
+	userRole: string;
 
 	paymentClient = inject(PaymentClient);
 	paymentService = inject(PaymentService);
+
+	constructor() {
+		this.userRole = localStorage.getItem('userRole');
+	}
 
 	ngOnInit(): void {
 		this.paymentService

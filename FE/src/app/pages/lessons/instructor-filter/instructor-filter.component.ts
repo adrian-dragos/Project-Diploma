@@ -31,7 +31,7 @@ export class InstructorFilterComponent implements OnInit {
 	}
 
 	fetchInstructorsForStudent(): void {
-		const currentStudentId = parseInt(localStorage.getItem('studentId'));
+		const currentStudentId = parseInt(localStorage.getItem('userId'));
 		this.studentClient
 			.getInstructors(currentStudentId)
 			.pipe(untilDestroyed(this))

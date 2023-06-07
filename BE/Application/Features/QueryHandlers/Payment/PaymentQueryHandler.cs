@@ -1,6 +1,7 @@
 ﻿
 
 using Application.DTOs.Payment;
+using Application.DTOs.Student;
 using Application.Features.Queries.Payment;
 using Application.Interfaces;
 using Domain.Entities;
@@ -12,7 +13,8 @@ namespace Application.Features.QueryHandlers
 {
     internal sealed class PaymentQueryHandler :
         IRequestHandler<GetStudentPaymentListQuery, IEnumerable<GetStudentPaymentDto>>,
-        IRequestHandler<GetSumToPayQuery, decimal>
+        IRequestHandler<GetSumToPayQuery, decimal>,
+        IRequestHandler<GetStudentListPaymentQuery, IEnumerable<StudentShortProfileDto>>
     {
         private readonly IRepository<Payment> _paymentRepository;
         private readonly IRepository<Identity> _identityRepository;
@@ -27,7 +29,13 @@ namespace Application.Features.QueryHandlers
         {
             var paymentsQuery = _paymentRepository.Read()
                 .AsNoTracking()
-                .Where(p => p.StudentId != null && request.StudentIds.Contains((int)p.StudentId));
+                .Where(p => p.StudentId != null); ;
+
+            if (request.StudentIds?.Any() ?? false)
+            {
+                paymentsQuery = paymentsQuery
+                    .Where(p => request.StudentIds.Contains((int)p.StudentId));
+            }
 
             if (request.PaymentMethod?.Any() ?? false)
             {
@@ -76,6 +84,22 @@ namespace Application.Features.QueryHandlers
                 .Where(p => p.Method == PaymentMethod.Unpaid &&
                     p.StudentId == request.StudentId)
                 .SumAsync(p => p.Lesson.Price, cancellationToken);
+        }
+
+        public async Task<IEnumerable<StudentShortProfileDto>> Handle(GetStudentListPaymentQuery request, CancellationToken cancellationToken)
+        {
+            return await _paymentRepository.Read()
+                  .Where(p => p.StudentId != null &&  (
+                                p.Method == PaymentMethod.Unpaid ||
+                                p.Method == PaymentMethod.Cash ||
+                                p.Method == PaymentMethod.Card))
+                  .Select(p => new StudentShortProfileDto
+                  {
+                      Id = p.Student.Id,
+                      FullName = p.Student.Identity.FirstName + " " + p.Student.Identity.LastName,
+                  })
+                  .Distinct()
+                  .ToListAsync(cancellationToken);
         }
     }
 }

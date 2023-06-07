@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from '@app/services/user.service';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { UsersClient } from '@api/api:';
 
 @Component({
 	selector: 'app-header',
@@ -15,13 +16,19 @@ export class HeaderComponent implements OnInit {
 	@Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
 
 	userName: string;
+	role: string;
 
 	userService = inject(UserService);
+	usersClient = inject(UsersClient);
 
 	constructor(private readonly router: Router, private readonly dialog: MatDialog) {}
 
 	ngOnInit(): void {
-		this.userName = localStorage.getItem('userName');
+		this.usersClient.getUserShortProfile().subscribe((user) => {
+			this.userName = user.fullName;
+			localStorage.setItem('userName', this.userName);
+		});
+		this.role = localStorage.getItem('userRole');
 	}
 
 	openLogoutDialog(): void {

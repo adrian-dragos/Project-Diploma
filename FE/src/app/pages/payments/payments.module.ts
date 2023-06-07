@@ -16,6 +16,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { PaymentMethodFilterComponent } from './payment-method-filter/payment-method-filter.component';
 import { PaymentService } from '@app/services/payment.service';
+import { StudentFilterComponent } from './student-filter/student-filter.component';
 
 @NgModule({
 	imports: [
@@ -33,7 +34,7 @@ import { PaymentService } from '@app/services/payment.service';
 		MatDatepickerModule,
 		MatNativeDateModule
 	],
-	declarations: [PaymentsComponent, DateFilterComponent, PaymentMethodFilterComponent],
+	declarations: [PaymentsComponent, DateFilterComponent, PaymentMethodFilterComponent, StudentFilterComponent],
 	providers: [PaymentClient, PaymentService]
 })
 export class PaymentsModule {}

@@ -1,7 +1,14 @@
 <div class="lesson-page-wrapper">
   <div class="lesson-wrapper">
     <div class="lesson-header">
-      <h3 class="lesson-header-title"> My Lessons</h3>
+      <div class="title-container">
+        <h3 class="lesson-header-title"> 
+          <ng-container *ngIf="userRole != 'admin'">My</ng-container> Lessons
+          </h3>
+        <mat-icon matTooltip="Lessons: This section displays only the lessons that have been paid for. If you have booked a lesson but haven't made the payment yet, please proceed to the payments section and complete the payment for your booked lesson. You have the option to cancel a lesson at any time, and the refunded amount will be reverted back to your card." >
+          info_outline
+        </mat-icon>
+      </div>
     </div>
     <app-loading-spinner *ngIf="isLoading" class="loader"></app-loading-spinner>
     <div [ngClass]="{'hidden-lesson-content': isLoading}">

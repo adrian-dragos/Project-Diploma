@@ -1,7 +1,12 @@
 <div class="payment-page-wrapper">
   <div class="payment-wrapper">
     <div class="payment-header">
-      <h3 class="payment-header-title">My Payments</h3>
+      <div class="title-container">
+        <h1 class="booking-header-title"> My Payments</h1>
+        <mat-icon matTooltip="This section allows you to view your past payments and make payments for booked lesson.">
+          info_outline
+        </mat-icon>
+      </div>
       <button *ngIf="hasToPay && sumToPay"
         [matTooltip]="'Proceed with payment'"
         [matTooltipShowDelay]="tooltipShowDelay"
@@ -17,6 +22,7 @@
         <div class="payment-filter">
           <app-date-filter></app-date-filter>
           <app-payment-method-filter></app-payment-method-filter>
+          <app-student-filter *ngIf="userRole == 'admin'"></app-student-filter>
         </div>
         <table mat-table [dataSource]="dataSource">
 

@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginUserRequestViewModel, UserTokenViewModel, UsersClient } from '@api/api:';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -9,21 +9,23 @@ import { Observable, map } from 'rxjs';
 export class UserService {
 	readonly JWT_TOKEN = 'JwtToken';
 
-	constructor(private readonly Client: UsersClient, private readonly router: Router) {}
+	userClient = inject(UsersClient);
+	constructor(private readonly router: Router) {}
 
 	login(email: string, password: string): Observable<UserTokenViewModel> {
 		const user: LoginUserRequestViewModel = { email, password };
+		localStorage.clear();
 
-		return this.Client.loginUser(user).pipe(
+		return this.userClient.loginUser(user).pipe(
 			map((tokenObject: UserTokenViewModel) => {
-				localStorage.setItem(this.JWT_TOKEN, JSON.stringify(user));
+				localStorage.setItem(this.JWT_TOKEN, tokenObject.jwtToken);
 				return tokenObject;
 			})
 		);
 	}
 
 	removeJwtToken(): void {
-		localStorage.removeItem(this.JWT_TOKEN);
+		localStorage.clear();
 		this.router.navigate(['/login']);
 	}
 }

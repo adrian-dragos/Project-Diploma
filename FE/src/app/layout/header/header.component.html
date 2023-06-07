@@ -15,6 +15,13 @@
             </mat-icon>
           </div>
           <mat-menu #menu="matMenu">
+            <button  
+              *ngIf="role === 'admin'"
+              mat-menu-item 
+              routerLink="./add-instructors">
+              <mat-icon>add_circle</mat-icon>
+              Add Instructor
+            </button>
             <button mat-menu-item (click)="openLogoutDialog()">
               <mat-icon>exit_to_app</mat-icon>
               Logout

@@ -35,6 +35,7 @@ export class LessonsComponent implements AfterContentInit {
 	lessonCompleted = LessonStatus.Completed;
 	isLoading = false;
 	userRole: string;
+	tooltipShowDelay = TooltipConstants.SHOW_DELAY;
 
 	pageIndex = 0;
 	pageSize = 10;

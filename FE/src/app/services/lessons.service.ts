@@ -18,7 +18,7 @@ export class LessonsService {
 		};
 		const userRole = localStorage.getItem('userRole');
 		if (userRole === 'student') {
-			this.lessonsFilter.studentIds = [Number(localStorage.getItem('studentId'))];
+			this.lessonsFilter.studentIds = [Number(localStorage.getItem('userId'))];
 		}
 		this.filterSubject = new BehaviorSubject<GetLessonsViewModel>(this.lessonsFilter);
 	}

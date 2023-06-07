@@ -8,6 +8,12 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
 	constructor(private router: Router, private ngZone: NgZone) {}
 
 	intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+		const userToken = localStorage.getItem('JwtToken');
+		request = request.clone({
+			setHeaders: {
+				Authorization: `Bearer ${userToken}`
+			}
+		});
 		return this.ngZone.run(() => {
 			return next.handle(request).pipe(
 				enterZone(this.ngZone),

@@ -15,6 +15,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AuthorizationGuard } from '@app/guards/authorization.guard';
 import { LogoutDialogComponent } from './header/logout-dialog/logout-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+import { UsersClient } from '@api/api:';
+import { InstructorGuard } from '@app/guards/instructor.guard';
+import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loading-spinner.module';
+import { StudentGuard } from '@app/guards/student.guard';
 
 const routes: Routes = [
 	{
@@ -22,11 +26,29 @@ const routes: Routes = [
 		canActivate: [AuthorizationGuard],
 		component: LayoutComponent,
 		children: [
-			{ path: '', redirectTo: 'booking', pathMatch: 'full' },
 			{ path: 'lessons', loadChildren: () => import('src/app/pages/lessons/lessons.module').then((m) => m.LessonsModule) },
 			{ path: 'account', loadChildren: () => import('src/app/pages/account/account.module').then((m) => m.AccountModule) },
-			{ path: 'payments', loadChildren: () => import('src/app/pages/payments/payments.module').then((m) => m.PaymentsModule) },
-			{ path: 'booking', loadChildren: () => import('src/app/pages/booking/booking.module').then((m) => m.BookingModule) }
+			{
+				path: 'payments',
+				canActivate: [InstructorGuard],
+				loadChildren: () => import('src/app/pages/payments/payments.module').then((m) => m.PaymentsModule)
+			},
+			{
+				path: 'booking',
+				canActivate: [InstructorGuard],
+				loadChildren: () => import('src/app/pages/booking/booking.module').then((m) => m.BookingModule)
+			},
+			{
+				path: 'add-lessons',
+				canActivate: [StudentGuard],
+				loadChildren: () => import('src/app/pages/add-lessons/add-lessons.module').then((m) => m.AddLessonsModule)
+			},
+			{
+				path: 'add-instructors',
+				canActivate: [StudentGuard, InstructorGuard],
+				loadChildren: () => import('src/app/pages/add-instructor/add-instructor.module').then((m) => m.AddInstructorModule)
+			},
+			{ path: '', redirectTo: 'booking', pathMatch: 'full' }
 		]
 	}
 ];
@@ -44,10 +66,11 @@ const routes: Routes = [
 		MatMenuModule,
 		MatDividerModule,
 		MatDialogModule,
-		MatButtonModule
+		MatButtonModule,
+		LoadingSpinnerModule
 	],
 	declarations: [LayoutComponent, HeaderComponent, SidebarComponent, LogoutDialogComponent],
 	exports: [],
-	providers: []
+	providers: [UsersClient]
 })
 export class LayoutModule {}

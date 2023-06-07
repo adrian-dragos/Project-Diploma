@@ -3,6 +3,7 @@ import { CarGear, GetAvailableLessonDetailsViewModel, GetAvailableLessonsViewMod
 import { BookingConstants } from '@app/constants/booking.constants';
 import { BookingService } from '@app/services/booking.service';
 import { DialogService } from '@app/services/dialog.service';
+import { PaymentService } from '@app/services/payment.service';
 import { SnackBarService } from '@app/services/snack-bar.service';
 import { CancelLessonDialogComponent } from '@app/shared/components/cancel-lesson-dialog/cancel-lesson-dialog.component';
 import { LessonDetailsDialogComponent } from '@app/shared/components/lesson-details-dialog/lesson-details-dialog.component';

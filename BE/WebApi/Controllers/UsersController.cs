@@ -2,32 +2,53 @@
 using Application.Features.Queries.User;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.ViewModels.User;
 
 namespace WebApi.Controllers
 {
-    [Route("api/users")]
+    [Route("api/user")]
     [ApiController]
     public sealed class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UsersController(IMediator mediator, IMapper mapper)
+        public UsersController(IMediator mediator, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _mediator = mediator;
             _mapper = mapper;
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserViewModel>>> GetUsers(CancellationToken cancellationToken)
+        [Authorize]
+        [HttpGet("profile/short")]
+        public async Task<ActionResult<GetUserProfileShortViewModel>> GetUserShortProfile(
+            CancellationToken cancellationToken)
         {
-            var query = new GetUserListQuery();
+            var httpContext = _httpContextAccessor.HttpContext;
+            var id = httpContext.User
+                .Claims
+                .FirstOrDefault(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")?
+                .Value;
+
+            if (id is null)
+            {
+
+                return StatusCode(500, "An internal server error occurred.");
+            }
+
+
+            var query = new GetUserProfileShortQuery
+            {
+                Id = Int32.Parse(id)
+            };
 
             var users = await _mediator.Send(query, cancellationToken);
 
-            var response = _mapper.Map<IEnumerable<UserViewModel>>(users);
+            var response = _mapper.Map<GetUserProfileShortViewModel>(users);
 
             return Ok(response);
         }
@@ -89,6 +110,35 @@ namespace WebApi.Controllers
 
             var response = await _mediator.Send(query, cancellationToken);
 
+            return Ok(response);
+        }
+
+        [Authorize]
+        [ProducesResponseType(typeof(GetUserDetailsViewModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GetUserDetailsViewModel), StatusCodes.Status500InternalServerError)]
+        [HttpGet("details")]
+        public async Task<ActionResult<GetUserDetailsViewModel>> GetUserDetails( CancellationToken cancellationToken)
+        {
+            var httpContext = _httpContextAccessor.HttpContext;
+            var id = httpContext.User
+                .Claims
+                .FirstOrDefault(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")?
+                .Value;
+
+            if (id is null)
+            {
+
+                return StatusCode(500, "An internal server error occurred.");
+            }
+
+
+            var query = new GetUserDetailsQuery
+            {
+                Id = Int32.Parse(id)
+            };
+
+            var user = await _mediator.Send(query, cancellationToken);
+            var response = _mapper.Map<GetUserDetailsViewModel>(user);
             return Ok(response);
         }
     }
