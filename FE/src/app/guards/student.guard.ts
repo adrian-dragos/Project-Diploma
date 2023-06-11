@@ -4,7 +4,7 @@ import { CanActivate, Router } from '@angular/router';
 @Injectable({
 	providedIn: 'root'
 })
-export class StudentGuard implements CanActivate {
+export class NotStudentGuard implements CanActivate {
 	constructor(private readonly router: Router) {}
 
 	async canActivate(): Promise<boolean> {

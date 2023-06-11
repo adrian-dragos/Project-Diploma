@@ -3,25 +3,25 @@
     <img src="./assets/logo.svg" alt="Company Logo" />
   </div>
   
-  <a *ngIf="role != 'instructor'" mat-list-item routerLink="/booking">
+  <a *ngIf="role != 'instructor'" mat-list-item routerLink="/app/booking">
     <mat-icon>calendar_today</mat-icon> Available Time Slots
   </a>
-  <a *ngIf="role != 'student'" mat-list-item routerLink="/add-lessons">
+  <a *ngIf="role != 'student'" mat-list-item routerLink="/app/add-lessons">
     <mat-icon>playlist_add</mat-icon> Add Lessons
   </a>
-  <a mat-list-item routerLink="/lessons"> 
+  <a mat-list-item routerLink="/app/lessons"> 
     <mat-icon>list</mat-icon> 
     <ng-container *ngIf="role != 'admin'">My</ng-container> 
     <ng-container *ngIf="role === 'admin'">All</ng-container> 
     Lessons 
   </a>
-  <a *ngIf="role != 'instructor'" mat-list-item routerLink="/payments">
+  <a *ngIf="role != 'instructor'" mat-list-item routerLink="/app/payments">
     <mat-icon>payment</mat-icon> 
     <ng-container *ngIf="role != 'admin'">My</ng-container> 
     <ng-container *ngIf="role === 'admin'">All</ng-container> 
     Payments
   </a>
-  <a mat-list-item routerLink="/account">
+  <a mat-list-item routerLink="/app/account">
     <mat-icon>person_outline</mat-icon> Account
   </a>
 </mat-nav-list>

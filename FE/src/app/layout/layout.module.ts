@@ -16,13 +16,13 @@ import { AuthorizationGuard } from '@app/guards/authorization.guard';
 import { LogoutDialogComponent } from './header/logout-dialog/logout-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import { UsersClient } from '@api/api:';
-import { InstructorGuard } from '@app/guards/instructor.guard';
+import { NotInstructorGuard } from '@app/guards/instructor.guard';
 import { LoadingSpinnerModule } from '@app/shared/components/loading-spinner/loading-spinner.module';
-import { StudentGuard } from '@app/guards/student.guard';
+import { NotStudentGuard } from '@app/guards/student.guard';
 
 const routes: Routes = [
 	{
-		path: '',
+		path: 'app',
 		canActivate: [AuthorizationGuard],
 		component: LayoutComponent,
 		children: [
@@ -30,22 +30,22 @@ const routes: Routes = [
 			{ path: 'account', loadChildren: () => import('src/app/pages/account/account.module').then((m) => m.AccountModule) },
 			{
 				path: 'payments',
-				canActivate: [InstructorGuard],
+				canActivate: [NotInstructorGuard],
 				loadChildren: () => import('src/app/pages/payments/payments.module').then((m) => m.PaymentsModule)
 			},
 			{
 				path: 'booking',
-				canActivate: [InstructorGuard],
+				canActivate: [NotInstructorGuard],
 				loadChildren: () => import('src/app/pages/booking/booking.module').then((m) => m.BookingModule)
 			},
 			{
 				path: 'add-lessons',
-				canActivate: [StudentGuard],
+				canActivate: [NotStudentGuard],
 				loadChildren: () => import('src/app/pages/add-lessons/add-lessons.module').then((m) => m.AddLessonsModule)
 			},
 			{
 				path: 'add-instructors',
-				canActivate: [StudentGuard, InstructorGuard],
+				canActivate: [NotStudentGuard, NotInstructorGuard],
 				loadChildren: () => import('src/app/pages/add-instructor/add-instructor.module').then((m) => m.AddInstructorModule)
 			},
 			{ path: '', redirectTo: 'booking', pathMatch: 'full' }

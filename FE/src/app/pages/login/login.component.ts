@@ -49,7 +49,7 @@ export class LoginComponent {
 			.subscribe(
 				() => {
 					this.snackBarService.openSuccessSnackBar('Login successful!');
-					this.router.navigate(['lessons']);
+					this.router.navigate(['app/lessons']);
 					this.badCredentials = false;
 				},
 				() => {

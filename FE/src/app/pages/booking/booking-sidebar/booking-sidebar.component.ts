@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CarGear, CarModelViewModel, GetInstructorsFilterViewModel, InstructorClient, InstructorProfileViewModel } from '@api/api:';
 import { BookingService } from '@app/services/booking.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
