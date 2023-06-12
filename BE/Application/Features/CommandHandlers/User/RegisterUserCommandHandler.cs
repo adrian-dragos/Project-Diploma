@@ -29,7 +29,7 @@ namespace Application.Features.CommandHandlers
             await ValidateEmail(request.Email);
             ValidatePassword(request.Password);
 
-            var password = _passwordService.EncrtpyPassword(request.Password);
+            var password = _passwordService.EncryptPassword(request.Password);
             var user = new Identity { Email = request.Email, Password = password, RoleId = 3 };
 
             user = await _userReposiotry

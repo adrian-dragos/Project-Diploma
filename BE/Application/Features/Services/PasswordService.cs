@@ -5,7 +5,7 @@ namespace Application.Features.Services
 {
     public class PasswordService : IPasswordService
     {
-        public string EncrtpyPassword(string password)
+        public string EncryptPassword(string password)
         {
             var passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(password);
             return passwordHash;
@@ -16,6 +16,5 @@ namespace Application.Features.Services
             var isPasswordCorrect = BCrypt.Net.BCrypt.EnhancedVerify(password, passwordHash);
             return isPasswordCorrect;
         }
-
     }
 }
