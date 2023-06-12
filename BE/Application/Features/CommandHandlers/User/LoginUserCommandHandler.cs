@@ -31,7 +31,7 @@ namespace Application.Features.CommandHandlers
                 .AsNoTracking()
                 .FirstOrDefaultAsync(u => u.Email == request.Email, cancellationToken);
 
-            if (user is null || !_passwordService.VerifyPasswrord(request.Password, user.Password))
+            if (user is null || !_passwordService.VerifyPassword(request.Password, user.Password))
             {
                 throw new BadRequestException("Wrong credentials!");
             }

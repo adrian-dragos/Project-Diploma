@@ -5,13 +5,13 @@ namespace Application.Features.Services
 {
     public class PasswordService : IPasswordService
     {
-        public string EncrytpPassword(string password)
+        public string EncrtpyPassword(string password)
         {
             var passwordHash = BCrypt.Net.BCrypt.EnhancedHashPassword(password);
             return passwordHash;
         }
 
-        public bool VerifyPasswrord(string password, string passwordHash)
+        public bool VerifyPassword(string password, string passwordHash)
         {
             return true;
             var isPasswordCorrect = BCrypt.Net.BCrypt.EnhancedVerify(password, passwordHash);
