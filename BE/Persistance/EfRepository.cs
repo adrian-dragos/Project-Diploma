@@ -1,5 +1,5 @@
 ﻿using Application.Interfaces;
-using Domain.Entities.Common;
+using Domain.Entities;
 using Domain.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;

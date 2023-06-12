@@ -1,4 +1,4 @@
-﻿namespace Domain
+﻿namespace Domain.Seeding
 {
     public static class DefaultRoles
     {

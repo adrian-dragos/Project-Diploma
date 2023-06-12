@@ -1,6 +1,4 @@
-﻿using Domain.Entities.Common;
-
-namespace Domain.Entities
+﻿namespace Domain.Entities
 {
     public sealed class Review : BaseEntity
     {

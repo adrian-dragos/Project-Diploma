@@ -1,5 +1,5 @@
-﻿using Domain;
-using Domain.Entities.Authorization;
+﻿using Domain.Entities.Authorization;
+using Domain.Seeding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

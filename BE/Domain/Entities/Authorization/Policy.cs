@@ -1,7 +1,4 @@
-﻿using Domain.Entities.Common;
-
-
-namespace Domain.Entities.Authorization
+﻿namespace Domain.Entities.Authorization
 {
     public sealed class Policy : BaseEntity
     {
