@@ -12,7 +12,7 @@ namespace WebApi.AutoMapperProfiles
         public LessonProfile()
         {
             CreateMap<GetLessonsViewModel, GetLessonsListQuery>();
-            CreateMap<GetLessonsListDto, GetStudentLessonsListViewModel>();
+            CreateMap<GetLessonsDto, GetStudentLessonsViewModel>();
             CreateMap<GetInstructorLessonsListDto, GetInstructorLessonsListViewModel>();
             CreateMap<GetAvailableLessonDetailsDto, GetAvailableLessonDetailsViewModel>();
             CreateMap<GetAvailableLessonsDto, GetAvailableLessonsViewModel>();

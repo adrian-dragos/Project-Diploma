@@ -2,7 +2,7 @@
 
 namespace WebApi.ViewModels.Lesson
 {
-    public sealed class GetStudentLessonsListViewModel
+    public sealed class GetStudentLessonsViewModel
     {
         public int Id { get; set; }
         public DateTimeOffset StartTime { get; set; }

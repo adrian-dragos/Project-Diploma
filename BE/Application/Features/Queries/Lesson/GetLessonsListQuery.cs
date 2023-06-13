@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Application.Features.Queries.Lesson
 {
-    public sealed class GetLessonsListQuery : IRequest<PagedResultDto<GetLessonsListDto>>
+    public sealed class GetLessonsListQuery : IRequest<PagedResultDto<GetLessonsDto>>
     {
         public IEnumerable<int> StudentIds { get; set; }
         public IEnumerable<int> InstructorIds { get; set; }

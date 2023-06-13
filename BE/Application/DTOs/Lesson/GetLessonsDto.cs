@@ -2,7 +2,7 @@
 
 namespace Application.DTOs
 {
-    public sealed record GetLessonsListDto
+    public sealed record GetLessonsDto
     {
         public int Id { get; set; }
         public DateTimeOffset StartTime { get; set; }

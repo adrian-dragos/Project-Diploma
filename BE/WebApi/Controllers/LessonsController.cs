@@ -24,7 +24,7 @@ namespace WebApi.Controllers
         }
 
         [HttpPost("")]
-        public async Task<ActionResult<PagedResultViewModel<GetStudentLessonsListViewModel>>> GetStudentLessons(
+        public async Task<ActionResult<PagedResultViewModel<GetStudentLessonsViewModel>>> GetStudentLessons(
             [FromBody] GetLessonsViewModel getLessonsViewModel,
             CancellationToken cancellationToken)
         {
@@ -32,7 +32,7 @@ namespace WebApi.Controllers
 
             var lessons = await _mediator.Send(query, cancellationToken);
 
-            var response = _mapper.Map<PagedResultViewModel<GetStudentLessonsListViewModel>>(lessons);
+            var response = _mapper.Map<PagedResultViewModel<GetStudentLessonsViewModel>>(lessons);
 
             return Ok(response);
         }

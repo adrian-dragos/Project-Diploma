@@ -8,7 +8,7 @@ namespace Application.AutoMapperProfiles
     {
         public LessonProfile() 
         { 
-            CreateMap<Lesson, GetLessonsListDto>();
+            CreateMap<Lesson, GetLessonsDto>();
         }
     }
 }

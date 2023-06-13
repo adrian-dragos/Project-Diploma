@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Application.Features.QueryHandlers
 {
     internal sealed class LessonQueryHandler :
-        IRequestHandler<GetLessonsListQuery, PagedResultDto<GetLessonsListDto>>,
+        IRequestHandler<GetLessonsListQuery, PagedResultDto<GetLessonsDto>>,
         IRequestHandler<GetInstructorLessonsListQuery, PagedResultDto<GetInstructorLessonsListDto>>,
         IRequestHandler<GetAvailableLessonsListQuery, IEnumerable<GetAvailableLessonsDto>>
     {
@@ -21,7 +21,7 @@ namespace Application.Features.QueryHandlers
         {
             _lessonRepository = lessonRepository;
         }
-        public async Task<PagedResultDto<GetLessonsListDto>> Handle(GetLessonsListQuery request, CancellationToken cancellationToken)
+        public async Task<PagedResultDto<GetLessonsDto>> Handle(GetLessonsListQuery request, CancellationToken cancellationToken)
         {
             var lessonQuery = _lessonRepository
                 .Read()
@@ -63,7 +63,7 @@ namespace Application.Features.QueryHandlers
                                                      l.Status == LessonStatus.Canceled);
             }
 
-            var lessonFilteredQuery = lessonQuery.Select(l => new GetLessonsListDto
+            var lessonFilteredQuery = lessonQuery.Select(l => new GetLessonsDto
             {
                 Id = l.Id,
                 StartTime = l.StartTime,
@@ -82,7 +82,7 @@ namespace Application.Features.QueryHandlers
             }
 
 
-            var pagedResult = new PagedResultDto<GetLessonsListDto>
+            var pagedResult = new PagedResultDto<GetLessonsDto>
             {
                 Page = request.Page.Page,
                 PageSize = request.Page.Page,
