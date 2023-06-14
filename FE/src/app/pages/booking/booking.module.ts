@@ -24,6 +24,7 @@ import { DialogService } from '@app/services/dialog.service';
 import { LessonDetailsDialogModule } from '@app/shared/components/lesson-details-dialog/lesson-details-dialog.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PaymentService } from '@app/services/payment.service';
+import { LoginDialogModule } from '@app/shared/components/login-dialog/login-dialog.module';
 
 @NgModule({
 	imports: [
@@ -43,7 +44,8 @@ import { PaymentService } from '@app/services/payment.service';
 		FormsModule,
 		LoadingSpinnerModule,
 		LessonDetailsDialogModule,
-		MatTooltipModule
+		MatTooltipModule,
+		LoginDialogModule
 	],
 	providers: [InstructorClient, CarClient, BookingService, LessonsClient, DialogService, PaymentClient, PaymentService],
 	declarations: [BookingComponent, BookingSidebarComponent, BookingLessonsComponent, GearButtonsComponent, CarFilterComponent]

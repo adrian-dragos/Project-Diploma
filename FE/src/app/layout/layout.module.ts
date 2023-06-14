@@ -22,7 +22,7 @@ import { NotStudentGuard } from '@app/guards/student.guard';
 
 const routes: Routes = [
 	{
-		path: 'app',
+		path: '',
 		canActivate: [AuthorizationGuard],
 		component: LayoutComponent,
 		children: [

@@ -4,11 +4,11 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {
 	GetLessonsViewModel,
-	GetStudentLessonsListViewModel,
+	GetStudentLessonsViewModel,
 	LessonStatus,
 	LessonsClient,
 	PageViewModel,
-	PagedResultViewModelOfGetStudentLessonsListViewModel
+	PagedResultViewModelOfGetStudentLessonsViewModel
 } from '@api/api:';
 import { TooltipConstants } from '@app/constants/tooltip.constants';
 import { DialogService } from '@app/services/dialog.service';
@@ -31,7 +31,7 @@ export class LessonsComponent implements AfterContentInit {
 	readonly showDelay = TooltipConstants.SHOW_DELAY;
 	readonly displayedColumns: string[] = ['date', 'time', 'location', 'instructor', 'status', 'actions'];
 	start = new BehaviorSubject<void>(undefined);
-	dataSource = new MatTableDataSource<GetStudentLessonsListViewModel>();
+	dataSource = new MatTableDataSource<GetStudentLessonsViewModel>();
 	lessonCompleted = LessonStatus.Completed;
 	isLoading = false;
 	userRole: string;
@@ -107,7 +107,7 @@ export class LessonsComponent implements AfterContentInit {
 		this.lessonsClient
 			.getStudentLessons(this.filter)
 			.pipe(untilDestroyed(this))
-			.subscribe((pagedResult: PagedResultViewModelOfGetStudentLessonsListViewModel) => {
+			.subscribe((pagedResult: PagedResultViewModelOfGetStudentLessonsViewModel) => {
 				this.dataSource.data = pagedResult.items;
 				this.totalCount = pagedResult.totalCount;
 				this.isLoading = false;

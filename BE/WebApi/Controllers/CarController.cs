@@ -22,6 +22,7 @@ namespace WebApi.Controllers
 
 
         [HttpPost("models")]
+        [ProducesResponseType(typeof(IEnumerable<CarModelViewModel>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<CarModelViewModel>>> GetCarModels(
             [FromBody] CarGear carGear,
             CancellationToken cancellationToken)
@@ -34,6 +35,5 @@ namespace WebApi.Controllers
 
             return Ok(response);
         }
-
     }
 }

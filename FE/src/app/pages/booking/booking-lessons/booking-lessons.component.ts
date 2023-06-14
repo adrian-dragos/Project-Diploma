@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarGear, GetAvailableLessonDetailsViewModel, GetAvailableLessonsViewModel, LessonStatus, LessonsClient } from '@api/api:';
 import { BookingConstants } from '@app/constants/booking.constants';
 import { BookingService } from '@app/services/booking.service';
@@ -7,6 +8,7 @@ import { PaymentService } from '@app/services/payment.service';
 import { SnackBarService } from '@app/services/snack-bar.service';
 import { CancelLessonDialogComponent } from '@app/shared/components/cancel-lesson-dialog/cancel-lesson-dialog.component';
 import { LessonDetailsDialogComponent } from '@app/shared/components/lesson-details-dialog/lesson-details-dialog.component';
+import { LoginDialogComponent } from '@app/shared/components/login-dialog/login-dialog.component';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { concatMap, tap } from 'rxjs';
 
@@ -23,14 +25,16 @@ export class BookingLessonsComponent implements OnInit {
 	isLoading = true;
 	lessons: GetAvailableLessonsViewModel[];
 	lessonBookedNotPaidStatus = LessonStatus.BookedNotPaid;
+	isLogged: boolean;
 
 	bookingService = inject(BookingService);
 	lessonClient = inject(LessonsClient);
 	snackBarService = inject(SnackBarService);
 
-	constructor(private readonly dialogService: DialogService) {}
+	constructor(private readonly dialogService: DialogService, private readonly router: Router) {}
 
 	ngOnInit(): void {
+		this.isLogged = localStorage.getItem('JWT_TOKEN') !== null;
 		this.fetchLessons();
 	}
 
@@ -80,6 +84,17 @@ export class BookingLessonsComponent implements OnInit {
 	}
 
 	onSelectLesson(lessonDetails: GetAvailableLessonDetailsViewModel): void {
+		if (!this.isLogged) {
+			const dialogRef = this.dialogService.openDialog(LoginDialogComponent, {});
+
+			dialogRef.afterClosed().subscribe((result) => {
+				if (result) {
+					this.router.navigate(['/login']);
+				}
+			});
+
+			return;
+		}
 		if (!lessonDetails.canBook) {
 			return;
 		}

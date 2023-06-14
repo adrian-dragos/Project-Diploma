@@ -42,7 +42,8 @@ export class HeaderComponent implements OnInit {
 			.pipe(untilDestroyed(this))
 			.subscribe((result) => {
 				if (result) {
-					this.router.navigate(['/login']);
+					this.userService.removeJwtToken();
+					this.router.navigate(['booking']);
 				}
 			});
 	}
