@@ -44,9 +44,9 @@ const routes: Routes = [
 				loadChildren: () => import('src/app/pages/add-lessons/add-lessons.module').then((m) => m.AddLessonsModule)
 			},
 			{
-				path: 'add-instructors',
+				path: 'add-user',
 				canActivate: [NotStudentGuard, NotInstructorGuard],
-				loadChildren: () => import('src/app/pages/add-instructor/add-instructor.module').then((m) => m.AddInstructorModule)
+				loadChildren: () => import('src/app/pages/add-user/add-user.module').then((m) => m.AddUserModule)
 			},
 			{ path: '', redirectTo: 'booking', pathMatch: 'full' }
 		]

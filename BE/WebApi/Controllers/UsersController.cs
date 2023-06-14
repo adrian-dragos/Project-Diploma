@@ -117,7 +117,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(typeof(GetUserDetailsViewModel), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(GetUserDetailsViewModel), StatusCodes.Status500InternalServerError)]
         [HttpGet("details")]
-        public async Task<ActionResult<GetUserDetailsViewModel>> GetUserDetails( CancellationToken cancellationToken)
+        public async Task<ActionResult<GetUserDetailsViewModel>> GetUserDetails(CancellationToken cancellationToken)
         {
             var httpContext = _httpContextAccessor.HttpContext;
             var id = httpContext.User
@@ -139,6 +139,19 @@ namespace WebApi.Controllers
 
             var user = await _mediator.Send(query, cancellationToken);
             var response = _mapper.Map<GetUserDetailsViewModel>(user);
+            return Ok(response);
+        }
+
+        [Authorize]
+        [ProducesResponseType(typeof(UserViewModel), StatusCodes.Status200OK)]
+        [HttpPost("add")]
+        public async Task<ActionResult<UserViewModel>> AddUser(
+            [FromBody] AddUserViewModel user,
+            CancellationToken cancellationToken)
+        {
+            var query = _mapper.Map<AddUserCommand>(user);
+            var userDto = await _mediator.Send(query, cancellationToken);
+            var response = _mapper.Map<UserViewModel>(userDto);
             return Ok(response);
         }
     }
