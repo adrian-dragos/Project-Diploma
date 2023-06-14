@@ -4,7 +4,6 @@ import { CarGear, GetAvailableLessonDetailsViewModel, GetAvailableLessonsViewMod
 import { BookingConstants } from '@app/constants/booking.constants';
 import { BookingService } from '@app/services/booking.service';
 import { DialogService } from '@app/services/dialog.service';
-import { PaymentService } from '@app/services/payment.service';
 import { SnackBarService } from '@app/services/snack-bar.service';
 import { CancelLessonDialogComponent } from '@app/shared/components/cancel-lesson-dialog/cancel-lesson-dialog.component';
 import { LessonDetailsDialogComponent } from '@app/shared/components/lesson-details-dialog/lesson-details-dialog.component';
@@ -34,7 +33,7 @@ export class BookingLessonsComponent implements OnInit {
 	constructor(private readonly dialogService: DialogService, private readonly router: Router) {}
 
 	ngOnInit(): void {
-		this.isLogged = localStorage.getItem('JWT_TOKEN') !== null;
+		this.isLogged = !!localStorage.getItem('JwtToken');
 		this.fetchLessons();
 	}
 
@@ -84,6 +83,8 @@ export class BookingLessonsComponent implements OnInit {
 	}
 
 	onSelectLesson(lessonDetails: GetAvailableLessonDetailsViewModel): void {
+		console.log(this.isLoading);
+		console.log(localStorage.getItem('JwtToken'));
 		if (!this.isLogged) {
 			const dialogRef = this.dialogService.openDialog(LoginDialogComponent, {});
 
