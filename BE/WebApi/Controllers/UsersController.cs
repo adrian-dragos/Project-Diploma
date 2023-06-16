@@ -116,7 +116,7 @@ namespace WebApi.Controllers
 
         [Authorize]
         [ProducesResponseType(typeof(GetUserDetailsViewModel), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(GetUserDetailsViewModel), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpGet("details")]
         public async Task<ActionResult<GetUserDetailsViewModel>> GetUserDetails(CancellationToken cancellationToken)
         {
@@ -129,7 +129,7 @@ namespace WebApi.Controllers
             if (id is null)
             {
 
-                return StatusCode(500, "An internal server error occurred.");
+                return StatusCode(400, "An internal server error occurred.");
             }
 
 
@@ -145,6 +145,7 @@ namespace WebApi.Controllers
 
         [Authorize]
         [ProducesResponseType(typeof(UserViewModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost("add")]
         public async Task<ActionResult<UserViewModel>> AddUser(
             [FromBody] AddUserViewModel user,

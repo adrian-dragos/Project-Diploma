@@ -53,7 +53,7 @@ export class AddUserComponent implements OnInit {
 			};
 			this.userClient.addUser(user).subscribe(
 				() => this.snackBarService.openSuccessSnackBar('Successfully sent join request'),
-				() => this.snackBarService.openErrorSnackBar('Server error. Please try again later.')
+				(error) => this.snackBarService.openErrorSnackBar(error.message)
 			);
 		}
 	}
