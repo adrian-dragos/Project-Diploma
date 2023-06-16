@@ -54,12 +54,6 @@ namespace Infrastructure.Authorization
               .Select(u => u.Role.Id)
               .FirstOrDefaultAsync();
 
-            var insturctors = await _dbContext.Set<Identity>()
-                .AsNoTracking()
-                .Where(x => x.Id == userId)
-                .Select(x => x.Students)
-                .FirstOrDefaultAsync();
-
             return await _dbContext.Set<PolicyRole>()
                 .AsNoTracking()
                 .Where(pr => pr.RoleId == userRoleId)
