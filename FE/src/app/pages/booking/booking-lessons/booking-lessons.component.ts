@@ -33,7 +33,7 @@ export class BookingLessonsComponent implements OnInit {
 	constructor(private readonly dialogService: DialogService, private readonly router: Router) {}
 
 	ngOnInit(): void {
-		this.isLogged = !!localStorage.getItem('JwtToken');
+		this.isLogged = this.router.url !== '/booking';
 		this.fetchLessons();
 	}
 
