@@ -4,6 +4,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using WebApi.ViewModels.User;
 
 namespace WebApi.Controllers
@@ -31,7 +32,7 @@ namespace WebApi.Controllers
             var httpContext = _httpContextAccessor.HttpContext;
             var id = httpContext.User
                 .Claims
-                .FirstOrDefault(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")?
+                .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?
                 .Value;
 
             if (id is null)
@@ -122,7 +123,7 @@ namespace WebApi.Controllers
             var httpContext = _httpContextAccessor.HttpContext;
             var id = httpContext.User
                 .Claims
-                .FirstOrDefault(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")?
+                .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?
                 .Value;
 
             if (id is null)

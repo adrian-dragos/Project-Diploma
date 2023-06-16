@@ -79,7 +79,7 @@ namespace Persistence
                 if (entry.State is EntityState.Added)
                 {
                     entity.CreatedAt = now;
-                    //var email = httpContext.User.Claims.FirstOrDefault(x=> x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")?.Value;
+                    //var email = httpContext.User.Claims.FirstOrDefault(x=> x.Type == ClaimTypes.Email)?.Value;
                     entity.CreatedBy = "Dominic39@yahoo.com";
               }
                 else if (entry.State is EntityState.Modified)
