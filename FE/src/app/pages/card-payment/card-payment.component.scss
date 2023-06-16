@@ -19,7 +19,7 @@
 }
 
 .form {
-  max-width: 500px; 
+  max-width: 500px;
   margin: 0 auto;
   padding-top: 20px;
 }
@@ -49,12 +49,12 @@
   height: 20px;
 }
 
-.visa{
-  background-image: url('/assets/visa.png');
+.visa {
+  background-image: url("/assets/visa.png");
 }
 
 .mastercard {
-  background-image: url('/assets/mastercard.png');
+  background-image: url("/assets/mastercard.png");
 }
 
 .error {
@@ -68,8 +68,8 @@
   align-items: center;
   justify-content: space-between;
   font-weight: 500;
-  
-  &>div {
-    padding:5px;
+
+  & > div {
+    padding: 5px;
   }
 }
