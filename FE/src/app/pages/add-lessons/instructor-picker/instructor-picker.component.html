@@ -1,0 +1,12 @@
+<mat-form-field>
+  <mat-label>Instructor</mat-label>
+  <mat-select 
+    disableRipple="true" 
+    [(ngModel)]="selectedInstructorId"
+    (selectionChange)="onSelectionChange($event)">
+    <mat-option *ngFor="let instructor of instructors" value='{{instructor.id}}'>{{ instructor.fullName}}</mat-option>
+  </mat-select> 
+  <button matSuffix mat-icon-button (click)="clearSelectedItems($event)">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>

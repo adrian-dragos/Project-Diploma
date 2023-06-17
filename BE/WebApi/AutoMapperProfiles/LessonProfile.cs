@@ -19,6 +19,8 @@ namespace WebApi.AutoMapperProfiles
             CreateMap<LessonFilterViewModel, GetAvailableLessonsListQuery>();
             CreateMap<BookLessonViewModel, BookLessonCommand>();
             CreateMap<UnbookLessonViewModel, UnbookLessonCommand>();
+            CreateMap<AddLessonResponseDto, AddLessonResponseViewModel>();
+            CreateMap<AddLessonViewModel, AddLessonCommand>();
         }
     }
 }

@@ -3,7 +3,29 @@
     <div class="add-lessons-header">
       <h1> Add Lessons </h1>
     </div>
-    <div class="add-lessons-content">
+    <div class="fields">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title> Onboard </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <app-instructor-picker></app-instructor-picker>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <input type="time" matInput  [(ngModel)]="selectedTime">
+
+        </mat-card-content>
+        <button mat-raised-button class="add-lesson-button" (click)="onSubmit()">Add Lesson</button>
+      </mat-card>
     </div>
   </div>
 </div>

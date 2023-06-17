@@ -1,5 +1,7 @@
-﻿using Application.Features.Commands.Lesson;
+﻿using Application.DTOs.Lesson;
+using Application.Features.Commands.Lesson;
 using Application.Interfaces;
+using AutoMapper;
 using Domain.Entities;
 using Domain.Enums;
 using Domain.Exceptions;
@@ -11,17 +13,22 @@ namespace Application.Features.CommandHandlers
     internal sealed class LessonCommandHandler :
         IRequestHandler<BookLessonCommand, Unit>,
         IRequestHandler<UnbookLessonCommand, Unit>,
-        IRequestHandler<CancelLessonCommand, Unit>
+        IRequestHandler<CancelLessonCommand, Unit>,
+        IRequestHandler<AddLessonCommand, AddLessonResponseDto>
     {
-        public readonly IRepository<Lesson> _lessonsRepository;
-        public readonly IRepository<Student> _studentRepository;
-        public readonly IRepository<Payment> _paymentRepository;
+        private readonly IRepository<Lesson> _lessonsRepository;
+        private readonly IRepository<Student> _studentRepository;
+        private readonly IRepository<Payment> _paymentRepository;
+        private readonly IRepository<InstructorCar> _instructorCarRepository;
+        private readonly IMapper _mapper;
 
-        public LessonCommandHandler(IRepository<Lesson> lessonsRepository, IRepository<Student> studentRepository, IRepository<Payment> paymentRepository)
+        public LessonCommandHandler(IRepository<Lesson> lessonsRepository, IRepository<Student> studentRepository, IRepository<Payment> paymentRepository, IRepository<InstructorCar> instructorCarRepository, IMapper mapper)
         {
             _lessonsRepository = lessonsRepository;
             _studentRepository = studentRepository;
             _paymentRepository = paymentRepository;
+            _instructorCarRepository = instructorCarRepository;
+            _mapper = mapper;
         }
 
         public async Task<Unit> Handle(BookLessonCommand request, CancellationToken cancellationToken)
@@ -145,6 +152,40 @@ namespace Application.Features.CommandHandlers
 
 
             return Unit.Value;
+        }
+
+        public async Task<AddLessonResponseDto> Handle(AddLessonCommand request, CancellationToken cancellationToken)
+        {
+            var lessonExistsInSameTimeInterval = await _lessonsRepository
+                .Read()
+                .AnyAsync(l => l.InstructorId == request.InstructorId && (
+                    (request.LessonStartTime >= l.StartTime &&
+                       request.LessonStartTime <= l.StartTime.AddMinutes(90)) ||
+                    (request.LessonStartTime.AddMinutes(90) >= l.StartTime &&
+                        request.LessonStartTime.AddMinutes(90) <= l.StartTime.AddMinutes(90)))
+                    , cancellationToken);
+
+            if (lessonExistsInSameTimeInterval)
+            {
+                throw new BadRequestException("There is a lesson in the same time interval.");
+            }
+
+
+            var carId = await _instructorCarRepository.Read()
+                .Where(ic => ic.InstructorId == request.InstructorId)
+                .Select(ic => ic.CarId)
+                .FirstOrDefaultAsync(cancellationToken);
+
+            var lesson = await _lessonsRepository.AddAsync(new Lesson
+            {
+                InstructorId = request.InstructorId,
+                StartTime = request.LessonStartTime,
+                Price = 50,
+                Status = LessonStatus.Unbooked,
+                CarId = carId 
+            });
+
+            return _mapper.Map<AddLessonResponseDto>(lesson);
         }
     }
 }

@@ -1,9 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { AddUserViewModel, UsersClient } from '@api/api:';
 import { SnackBarService } from '@app/services/snack-bar.service';
-import { UserService } from '@app/services/user.service';
 import { UserValidator } from '@app/validators/user.validator';
 
 @Component({

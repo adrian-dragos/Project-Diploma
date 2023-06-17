@@ -110,5 +110,18 @@ namespace WebApi.Controllers
             return NoContent();
         }
 
+        [HttpPost("add")]
+        [ProducesResponseType(typeof(AddLessonResponseViewModel),StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<AddLessonResponseViewModel>> AddLesson(
+            [FromBody] AddLessonViewModel lessonVm,
+            CancellationToken cancellationToken)
+        {
+            var query = _mapper.Map<AddLessonCommand>(lessonVm);
+            var lesson = await _mediator.Send(query, cancellationToken);
+            var response = _mapper.Map<AddLessonResponseViewModel>(lesson);
+            return CreatedAtAction(null, new { id = response.Id }, response);
+        }
+         
     }
 }
