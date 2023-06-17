@@ -24,7 +24,7 @@
           <input type="time" matInput  [(ngModel)]="selectedTime">
 
         </mat-card-content>
-        <button mat-raised-button class="add-lesson-button" (click)="onSubmit()">Add Lesson</button>
+        <button mat-raised-button [disabled]="!isFormValid()" class="add-lesson-button" (click)="onSubmit()">Add Lesson</button>
       </mat-card>
     </div>
   </div>

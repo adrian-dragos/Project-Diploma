@@ -3,6 +3,7 @@ using Domain.Entities;
 using Domain.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Persistence
 {
@@ -79,8 +80,9 @@ namespace Persistence
                 if (entry.State is EntityState.Added)
                 {
                     entity.CreatedAt = now;
-                    //var email = httpContext.User.Claims.FirstOrDefault(x=> x.Type == ClaimTypes.Email)?.Value;
-                    entity.CreatedBy = "Dominic39@yahoo.com";
+                    var email = httpContext.User.Claims.FirstOrDefault(x=> x.Type == ClaimTypes.Email)?.Value;
+                    entity.CreatedBy = email;
+                    //entity.CreatedBy = "Dominic39@yahoo.com";
               }
                 else if (entry.State is EntityState.Modified)
                 {

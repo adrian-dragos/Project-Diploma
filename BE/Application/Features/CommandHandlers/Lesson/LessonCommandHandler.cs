@@ -159,10 +159,12 @@ namespace Application.Features.CommandHandlers
             var lessonExistsInSameTimeInterval = await _lessonsRepository
                 .Read()
                 .AnyAsync(l => l.InstructorId == request.InstructorId && (
-                    (request.LessonStartTime >= l.StartTime &&
-                       request.LessonStartTime <= l.StartTime.AddMinutes(90)) ||
-                    (request.LessonStartTime.AddMinutes(90) >= l.StartTime &&
-                        request.LessonStartTime.AddMinutes(90) <= l.StartTime.AddMinutes(90)))
+                    (request.LessonStartTime > l.StartTime &&
+                       request.LessonStartTime < l.StartTime.AddMinutes(90)) ||
+                    (request.LessonStartTime.AddMinutes(90) > l.StartTime &&
+                        request.LessonStartTime.AddMinutes(90) < l.StartTime.AddMinutes(90)) ||
+                    (request.LessonStartTime == l.StartTime &&
+                        request.LessonStartTime.AddMinutes(90) == l.StartTime.AddMinutes(90)))
                     , cancellationToken);
 
             if (lessonExistsInSameTimeInterval)
@@ -175,6 +177,11 @@ namespace Application.Features.CommandHandlers
                 .Where(ic => ic.InstructorId == request.InstructorId)
                 .Select(ic => ic.CarId)
                 .FirstOrDefaultAsync(cancellationToken);
+
+            if (carId == 0)
+            {
+                throw new BadRequestException("Instructor does not have a car.");
+            }
 
             var lesson = await _lessonsRepository.AddAsync(new Lesson
             {
