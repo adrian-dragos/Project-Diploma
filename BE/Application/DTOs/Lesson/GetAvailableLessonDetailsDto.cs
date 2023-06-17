@@ -7,6 +7,7 @@ namespace Application.DTOs.Lesson
     public sealed class GetAvailableLessonDetailsDto
     {
         public int Id { get; set; }
+        public string StudentName { get; set; }
         public DateTimeOffset StartTime { get; set; }
         public DateTimeOffset EndTime { get; set; }
         public string InstructorName { get; set; }

@@ -11,7 +11,7 @@ const routes: Routes = [
 		loadChildren: () => import('src/app/layout/layout.module').then((m) => m.LayoutModule)
 	},
 	{
-		path: 'payment',
+		path: 'app/payment',
 		loadChildren: () => import('@app/pages/card-payment/card-payment.module').then((m) => m.default)
 	},
 	{

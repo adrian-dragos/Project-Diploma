@@ -3,8 +3,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { GetStudentPaymentFilterViewModel, GetStudentPaymentViewModel, PaymentClient, PaymentMethod } from '@api/api:';
 import { TooltipConstants } from '@app/constants/tooltip.constants';
 import { PaymentService } from '@app/services/payment.service';
+import { SnackBarService } from '@app/services/snack-bar.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { concatMap, tap } from 'rxjs';
+import { concatMap, delay, tap } from 'rxjs';
 
 @Component({
 	selector: 'app-payments',
@@ -16,7 +17,7 @@ export class PaymentsComponent implements OnInit {
 	tooltipShowDelay = TooltipConstants.SHOW_DELAY;
 	isLoading = true;
 	dataSource: MatTableDataSource<GetStudentPaymentViewModel>;
-	columns: string[] = ['date', 'sum', 'paymentMethod', 'addedBy'];
+	columns: string[] = ['date', 'sum', 'paymentMethod', 'addedBy', 'actions'];
 	hasToPay = false;
 	sumToPay = 0;
 	unpaid = PaymentMethod.Unpaid;
@@ -26,12 +27,16 @@ export class PaymentsComponent implements OnInit {
 
 	paymentClient = inject(PaymentClient);
 	paymentService = inject(PaymentService);
-
-	constructor() {
-		this.userRole = localStorage.getItem('userRole');
-	}
+	snackBarService = inject(SnackBarService);
 
 	ngOnInit(): void {
+		this.userRole = localStorage.getItem('userRole');
+		if (this.userRole === 'student') {
+			const studentId = [parseInt(localStorage.getItem('userId'), 10)];
+			this.paymentService.setStudentFilter(studentId);
+		} else {
+			this.paymentService.setStudentFilter([]);
+		}
 		this.paymentService
 			.getPaymentsFilter()
 			.pipe(
@@ -46,7 +51,7 @@ export class PaymentsComponent implements OnInit {
 			});
 
 		this.paymentClient
-			.getSumToPay(1)
+			.getSumToPay(parseInt(localStorage.getItem('userId'), 10))
 			.pipe(untilDestroyed(this))
 			.subscribe((sumToPay) => {
 				this.sumToPay = sumToPay;
@@ -55,5 +60,27 @@ export class PaymentsComponent implements OnInit {
 
 	getMethodText(paymentMethod: number): string {
 		return PaymentMethod[paymentMethod];
+	}
+
+	payLesson(sum: number, studentId: number): void {
+		this.paymentClient
+			.pay({
+				studentId: studentId,
+				amount: sum,
+				paymentMethod: PaymentMethod.Card
+			})
+			.pipe(
+				tap(() => (this.isLoading = true)),
+				delay(1000),
+				untilDestroyed(this)
+			)
+			.subscribe(
+				() => {
+					this.snackBarService.openSuccessSnackBar('Payment successful');
+					this.isLoading = false;
+					this.paymentService.refreshFilter();
+				},
+				(error) => this.snackBarService.openErrorSnackBar(error.error.message)
+			);
 	}
 }

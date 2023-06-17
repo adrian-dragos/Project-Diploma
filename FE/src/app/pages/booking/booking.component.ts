@@ -15,13 +15,15 @@ export class BookingComponent implements OnInit {
 	tooltipShowDelay = TooltipConstants.SHOW_DELAY;
 	hasToPay = false;
 	fetchPaymentSubject = new BehaviorSubject<void>(undefined);
+	role: string;
 
 	paymentClient = inject(PaymentClient);
 
 	ngOnInit(): void {
+		this.role = localStorage.getItem('userRole');
 		this.fetchPaymentSubject
 			.pipe(
-				concatMap(() => this.paymentClient.getSumToPay(1)),
+				concatMap(() => this.paymentClient.getSumToPay(parseInt(localStorage.getItem('userId'), 10))),
 				untilDestroyed(this)
 			)
 			.subscribe((sumToPay) => {

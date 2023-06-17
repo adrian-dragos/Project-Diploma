@@ -149,6 +149,7 @@ namespace Application.Features.QueryHandlers
                 .AsNoTracking()
                 .Include(l => l.Instructor.Identity)
                 .Include(l => l.Car.CarModel)
+                .Include(l => l.Student.Identity)
                 .Where(l => l.StartTime >= startDate && l.StartTime <= endDate &&
                                 l.Car.CarModel.CarGear == request.CarGear && (
                                 l.Status == LessonStatus.Unbooked ||
@@ -179,6 +180,7 @@ namespace Application.Features.QueryHandlers
                     LessonsDetails = l.Select(l => new GetAvailableLessonDetailsDto
                     {
                         Id = l.Id,
+                        StudentName = l.StudentId == null ? null : l.Student.Identity.FirstName +  " " + l.Student.Identity.LastName,
                         StartTime = l.StartTime,
                         EndTime = l.StartTime.AddHours(1).AddMinutes(30),
                         InstructorName = l.Instructor.Identity.FirstName + " " + l.Instructor.Identity.LastName,

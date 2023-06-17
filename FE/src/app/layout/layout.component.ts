@@ -23,10 +23,10 @@ export class LayoutComponent implements OnInit {
 				untilDestroyed(this)
 			)
 			.subscribe((user) => {
-				this.isLoading = false;
-				console.log(user);
 				localStorage.setItem('userRole', user.role);
 				localStorage.setItem('userId', user.id.toString());
+				this.isLoading = false;
+				console.log(user);
 			});
 	}
 

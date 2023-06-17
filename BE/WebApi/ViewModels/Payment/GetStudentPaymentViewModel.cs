@@ -8,5 +8,6 @@ namespace WebApi.ViewModels.Payment
         public decimal Sum { get; set; }
         public PaymentMethod Method { get; set; }
         public string AddedBy { get; set; }
+        public int StudentId { get; set; }
     }
 }

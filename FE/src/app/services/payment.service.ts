@@ -12,10 +12,10 @@ export class PaymentService {
 			studentIds: [],
 			paymentMethod: []
 		};
-		const userRole = localStorage.getItem('userRole');
-		if (userRole === 'student') {
-			this.paymentsFilter.studentIds = [Number(localStorage.getItem('userId'))];
-		}
+		// const userRole = localStorage.getItem('userRole');
+		// if (userRole === 'student') {
+		// 	this.paymentsFilter.studentIds = [Number(localStorage.getItem('userId'))];
+		// }
 		this.filterSubject = new BehaviorSubject<GetStudentPaymentFilterViewModel>(this.paymentsFilter);
 	}
 
@@ -37,5 +37,9 @@ export class PaymentService {
 
 	getPaymentsFilter(): Observable<GetStudentPaymentFilterViewModel> {
 		return this.filterSubject.asObservable();
+	}
+
+	refreshFilter(): void {
+		return this.filterSubject.next(this.paymentsFilter);
 	}
 }

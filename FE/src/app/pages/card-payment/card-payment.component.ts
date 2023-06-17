@@ -38,7 +38,7 @@ export class CardPaymentComponent implements OnInit {
 			});
 
 		this.paymentClient
-			.getSumToPay(1)
+			.getSumToPay(parseInt(localStorage.getItem('userId'), 10))
 			.pipe(untilDestroyed(this))
 			.subscribe((sumToPay) => {
 				this.sumToPay = sumToPay;
@@ -66,7 +66,7 @@ export class CardPaymentComponent implements OnInit {
 		}
 		this.paymentClient
 			.pay({
-				studentId: 1,
+				studentId: parseInt(localStorage.getItem('userId'), 10),
 				amount: this.sumToPay,
 				paymentMethod: PaymentMethod.Card
 			})
@@ -78,7 +78,7 @@ export class CardPaymentComponent implements OnInit {
 			.subscribe(() => {
 				this.snackBarService.openSuccessSnackBar('Payment successful');
 				this.isLoading = false;
-				this.router.navigate(['/payments']);
+				this.router.navigate(['app/payments']);
 			});
 	}
 }

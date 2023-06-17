@@ -17,6 +17,7 @@
         <p>Go to payments</p>
         <mat-icon iconPositionEnd>keyboard_arrow_right</mat-icon>
       </button> 
+      <app-student-selection *ngIf="role==='admin'"></app-student-selection>
     </div>
     <div class="book-booking-container">
       <app-booking-sidebar class="sidebar-section"></app-booking-sidebar>

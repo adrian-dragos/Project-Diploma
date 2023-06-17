@@ -7,7 +7,7 @@
           info_outline
         </mat-icon>
       </div>
-      <button *ngIf="hasToPay && sumToPay"
+      <button *ngIf="hasToPay && sumToPay && userRole === 'student'"
         [matTooltip]="'Proceed with payment'"
         [matTooltipShowDelay]="tooltipShowDelay"
         mat-button [routerLink]="'./../payment'" 
@@ -58,6 +58,25 @@
             <td mat-cell *matCellDef="let payment">
               {{ payment.addedBy }}
             </td>
+          </ng-container>
+
+          <ng-container *ngIf="userRole === 'admin'" matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let payment"> 
+              <button 
+                mat-icon-button
+                *ngIf="payment.method === unpaid"  
+                matTooltip="Pay for this lesson" 
+                [matTooltipShowDelay]="tooltipShowDelay"
+                (click)="payLesson(payment.sum, payment.studentId)">
+                <mat-icon class="check-icon">check_circle</mat-icon> 
+              </button>
+            </td>
+          </ng-container>
+
+          <ng-container *ngIf="userRole !== 'admin'" matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let item"></td>
           </ng-container>
         
           <tr mat-header-row *matHeaderRowDef="columns"></tr>

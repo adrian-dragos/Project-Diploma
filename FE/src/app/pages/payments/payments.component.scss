@@ -5,8 +5,8 @@
   min-height: 70vh;
   width: 95%;
   gap: 30px;
-  background-color: #FFFFFF;
-  border: 1px solid #EDEDED;
+  background-color: #ffffff;
+  border: 1px solid #ededed;
   border-radius: 5px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.01);
 }
@@ -20,19 +20,19 @@
   height: 3em;
   justify-content: space-between;
   &-title {
-      font-size: 30px;
-      font-weight: lighter;
-      font-family: "SegoeRegular", serif;
+    font-size: 30px;
+    font-weight: lighter;
+    font-family: "SegoeRegular", serif;
   }
 }
 
 .payment-button {
   display: flex;
   align-items: center;
-  background-color:#20a8d8;
+  background-color: #20a8d8;
   color: #fff !important;
   animation: pulse 2s ease-in-out infinite;
-  &  p {
+  & p {
     margin-bottom: 0 !important;
   }
 }
@@ -52,11 +52,11 @@
 }
 
 .card-chip {
-  background-color: #ADD8E6;
+  background-color: #add8e6;
 }
 
 .cash-chip {
-  background-color: #90EE90;
+  background-color: #90ee90;
 }
 
 .payment-filter {
@@ -75,13 +75,23 @@
   gap: 10px;
   align-items: baseline;
   > mat-icon {
-    color: #CCCCCC;
+    color: #cccccc;
   }
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+.check-icon {
+  font-size: 21px;
+  color: #708090;
 }
 
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

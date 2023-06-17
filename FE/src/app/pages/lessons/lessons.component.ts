@@ -80,6 +80,14 @@ export class LessonsComponent implements AfterContentInit {
 				this.fetchLessons();
 			});
 
+		this.userRole = localStorage.getItem('userRole');
+		if (this.userRole === 'student') {
+			const studentId = [parseInt(localStorage.getItem('userId'), 10)];
+			this.lessonService.setStudentFilter(studentId);
+		} else {
+			this.lessonService.setStudentFilter([]);
+		}
+
 		this.lessonService
 			.getLessonsFilter()
 			.pipe(

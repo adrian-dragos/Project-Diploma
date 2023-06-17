@@ -13,7 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
-import { CarClient, InstructorClient, LessonsClient, PaymentClient } from '@api/api:';
+import { CarClient, InstructorClient, LessonsClient, PaymentClient, StudentClient } from '@api/api:';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GearButtonsComponent } from './booking-sidebar/gear-buttons/gear-buttons.component';
@@ -25,6 +25,7 @@ import { LessonDetailsDialogModule } from '@app/shared/components/lesson-details
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PaymentService } from '@app/services/payment.service';
 import { LoginDialogModule } from '@app/shared/components/login-dialog/login-dialog.module';
+import { StudentSelectionComponent } from './student-selection/student-selection.component';
 
 @NgModule({
 	imports: [
@@ -47,7 +48,14 @@ import { LoginDialogModule } from '@app/shared/components/login-dialog/login-dia
 		MatTooltipModule,
 		LoginDialogModule
 	],
-	providers: [InstructorClient, CarClient, BookingService, LessonsClient, DialogService, PaymentClient, PaymentService],
-	declarations: [BookingComponent, BookingSidebarComponent, BookingLessonsComponent, GearButtonsComponent, CarFilterComponent]
+	providers: [InstructorClient, CarClient, BookingService, LessonsClient, DialogService, PaymentClient, PaymentService, StudentClient],
+	declarations: [
+		BookingComponent,
+		BookingSidebarComponent,
+		BookingLessonsComponent,
+		GearButtonsComponent,
+		CarFilterComponent,
+		StudentSelectionComponent
+	]
 })
 export class BookingModule {}

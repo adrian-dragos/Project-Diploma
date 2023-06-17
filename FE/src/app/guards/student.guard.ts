@@ -9,7 +9,6 @@ export class NotStudentGuard implements CanActivate {
 
 	async canActivate(): Promise<boolean> {
 		const role = localStorage.getItem('userRole');
-		console.log(role);
 		if (role === 'student') {
 			this.router.navigate(['/account']);
 			return false;

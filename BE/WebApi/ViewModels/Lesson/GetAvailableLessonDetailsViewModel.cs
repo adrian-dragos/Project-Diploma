@@ -5,6 +5,7 @@ namespace WebApi.ViewModels.Lesson
     public sealed class GetAvailableLessonDetailsViewModel
     {
         public int Id { get; set; }
+        public string StudentName { get; set; }
         public DateTimeOffset StartTime { get; set; }
         public DateTimeOffset EndTime { get; set; }
         public string InstructorName { get; set; }

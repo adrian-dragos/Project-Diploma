@@ -25,6 +25,7 @@ export class BookingLessonsComponent implements OnInit {
 	lessons: GetAvailableLessonsViewModel[];
 	lessonBookedNotPaidStatus = LessonStatus.BookedNotPaid;
 	isLogged: boolean;
+	selectedStudentId;
 
 	bookingService = inject(BookingService);
 	lessonClient = inject(LessonsClient);
@@ -83,8 +84,6 @@ export class BookingLessonsComponent implements OnInit {
 	}
 
 	onSelectLesson(lessonDetails: GetAvailableLessonDetailsViewModel): void {
-		console.log(this.isLoading);
-		console.log(localStorage.getItem('JwtToken'));
 		if (!this.isLogged) {
 			const dialogRef = this.dialogService.openDialog(LoginDialogComponent, {});
 
@@ -111,7 +110,6 @@ export class BookingLessonsComponent implements OnInit {
 
 	shoWLessonDetails(lesson: GetAvailableLessonDetailsViewModel): void {
 		const dialogRef = this.dialogService.openDialog(LessonDetailsDialogComponent, {
-			title: localStorage.getItem('userName'),
 			content: lesson
 		});
 
@@ -153,10 +151,22 @@ export class BookingLessonsComponent implements OnInit {
 	}
 
 	bookLessonRequest(lessonId: number): void {
+		const role = localStorage.getItem('userRole');
+		let studentId = 0;
+		if (role === 'admin') {
+			studentId = this.bookingService.getStudentId();
+			if (!studentId) {
+				this.snackBarService.openErrorSnackBar('Please select student');
+				return;
+			}
+		} else {
+			studentId = parseInt(localStorage.getItem('userId'));
+		}
+
 		this.lessonClient
 			.bookLesson({
 				lessonId: lessonId,
-				studentId: 1
+				studentId: studentId
 			})
 			.pipe(untilDestroyed(this))
 			.subscribe(
@@ -164,6 +174,7 @@ export class BookingLessonsComponent implements OnInit {
 					this.snackBarService.openSuccessSnackBar('Lesson booked successfully');
 					this.updateSelectedLessonStatus(lessonId, LessonStatus.BookedNotPaid);
 					this.bookingEvent.emit();
+					this.bookingService.refreshFilter();
 				},
 				(error) => this.snackBarService.openErrorSnackBar(error.message)
 			);

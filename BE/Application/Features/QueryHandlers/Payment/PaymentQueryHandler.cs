@@ -29,7 +29,7 @@ namespace Application.Features.QueryHandlers
         {
             var paymentsQuery = _paymentRepository.Read()
                 .AsNoTracking()
-                .Where(p => p.StudentId != null); ;
+                .Where(p => p.StudentId != null);
 
             if (request.StudentIds?.Any() ?? false)
             {
@@ -59,7 +59,7 @@ namespace Application.Features.QueryHandlers
             }
 
             var payments = await paymentsQuery
-                .GroupBy(p => new { p.Timestamp, p.CreatedBy, p.Method })
+                .GroupBy(p => new { p.Timestamp, p.CreatedBy, p.Method, p.StudentId })
                 .Select(g => new GetStudentPaymentDto
                 {
                     AddedBy = _identityRepository
@@ -69,7 +69,8 @@ namespace Application.Features.QueryHandlers
                         .FirstOrDefault(),
                     Date = g.Key.Timestamp,
                     Method = g.Key.Method,
-                    Sum = g.Sum(p => p.Lesson.Price)
+                    Sum = g.Sum(p => p.Lesson.Price),
+                    StudentId = g.Key.StudentId ?? 0
                 })
                 .OrderBy(p => p.Method == PaymentMethod.Unpaid ? 0 : 1)
                 .ThenByDescending(p => p.Date)

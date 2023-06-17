@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CarGear, CarModelViewModel, LessonFilterViewModel } from '@api/api:';
 import { BookingConstants } from '@app/constants/booking.constants';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class BookingService {
@@ -18,6 +18,7 @@ export class BookingService {
 	};
 
 	private filterSubject: BehaviorSubject<LessonFilterViewModel> = new BehaviorSubject<LessonFilterViewModel>(this.lessonsFilter);
+	private studentId: number;
 
 	setDate(startDate: Date): void {
 		this.lessonsFilter.startDate = startDate;
@@ -43,6 +44,19 @@ export class BookingService {
 		this.lessonsFilter.instructorId = instructorId;
 		this.filterSubject.next(this.lessonsFilter);
 	}
+
+	setStudentId(studentId: number | null): void {
+		this.studentId = studentId;
+	}
+
+	getStudentId(): number | null {
+		return this.studentId;
+	}
+
+	refreshFilter(): void {
+		this.filterSubject.next(this.lessonsFilter);
+	}
+
 	getSelectedDate(): Observable<Date> {
 		return this.dateSubject.asObservable();
 	}
