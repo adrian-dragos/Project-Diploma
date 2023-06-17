@@ -34,7 +34,7 @@ export class AddLessonsComponent implements OnInit {
 		this.selectedDate.setHours(hour);
 		this.selectedDate.setMinutes(minutes);
 
-		const lesson: AddLessonViewModel = { instructorId: this.instructorId, lessonStartTime: this.selectedTime };
+		const lesson: AddLessonViewModel = { instructorId: this.instructorId, lessonStartTime: this.selectedDate };
 
 		this.lessonClient
 			.addLesson(lesson)
@@ -46,8 +46,12 @@ export class AddLessonsComponent implements OnInit {
 	}
 
 	onSubmit(): void {
-		if (this.selectedDate && this.selectedTime && this.instructorId) {
+		if (this.isFormValid()) {
 			this.addLesson();
 		}
+	}
+
+	isFormValid(): any {
+		return this.selectedDate && this.selectedTime && this.instructorId;
 	}
 }
