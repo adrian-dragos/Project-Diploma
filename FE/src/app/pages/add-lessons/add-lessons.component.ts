@@ -17,8 +17,10 @@ export class AddLessonsComponent implements OnInit {
 	selectedTime: any;
 	selectedDate: any;
 	instructorId: number;
+	role: string;
 
 	ngOnInit(): void {
+		this.role = localStorage.getItem('userRole');
 		this.addLessonService
 			.getInstructorId()
 			.pipe(untilDestroyed(this))
@@ -34,7 +36,13 @@ export class AddLessonsComponent implements OnInit {
 		this.selectedDate.setHours(hour);
 		this.selectedDate.setMinutes(minutes);
 
-		const lesson: AddLessonViewModel = { instructorId: this.instructorId, lessonStartTime: this.selectedDate };
+		if (this.role === 'instructor') {
+			this.instructorId = parseInt(localStorage.getItem('userId'), 10);
+		}
+
+		const lesson: AddLessonViewModel = { instructorId: this.instructorId, lessonStartTime: this.selectedDate.toISOString() };
+		console.log(this.selectedDate.toISOString());
+		console.log(lesson);
 
 		this.lessonClient
 			.addLesson(lesson)
@@ -52,6 +60,9 @@ export class AddLessonsComponent implements OnInit {
 	}
 
 	isFormValid(): any {
+		if (this.role === 'instructor') {
+			return this.selectedDate && this.selectedTime;
+		}
 		return this.selectedDate && this.selectedTime && this.instructorId;
 	}
 }

@@ -27,6 +27,8 @@ export class StatusFilterComponent {
 	onSelectionChange(event: MatSelectChange): void {
 		const lessonStatus = event.value.map((value: string) => {
 			switch (value) {
+				case 'Unbooked':
+					return LessonStatus.Unbooked;
 				case 'Completed':
 					return LessonStatus.Completed;
 				case 'Upcoming':
@@ -53,6 +55,7 @@ export class StatusFilterComponent {
 
 enum DisplayedLessonStatus {
 	Completed,
+	Unbooked,
 	Upcoming,
 	Canceled
 }

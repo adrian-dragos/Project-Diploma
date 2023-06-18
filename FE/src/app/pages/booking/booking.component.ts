@@ -1,7 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { PaymentClient } from '@api/api:';
 import { TooltipConstants } from '@app/constants/tooltip.constants';
-import { PaymentService } from '@app/services/payment.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { BehaviorSubject, concatMap } from 'rxjs';
 

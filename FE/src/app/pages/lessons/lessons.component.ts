@@ -8,6 +8,7 @@ import {
 	LessonStatus,
 	LessonsClient,
 	PageViewModel,
+	PagedResultViewModelOfGetInstructorLessonsListViewModel,
 	PagedResultViewModelOfGetStudentLessonsViewModel
 } from '@api/api:';
 import { TooltipConstants } from '@app/constants/tooltip.constants';
@@ -31,8 +32,10 @@ export class LessonsComponent implements AfterContentInit {
 	readonly showDelay = TooltipConstants.SHOW_DELAY;
 	readonly displayedColumns: string[] = ['date', 'time', 'location', 'instructor', 'status', 'actions'];
 	start = new BehaviorSubject<void>(undefined);
-	dataSource = new MatTableDataSource<GetStudentLessonsViewModel>();
+	dataSource = new MatTableDataSource<any>();
 	lessonCompleted = LessonStatus.Completed;
+	lessonUpcoming = LessonStatus.BookedPaid;
+	lessonUnbooked = LessonStatus.Unbooked;
 	isLoading = false;
 	userRole: string;
 	tooltipShowDelay = TooltipConstants.SHOW_DELAY;
@@ -84,8 +87,11 @@ export class LessonsComponent implements AfterContentInit {
 		if (this.userRole === 'student') {
 			const studentId = [parseInt(localStorage.getItem('userId'), 10)];
 			this.lessonService.setStudentFilter(studentId);
-		} else {
+		} else if (this.userRole === 'admin') {
 			this.lessonService.setStudentFilter([]);
+		} else if (this.userRole === 'instructor') {
+			const instructorId = [parseInt(localStorage.getItem('userId'), 10)];
+			this.lessonService.setInstructorsFilter(instructorId);
 		}
 
 		this.lessonService
@@ -154,9 +160,10 @@ export class LessonsComponent implements AfterContentInit {
 	}
 
 	getLessonStatus(lessonStatus: number): string {
-		if (lessonStatus === LessonStatus.Completed) {
-			return LessonStatus[lessonStatus];
+		if (lessonStatus === LessonStatus.BookedPaid) {
+			return 'Upcoming';
 		}
-		return 'Upcoming';
+
+		return LessonStatus[lessonStatus];
 	}
 }

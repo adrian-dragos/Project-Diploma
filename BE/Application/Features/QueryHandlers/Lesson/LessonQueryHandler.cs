@@ -58,7 +58,8 @@ namespace Application.Features.QueryHandlers
             } 
             else
             {
-                lessonQuery = lessonQuery.Where(l => l.Status == LessonStatus.BookedPaid ||
+                lessonQuery = lessonQuery.Where(l => l.Status == LessonStatus.Unbooked ||
+                                                     l.Status == LessonStatus.BookedPaid ||
                                                      l.Status == LessonStatus.Completed ||
                                                      l.Status == LessonStatus.Canceled);
             }

@@ -32,6 +32,10 @@
   align-items: center;
 }
 
+:host mat-card {
+  min-width: 600px;
+}
+
 .add-lesson-button {
   margin: 20px;
   width: 200px;
