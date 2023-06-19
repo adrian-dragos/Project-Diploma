@@ -67,6 +67,7 @@ namespace Persistence
             var now = DateTimeOffset.Now;
 
             var httpContext = _httpContextAccessor.HttpContext;
+            var email = httpContext.User.Claims.FirstOrDefault(x=> x.Type == ClaimTypes.Email)?.Value;
 
             var entries = _dbContext
                 .ChangeTracker
@@ -80,14 +81,12 @@ namespace Persistence
                 if (entry.State is EntityState.Added)
                 {
                     entity.CreatedAt = now;
-                    var email = httpContext.User.Claims.FirstOrDefault(x=> x.Type == ClaimTypes.Email)?.Value;
                     entity.CreatedBy = email;
-                    //entity.CreatedBy = "Dominic39@yahoo.com";
               }
                 else if (entry.State is EntityState.Modified)
                 {
                     entity.LastModifiedAt = now;
-                    entity.LastModifiedBy = "";
+                    entity.LastModifiedBy = entity.CreatedBy = email;
                 }
             }
 

@@ -20,6 +20,8 @@ export class EditAccountComponent implements OnInit {
 	automaticGear = CarGear.Automatic;
 	gearEnum: CarGear[] = [CarGear.Manual, CarGear.Automatic];
 	isLoading = false;
+	initials: string;
+	studentId: number;
 
 	constructor(private readonly formBuilder: FormBuilder, private readonly router: Router, private readonly dialog: MatDialog) {}
 
@@ -28,13 +30,15 @@ export class EditAccountComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.buildForm();
+		this.studentId = parseInt(localStorage.getItem('userId'), 10);
 		this.studentClient
-			.getStudentProfile(1)
+			.getStudentProfile(this.studentId)
 			.pipe(
 				tap(() => (this.isLoading = true)),
 				untilDestroyed(this)
 			)
 			.subscribe((student) => {
+				this.initials = student.firstName[0] + student.lastName[0];
 				this.buildForm(student);
 				this.isLoading = false;
 			});
@@ -63,12 +67,12 @@ export class EditAccountComponent implements OnInit {
 		};
 
 		this.studentClient
-			.updateStudentProfile(1, student)
+			.updateStudentProfile(this.studentId, student)
 			.pipe(untilDestroyed(this))
 			.subscribe(
 				() => {
 					this.snackBarService.openSuccessSnackBar('Profile updated successfully');
-					this.router.navigate(['/account']);
+					this.router.navigate(['app/account']);
 				},
 				() => this.snackBarService.openWarningSnackBar('Profile update failed')
 			);
@@ -84,7 +88,7 @@ export class EditAccountComponent implements OnInit {
 			.pipe(untilDestroyed(this))
 			.subscribe((result) => {
 				if (result === true) {
-					this.router.navigate(['/account']);
+					this.router.navigate(['app/account']);
 				}
 			});
 	}

@@ -104,16 +104,20 @@ namespace Application.Features.CommandHandlers
                 throw new BadRequestException($"Could not perform operation for lesson with {lesson.Status} status!");
             }
 
-            var payment = await _paymentRepository.Read()
-                .FirstOrDefaultAsync(p => p.LessonId == lesson.Id, cancellationToken);
-
             lesson.Status = LessonStatus.Unbooked;
             lesson.StudentId = null;
 
+            var payments = await _paymentRepository.Read()
+                .Where(p => p.LessonId == lesson.Id)
+                .ToListAsync(cancellationToken);
+
+            foreach (var payment in payments)
+            {
+                payment.StudentId = null;
+                payment.Student = null;
+            }
             _lessonsRepository.Update(lesson);
-            payment.StudentId = null;
-            payment.Student = null;
-            _paymentRepository.Update(payment);
+            _paymentRepository.UpdateRange(payments);
 
             return Unit.Value;
         }
@@ -142,13 +146,17 @@ namespace Application.Features.CommandHandlers
             lesson.Status = LessonStatus.Unbooked;
             lesson.StudentId = null;
 
-            var payment = await _paymentRepository.Read()
-                .FirstOrDefaultAsync(p => p.LessonId == lesson.Id, cancellationToken);
+            var payments = await _paymentRepository.Read()
+                .Where(p => p.LessonId == lesson.Id)
+                .ToListAsync(cancellationToken);
 
-            payment.StudentId = null;
-            payment.Student = null;
+            foreach (var payment in payments )
+            {
+                payment.StudentId = null;
+                payment.Student = null;
+            }
             _lessonsRepository.Update(lesson);
-            _paymentRepository.Update(payment);
+            _paymentRepository.UpdateRange(payments);
 
 
             return Unit.Value;

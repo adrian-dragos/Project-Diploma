@@ -39,17 +39,13 @@ namespace Application.Features.QueryHandlers
 
             if (request.StartDate != null) {
                 var nonNullableStartDate = request.StartDate.GetValueOrDefault().AddDays(1);
-                lessonQuery = lessonQuery.Where(l => l.StartTime.Year >= nonNullableStartDate.Year &&
-                                                        l.StartTime.Month >= nonNullableStartDate.Month &&
-                                                        l.StartTime.Day >= nonNullableStartDate.Day);
+                lessonQuery = lessonQuery.Where(l => l.StartTime.Date >= nonNullableStartDate.Date);
             }
 
             if (request.EndDate != null)
             {
                 var nonNullableEndDate = request.EndDate.GetValueOrDefault().AddDays(1);
-                lessonQuery = lessonQuery.Where(l => l.StartTime.Year <= nonNullableEndDate.Year &&
-                                                       l.StartTime.Month <= nonNullableEndDate.Month &&
-                                                       l.StartTime.Day <= nonNullableEndDate.Day);
+                lessonQuery = lessonQuery.Where(l => l.StartTime.Date <= nonNullableEndDate.Date);
             }
 
             if (request.LessonStatuses?.Any() ?? false)
