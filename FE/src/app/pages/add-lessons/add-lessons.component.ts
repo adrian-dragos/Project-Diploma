@@ -41,9 +41,6 @@ export class AddLessonsComponent implements OnInit {
 		}
 
 		const lesson: AddLessonViewModel = { instructorId: this.instructorId, lessonStartTime: this.selectedDate.toISOString() };
-		console.log(this.selectedDate.toISOString());
-		console.log(lesson);
-
 		this.lessonClient
 			.addLesson(lesson)
 			.pipe(untilDestroyed(this))
