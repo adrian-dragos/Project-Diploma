@@ -42,20 +42,16 @@ namespace Application.Features.QueryHandlers
                 paymentsQuery = paymentsQuery.Where(p => request.PaymentMethod.Contains(p.Method) || p.Method == PaymentMethod.Unpaid);
             }
 
-            if (request.EndDate != null)
+            if (request.StartDate is not null)
             {
-                var nonNullableEndDate = request.EndDate.GetValueOrDefault().AddDays(1);
-                paymentsQuery = paymentsQuery.Where(p => p.Timestamp.Year <= nonNullableEndDate.Year &&
-                                                       p.Timestamp.Month <= nonNullableEndDate.Month &&
-                                                       p.Timestamp.Day <= nonNullableEndDate.Day);
+                var startDate = request.StartDate.GetValueOrDefault().AddDays(1).Date;
+                paymentsQuery = paymentsQuery.Where(p => p.Timestamp.Date >= startDate);
             }
 
             if (request.EndDate is not null)
             {
-                var nonNullableEndDate = request.EndDate.GetValueOrDefault().AddDays(1);
-                paymentsQuery = paymentsQuery.Where(p => p.Timestamp.Year <= nonNullableEndDate.Year &&
-                                                       p.Timestamp.Month <= nonNullableEndDate.Month &&
-                                                       p.Timestamp.Day <= nonNullableEndDate.Day);
+                var endDate = request.EndDate.GetValueOrDefault().AddDays(1).Date;
+                paymentsQuery = paymentsQuery.Where(p => p.Timestamp.Date <= endDate);
             }
 
             var payments = await paymentsQuery

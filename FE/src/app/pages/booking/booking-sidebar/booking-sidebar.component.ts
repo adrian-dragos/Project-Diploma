@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { CarGear, CarModelViewModel, GetInstructorsFilterViewModel, InstructorClient, InstructorProfileViewModel } from '@api/api:';
 import { BookingService } from '@app/services/booking.service';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -17,10 +18,15 @@ export class BookingSidebarComponent implements OnInit {
 	instructors: InstructorProfileViewModel[] = [];
 	instructorSubscription: Subscription;
 	selectedDate: Date;
+	isLogged: boolean;
 
 	// services
 	instructorClient = inject(InstructorClient);
 	bookingService = inject(BookingService);
+
+	constructor(private readonly router: Router) {
+		this.isLogged = this.router.url !== '/booking';
+	}
 
 	ngOnInit(): void {
 		this.bookingService

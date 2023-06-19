@@ -28,7 +28,7 @@
       <div class="instructor-profile">
         <img src="../../../../assets/img_avatar.png" class="instructor-photo" alt="Avatar">
         <div>
-          <p> Phone  
+          <p *ngIf="isLogged"> Phone  
             <span class="phone-number"> 
               {{ instructor.phoneNumber }}
             </span>

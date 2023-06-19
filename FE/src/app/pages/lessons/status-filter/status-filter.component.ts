@@ -22,6 +22,11 @@ export class StatusFilterComponent {
 		const displayedStatusEnum = DisplayedLessonStatus;
 		const keys = Object.keys(displayedStatusEnum);
 		this.displayedStatuses = keys.slice(keys.length / 2);
+
+		const role = localStorage.getItem('userRole');
+		if (role === 'student') {
+			this.displayedStatuses = this.displayedStatuses.filter((status) => status !== 'Unbooked');
+		}
 	}
 
 	onSelectionChange(event: MatSelectChange): void {
