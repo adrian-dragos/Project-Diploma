@@ -81,7 +81,10 @@ namespace Persistence
                 if (entry.State is EntityState.Added)
                 {
                     entity.CreatedAt = now;
-                    entity.CreatedBy = email;
+                    if (entity.CreatedBy is null)
+                    {
+                        entity.CreatedBy = email;   
+                    }
               }
                 else if (entry.State is EntityState.Modified)
                 {

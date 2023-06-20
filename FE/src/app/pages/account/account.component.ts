@@ -18,7 +18,7 @@ export class AccountComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.studentClient
-			.getStudentProfile(1)
+			.getStudentProfile(parseInt(localStorage.getItem('userId'), 10))
 			.pipe(
 				delay(100),
 				tap(() => (this.isLoading = true)),

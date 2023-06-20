@@ -2,6 +2,7 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Observer, catchError, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class UnauthorizedInterceptor implements HttpInterceptor {
@@ -14,6 +15,11 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
 				Authorization: `Bearer ${userToken}`
 			}
 		});
+
+		if (environment.production === true) {
+			request = request.clone({ url: environment.apiUrl + request.url });
+		}
+
 		return this.ngZone.run(() => {
 			return next.handle(request).pipe(
 				enterZone(this.ngZone),

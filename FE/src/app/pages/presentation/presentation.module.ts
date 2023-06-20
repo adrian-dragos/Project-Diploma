@@ -18,7 +18,8 @@ const routes: Routes = [
 			{ path: 'booking', loadChildren: () => import('../booking/booking.module').then((m) => m.BookingModule) },
 			{ path: 'contacts', loadChildren: () => import('./contacts/contacts.module').then((m) => m.ContactsModule) },
 			{ path: 'about-us', loadChildren: () => import('./about-us/about-us.module').then((m) => m.AboutUsModule) },
-			{ path: 'faq', loadChildren: () => import('./faq/faq.module').then((m) => m.FaqModule) }
+			{ path: 'faq', loadChildren: () => import('./faq/faq.module').then((m) => m.FaqModule) },
+			{ path: '', redirectTo: 'home', pathMatch: 'full' }
 		]
 	}
 ];

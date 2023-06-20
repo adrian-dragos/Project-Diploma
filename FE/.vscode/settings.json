@@ -4,5 +4,7 @@
 		"ngneat",
 		"unbook",
 		"unbooking"
-	]
+	],
+	"appService.defaultWebAppToDeploy": "/subscriptions/3404b6c5-1cac-4730-bc46-fe1f7d5e90f8/resourceGroups/drivingSchoolSetup1/providers/Microsoft.Web/sites/five-dollar",
+	"appService.deploySubpath": "dist\\1-attempt-fe"
 }

@@ -4,6 +4,7 @@ using Application.Features.Services.Interfaces;
 using Application.Interfaces;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Enums;
 using Domain.Exceptions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +15,14 @@ namespace Application.Features.CommandHandlers
     internal sealed class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, RegisterUserDto>
     {
         private readonly IRepository<Identity> _userReposiotry;
+        private readonly IRepository<Student> _studentReposiotry;
         private readonly IPasswordService _passwordService;
         private readonly IMapper _mapper;
 
-        public RegisterUserCommandHandler(IRepository<Identity> userReposiotry, IPasswordService passwordService, IMapper mapper)
+        public RegisterUserCommandHandler(IRepository<Identity> userReposiotry, IRepository<Student> studentReposiotry, IPasswordService passwordService, IMapper mapper)
         {
             _userReposiotry = userReposiotry;
+            _studentReposiotry = studentReposiotry;
             _passwordService = passwordService;
             _mapper = mapper;
         }
@@ -30,10 +33,17 @@ namespace Application.Features.CommandHandlers
             ValidatePassword(request.Password);
 
             var password = _passwordService.EncryptPassword(request.Password);
-            var user = new Identity { Email = request.Email, Password = password, RoleId = 3 };
+            var user = new Identity { Email = request.Email, Password = password, RoleId = 3, CreatedBy = request.Email};
 
             user = await _userReposiotry
                 .AddAsync(user);
+
+            await _studentReposiotry.AddAsync(new Student
+            {
+                CreatedBy = request.Email,
+                IdentityId = user.Id,
+                GearType = CarGear.Manual
+            });
 
             return _mapper.Map<RegisterUserDto>(user);
         }
