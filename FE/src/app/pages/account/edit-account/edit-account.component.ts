@@ -22,6 +22,7 @@ export class EditAccountComponent implements OnInit {
 	isLoading = false;
 	initials: string;
 	studentId: number;
+	student: StudentProfileViewModel;
 
 	constructor(private readonly formBuilder: FormBuilder, private readonly router: Router, private readonly dialog: MatDialog) {}
 
@@ -39,6 +40,7 @@ export class EditAccountComponent implements OnInit {
 			)
 			.subscribe((student) => {
 				this.initials = student.firstName[0] + student.lastName[0];
+				this.student = student;
 				this.buildForm(student);
 				this.isLoading = false;
 			});
@@ -61,6 +63,7 @@ export class EditAccountComponent implements OnInit {
 			return;
 		}
 		const student: UpdateStudentProfileViewModel = {
+			...this.student,
 			email: this.myForm.value.email,
 			phoneNumber: this.myForm.value.phoneNumber,
 			carGear: this.myForm.value.gear

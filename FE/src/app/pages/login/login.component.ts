@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsersClient } from '@api/api:';
 import { SnackBarService } from '@app/services/snack-bar.service';
 import { UserService } from '@app/services/user.service';
 import { UserValidator } from '@app/validators/user.validator';
@@ -20,6 +21,7 @@ export class LoginComponent {
 	snackBarService = inject(SnackBarService);
 	userValidator = inject(UserValidator);
 	userService = inject(UserService);
+	userCLient = inject(UsersClient);
 
 	constructor(private router: Router) {
 		this.userService.removeJwtToken();
@@ -49,8 +51,14 @@ export class LoginComponent {
 			.subscribe(
 				() => {
 					this.snackBarService.openSuccessSnackBar('Login successful!');
-					this.router.navigate(['app/lessons']);
-					this.badCredentials = false;
+					this.userCLient.getUserShortProfile().subscribe((user) => {
+						if (user.fullName === ' ') {
+							this.router.navigate(['new-profile']);
+						} else {
+							this.router.navigate(['app/lessons']);
+						}
+						this.badCredentials = false;
+					});
 				},
 				() => {
 					this.badCredentials = true;

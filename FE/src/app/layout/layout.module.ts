@@ -70,7 +70,7 @@ const routes: Routes = [
 		LoadingSpinnerModule
 	],
 	declarations: [LayoutComponent, HeaderComponent, SidebarComponent, LogoutDialogComponent],
-	exports: [],
+	exports: [HeaderComponent],
 	providers: [UsersClient]
 })
 export class LayoutModule {}

@@ -1,0 +1,32 @@
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  // background-color: #f8f8f8;
+}
+
+mat-toolbar-row {
+  justify-content: center;
+}
+
+.logo-name {
+  width: 150px;
+  cursor: pointer;
+}
+
+.form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.submit-button {
+  background-color: #20a8d8 !important;
+  color: white !important;
+}
+
+.mat-mdc-raised-button:disabled {
+  background-color: rgba(32, 168, 216, 0.32) !important;
+  color: rgba(255, 255, 255, 0.99) !important;
+}

@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { LoginComponent } from './login.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { UsersClient } from '@api/api:';
 
 @NgModule({
 	imports: [
@@ -21,6 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 		MatTooltipModule,
 		MatIconModule
 	],
-	declarations: [LoginComponent]
+	declarations: [LoginComponent],
+	providers: [UsersClient]
 })
 export class LoginModule {}

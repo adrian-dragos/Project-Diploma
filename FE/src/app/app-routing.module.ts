@@ -11,6 +11,11 @@ const routes: Routes = [
 		loadChildren: () => import('src/app/layout/layout.module').then((m) => m.LayoutModule)
 	},
 	{
+		path: 'new-profile',
+		canActivate: [AuthorizationGuard],
+		loadChildren: () => import('src/app/pages/add-new-profile/add-new-profile.module').then((m) => m.AddNewProfileModule)
+	},
+	{
 		path: 'app/payment',
 		loadChildren: () => import('@app/pages/card-payment/card-payment.module').then((m) => m.default)
 	},

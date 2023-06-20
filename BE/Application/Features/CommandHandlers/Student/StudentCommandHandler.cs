@@ -32,8 +32,11 @@ namespace Application.Features.CommandHandlers
             student.Identity.Email = request.Email;
             student.Identity.PhoneNumber = request.PhoneNumber;
             student.GearType = request.CarGear;
+            student.Identity.FirstName = request.FirstName;
+            student.Identity.LastName = request.LastName;
 
             _studentRepository.Update(student);
+
             return Unit.Value;
         }
 

@@ -1,0 +1,42 @@
+<mat-toolbar>
+  <mat-toolbar-row class="toolbar-row">
+    <img src="./assets/logoName.svg" alt="Company logo name" class="logo-name">
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="form">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label> First Name </mat-label>
+      <input matInput formControlName="firstName">
+      <mat-error *ngIf="profileForm.get('firstName').invalid && profileForm.get('firstName').touched">
+        First Name is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> Last Name </mat-label>
+      <input matInput formControlName="lastName">
+      <mat-error *ngIf="profileForm.get('lastName').invalid && profileForm.get('lastName').touched">
+        Last Name is required.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label> Phone Number </mat-label>
+      <input matInput formControlName="phoneNumber">
+      <mat-hint>0xxx-xxx-xxx</mat-hint>
+      <mat-icon matSuffix>phone</mat-icon>
+      <mat-error *ngIf="profileForm.get('phoneNumber').invalid && profileForm.get('phoneNumber').touched">
+      Phone Number is required.
+    </mat-error>
+    </mat-form-field>
+    <br>
+    <!-- <mat-form-field>
+      <mat-label>Birthday</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br> -->
+    <button mat-raised-button class="submit-button" type="submit" [disabled]="profileForm.invalid">Submit</button>
+  </form>
+</div>
