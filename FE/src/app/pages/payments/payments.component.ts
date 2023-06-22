@@ -67,7 +67,7 @@ export class PaymentsComponent implements OnInit {
 			.pay({
 				studentId: studentId,
 				amount: sum,
-				paymentMethod: PaymentMethod.Card
+				paymentMethod: PaymentMethod.Cash
 			})
 			.pipe(
 				tap(() => (this.isLoading = true)),
