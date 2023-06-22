@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { StudentClient, UsersClient } from '@api/api:';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
 	imports: [
@@ -23,7 +24,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 		MatButtonModule,
 		MatIconModule,
 		MatDatepickerModule,
-		MatNativeDateModule
+		MatNativeDateModule,
+		MatSelectModule
 	],
 	declarations: [AddNewProfileComponent],
 	providers: [StudentClient, UsersClient]

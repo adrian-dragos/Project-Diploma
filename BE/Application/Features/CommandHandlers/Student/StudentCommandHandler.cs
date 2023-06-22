@@ -34,6 +34,7 @@ namespace Application.Features.CommandHandlers
             student.GearType = request.CarGear;
             student.Identity.FirstName = request.FirstName;
             student.Identity.LastName = request.LastName;
+            student.Identity.Birthday = DateOnly.FromDateTime(request.Birthday); 
 
             _studentRepository.Update(student);
 

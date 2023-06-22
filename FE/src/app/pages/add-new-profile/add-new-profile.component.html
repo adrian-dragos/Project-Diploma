@@ -28,15 +28,24 @@
       Phone Number is required.
     </mat-error>
     </mat-form-field>
-    <br>
-    <!-- <mat-form-field>
+    <mat-form-field>
       <mat-label>Birthday</mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput [matDatepicker]="picker" formControlName="birthday">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <br> -->
-    <button mat-raised-button class="submit-button" type="submit" [disabled]="profileForm.invalid">Submit</button>
+
+    <mat-form-field>
+      <mat-label>Gear</mat-label>
+      <mat-select formControlName="gear" placeholder="Select an option" required>
+        <mat-option *ngFor="let option of gearEnum | keyvalue" [value]="option.value">
+          {{ getGearTypeText(option.value) }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button mat-raised-button class="submit-button" type="submit" [disabled]="profileForm.invalid">Submit</button>
+    </div>
   </form>
 </div>

@@ -13,6 +13,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 @UntilDestroy()
 export class AddNewProfileComponent implements OnInit {
 	profileForm: FormGroup;
+	gearEnum: CarGear[] = [CarGear.Manual, CarGear.Automatic];
 
 	studentClient = inject(StudentClient);
 	snackbarService = inject(SnackBarService);
@@ -28,7 +29,6 @@ export class AddNewProfileComponent implements OnInit {
 			.subscribe((user) => {
 				localStorage.setItem('userRole', user.role);
 				localStorage.setItem('userId', user.id.toString());
-				console.log(user);
 			});
 	}
 
@@ -36,8 +36,9 @@ export class AddNewProfileComponent implements OnInit {
 		this.profileForm = this.fb.group({
 			firstName: ['', Validators.required],
 			lastName: ['', Validators.required],
-			phoneNumber: ['', Validators.required]
-			// gear: ['', Validators.required]
+			phoneNumber: ['', Validators.required],
+			gear: ['', Validators.required],
+			birthday: ['', Validators.required]
 		});
 	}
 
@@ -56,7 +57,8 @@ export class AddNewProfileComponent implements OnInit {
 					firstName: this.profileForm.value.firstName,
 					lastName: this.profileForm.value.lastName,
 					phoneNumber: this.profileForm.value.phoneNumber,
-					carGear: CarGear.Manual
+					carGear: this.profileForm.value.gear,
+					birthday: this.profileForm.value.birthday
 				};
 				console.log(updateProfile);
 				this.studentClient
@@ -74,5 +76,9 @@ export class AddNewProfileComponent implements OnInit {
 						}
 					);
 			});
+	}
+
+	getGearTypeText(gearType: any): string {
+		return CarGear[gearType];
 	}
 }

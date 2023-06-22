@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { GetStudentPaymentFilterViewModel, GetStudentPaymentViewModel, PaymentClient, PaymentMethod } from '@api/api:';
+import { GetStudentPaymentViewModel, PaymentClient, PaymentMethod } from '@api/api:';
 import { TooltipConstants } from '@app/constants/tooltip.constants';
 import { PaymentService } from '@app/services/payment.service';
 import { SnackBarService } from '@app/services/snack-bar.service';

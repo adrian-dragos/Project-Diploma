@@ -9,8 +9,6 @@ export class NotInstructorGuard implements CanActivate {
 
 	async canActivate(): Promise<boolean> {
 		const role = localStorage.getItem('userRole');
-		console.log('InstructorGuard');
-		console.log(role);
 		if (role === 'instructor') {
 			this.router.navigate(['/account']);
 			return false;
