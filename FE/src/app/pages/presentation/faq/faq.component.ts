@@ -15,7 +15,7 @@ export class FaqComponent {
 		{
 			question: 'Who is Adrian Dragoș?',
 			answer:
-				'At the moment of writing this, Adrian Dragoș is a 4th year student at the Faculty of Automatic and Computer Science, Politehnica University of Timișoara' +
+				'At the moment of writing, Adrian Dragoș is a 4th year student at the Faculty of Automatic and Computer Science, Politehnica University of Timișoara' +
 				'He is also a junior software developer at Amdaris SRL Romania.'
 		},
 		{
