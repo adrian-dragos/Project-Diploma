@@ -17,6 +17,7 @@ export class LoginComponent {
 	badCredentials = false;
 	passwordIcon = 'visibility';
 	hidePassword = true;
+	logoUrl = '../../../assets/logoName.svg';
 
 	snackBarService = inject(SnackBarService);
 	userValidator = inject(UserValidator);
@@ -50,7 +51,6 @@ export class LoginComponent {
 			.pipe(untilDestroyed(this))
 			.subscribe(
 				() => {
-					this.snackBarService.openSuccessSnackBar('Login successful!');
 					this.userCLient.getUserShortProfile().subscribe((user) => {
 						if (user.fullName === ' ') {
 							this.router.navigate(['new-profile']);
@@ -58,6 +58,7 @@ export class LoginComponent {
 							this.router.navigate(['app/lessons']);
 						}
 						this.badCredentials = false;
+						this.snackBarService.openSuccessSnackBar('Login successful!');
 					});
 				},
 				() => {

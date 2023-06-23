@@ -14,13 +14,14 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 @UntilDestroy()
 export class RegisterComponent {
-	snackBarService = inject(SnackBarService);
-	userValidator = inject(UserValidator);
-
+	logoUrl = '../../../assets/logoName.svg';
 	hideRegisterPasswordIcon = true;
 	hideConfirmPasswordIcon = true;
 	registerPasswordIcon = 'visibility';
 	confirmPasswordIcon = 'visibility';
+
+	snackBarService = inject(SnackBarService);
+	userValidator = inject(UserValidator);
 
 	constructor(private readonly client: UsersClient, private readonly router: Router) {}
 
