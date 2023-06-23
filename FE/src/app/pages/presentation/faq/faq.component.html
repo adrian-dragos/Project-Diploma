@@ -4,7 +4,16 @@
       <h1> FAQ </h1>
     </div>
     <div class="faq-content">
-      Out of Project Scope
+      <mat-accordion *ngFor="let faq of faqs" multi displayMode="flat">
+        <mat-expansion-panel  class="booking-lessons-mat-expansion-panel">
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{ faq.question }} </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="panel-description">
+            {{ faq.answer }}
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
   </div>
 </div>
