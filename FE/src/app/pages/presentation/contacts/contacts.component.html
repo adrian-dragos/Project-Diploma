@@ -1,10 +1,35 @@
-<div class="contacts-page-wrapper">
-  <div class="contacts-wrapper">
-    <div class="contacts-header">
-      <h1> Contacts </h1>
+<div class="address"> 
+  <h1> 
+    Five Dollars - Our Contacts
+  </h1>
+</div>
+<div class="info">
+  <div>
+    <div class="info-header">
+      <mat-icon> location_on</mat-icon>
+      <h4>Address</h4>
     </div>
-    <div class="contacts-content">
-      Out of Project Scope
+    <p>
+      We are centrally located at Strada Crișul 7, Timișoara 300567, Timis.
+    </p>
+  </div>
+  <div>
+    <div class="info-header">
+      <mat-icon> phone</mat-icon>
+      <h4> Contact </h4>
     </div>
+    <p>
+      Mob: <a href="tel:+1234567890" class="first-phone">+40 742-441-xxx</a>
+      <br>
+      Mob: <a href="tel:+1234567890">+40 742-441-xxx</a>
+      <br>
+      Mail: <a href="mailto:fivedollars@gmail.com">fivedollars@gmail.com</a>
+    </p>
   </div>
 </div>
+
+
+<google-map height="55%" width="100%" [center]="schoolLocation" [zoom]="zoom" [options]="mapOptions">
+  <map-marker [position]="schoolLocation" [options]="markerOptions">
+  </map-marker>
+</google-map>
