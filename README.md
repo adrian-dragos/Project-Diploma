@@ -1,1 +1,1 @@
-The website can be accessed at https://five-dollar.azurewebsites.net/home
+This project was developed 1.5 years later after https://github.com/adrian-dragos/driving-school-internship. It was developed from scratch.
